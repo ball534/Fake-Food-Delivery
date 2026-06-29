@@ -106,14 +106,14 @@ export default function StoreMenu() {
       </div>
 
       {/* Store info card */}
-      <div className="-mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-5 dark:bg-neutral-950">
-        <h1 className="text-2xl font-extrabold text-neutral-900 dark:text-white">
+      <div className="-mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8 dark:bg-neutral-950">
+        <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-neutral-900 dark:text-white">
           {store.name}
         </h1>
-        <p className="mt-0.5 text-sm text-neutral-500 dark:text-neutral-400">
+        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
           {store.cuisine} · {"$".repeat(store.priceLevel)}
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-neutral-600 dark:text-neutral-300">
+        <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-600 dark:text-neutral-300">
           <span className="flex items-center gap-1 font-semibold">
             <Star size={15} className="fill-amber-400 text-amber-400" />
             {store.rating.toFixed(1)}
@@ -171,7 +171,7 @@ export default function StoreMenu() {
       </div>
 
       {/* Menu */}
-      <div className="space-y-6 p-4">
+      <div className="space-y-7 p-4">
         {store.menu.map((cat) => (
           <section
             key={cat.label}
@@ -179,10 +179,10 @@ export default function StoreMenu() {
             data-cat={cat.label}
             className="scroll-mt-16"
           >
-            <h2 className="mb-2 text-lg font-bold text-neutral-900 dark:text-white">
+            <h2 className="mb-3 text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
               {cat.label}
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {cat.items.map((item) => (
                 <ItemCard key={item.id} item={item} storeId={store.id} />
               ))}
@@ -192,30 +192,30 @@ export default function StoreMenu() {
 
         {/* Reviews */}
         <section>
-          <h2 className="mb-2 flex items-center gap-2 text-lg font-bold text-neutral-900 dark:text-white">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
             Reviews
             <span className="text-sm font-medium text-neutral-400">
               {pluralize(reviews.length, "review")}
             </span>
           </h2>
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {reviews.map((r) => (
-              <div key={r.id} className="card p-3.5">
+              <div key={r.id} className="card p-4">
                 <div className="flex items-center gap-3">
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-lg dark:bg-neutral-800">
                     {r.emoji}
                   </span>
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1 leading-tight">
                     <p className="font-semibold text-neutral-900 dark:text-white">
                       {r.author}
                     </p>
-                    <p className="text-xs text-neutral-400">
+                    <p className="mt-0.5 text-xs text-neutral-400">
                       {r.daysAgo === 0 ? "Today" : pluralize(r.daysAgo, "day") + " ago"}
                     </p>
                   </div>
                   <Stars value={r.rating} size={14} />
                 </div>
-                <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                <p className="mt-2.5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
                   {r.text}
                 </p>
               </div>

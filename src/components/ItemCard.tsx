@@ -50,14 +50,14 @@ export default function ItemCard({
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-center gap-1.5">
-          <h4 className="truncate font-semibold text-neutral-900 dark:text-white">
+          <h4 className="truncate font-semibold leading-snug text-neutral-900 dark:text-white">
             {item.name}
           </h4>
         </div>
-        <p className="mt-1 line-clamp-2 text-xs text-neutral-500 dark:text-neutral-400">
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
           {item.description}
         </p>
-        <p className="mt-1.5 text-sm font-bold text-neutral-900 dark:text-white">
+        <p className="mt-auto pt-2 text-sm font-bold text-neutral-900 dark:text-white">
           {money(item.basePrice)}
           {needsCustomisation(item) && (
             <span className="ml-1 text-xs font-normal text-neutral-400">+</span>

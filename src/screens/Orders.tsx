@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RefreshCw } from "lucide-react";
 import Screen from "../components/Screen";
 import EmptyState from "../components/EmptyState";
 import Stars from "../components/Stars";
-import { useOrders } from "../store/orderStore";
+import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
 import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
 import { STATUS_LABEL } from "../lib/simulation";
@@ -15,7 +14,6 @@ export default function Orders() {
   const orders = useOrders((s) => s.orders);
   const active = orders.filter((o) => o.status !== "delivered");
   const past = orders.filter((o) => o.status === "delivered");
-  const [tab, setTab] = useState<"active" | "past">("active");
 
   if (orders.length === 0) {
     return (
@@ -30,42 +28,47 @@ export default function Orders() {
     );
   }
 
-  const list = tab === "active" ? active : past;
-
   return (
     <Screen className="pb-6">
       <Header />
-      <div className="sticky top-0 z-10 flex gap-2 border-b border-neutral-200 bg-neutral-50/95 px-4 py-2.5 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
-        <button
-          onClick={() => setTab("active")}
-          className={`chip ${tab === "active" ? "chip-active" : ""}`}
-        >
-          Active {active.length > 0 && `· ${active.length}`}
-        </button>
-        <button
-          onClick={() => setTab("past")}
-          className={`chip ${tab === "past" ? "chip-active" : ""}`}
-        >
-          Past {past.length > 0 && `· ${past.length}`}
-        </button>
-      </div>
+      <div className="space-y-6 p-4">
+        {/* Active deliveries first */}
+        {active.length > 0 && (
+          <section>
+            <SectionHeading
+              title="Active"
+              count={`${active.length}/${MAX_ACTIVE_ORDERS}`}
+            />
+            <div className="space-y-3">
+              {active.map((o) => (
+                <OrderRow key={o.id} order={o} />
+              ))}
+            </div>
+          </section>
+        )}
 
-      <div className="space-y-3 p-4">
-        {list.length === 0 ? (
-          <EmptyState
-            emoji={tab === "active" ? "🛵" : "📦"}
-            title={tab === "active" ? "No active orders" : "No past orders"}
-            subtitle={
-              tab === "active"
-                ? "Your in-progress deliveries will show here."
-                : "Delivered orders will be archived here."
-            }
-          />
-        ) : (
-          list.map((o) => <OrderRow key={o.id} order={o} />)
+        {/* Past orders below */}
+        {past.length > 0 && (
+          <section>
+            <SectionHeading title="Past orders" count={`${past.length}`} />
+            <div className="space-y-3">
+              {past.map((o) => (
+                <OrderRow key={o.id} order={o} />
+              ))}
+            </div>
+          </section>
         )}
       </div>
     </Screen>
+  );
+}
+
+function SectionHeading({ title, count }: { title: string; count: string }) {
+  return (
+    <h2 className="mb-3 flex items-center gap-2 text-base font-bold tracking-tight text-neutral-900 dark:text-white">
+      {title}
+      <span className="text-sm font-medium text-neutral-400">{count}</span>
+    </h2>
   );
 }
 
@@ -73,7 +76,7 @@ function Header() {
   return (
     <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-4 pt-6 text-white">
       <h1 className="text-2xl font-extrabold">Orders</h1>
-      <p className="text-sm text-brand-50/90">Track your (pretend) deliveries</p>
+      <p className="text-sm text-brand-50/90">Track your deliveries</p>
     </div>
   );
 }

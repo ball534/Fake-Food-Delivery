@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { CartLine, DeliverySpeed, Order } from "../data/types";
+import type { CartLine, DeliverySpeed, GeoPoint, Order } from "../data/types";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { makeId } from "../lib/id";
 import {
@@ -11,6 +11,9 @@ import {
   storeLocationFor,
 } from "../lib/simulation";
 import { STORES_BY_ID } from "../data/stores";
+
+/** Most orders that can be in-flight (not yet delivered) at once. */
+export const MAX_ACTIVE_ORDERS = 3;
 
 type PlaceArgs = {
   storeId: string;
@@ -24,6 +27,8 @@ type PlaceArgs = {
   /** Concrete estimated delivery time (minutes), seeded by the drop-off. */
   etaMinutes: number;
   promoCode?: string;
+  /** Real drop-off coordinates (from the chosen address); falls back to DEFAULT_DROP. */
+  dropLoc?: GeoPoint;
 };
 
 type OrderState = {
@@ -44,10 +49,11 @@ function persist(orders: Order[]) {
 export const useOrders = create<OrderState>((set, get) => ({
   orders: loadJSON<Order[]>(STORAGE_KEYS.orders, []),
 
-  placeOrder: ({ storeId, lines, subtotal, total, address, addressLabel, pointsEarned, deliverySpeed, etaMinutes, promoCode }) => {
+  placeOrder: ({ storeId, lines, subtotal, total, address, addressLabel, pointsEarned, deliverySpeed, etaMinutes, promoCode, dropLoc }) => {
     const placedAt = Date.now();
     const { stageTimes, etaAt } = computeStageTimes(placedAt, etaMinutes);
     const store = STORES_BY_ID[storeId];
+    const drop = dropLoc ?? DEFAULT_DROP;
     const order: Order = {
       id: makeId("ord-"),
       storeId,
@@ -66,8 +72,8 @@ export const useOrders = create<OrderState>((set, get) => ({
       pointsEarned,
       deliverySpeed,
       promoCode,
-      storeLoc: storeLocationFor(placedAt),
-      dropLoc: DEFAULT_DROP,
+      storeLoc: storeLocationFor(placedAt, drop),
+      dropLoc: drop,
     };
     const orders = [order, ...get().orders];
     persist(orders);

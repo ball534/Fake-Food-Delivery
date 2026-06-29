@@ -133,16 +133,14 @@ export default function ItemDetail() {
                   >
                     <span className="flex items-center gap-3">
                       <span
-                        className={`grid h-5 w-5 place-items-center border-2 ${
-                          opt.multiSelect ? "rounded-md" : "rounded-full"
+                        className={`h-4 w-4 shrink-0 border-2 transition ${
+                          opt.multiSelect ? "rounded" : "rounded-full"
                         } ${
                           checked
                             ? "border-brand-500 bg-brand-500"
                             : "border-neutral-300 dark:border-neutral-600"
                         }`}
-                      >
-                        {checked && <span className="h-2 w-2 rounded-sm bg-white" />}
-                      </span>
+                      />
                       <span className="text-neutral-800 dark:text-neutral-100">
                         {choice.label}
                       </span>

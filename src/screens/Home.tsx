@@ -1,12 +1,15 @@
 import { useMemo, useState } from "react";
-import { Search as SearchIcon, RefreshCw, Copy, Gift, Flame } from "lucide-react";
+import { Search as SearchIcon, RefreshCw, Copy, Gift, Flame, ShoppingBag } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import { Link } from "react-router-dom";
 import { STORES, CATEGORIES, storesInCategory } from "../data/stores";
 import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
+import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
+import { useContent, DEFAULT_GREETINGS } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { formatCountdown } from "../lib/format";
 
@@ -16,15 +19,7 @@ const KIND_LABEL: Record<Deal["kind"], string> = {
   item: "Limited-time item",
 };
 
-// A handful of greetings per part of the day, so the home screen feels alive.
-const GREETINGS: Record<string, string[]> = {
-  morning: ["Good morning", "Rise and shine", "Morning"],
-  afternoon: ["Good afternoon", "Hope you're peckish", "Afternoon"],
-  evening: ["Good evening", "Winding down", "Evening"],
-  night: ["Late-night cravings", "Still up", "Hungry already"],
-};
-
-function partOfDay(hour: number): keyof typeof GREETINGS {
+function partOfDay(hour: number): string {
   if (hour < 5) return "night";
   if (hour < 12) return "morning";
   if (hour < 17) return "afternoon";
@@ -35,19 +30,29 @@ function partOfDay(hour: number): keyof typeof GREETINGS {
 export default function Home() {
   const profile = useProfile((s) => s.profile);
   const showToast = useToasts((s) => s.show);
+  const cartCount = useCart((s) => s.itemCount());
+  const greetings = useContent((s) => s.greetings);
+  const deals = useContent((s) => s.deals);
   const [category, setCategory] = useState<string | null>(null);
   const now = useNow();
 
   // The Special Deal rotates every 10 minutes.
-  const deal = useMemo(() => selectDeal(now), [now]);
+  const deal = useMemo(() => selectDeal(deals, now), [deals, now]);
   const rotatesIn = msUntilRotation(now);
 
   // A greeting that's stable within the hour but varies through the day.
+  // If the chosen line contains {name} it's substituted in place; otherwise the
+  // first name is appended after a comma (the common case).
   const greeting = useMemo(() => {
     const d = new Date(now);
-    const pool = GREETINGS[partOfDay(d.getHours())];
-    return pool[d.getHours() % pool.length];
-  }, [now]);
+    const pool = greetings[partOfDay(d.getHours())] ??
+      DEFAULT_GREETINGS[partOfDay(d.getHours())];
+    const raw = pool[d.getHours() % pool.length];
+    const firstName = profile.name.split(" ")[0];
+    return raw.includes("{name}")
+      ? raw.replace(/\{name\}/g, firstName)
+      : `${raw}, ${firstName}`;
+  }, [now, greetings, profile.name]);
 
   const filtered = useMemo(
     () => (category ? storesInCategory(category) : []),
@@ -85,9 +90,7 @@ export default function Home() {
     <Screen className="pb-6">
       {/* Header */}
       <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-5 pt-8 text-white">
-        <p className="text-lg font-bold">
-          {greeting}, {profile.name.split(" ")[0]}
-        </p>
+        <p className="text-lg font-bold">{greeting}</p>
         <p className="text-sm text-brand-50/90">What are you craving?</p>
         <Link
           to="/search"
@@ -181,6 +184,30 @@ export default function Home() {
             </div>
           </section>
         )}
+      </div>
+
+      {/* Floating cart button — quick jump to checkout when you've got items */}
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px]">
+        <AnimatePresence>
+          {cartCount > 0 && (
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0, opacity: 0 }}
+            >
+              <Link
+                to="/checkout"
+                aria-label={`Cart, ${cartCount} items`}
+                className="pointer-events-auto absolute bottom-20 right-4 grid h-14 w-14 place-items-center rounded-full bg-brand-500 text-white shadow-card-hover active:scale-95"
+              >
+                <ShoppingBag size={22} />
+                <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px] font-bold text-brand-600 shadow">
+                  {cartCount}
+                </span>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </Screen>
   );

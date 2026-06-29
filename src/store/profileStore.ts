@@ -1,8 +1,14 @@
 import { create } from "zustand";
-import type { Address, UserProfile } from "../data/types";
+import type { Address, GeoPoint, UserProfile } from "../data/types";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { makeId } from "../lib/id";
-import { MAX_TIER, multiplierForTier, pointsForOrder } from "../lib/loyalty";
+import {
+  multiplierForTier,
+  pointsForOrder,
+  levelForXp,
+  xpForOrder,
+  XP_SWITCH_PENALTY,
+} from "../lib/loyalty";
 
 export const MAX_ADDRESSES = 3;
 
@@ -22,7 +28,7 @@ function defaultProfile(): UserProfile {
 export type PurchaseOpts = {
   /** Bonus multiplier on points (e.g. Saver 1.5×, or a 2× promo). */
   pointsMultiplier?: number;
-  /** Loyalty tiers gained this order (default 1; a promo can double it). */
+  /** Multiplier on loyalty XP gained this order (default 1; a promo can double it). */
   loyaltyTiers?: number;
   /** Points spent (e.g. Express). */
   pointsSpent?: number;
@@ -40,11 +46,14 @@ type ProfileState = {
   profile: UserProfile;
   setName: (name: string) => void;
   setEmoji: (emoji: string) => void;
-  addAddress: (label: string, line: string) => boolean; // false if at max
-  editAddress: (id: string, label: string, line: string) => void;
+  addAddress: (label: string, line: string, loc?: GeoPoint) => boolean; // false if at max
+  editAddress: (id: string, label: string, line: string, loc?: GeoPoint) => void;
   removeAddress: (id: string) => void;
   selectAddress: (id: string) => void;
   selectedAddress: () => Address | undefined;
+  /** Raw accumulated loyalty XP for a shop. */
+  loyaltyXp: (storeId: string) => number;
+  /** Loyalty level for a shop, derived from its XP. */
   loyaltyTier: (storeId: string) => number;
   multiplierFor: (storeId: string) => number;
   recordPurchase: (storeId: string, orderTotal: number, opts?: PurchaseOpts) => PurchaseResult;
@@ -76,10 +85,10 @@ export const useProfile = create<ProfileState>((set, get) => ({
       return { profile };
     }),
 
-  addAddress: (label, line) => {
+  addAddress: (label, line, loc) => {
     const { profile } = get();
     if (profile.addresses.length >= MAX_ADDRESSES) return false;
-    const addr: Address = { id: makeId("addr-"), label, line };
+    const addr: Address = { id: makeId("addr-"), label, line, loc };
     const next = {
       ...profile,
       addresses: [...profile.addresses, addr],
@@ -90,10 +99,10 @@ export const useProfile = create<ProfileState>((set, get) => ({
     return true;
   },
 
-  editAddress: (id, label, line) =>
+  editAddress: (id, label, line, loc) =>
     set((s) => {
       const addresses = s.profile.addresses.map((a) =>
-        a.id === id ? { ...a, label, line } : a,
+        a.id === id ? { ...a, label, line, loc } : a,
       );
       const profile = { ...s.profile, addresses };
       persist(profile);
@@ -127,30 +136,36 @@ export const useProfile = create<ProfileState>((set, get) => ({
     );
   },
 
-  loyaltyTier: (storeId) => get().profile.loyalty[storeId] ?? 0,
+  loyaltyXp: (storeId) => get().profile.loyalty[storeId] ?? 0,
 
-  multiplierFor: (storeId) => multiplierForTier(get().profile.loyalty[storeId] ?? 0),
+  loyaltyTier: (storeId) => levelForXp(get().profile.loyalty[storeId] ?? 0),
+
+  multiplierFor: (storeId) =>
+    multiplierForTier(levelForXp(get().profile.loyalty[storeId] ?? 0)),
 
   recordPurchase: (storeId, orderTotal, opts = {}) => {
     const { pointsMultiplier = 1, loyaltyTiers = 1, pointsSpent = 0 } = opts;
     const { profile } = get();
-    const currentTier = profile.loyalty[storeId] ?? 0;
+    const currentXp = profile.loyalty[storeId] ?? 0;
+    const currentTier = levelForXp(currentXp);
     const multiplier = multiplierForTier(currentTier);
     const pointsEarned = pointsForOrder(orderTotal, currentTier, pointsMultiplier);
 
     const loyalty: Record<string, number> = { ...profile.loyalty };
 
-    // Switching shops costs the previously-loyal shop a tier.
+    // Straying to a different shop only chips a little XP off your previous
+    // one (gentle decay — loyalty is hard to lose, see lib/loyalty.ts).
     let droppedShopId: string | null = null;
     const prev = profile.lastLoyaltyShopId;
     if (prev && prev !== storeId) {
-      loyalty[prev] = Math.max(0, (loyalty[prev] ?? 0) - 1);
+      loyalty[prev] = Math.max(0, (loyalty[prev] ?? 0) - XP_SWITCH_PENALTY);
       droppedShopId = prev;
     }
 
-    // Build loyalty with the shop you just ordered from.
-    const newTier = Math.min(MAX_TIER, currentTier + loyaltyTiers);
-    loyalty[storeId] = newTier;
+    // Earn XP at the shop you ordered from (loyaltyTiers doubles it for a promo).
+    const newXp = currentXp + xpForOrder(orderTotal) * loyaltyTiers;
+    loyalty[storeId] = newXp;
+    const newTier = levelForXp(newXp);
 
     const next: UserProfile = {
       ...profile,

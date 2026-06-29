@@ -57,6 +57,8 @@ export const useCart = create<CartState>((set, get) => ({
         note: note?.trim() || undefined,
         unitPrice,
         lineTotal: Math.round(unitPrice * qty * 100) / 100,
+        name: item.name,
+        emoji: item.emoji,
       };
       // If switching stores, replace the cart entirely.
       const switching = s.cart.storeId !== null && s.cart.storeId !== storeId;

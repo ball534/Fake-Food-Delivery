@@ -20,8 +20,8 @@ import { useProfile, MAX_ADDRESSES } from "../store/profileStore";
 import { useToasts } from "../store/toastStore";
 import { STORES_BY_ID } from "../data/stores";
 import { clearAll } from "../lib/storage";
-import { multiplierForTier, tierName } from "../lib/loyalty";
-import type { Address } from "../data/types";
+import { levelForXp, multiplierForTier, tierName } from "../lib/loyalty";
+import type { Address, GeoPoint } from "../data/types";
 
 export default function Profile() {
   const profile = useProfile((s) => s.profile);
@@ -37,16 +37,16 @@ export default function Profile() {
   const [addingAddr, setAddingAddr] = useState(false);
   const [addrLabel, setAddrLabel] = useState("");
   const [addrLine, setAddrLine] = useState("");
+  const [addrLoc, setAddrLoc] = useState<GeoPoint | undefined>(undefined);
   const [locating, setLocating] = useState(false);
   const [resetOpen, setResetOpen] = useState(false);
 
   const atMax = profile.addresses.length >= MAX_ADDRESSES;
 
   const loyalties = Object.entries(profile.loyalty)
-    .filter(([, tier]) => tier > 0)
-    .map(([storeId, tier]) => ({ store: STORES_BY_ID[storeId], tier }))
-    .filter((l) => l.store)
-    .sort((a, b) => b.tier - a.tier);
+    .map(([storeId, xp]) => ({ store: STORES_BY_ID[storeId], level: levelForXp(xp) }))
+    .filter((l) => l.store && l.level > 0)
+    .sort((a, b) => b.level - a.level);
 
   const saveName = () => {
     const n = nameDraft.trim();
@@ -76,6 +76,7 @@ export default function Profile() {
         } catch {
           setAddrLine(fallback);
         } finally {
+          setAddrLoc({ lat: latitude, lng: longitude });
           if (!addrLabel.trim()) setAddrLabel("Current location");
           setLocating(false);
           showToast("Pinned your current location", "📍");
@@ -91,12 +92,13 @@ export default function Profile() {
 
   const saveAddress = () => {
     if (addrLabel.trim() && addrLine.trim()) {
-      if (!addAddress(addrLabel.trim(), addrLine.trim())) {
+      if (!addAddress(addrLabel.trim(), addrLine.trim(), addrLoc)) {
         showToast(`Max ${MAX_ADDRESSES} addresses`, "⚠️");
         return;
       }
       setAddrLabel("");
       setAddrLine("");
+      setAddrLoc(undefined);
       setAddingAddr(false);
       showToast("Address added", "📍");
     }
@@ -170,36 +172,33 @@ export default function Profile() {
               </p>
             ) : (
               <div className="space-y-2">
-                {loyalties.map(({ store, tier }) => {
-                  const isCurrent = profile.lastLoyaltyShopId === store.id;
-                  return (
-                    <Link
-                      key={store.id}
-                      to={`/store/${store.id}`}
-                      className="flex items-center gap-3 rounded-xl bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
-                    >
-                      <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-lg shadow-card dark:bg-neutral-800">
-                        {store.emoji}
-                      </span>
-                      <div className="min-w-0 flex-1">
-                        <p className="flex items-center gap-1.5 truncate font-semibold text-neutral-900 dark:text-white">
-                          {store.name}
-                          {isCurrent && (
-                            <span className="rounded-full bg-brand-50 px-1.5 py-0.5 text-[9px] font-bold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400">
-                              CURRENT
-                            </span>
-                          )}
-                        </p>
-                        <p className="truncate text-xs text-brand-600 dark:text-brand-400">
-                          {tierName(tier)}
-                        </p>
-                      </div>
-                      <span className="shrink-0 text-sm font-bold text-brand-600 dark:text-brand-400">
-                        {multiplierForTier(tier).toFixed(1)}×
-                      </span>
-                    </Link>
-                  );
-                })}
+                {loyalties.map(({ store, level }) => (
+                  <Link
+                    key={store.id}
+                    to={`/store/${store.id}`}
+                    className="flex items-center gap-3 rounded-xl bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
+                  >
+                    <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-lg shadow-card dark:bg-neutral-800">
+                      {store.emoji}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate font-semibold text-neutral-900 dark:text-white">
+                        {store.name}
+                      </p>
+                      <p className="truncate text-xs text-brand-600 dark:text-brand-400">
+                        {tierName(level)} · {multiplierForTier(level).toFixed(1)}× points
+                      </p>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <p className="text-lg font-extrabold leading-none text-brand-600 dark:text-brand-400">
+                        {level}
+                      </p>
+                      <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-400">
+                        Level
+                      </p>
+                    </div>
+                  </Link>
+                ))}
               </div>
             )}
           </div>
@@ -234,7 +233,10 @@ export default function Profile() {
               />
               <AddressAutocomplete
                 value={addrLine}
-                onChange={setAddrLine}
+                onChange={(line, loc) => {
+                  setAddrLine(line);
+                  setAddrLoc(loc);
+                }}
                 placeholder="Street address (e.g. 1 Raffles Place, #10-01)"
               />
               <button
@@ -263,8 +265,8 @@ export default function Profile() {
                   addr={addr}
                   selected={addr.id === profile.selectedAddressId}
                   onSelect={() => selectAddress(addr.id)}
-                  onSave={(label, line) => {
-                    editAddress(addr.id, label, line);
+                  onSave={(label, line, loc) => {
+                    editAddress(addr.id, label, line, loc);
                     showToast("Address updated", "✏️");
                   }}
                   onRemove={() => {
@@ -349,12 +351,13 @@ function AddressRow({
   addr: Address;
   selected: boolean;
   onSelect: () => void;
-  onSave: (label: string, line: string) => void;
+  onSave: (label: string, line: string, loc?: GeoPoint) => void;
   onRemove: () => void;
 }) {
   const [editing, setEditing] = useState(false);
   const [label, setLabel] = useState(addr.label);
   const [line, setLine] = useState(addr.line);
+  const [loc, setLoc] = useState<GeoPoint | undefined>(addr.loc);
 
   if (editing) {
     return (
@@ -365,7 +368,14 @@ function AddressRow({
           placeholder="Label"
           className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
         />
-        <AddressAutocomplete value={line} onChange={setLine} placeholder="Street address" />
+        <AddressAutocomplete
+          value={line}
+          onChange={(l, loc) => {
+            setLine(l);
+            setLoc(loc);
+          }}
+          placeholder="Street address"
+        />
         <div className="flex gap-2">
           <button
             onClick={() => setEditing(false)}
@@ -376,7 +386,7 @@ function AddressRow({
           <button
             onClick={() => {
               if (label.trim() && line.trim()) {
-                onSave(label.trim(), line.trim());
+                onSave(label.trim(), line.trim(), loc);
                 setEditing(false);
               }
             }}
@@ -419,6 +429,7 @@ function AddressRow({
         onClick={() => {
           setLabel(addr.label);
           setLine(addr.line);
+          setLoc(addr.loc);
           setEditing(true);
         }}
         aria-label="Edit address"

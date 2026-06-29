@@ -43,14 +43,14 @@ export function generateDriver(seed: number): Driver {
 
 /**
  * A plausible store location near the drop-off, derived deterministically from
- * the order seed so it's stable across renders. ~0.8–1.6 km away.
+ * the order seed so it's stable across renders. ~0.8–1.6 km away from `drop`.
  */
-export function storeLocationFor(seed: number): GeoPoint {
+export function storeLocationFor(seed: number, drop: GeoPoint = DEFAULT_DROP): GeoPoint {
   const angle = (Math.abs(Math.sin(seed)) * Math.PI * 2);
   const radius = 0.008 + (Math.abs(Math.sin(seed * 1.7)) % 1) * 0.008; // degrees
   return {
-    lat: DEFAULT_DROP.lat + radius * Math.cos(angle),
-    lng: DEFAULT_DROP.lng + radius * Math.sin(angle),
+    lat: drop.lat + radius * Math.cos(angle),
+    lng: drop.lng + radius * Math.sin(angle),
   };
 }
 

@@ -16,7 +16,7 @@ import TopBar from "../components/TopBar";
 import EmptyState from "../components/EmptyState";
 import { useCart } from "../store/cartStore";
 import { useProfile } from "../store/profileStore";
-import { useOrders } from "../store/orderStore";
+import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
 import { useToasts } from "../store/toastStore";
 import { STORES_BY_ID } from "../data/stores";
 import { describeChoices } from "../lib/pricing";
@@ -39,6 +39,7 @@ export default function Checkout() {
   const recordPurchase = useProfile((s) => s.recordPurchase);
   const multiplierFor = useProfile((s) => s.multiplierFor);
   const placeOrder = useOrders((s) => s.placeOrder);
+  const activeCount = useOrders((s) => s.activeOrders().length);
   const showToast = useToasts((s) => s.show);
 
   const [speed, setSpeed] = useState<DeliverySpeed>("regular");
@@ -86,7 +87,8 @@ export default function Checkout() {
 
   const cannotAffordExpress = pointsCost > profile.points;
   const noAddress = !selectedAddress;
-  const blocked = noAddress || cannotAffordExpress;
+  const atActiveLimit = activeCount >= MAX_ACTIVE_ORDERS;
+  const blocked = noAddress || cannotAffordExpress || atActiveLimit;
 
   const applyCode = () => {
     const code = codeInput.trim().toUpperCase();
@@ -119,6 +121,7 @@ export default function Checkout() {
       deliverySpeed: speed,
       etaMinutes,
       promoCode: appliedCode ?? undefined,
+      dropLoc: selectedAddress?.loc,
     });
     clearCart();
     showToast(`+${pointsEarned} points earned!`, "✨");
@@ -152,17 +155,18 @@ export default function Checkout() {
         <div className="divide-y divide-neutral-100 overflow-hidden rounded-2xl bg-white shadow-card dark:divide-neutral-800 dark:bg-neutral-900">
           {cart.lines.map((line) => {
             const item = store.menu.flatMap((c) => c.items).find((i) => i.id === line.itemId);
-            if (!item) return null;
-            const summary = describeChoices(item, line.selectedChoices);
+            const name = item?.name ?? line.name ?? "Item";
+            const emoji = item?.emoji ?? line.emoji ?? "🍽️";
+            const summary = item ? describeChoices(item, line.selectedChoices) : "";
             return (
               <div key={line.lineId} className="flex gap-3 p-3">
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-neutral-100 text-2xl dark:bg-neutral-800">
-                  {item.emoji}
+                  {emoji}
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">
                     <p className="font-semibold text-neutral-900 dark:text-white">
-                      {item.name}
+                      {name}
                     </p>
                     <button
                       onClick={() => removeLine(line.lineId)}
@@ -364,7 +368,9 @@ export default function Checkout() {
             ? "Placing…"
             : noAddress
               ? "Add an address to continue"
-              : `Place order · ${money(total)}`}
+              : atActiveLimit
+                ? `Max ${MAX_ACTIVE_ORDERS} active orders — wait for one to arrive`
+                : `Place order · ${money(total)}`}
         </button>
       </div>
     </Screen>

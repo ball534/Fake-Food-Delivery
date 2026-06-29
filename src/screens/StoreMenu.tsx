@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Star, Clock, Bike, Sparkles } from "lucide-react";
+import { Star, Clock, Bike, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import ItemCard from "../components/ItemCard";
@@ -11,19 +12,22 @@ import { STORES_BY_ID } from "../data/stores";
 import { getReviews } from "../data/reviews";
 import { etaRange } from "../lib/format";
 import { pluralize } from "../lib/format";
-import { useProfile } from "../store/profileStore";
+import { useCart } from "../store/cartStore";
+import { useToasts } from "../store/toastStore";
+import { useContent } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { selectDeal } from "../data/promos";
 
 export default function StoreMenu() {
   const { storeId = "" } = useParams();
   const store = STORES_BY_ID[storeId];
-  const tier = useProfile((s) => s.loyaltyTier)(storeId);
-  const multiplier = useProfile((s) => s.multiplierFor)(storeId);
+  const addLine = useCart((s) => s.addLine);
+  const showToast = useToasts((s) => s.show);
+  const deals = useContent((s) => s.deals);
   const now = useNow();
   // The currently-rotating Special Deal, surfaced here only when it's featured
   // at this shop (combo / limited-time item deals carry a storeId).
-  const deal = selectDeal(now);
+  const deal = selectDeal(deals, now);
   const storeDeal = deal.storeId === storeId ? deal : null;
   const [activeCat, setActiveCat] = useState<string | null>(null);
   const chipRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -84,9 +88,38 @@ export default function StoreMenu() {
     // Briefly suspend scroll-spy so the smooth-scroll doesn't flicker the
     // highlight through intermediate categories.
     clickLockUntil.current = Date.now() + 700;
-    document
-      .getElementById(`cat-${label}`)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Scroll the <main> container manually (rather than scrollIntoView, which
+    // is unreliable across nested scroll/sticky contexts) so the section lands
+    // just below the sticky category nav.
+    const main = document.querySelector("main");
+    const el = document.getElementById(`cat-${label}`);
+    if (!main || !el) return;
+    const STICKY_NAV = 56;
+    const top =
+      el.getBoundingClientRect().top -
+      main.getBoundingClientRect().top +
+      main.scrollTop -
+      STICKY_NAV;
+    main.scrollTo({ top, behavior: "smooth" });
+  };
+
+  // Add the featured combo / limited-time item straight to the cart. It isn't a
+  // real menu item, so we add it as a snapshot line (name + emoji travel with it).
+  const addStoreDeal = () => {
+    if (!storeDeal) return;
+    addLine({
+      item: {
+        id: `deal-${storeDeal.id}`,
+        name: storeDeal.title,
+        description: storeDeal.sub,
+        emoji: storeDeal.emoji,
+        basePrice: storeDeal.price ?? 0,
+      },
+      storeId,
+      qty: 1,
+      selectedChoices: [],
+    });
+    showToast(`Added ${storeDeal.title}`, "🛒");
   };
 
   return (
@@ -126,17 +159,6 @@ export default function StoreMenu() {
           </span>
         </div>
 
-        {/* Loyalty status — only once the user has built a tier here */}
-        {tier > 0 && (
-          <div className="mt-3 flex items-center gap-2 rounded-2xl bg-brand-50 px-3 py-2 text-sm dark:bg-brand-500/10">
-            <Sparkles size={16} className="shrink-0 text-brand-600 dark:text-brand-400" />
-            <span className="text-brand-800 dark:text-brand-200">
-              Loyalty tier <strong>{tier}</strong> · earning{" "}
-              <strong>{multiplier.toFixed(1)}×</strong> points here
-            </span>
-          </div>
-        )}
-
         {/* Featured special running at this shop right now */}
         {storeDeal && (
           <div className="mt-3 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-3 text-white shadow-card">
@@ -149,6 +171,14 @@ export default function StoreMenu() {
                 <p className="font-extrabold leading-tight">{storeDeal.title}</p>
                 <p className="text-xs text-brand-50/90">{storeDeal.sub}</p>
               </div>
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                onClick={addStoreDeal}
+                aria-label={`Add ${storeDeal.title} to cart`}
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-brand-600 shadow-card-hover"
+              >
+                <Plus size={18} strokeWidth={3} />
+              </motion.button>
             </div>
           </div>
         )}

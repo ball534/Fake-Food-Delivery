@@ -48,16 +48,19 @@ export default function CartBar() {
                     const item = store?.menu
                       .flatMap((c) => c.items)
                       .find((i) => i.id === line.itemId);
-                    if (!item) return null;
-                    const summary = describeChoices(item, line.selectedChoices);
+                    const name = item?.name ?? line.name ?? "Item";
+                    const emoji = item?.emoji ?? line.emoji ?? "🍽️";
+                    const summary = item
+                      ? describeChoices(item, line.selectedChoices)
+                      : "";
                     return (
                       <div key={line.lineId} className="flex items-center gap-3 p-3">
                         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-neutral-100 text-xl dark:bg-neutral-800">
-                          {item.emoji}
+                          {emoji}
                         </span>
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
-                            {item.name}
+                            {name}
                           </p>
                           {summary && (
                             <p className="truncate text-xs text-neutral-500 dark:text-neutral-400">

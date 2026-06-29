@@ -1,8 +1,10 @@
+import { useEffect, useRef } from "react";
 import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Home as HomeIcon, Search as SearchIcon, ReceiptText, User } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useApplyTheme, useOrderTicker } from "./lib/hooks";
 import { useOrders } from "./store/orderStore";
+import { useContent } from "./store/contentStore";
 import Toaster from "./components/Toaster";
 
 import Home from "./screens/Home";
@@ -59,6 +61,20 @@ export default function App() {
   useApplyTheme();
   useOrderTicker();
   const location = useLocation();
+  const mainRef = useRef<HTMLElement>(null);
+  const loadContent = useContent((s) => s.load);
+
+  // Load the editable greetings/deals pools from /public once at startup.
+  useEffect(() => {
+    loadContent();
+  }, [loadContent]);
+
+  // The <main> scroll container persists across routes, so a new screen would
+  // otherwise inherit the previous screen's scroll position (e.g. opening a
+  // shop part-way down the page). Reset to the top on every navigation.
+  useEffect(() => {
+    mainRef.current?.scrollTo({ top: 0 });
+  }, [location.pathname]);
 
   // The tab bar is hidden on "full-screen" sub-pages for an app-like feel.
   const hideTabBar = /^\/(store|item|cart|checkout|track|legal)\b/.test(
@@ -69,7 +85,10 @@ export default function App() {
     <div className="min-h-[100dvh] bg-neutral-100 dark:bg-black">
       <div className="phone-frame">
         <Toaster />
-        <main className="relative flex-1 overflow-y-auto overflow-x-hidden bg-neutral-50 dark:bg-neutral-950">
+        <main
+          ref={mainRef}
+          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-neutral-50 dark:bg-neutral-950"
+        >
           <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />

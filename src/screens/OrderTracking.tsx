@@ -151,7 +151,6 @@ export default function OrderTracking() {
             </p>
             <p className="text-[11px] text-neutral-400">FAKEEATS · SIMULATION</p>
             <p className="text-[11px] text-neutral-400">{formatDate(order.placedAt)}</p>
-            <p className="text-[11px] text-neutral-400">No. {order.id.toUpperCase()}</p>
           </div>
 
           <Dashed />
@@ -165,7 +164,7 @@ export default function OrderTracking() {
               <div key={line.lineId} className="mb-1">
                 <div className="flex justify-between gap-2">
                   <span>
-                    {line.qty} × {item?.name ?? "Item"}
+                    {line.qty} × {item?.name ?? line.name ?? "Item"}
                   </span>
                   <span>{money(line.lineTotal)}</span>
                 </div>
@@ -201,7 +200,7 @@ export default function OrderTracking() {
 
           <p className="text-center text-[11px] tracking-widest">*** THANK YOU ***</p>
           <p className="mt-1 text-center text-[11px] text-neutral-400">
-            Address saved as {order.addressLabel ?? order.address}
+            Delivered to {order.addressLabel ?? order.address}
           </p>
         </div>
 

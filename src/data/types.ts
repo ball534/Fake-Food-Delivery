@@ -45,8 +45,10 @@ export type Store = {
   name: string;
   /** Broad cuisine bucket — the Home filter chips + the card subtitle (e.g. "Western"). */
   cuisine: string;
-  /** Emoji logo + a tailwind gradient for the banner — keeps assets free. */
+  /** Emoji "food example" shown big on the banner — keeps assets free. */
   emoji: string;
+  /** Small square brand mark shown beside the shop name on cards. */
+  logo: string;
   bannerFrom: string; // tailwind color stop, e.g. "#fbbf24"
   bannerTo: string;
   rating: number; // 4.0–4.9
@@ -83,6 +85,10 @@ export type CartLine = {
   note?: string;
   unitPrice: number; // base + option deltas
   lineTotal: number; // unitPrice * qty
+  /** Display snapshot — lets lines render even when the item isn't in the
+   *  live store menu (e.g. a promo "Special Deal" added straight from a banner). */
+  name?: string;
+  emoji?: string;
 };
 
 export type Cart = {
@@ -133,6 +139,9 @@ export type Address = {
   id: string;
   label: string; // "Home", "Work"
   line: string;
+  /** Real coordinates for this address (from autocomplete / GPS), used for the
+   *  delivery map. Absent for hand-typed addresses — the map falls back then. */
+  loc?: GeoPoint;
 };
 
 export type UserProfile = {
@@ -141,7 +150,7 @@ export type UserProfile = {
   emoji: string; // avatar
   /** Total reward points earned across all orders. */
   points: number;
-  /** Loyalty tier (0–MAX_TIER) per store id. */
+  /** Accumulated loyalty XP per store id (level is derived from it — see lib/loyalty.ts). */
   loyalty: Record<string, number>;
   /** The store you most recently built loyalty with (drops when you switch). */
   lastLoyaltyShopId: string | null;

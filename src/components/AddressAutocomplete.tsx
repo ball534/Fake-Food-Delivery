@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
+import type { GeoPoint } from "../data/types";
 
 // A street-address input with a live "find the most relevant location"
 // dropdown, powered by OpenStreetMap's Nominatim search API (the same service
 // already used for reverse-geocoding in Profile). Typing fires a debounced
 // query; matching places appear in a dropdown you can tap to fill the field.
+// Picking a suggestion also captures its real coordinates (for the map).
 
-type Suggestion = { id: string; line: string };
+type Suggestion = { id: string; line: string; loc?: GeoPoint };
 
 export default function AddressAutocomplete({
   value,
@@ -15,7 +17,8 @@ export default function AddressAutocomplete({
   autoFocus,
 }: {
   value: string;
-  onChange: (line: string) => void;
+  /** `loc` is provided only when a suggestion is picked (not on free typing). */
+  onChange: (line: string, loc?: GeoPoint) => void;
   placeholder?: string;
   autoFocus?: boolean;
 }) {
@@ -53,8 +56,17 @@ export default function AddressAutocomplete({
         const data: unknown = await res.json();
         const list: Suggestion[] = (Array.isArray(data) ? data : [])
           .map((d) => {
-            const row = d as { place_id?: number | string; display_name?: string };
-            return { id: String(row.place_id ?? ""), line: row.display_name ?? "" };
+            const row = d as {
+              place_id?: number | string;
+              display_name?: string;
+              lat?: string;
+              lon?: string;
+            };
+            const lat = Number(row.lat);
+            const lng = Number(row.lon);
+            const loc =
+              Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : undefined;
+            return { id: String(row.place_id ?? ""), line: row.display_name ?? "", loc };
           })
           .filter((s) => s.line);
         setSuggestions(list);
@@ -85,7 +97,7 @@ export default function AddressAutocomplete({
 
   const pick = (s: Suggestion) => {
     skipNext.current = true;
-    onChange(s.line);
+    onChange(s.line, s.loc);
     setSuggestions([]);
     setOpen(false);
   };

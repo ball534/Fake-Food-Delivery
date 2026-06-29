@@ -1829,11 +1829,37 @@ export const STORES_BY_ID: Record<string, Store> = Object.fromEntries(
 );
 
 /**
+ * The set of quick-service chains surfaced by the "Fast Food" category chip,
+ * which cuts across cuisine buckets (e.g. Western, Korean, Filipino).
+ */
+export const FAST_FOOD_STORE_IDS = new Set([
+  "mcd",
+  "kfc",
+  "bk",
+  "subway",
+  "jollibee",
+  "4fingers",
+]);
+
+/** Pseudo-category for the Fast Food chip (not a real cuisine bucket). */
+export const FAST_FOOD_CATEGORY = "Fast Food";
+
+/**
  * Broad cuisine categories for the Home chips, in display order. Only those
  * actually used by a store are kept (so we never show an empty filter).
+ * "Fast Food" is a cross-cutting category and always leads the list.
  */
 const CATEGORY_ORDER = ["Western", "Japanese", "Korean", "Chinese", "Filipino", "Local", "Drinks"];
 
-export const CATEGORIES: string[] = CATEGORY_ORDER.filter((c) =>
-  STORES.some((s) => s.cuisine === c),
-);
+export const CATEGORIES: string[] = [
+  FAST_FOOD_CATEGORY,
+  ...CATEGORY_ORDER.filter((c) => STORES.some((s) => s.cuisine === c)),
+];
+
+/** Stores belonging to a Home category chip (handles the Fast Food pseudo-cat). */
+export function storesInCategory(category: string): Store[] {
+  if (category === FAST_FOOD_CATEGORY) {
+    return STORES.filter((s) => FAST_FOOD_STORE_IDS.has(s.id));
+  }
+  return STORES.filter((s) => s.cuisine === category);
+}

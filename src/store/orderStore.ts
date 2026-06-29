@@ -18,6 +18,7 @@ type PlaceArgs = {
   subtotal: number;
   total: number;
   address: string;
+  addressLabel?: string;
   pointsEarned: number;
   deliverySpeed: DeliverySpeed;
   /** Concrete estimated delivery time (minutes), seeded by the drop-off. */
@@ -43,7 +44,7 @@ function persist(orders: Order[]) {
 export const useOrders = create<OrderState>((set, get) => ({
   orders: loadJSON<Order[]>(STORAGE_KEYS.orders, []),
 
-  placeOrder: ({ storeId, lines, subtotal, total, address, pointsEarned, deliverySpeed, etaMinutes, promoCode }) => {
+  placeOrder: ({ storeId, lines, subtotal, total, address, addressLabel, pointsEarned, deliverySpeed, etaMinutes, promoCode }) => {
     const placedAt = Date.now();
     const { stageTimes, etaAt } = computeStageTimes(placedAt, etaMinutes);
     const store = STORES_BY_ID[storeId];
@@ -61,6 +62,7 @@ export const useOrders = create<OrderState>((set, get) => ({
       etaAt,
       driver: generateDriver(placedAt),
       address,
+      addressLabel,
       pointsEarned,
       deliverySpeed,
       promoCode,

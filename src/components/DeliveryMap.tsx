@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Polyline, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import type { Order } from "../data/types";
+import type { GeoPoint, Order } from "../data/types";
 import { deliveringProgress } from "../lib/simulation";
 
 // A real OpenStreetMap (via Leaflet). Geolocation isn't used — every order
 // delivers to a fixed real drop-off with the store placed a short distance
-// away.
+// away. The driver follows actual roads (routed via OSRM), highlighted green.
+
+const ROUTE_GREEN = "#228B22";
 
 /** Build an emoji map pin as a Leaflet divIcon (avoids bundling marker images). */
 function emojiPin(emoji: string, ring: string) {
@@ -22,7 +24,47 @@ function emojiPin(emoji: string, ring: string) {
 const STORE_ICON = emojiPin("🏪", "#ffffff");
 const HOME_ICON = emojiPin("📍", "#ffffff");
 
-function FitBounds({ points }: { points: [number, number][] }) {
+type LatLng = [number, number];
+
+function lerp(a: number, b: number, f: number) {
+  return a + (b - a) * f;
+}
+
+function segLen(a: LatLng, b: LatLng) {
+  return Math.hypot(a[0] - b[0], a[1] - b[1]);
+}
+
+/**
+ * Walk `path` to the point a fraction `t` of its total length along, returning
+ * the driver position and the portion of the path travelled so far.
+ */
+function pathAt(path: LatLng[], t: number): { driver: LatLng; travelled: LatLng[] } {
+  if (path.length === 1) return { driver: path[0], travelled: [path[0]] };
+  const lengths: number[] = [];
+  let total = 0;
+  for (let i = 0; i < path.length - 1; i++) {
+    const l = segLen(path[i], path[i + 1]);
+    lengths.push(l);
+    total += l;
+  }
+  if (total === 0) return { driver: path[0], travelled: [path[0]] };
+  const target = Math.min(1, Math.max(0, t)) * total;
+  let acc = 0;
+  for (let i = 0; i < lengths.length; i++) {
+    if (acc + lengths[i] >= target) {
+      const f = lengths[i] === 0 ? 0 : (target - acc) / lengths[i];
+      const driver: LatLng = [
+        lerp(path[i][0], path[i + 1][0], f),
+        lerp(path[i][1], path[i + 1][1], f),
+      ];
+      return { driver, travelled: [...path.slice(0, i + 1), driver] };
+    }
+    acc += lengths[i];
+  }
+  return { driver: path[path.length - 1], travelled: [...path] };
+}
+
+function FitBounds({ points }: { points: LatLng[] }) {
   const map = useMap();
   useEffect(() => {
     // Wait out the page's enter animation, then size + frame the route.
@@ -35,23 +77,49 @@ function FitBounds({ points }: { points: [number, number][] }) {
   return null;
 }
 
+/** Fetch a road-following route (store → drop) from the public OSRM service. */
+function useRoute(storeLoc: GeoPoint, dropLoc: GeoPoint): LatLng[] {
+  const straight: LatLng[] = [
+    [storeLoc.lat, storeLoc.lng],
+    [dropLoc.lat, dropLoc.lng],
+  ];
+  const [route, setRoute] = useState<LatLng[]>(straight);
+
+  useEffect(() => {
+    let cancelled = false;
+    const url = `https://router.project-osrm.org/route/v1/driving/${storeLoc.lng},${storeLoc.lat};${dropLoc.lng},${dropLoc.lat}?overview=full&geometries=geojson`;
+    fetch(url)
+      .then((r) => r.json())
+      .then((data) => {
+        const coords = data?.routes?.[0]?.geometry?.coordinates as
+          | [number, number][]
+          | undefined;
+        if (!cancelled && coords && coords.length > 1) {
+          // OSRM returns [lng, lat] — flip to Leaflet's [lat, lng].
+          setRoute(coords.map(([lng, lat]) => [lat, lng] as LatLng));
+        }
+      })
+      .catch(() => {
+        /* keep the straight-line fallback */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [storeLoc.lat, storeLoc.lng, dropLoc.lat, dropLoc.lng]);
+
+  return route;
+}
+
 export default function DeliveryMap({ order, now }: { order: Order; now: number }) {
   const { storeLoc, dropLoc } = order;
   const delivered = order.status === "delivered";
   const showDriver = order.status !== "preparing";
 
+  const route = useRoute(storeLoc, dropLoc);
   const t = deliveringProgress(order, now);
-  const driverPos: [number, number] = [
-    storeLoc.lat + (dropLoc.lat - storeLoc.lat) * t,
-    storeLoc.lng + (dropLoc.lng - storeLoc.lng) * t,
-  ];
+  const { driver: driverPos, travelled } = pathAt(route, t);
 
-  const bounds: [number, number][] = [
-    [storeLoc.lat, storeLoc.lng],
-    [dropLoc.lat, dropLoc.lng],
-  ];
-
-  const driverIcon = emojiPin(delivered ? "✅" : "🛵", "#0d9488");
+  const driverIcon = emojiPin(delivered ? "✅" : "🛵", ROUTE_GREEN);
 
   return (
     <div className="grayscale-map h-56 w-full overflow-hidden rounded-2xl">
@@ -59,28 +127,29 @@ export default function DeliveryMap({ order, now }: { order: Order; now: number 
         center={[dropLoc.lat, dropLoc.lng]}
         zoom={14}
         scrollWheelZoom={false}
+        zoomControl={false}
+        attributionControl={false}
         style={{ height: "100%", width: "100%" }}
       >
         {/* Minimal "Positron (no labels)" basemap — shows only roads, water,
             and building footprints. No POIs, icons, or place labels, for a
             clean delivery-route view. */}
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
           subdomains="abcd"
           maxZoom={20}
         />
 
-        {/* Planned route store → drop-off */}
+        {/* Full road route store → drop-off, highlighted green */}
         <Polyline
-          positions={bounds}
-          pathOptions={{ color: "#0d9488", weight: 4, dashArray: "6 8", opacity: 0.8 }}
+          positions={route}
+          pathOptions={{ color: ROUTE_GREEN, weight: 5, opacity: 0.4 }}
         />
-        {/* Travelled portion (store → driver), only while delivering */}
+        {/* Travelled portion along the road, only while delivering */}
         {showDriver && (
           <Polyline
-            positions={[[storeLoc.lat, storeLoc.lng], driverPos]}
-            pathOptions={{ color: "#0d9488", weight: 4, opacity: 0.95 }}
+            positions={travelled}
+            pathOptions={{ color: ROUTE_GREEN, weight: 5, opacity: 1 }}
           />
         )}
 
@@ -88,7 +157,7 @@ export default function DeliveryMap({ order, now }: { order: Order; now: number 
         <Marker position={[dropLoc.lat, dropLoc.lng]} icon={HOME_ICON} />
         {showDriver && <Marker position={driverPos} icon={driverIcon} />}
 
-        <FitBounds points={bounds} />
+        <FitBounds points={route} />
       </MapContainer>
     </div>
   );

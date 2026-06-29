@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Search as SearchIcon, X, Clock, SlidersHorizontal } from "lucide-react";
+import { Search as SearchIcon, X } from "lucide-react";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import EmptyState from "../components/EmptyState";
@@ -8,22 +8,9 @@ import { STORES, STORES_BY_ID } from "../data/stores";
 import type { Store } from "../data/types";
 import { useOrders } from "../store/orderStore";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
-import { money } from "../lib/format";
-
-type SortKey = "relevance" | "rating" | "eta" | "distance";
-
-const SORTS: { key: SortKey; label: string }[] = [
-  { key: "relevance", label: "Best match" },
-  { key: "rating", label: "Top rated" },
-  { key: "eta", label: "Fastest" },
-  { key: "distance", label: "Nearest" },
-];
-
-type DishHit = { store: Store; itemId: string; name: string; emoji: string; price: number };
 
 export default function Search() {
   const [query, setQuery] = useState("");
-  const [sort, setSort] = useState<SortKey>("relevance");
   const [recent, setRecent] = useState<string[]>(() =>
     loadJSON<string[]>(STORAGE_KEYS.recentSearches, []),
   );
@@ -53,38 +40,16 @@ export default function Search() {
     saveJSON(STORAGE_KEYS.recentSearches, next);
   };
 
-  const { stores, dishes } = useMemo(() => {
-    if (!q) return { stores: [] as Store[], dishes: [] as DishHit[] };
-    const storeHits = STORES.filter(
+  // Matching stores: by name, cuisine, or any dish name (in seed order).
+  const stores = useMemo(() => {
+    if (!q) return [] as Store[];
+    return STORES.filter(
       (s) =>
         s.name.toLowerCase().includes(q) ||
         s.cuisine.toLowerCase().includes(q) ||
         s.menu.some((cat) => cat.items.some((i) => i.name.toLowerCase().includes(q))),
     );
-    const sorted = [...storeHits].sort((a, b) => {
-      switch (sort) {
-        case "rating":
-          return b.rating - a.rating;
-        case "eta":
-          return a.etaMinutes[0] - b.etaMinutes[0];
-        case "distance":
-          return a.distanceKm - b.distanceKm;
-        default:
-          return 0;
-      }
-    });
-    const dishHits: DishHit[] = [];
-    for (const s of STORES) {
-      for (const cat of s.menu) {
-        for (const i of cat.items) {
-          if (i.name.toLowerCase().includes(q)) {
-            dishHits.push({ store: s, itemId: i.id, name: i.name, emoji: i.emoji, price: i.basePrice });
-          }
-        }
-      }
-    }
-    return { stores: sorted, dishes: dishHits.slice(0, 8) };
-  }, [q, sort]);
+  }, [q]);
 
   return (
     <Screen className="pb-6">
@@ -105,21 +70,6 @@ export default function Search() {
             </button>
           )}
         </div>
-
-        {q && (
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-            <SlidersHorizontal size={16} className="shrink-0 text-neutral-400" />
-            {SORTS.map((s) => (
-              <button
-                key={s.key}
-                onClick={() => setSort(s.key)}
-                className={`chip ${sort === s.key ? "chip-active" : ""}`}
-              >
-                {s.label}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="space-y-5 p-4">
@@ -131,7 +81,7 @@ export default function Search() {
             <div className="flex flex-wrap gap-2">
               {recent.map((r) => (
                 <button key={r} onClick={() => setQuery(r)} className="chip">
-                  <Clock size={13} /> {r}
+                  {r}
                 </button>
               ))}
             </div>
@@ -143,37 +93,10 @@ export default function Search() {
             <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
               Order again
             </h2>
-            <div className="space-y-3">
+            <div className="flex flex-wrap gap-2">
               {previousStores.map((s) => (
-                <StoreCard key={s.id} store={s} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {q && dishes.length > 0 && (
-          <section>
-            <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
-              Dishes
-            </h2>
-            <div className="space-y-2">
-              {dishes.map((d) => (
-                <Link
-                  key={d.itemId}
-                  to={`/item/${d.store.id}/${d.itemId}`}
-                  className="flex items-center gap-3 rounded-2xl bg-white p-2.5 shadow-card dark:bg-neutral-900"
-                >
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-neutral-100 text-2xl dark:bg-neutral-800">
-                    {d.emoji}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate font-semibold text-neutral-900 dark:text-white">
-                      {d.name}
-                    </p>
-                    <p className="truncate text-xs text-neutral-500 dark:text-neutral-400">
-                      {d.store.name} · {money(d.price)}
-                    </p>
-                  </div>
+                <Link key={s.id} to={`/store/${s.id}`} className="chip">
+                  {s.name}
                 </Link>
               ))}
             </div>

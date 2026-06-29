@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MessageSquare, Home as HomeIcon, UserRound } from "lucide-react";
+import { MessageSquare, Home as HomeIcon, UserRound, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
@@ -82,11 +82,11 @@ export default function OrderTracking() {
             <Segment fill={prepFill} active={order.status === "preparing"} />
             <Segment fill={driveFill} active={order.status === "delivering"} />
             <span
-              className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs ${
+              className={`grid h-6 w-6 shrink-0 place-items-center rounded-full ${
                 delivered ? "bg-white text-brand-600" : "bg-white/25"
               }`}
             >
-              {delivered ? "🎉" : ""}
+              {delivered && <Check size={14} strokeWidth={3} />}
             </span>
           </div>
 
@@ -201,7 +201,7 @@ export default function OrderTracking() {
 
           <p className="text-center text-[11px] tracking-widest">*** THANK YOU ***</p>
           <p className="mt-1 text-center text-[11px] text-neutral-400">
-            Delivered to {order.address}
+            Address saved as {order.addressLabel ?? order.address}
           </p>
         </div>
 

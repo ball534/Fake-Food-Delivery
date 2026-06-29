@@ -1,30 +1,36 @@
 import { useMemo, useState } from "react";
-import { Search as SearchIcon, RefreshCw, Copy } from "lucide-react";
+import { Search as SearchIcon, RefreshCw, Copy, Gift, Flame } from "lucide-react";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import { Link } from "react-router-dom";
-import { STORES, CATEGORIES } from "../data/stores";
+import { STORES, CATEGORIES, storesInCategory } from "../data/stores";
 import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
 import { useToasts } from "../store/toastStore";
 import { useNow } from "../lib/hooks";
 import { formatCountdown } from "../lib/format";
 
-const CATEGORY_EMOJI: Record<string, string> = {
-  Western: "🍔",
-  Japanese: "🍣",
-  Korean: "🌶️",
-  Chinese: "🥡",
-  Filipino: "🍝",
-  Local: "🥟",
-  Drinks: "🧋",
-};
-
 const KIND_LABEL: Record<Deal["kind"], string> = {
   code: "Promo code",
   combo: "Special combo",
   item: "Limited-time item",
 };
+
+// A handful of greetings per part of the day, so the home screen feels alive.
+const GREETINGS: Record<string, string[]> = {
+  morning: ["Good morning", "Rise and shine", "Morning"],
+  afternoon: ["Good afternoon", "Hope you're peckish", "Afternoon"],
+  evening: ["Good evening", "Winding down", "Evening"],
+  night: ["Late-night cravings", "Still up", "Hungry already"],
+};
+
+function partOfDay(hour: number): keyof typeof GREETINGS {
+  if (hour < 5) return "night";
+  if (hour < 12) return "morning";
+  if (hour < 17) return "afternoon";
+  if (hour < 22) return "evening";
+  return "night";
+}
 
 export default function Home() {
   const profile = useProfile((s) => s.profile);
@@ -36,8 +42,15 @@ export default function Home() {
   const deal = useMemo(() => selectDeal(now), [now]);
   const rotatesIn = msUntilRotation(now);
 
+  // A greeting that's stable within the hour but varies through the day.
+  const greeting = useMemo(() => {
+    const d = new Date(now);
+    const pool = GREETINGS[partOfDay(d.getHours())];
+    return pool[d.getHours() % pool.length];
+  }, [now]);
+
   const filtered = useMemo(
-    () => (category ? STORES.filter((s) => s.cuisine === category) : []),
+    () => (category ? storesInCategory(category) : []),
     [category],
   );
 
@@ -53,13 +66,29 @@ export default function Home() {
     }
   };
 
+  const dealHeader = (
+    <>
+      <span className="text-xs font-semibold uppercase tracking-wide text-brand-50/80">
+        {KIND_LABEL[deal.kind]}
+      </span>
+      <div className="mt-1 flex items-center gap-3">
+        <span className="text-4xl">{deal.emoji}</span>
+        <div className="min-w-0 flex-1">
+          <p className="text-lg font-extrabold leading-tight">{deal.title}</p>
+          <p className="text-sm text-brand-50/90">{deal.sub}</p>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <Screen className="pb-6">
       {/* Header */}
       <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-5 pt-8 text-white">
         <p className="text-lg font-bold">
-          Hi {profile.name.split(" ")[0]} 👋 What are you craving?
+          {greeting}, {profile.name.split(" ")[0]}
         </p>
+        <p className="text-sm text-brand-50/90">What are you craving?</p>
         <Link
           to="/search"
           className="mt-3 flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm text-neutral-400 shadow-card"
@@ -73,38 +102,39 @@ export default function Home() {
         {/* Special Deal */}
         <section>
           <div className="mb-2 flex items-center justify-between">
-            <h2 className="text-base font-bold text-neutral-900 dark:text-white">
-              Special Deal 🎁
+            <h2 className="flex items-center gap-1.5 text-base font-bold text-neutral-900 dark:text-white">
+              <Gift size={18} className="text-brand-500" /> Special Deal
             </h2>
             <span className="flex items-center gap-1 text-xs font-medium text-neutral-400">
               <RefreshCw size={12} /> New in {formatCountdown(rotatesIn)}
             </span>
           </div>
-          <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-4 text-white shadow-card">
-            <span className="text-xs font-semibold uppercase tracking-wide text-brand-50/80">
-              {KIND_LABEL[deal.kind]}
-            </span>
-            <div className="mt-1 flex items-center gap-3">
-              <span className="text-4xl">{deal.emoji}</span>
-              <div className="min-w-0 flex-1">
-                <p className="text-lg font-extrabold leading-tight">{deal.title}</p>
-                <p className="text-sm text-brand-50/90">{deal.sub}</p>
-              </div>
+          {deal.storeId ? (
+            // Combo / limited-time item — tap through to the shop running it.
+            <Link
+              to={`/store/${deal.storeId}`}
+              className="block overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 px-4 pb-4 pt-3 text-white shadow-card transition active:scale-[0.99]"
+            >
+              {dealHeader}
+            </Link>
+          ) : (
+            <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 px-4 pb-4 pt-3 text-white shadow-card">
+              {dealHeader}
+              {deal.kind === "code" && deal.code && (
+                <button
+                  onClick={copyCode}
+                  className="mt-3 flex w-full items-center justify-between rounded-xl bg-white/15 px-3 py-2 text-left backdrop-blur active:scale-[0.99]"
+                >
+                  <span className="font-mono text-base font-bold tracking-widest">
+                    {deal.code}
+                  </span>
+                  <span className="flex items-center gap-1 text-xs font-semibold">
+                    <Copy size={14} /> Tap to copy
+                  </span>
+                </button>
+              )}
             </div>
-            {deal.kind === "code" && deal.code && (
-              <button
-                onClick={copyCode}
-                className="mt-3 flex w-full items-center justify-between rounded-xl bg-white/15 px-3 py-2 text-left backdrop-blur active:scale-[0.99]"
-              >
-                <span className="font-mono text-base font-bold tracking-widest">
-                  {deal.code}
-                </span>
-                <span className="flex items-center gap-1 text-xs font-semibold">
-                  <Copy size={14} /> Tap to copy
-                </span>
-              </button>
-            )}
-          </div>
+          )}
         </section>
 
         {/* Category chips */}
@@ -113,7 +143,7 @@ export default function Home() {
             onClick={() => setCategory(null)}
             className={`chip ${category === null ? "chip-active" : ""}`}
           >
-            🍽️ All
+            All
           </button>
           {CATEGORIES.map((c) => (
             <button
@@ -121,13 +151,13 @@ export default function Home() {
               onClick={() => setCategory(category === c ? null : c)}
               className={`chip ${category === c ? "chip-active" : ""}`}
             >
-              {CATEGORY_EMOJI[c] ?? "🍴"} {c}
+              {c}
             </button>
           ))}
         </div>
 
         {category ? (
-          /* Filtered results for the chosen cuisine */
+          /* Filtered results for the chosen category */
           <section>
             <h2 className="mb-2 text-base font-bold text-neutral-900 dark:text-white">
               {category} · {filtered.length}
@@ -141,8 +171,8 @@ export default function Home() {
         ) : (
           /* Featured — top 3 shops */
           <section>
-            <h2 className="mb-2 text-base font-bold text-neutral-900 dark:text-white">
-              Featured 🔥
+            <h2 className="mb-2 flex items-center gap-1.5 text-base font-bold text-neutral-900 dark:text-white">
+              <Flame size={18} className="text-brand-500" /> Featured
             </h2>
             <div className="space-y-3">
               {featured.map((store) => (

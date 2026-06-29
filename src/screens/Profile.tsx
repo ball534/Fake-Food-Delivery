@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   FileText,
   ChevronRight,
+  UserRound,
 } from "lucide-react";
 import Screen from "../components/Screen";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -22,12 +23,9 @@ import { clearAll } from "../lib/storage";
 import { multiplierForTier, tierName } from "../lib/loyalty";
 import type { Address } from "../data/types";
 
-const AVATARS = ["🦊", "🐱", "🐼", "🐵", "🐯", "🐸", "🐧", "🐙", "🦄", "🍔", "🍜", "🧋", "🍣", "👨‍🍳", "🦁", "🐻"];
-
 export default function Profile() {
   const profile = useProfile((s) => s.profile);
   const setName = useProfile((s) => s.setName);
-  const setEmoji = useProfile((s) => s.setEmoji);
   const addAddress = useProfile((s) => s.addAddress);
   const editAddress = useProfile((s) => s.editAddress);
   const removeAddress = useProfile((s) => s.removeAddress);
@@ -36,7 +34,6 @@ export default function Profile() {
 
   const [editingName, setEditingName] = useState(false);
   const [nameDraft, setNameDraft] = useState(profile.name);
-  const [pickingAvatar, setPickingAvatar] = useState(false);
   const [addingAddr, setAddingAddr] = useState(false);
   const [addrLabel, setAddrLabel] = useState("");
   const [addrLine, setAddrLine] = useState("");
@@ -110,16 +107,13 @@ export default function Profile() {
       {/* Header */}
       <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-6 pt-8 text-white">
         <div className="flex items-center gap-4">
-          <button
-            onClick={() => setPickingAvatar((v) => !v)}
-            className="relative grid h-16 w-16 shrink-0 place-items-center rounded-full bg-white/20 text-4xl backdrop-blur active:scale-95"
-            aria-label="Change profile picture"
-          >
-            {profile.emoji}
-            <span className="absolute -bottom-1 -right-1 grid h-6 w-6 place-items-center rounded-full bg-white text-brand-600 shadow-card">
-              <Pencil size={12} />
-            </span>
-          </button>
+          {/* Default placeholder avatar (Instagram-style silhouette) */}
+          <span className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-full bg-white/20 backdrop-blur">
+            <UserRound
+              size={44}
+              className="translate-y-1.5 fill-white/70 text-white/70"
+            />
+          </span>
           <div className="min-w-0 flex-1">
             {editingName ? (
               <div className="flex items-center gap-2">
@@ -148,26 +142,6 @@ export default function Profile() {
             )}
           </div>
         </div>
-
-        {/* Avatar picker */}
-        {pickingAvatar && (
-          <div className="mt-4 grid grid-cols-8 gap-2 rounded-2xl bg-white/15 p-3 backdrop-blur">
-            {AVATARS.map((a) => (
-              <button
-                key={a}
-                onClick={() => {
-                  setEmoji(a);
-                  setPickingAvatar(false);
-                }}
-                className={`grid h-9 w-9 place-items-center rounded-full text-xl active:scale-90 ${
-                  profile.emoji === a ? "bg-white" : "bg-white/20"
-                }`}
-              >
-                {a}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="space-y-5 p-4">

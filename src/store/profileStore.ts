@@ -8,8 +8,8 @@ export const MAX_ADDRESSES = 3;
 
 function defaultProfile(): UserProfile {
   return {
-    name: "Guest Foodie",
-    email: "guest@fakeeats.sim",
+    name: "User",
+    email: "user@fakeeats.sim",
     emoji: "🦊",
     points: 0,
     loyalty: {},

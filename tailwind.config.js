@@ -5,23 +5,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand accent — a muted, desaturated sage-teal (evokes the Grab/Uber
-        // idiom without copying either trademark, with calmer saturation).
+        // Brand accent — forest green (#228B22), with a tonal scale built
+        // around it for hovers, fills, and dark-mode tints.
         brand: {
-          50: "#f1f6f3",
-          100: "#dde9e3",
-          200: "#bdd2c8",
-          300: "#94b3a4",
-          400: "#6b9484",
-          500: "#4f7d6a",
-          600: "#3f6555",
-          700: "#345245",
-          800: "#2c4339",
-          900: "#263830",
+          50: "#f1f8f1",
+          100: "#ddeedd",
+          200: "#bcdfbc",
+          300: "#8ac98a",
+          400: "#4faf4f",
+          500: "#228B22",
+          600: "#1d761d",
+          700: "#195e19",
+          800: "#164b16",
+          900: "#133e13",
         },
       },
       fontFamily: {
         sans: [
+          "Montserrat",
           "Inter",
           "system-ui",
           "-apple-system",

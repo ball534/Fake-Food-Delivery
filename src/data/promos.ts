@@ -16,6 +16,8 @@ export type Deal = {
   /** Present for code deals — the code to redeem at checkout. */
   code?: string;
   effect?: PromoEffect;
+  /** Present for combo/item deals — the shop the deal is featured at. */
+  storeId?: string;
 };
 
 /** Human-readable description of each effect (shown when a code is applied). */
@@ -42,16 +44,16 @@ const POOL: Deal[] = [
   { id: "code-zoomzoom", kind: "code", emoji: "⚡", title: "Free Express delivery", sub: "Skip the wait — tap to copy", code: "ZOOMZOOM", effect: "freeexpress" },
 
   // --- Special combos ---
-  { id: "combo-bogo-boba", kind: "combo", emoji: "🧋", title: "1-for-1 Bubble Tea", sub: "KOI Thé & LiHO · today only" },
-  { id: "combo-wings-bogo", kind: "combo", emoji: "🍗", title: "Buy 3 Get 1 Free Wings", sub: "4Fingers · mix any sauce" },
-  { id: "combo-mcdouble", kind: "combo", emoji: "🍔", title: "McSpicy + McCrispy Double Meal", sub: "McDonald's exclusive set" },
-  { id: "combo-whopper-duo", kind: "combo", emoji: "👑", title: "Whopper Duo Box", sub: "2 Whoppers + 2 fries + 2 drinks" },
+  { id: "combo-bogo-boba", kind: "combo", emoji: "🧋", title: "1-for-1 Bubble Tea", sub: "KOI Thé · today only", storeId: "koi" },
+  { id: "combo-wings-bogo", kind: "combo", emoji: "🍗", title: "Buy 3 Get 1 Free Wings", sub: "4Fingers · mix any sauce", storeId: "4fingers" },
+  { id: "combo-mcdouble", kind: "combo", emoji: "🍔", title: "McSpicy + McCrispy Double Meal", sub: "McDonald's exclusive set", storeId: "mcd" },
+  { id: "combo-whopper-duo", kind: "combo", emoji: "👑", title: "Whopper Duo Box", sub: "2 Whoppers + 2 fries + 2 drinks", storeId: "bk" },
 
   // --- Limited-time items ---
-  { id: "item-seaweed-fries", kind: "item", emoji: "🍟", title: "Seaweed Shaker Fries", sub: "McDonald's · back for a limited run" },
-  { id: "item-truffle-burger", kind: "item", emoji: "🍔", title: "Truffle Wagyu Burger", sub: "Burger King · new drop" },
-  { id: "item-saltedegg-popcorn", kind: "item", emoji: "🧂", title: "Salted Egg Popcorn Chicken", sub: "KFC · while stocks last" },
-  { id: "item-matcha-soft", kind: "item", emoji: "🍦", title: "Matcha Soft Serve", sub: "Mr Bean · seasonal special" },
+  { id: "item-seaweed-fries", kind: "item", emoji: "🍟", title: "Seaweed Shaker Fries", sub: "McDonald's · back for a limited run", storeId: "mcd" },
+  { id: "item-truffle-burger", kind: "item", emoji: "🍔", title: "Truffle Wagyu Burger", sub: "Burger King · new drop", storeId: "bk" },
+  { id: "item-saltedegg-popcorn", kind: "item", emoji: "🧂", title: "Salted Egg Popcorn Chicken", sub: "KFC · while stocks last", storeId: "kfc" },
+  { id: "item-matcha-soft", kind: "item", emoji: "🍦", title: "Matcha Soft Serve", sub: "Mr Bean · seasonal special", storeId: "mrbean" },
 ];
 
 /** Current rotation slot for a given time. */

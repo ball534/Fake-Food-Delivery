@@ -117,6 +117,8 @@ export type Order = {
   etaAt: number; // when "delivered" is expected
   driver: Driver;
   address: string;
+  /** The label the user saved this drop-off under (e.g. "Home", "Work"). */
+  addressLabel?: string;
   rating?: number;
   /** Reward points earned for this order (base × loyalty multiplier). */
   pointsEarned: number;

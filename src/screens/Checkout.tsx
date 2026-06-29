@@ -114,6 +114,7 @@ export default function Checkout() {
       subtotal,
       total,
       address: selectedAddress?.line ?? "Somewhere nice",
+      addressLabel: selectedAddress?.label,
       pointsEarned,
       deliverySpeed: speed,
       etaMinutes,
@@ -130,7 +131,7 @@ export default function Checkout() {
 
       <div className="space-y-4 p-4">
         {/* Store header */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-5">
           <span
             className="grid h-12 w-12 place-items-center rounded-xl text-2xl"
             style={{

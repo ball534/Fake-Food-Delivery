@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hide scrollbars on horizontal scrollers (category chips, carousels) while
+   keeping them scrollable — for that native-app feel. */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Desaturate only the basemap tiles (not markers/route) for a clean,
+   Grab-style black-and-white delivery map. */
+.grayscale-map .leaflet-tile-pane {
+  filter: grayscale(1) contrast(1.05) brightness(1.03);
+}
+
+@layer components {
+  /* The centered "phone" frame the whole app lives inside. */
+  .phone-frame {
+    @apply mx-auto flex h-[100dvh] w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl dark:bg-neutral-950 sm:my-0 sm:h-[100dvh];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-5 py-3 font-semibold text-white shadow-card transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-neutral-100 px-5 py-3 font-semibold text-neutral-800 transition active:scale-[0.98] dark:bg-neutral-800 dark:text-neutral-100;
+  }
+
+  .chip {
+    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-700 transition dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200;
+  }
+
+  .chip-active {
+    @apply border-brand-500 bg-brand-500 text-white dark:border-brand-500 dark:bg-brand-500 dark:text-white;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white shadow-card dark:bg-neutral-900;
+  }
+}

@@ -1,0 +1,10 @@
+# Dependencies
+node_modules
+
+# Production build output
+dist
+
+# TypeScript "tsc -b" composite artifacts (generated from *.ts configs)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts

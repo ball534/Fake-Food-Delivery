@@ -7,9 +7,10 @@ import type { Driver, GeoPoint, Order, OrderStatus } from "../data/types";
 const PREPARING_SHARE = 0.4;
 
 /**
- * The (imaginary) drop-off location used for the map. Geolocation is not used
- * (manual addresses only), so every order delivers to this fixed real point —
- * Marina Bay, Singapore — with the store pin placed a short distance away.
+ * Fallback drop-off for the map — Marina Bay, Singapore. Used only when an
+ * order has no real coordinates (address had none and geocoding failed); a
+ * picked or geocoded address delivers to its actual location instead, with the
+ * store pin placed a short distance away.
  */
 export const DEFAULT_DROP: GeoPoint = { lat: 1.2834, lng: 103.8607 };
 

@@ -43,4 +43,6 @@ export const STORAGE_KEYS = {
   orders: "orders",
   profile: "profile",
   recentSearches: "recentSearches",
+  /** Counter that advances once per page load, to cycle the home greeting. */
+  greetingRotation: "greetingRotation",
 } as const;

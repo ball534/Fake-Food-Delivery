@@ -23,6 +23,7 @@ import { describeChoices } from "../lib/pricing";
 import { money } from "../lib/format";
 import { basePointsFor } from "../lib/loyalty";
 import { DELIVERY_OPTIONS, EXPRESS_COST, estimateMinutes } from "../lib/delivery";
+import { geocodeAddress } from "../lib/geocode";
 import { PROMO_CODES, EFFECT_LABEL } from "../data/promos";
 import type { DeliverySpeed } from "../data/types";
 
@@ -102,9 +103,16 @@ export default function Checkout() {
     }
   };
 
-  const place = () => {
+  const place = async () => {
     if (placing || blocked) return;
     setPlacing(true);
+    // The map drops a pin at the address's real coordinates. Addresses picked
+    // from the autocomplete already carry them; for a hand-typed address, look
+    // them up now so the map lands on the right place (not the default drop).
+    const dropLoc =
+      selectedAddress?.loc ??
+      (selectedAddress?.line ? await geocodeAddress(selectedAddress.line) : null) ??
+      undefined;
     const { pointsEarned } = recordPurchase(store.id, total, {
       pointsMultiplier,
       loyaltyTiers,
@@ -121,7 +129,7 @@ export default function Checkout() {
       deliverySpeed: speed,
       etaMinutes,
       promoCode: appliedCode ?? undefined,
-      dropLoc: selectedAddress?.loc,
+      dropLoc,
     });
     clearCart();
     showToast(`+${pointsEarned} points earned!`, "✨");

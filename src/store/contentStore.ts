@@ -1,14 +1,15 @@
 import { create } from "zustand";
 import { DEFAULT_DEALS, parseDealsCsv, type Deal } from "../data/promos";
+import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 
 // Editable content pools live in /public so they can be tweaked without a
-// rebuild: greetings.txt (home greetings) and deals.csv (the Special Deal
+// rebuild: greetings.json (home greetings) and deals.csv (the Special Deal
 // rotation). Both are fetched once at startup; the hardcoded defaults below
 // are used until they load (and as a fallback if a file is missing/broken).
 
 export type GreetingPool = Record<string, string[]>;
 
-/** Fallback greetings, keyed by time-of-day bucket. Mirrors greetings.txt. */
+/** Fallback greetings, keyed by time-of-day bucket. Mirrors greetings.json. */
 export const DEFAULT_GREETINGS: GreetingPool = {
   morning: ["Good morning", "Rise and shine", "Morning"],
   afternoon: ["Good afternoon", "Hope you're peckish", "Afternoon"],
@@ -16,21 +17,35 @@ export const DEFAULT_GREETINGS: GreetingPool = {
   night: ["Late-night cravings", "Still up", "Hungry already"],
 };
 
-/** Parse greetings.txt: `bucket: greeting` per line; # comments and blanks ignored. */
-export function parseGreetingsTxt(text: string): GreetingPool {
+/** Parse greetings.json: `{ "<bucket>": ["greeting", …] }`. Tolerates junk. */
+export function parseGreetingsJson(text: string): GreetingPool {
+  let data: unknown;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    return {};
+  }
+  if (!data || typeof data !== "object" || Array.isArray(data)) return {};
   const pool: GreetingPool = {};
-  for (const raw of text.split(/\r?\n/)) {
-    const line = raw.trim();
-    if (!line || line.startsWith("#")) continue;
-    const idx = line.indexOf(":");
-    if (idx === -1) continue;
-    const bucket = line.slice(0, idx).trim().toLowerCase();
-    const greeting = line.slice(idx + 1).trim();
-    if (!bucket || !greeting) continue;
-    (pool[bucket] ??= []).push(greeting);
+  for (const [bucket, value] of Object.entries(data as Record<string, unknown>)) {
+    if (!Array.isArray(value)) continue;
+    const lines = value.filter((v): v is string => typeof v === "string" && v.trim() !== "");
+    if (lines.length > 0) pool[bucket.toLowerCase()] = lines;
   }
   return pool;
 }
+
+/**
+ * A rotation seed that advances by one on every page load, persisted in
+ * storage. The home screen mods this against the day's greeting pool, so each
+ * refresh cycles to the next greeting. Computed once at module load.
+ */
+export const GREETING_SEED: number = (() => {
+  const prev = loadJSON<number>(STORAGE_KEYS.greetingRotation, 0);
+  const seed = Number.isFinite(prev) ? prev : 0;
+  saveJSON(STORAGE_KEYS.greetingRotation, seed + 1);
+  return seed;
+})();
 
 type ContentState = {
   greetings: GreetingPool;
@@ -48,10 +63,10 @@ export const useContent = create<ContentState>((set) => ({
   load: async () => {
     const base = import.meta.env.BASE_URL ?? "/";
     const [greetings, deals] = await Promise.all([
-      fetch(`${base}greetings.txt`)
+      fetch(`${base}greetings.json`)
         .then((r) => (r.ok ? r.text() : ""))
         .then((t) => {
-          const p = parseGreetingsTxt(t);
+          const p = parseGreetingsJson(t);
           return Object.keys(p).length > 0 ? p : DEFAULT_GREETINGS;
         })
         .catch(() => DEFAULT_GREETINGS),

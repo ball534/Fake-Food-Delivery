@@ -17,32 +17,35 @@ export default function StoreCard({ store }: { store: Store }) {
       >
         <span className="drop-shadow">{store.emoji}</span>
       </div>
-      <div className="flex gap-3 p-3">
-        {/* Square brand logo, sitting to the left of the shop name */}
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-neutral-100 text-2xl shadow-sm dark:bg-neutral-800">
-          {store.logo}
-        </span>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-start justify-between gap-2">
-            <h3 className="truncate font-bold text-neutral-900 dark:text-white">
-              {store.name}
-            </h3>
-            <span className="flex shrink-0 items-center gap-0.5 text-sm font-semibold text-neutral-700 dark:text-neutral-200">
-              <Star size={14} className="fill-amber-400 text-amber-400" />
-              {store.rating.toFixed(1)}
-            </span>
+      <div className="p-3">
+        <div className="flex gap-3">
+          {/* Square brand logo, sitting to the left of the shop name */}
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-neutral-100 text-2xl shadow-sm dark:bg-neutral-800">
+            {store.logo}
+          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex items-start justify-between gap-2">
+              <h3 className="truncate font-bold text-neutral-900 dark:text-white">
+                {store.name}
+              </h3>
+              <span className="flex shrink-0 items-center gap-0.5 text-sm font-semibold text-neutral-700 dark:text-neutral-200">
+                <Star size={14} className="fill-amber-400 text-amber-400" />
+                {store.rating.toFixed(1)}
+              </span>
+            </div>
+            <p className="mt-0.5 truncate text-xs text-neutral-500 dark:text-neutral-400">
+              {store.cuisine}
+            </p>
           </div>
-          <p className="mt-0.5 truncate text-xs text-neutral-500 dark:text-neutral-400">
-            {store.cuisine}
-          </p>
-          <div className="mt-2 flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
-            <span className="flex items-center gap-1">
-              <Clock size={13} /> {etaRange(store.etaMinutes)}
-            </span>
-            <span className="flex items-center gap-1">
-              <Bike size={13} /> {store.distanceKm.toFixed(1)} km
-            </span>
-          </div>
+        </div>
+        {/* Delivery time + distance, flush below the logo to keep the card tight */}
+        <div className="mt-2 flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
+          <span className="flex items-center gap-1">
+            <Clock size={13} /> {etaRange(store.etaMinutes)}
+          </span>
+          <span className="flex items-center gap-1">
+            <Bike size={13} /> {store.distanceKm.toFixed(1)} km
+          </span>
         </div>
       </div>
     </Link>

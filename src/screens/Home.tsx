@@ -9,7 +9,7 @@ import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
 import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
-import { useContent, DEFAULT_GREETINGS } from "../store/contentStore";
+import { useContent, DEFAULT_GREETINGS, GREETING_SEED } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { formatCountdown } from "../lib/format";
 
@@ -40,14 +40,13 @@ export default function Home() {
   const deal = useMemo(() => selectDeal(deals, now), [deals, now]);
   const rotatesIn = msUntilRotation(now);
 
-  // A greeting that's stable within the hour but varies through the day.
-  // If the chosen line contains {name} it's substituted in place; otherwise the
-  // first name is appended after a comma (the common case).
+  // A greeting picked for the current time of day that cycles on every page
+  // refresh (GREETING_SEED advances once per load). If the chosen line contains
+  // {name} it's substituted in place; otherwise the first name is appended.
   const greeting = useMemo(() => {
-    const d = new Date(now);
-    const pool = greetings[partOfDay(d.getHours())] ??
-      DEFAULT_GREETINGS[partOfDay(d.getHours())];
-    const raw = pool[d.getHours() % pool.length];
+    const bucket = partOfDay(new Date(now).getHours());
+    const pool = greetings[bucket] ?? DEFAULT_GREETINGS[bucket];
+    const raw = pool[GREETING_SEED % pool.length];
     const firstName = profile.name.split(" ")[0];
     return raw.includes("{name}")
       ? raw.replace(/\{name\}/g, firstName)

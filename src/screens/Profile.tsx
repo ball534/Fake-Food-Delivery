@@ -186,15 +186,15 @@ export default function Profile() {
                         {store.name}
                       </p>
                       <p className="truncate text-xs text-brand-600 dark:text-brand-400">
-                        {tierName(level)} · {multiplierForTier(level).toFixed(1)}× points
+                        {multiplierForTier(level).toFixed(1)}× points
                       </p>
                     </div>
                     <div className="shrink-0 text-right">
-                      <p className="text-lg font-extrabold leading-none text-brand-600 dark:text-brand-400">
-                        {level}
+                      <p className="text-sm font-extrabold leading-tight text-brand-600 dark:text-brand-400">
+                        {tierName(level)}
                       </p>
                       <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-400">
-                        Level
+                        Loyalty tier
                       </p>
                     </div>
                   </Link>

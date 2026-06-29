@@ -1,11 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { RefreshCw } from "lucide-react";
 import Screen from "../components/Screen";
 import EmptyState from "../components/EmptyState";
-import Stars from "../components/Stars";
 import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
-import { useCart } from "../store/cartStore";
-import { useToasts } from "../store/toastStore";
 import { STATUS_LABEL } from "../lib/simulation";
 import { formatClock, formatDate, money, pluralize } from "../lib/format";
 import type { Order } from "../data/types";
@@ -83,18 +79,8 @@ function Header() {
 
 function OrderRow({ order }: { order: Order }) {
   const navigate = useNavigate();
-  const reorder = useCart((s) => s.reorder);
-  const rateOrder = useOrders((s) => s.rateOrder);
-  const showToast = useToasts((s) => s.show);
 
   const isActive = order.status !== "delivered";
-
-  const doReorder = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    reorder(order.storeId, order.lines);
-    showToast("Added to cart", "🔁");
-    navigate("/checkout");
-  };
 
   return (
     <div
@@ -132,35 +118,6 @@ function OrderRow({ order }: { order: Order }) {
         <p className="mt-2 text-sm font-medium text-brand-600 dark:text-brand-400">
           {STATUS_LABEL[order.status]} →
         </p>
-      )}
-
-      {!isActive && (
-        <div
-          className="mt-3 flex items-center justify-between border-t border-neutral-100 pt-3 dark:border-neutral-800"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {order.rating ? (
-            <Stars value={order.rating} size={16} />
-          ) : (
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-neutral-400">Rate:</span>
-              <Stars
-                value={0}
-                size={18}
-                onChange={(v) => {
-                  rateOrder(order.id, v);
-                  showToast("Thanks for rating!", "⭐");
-                }}
-              />
-            </div>
-          )}
-          <button
-            onClick={doReorder}
-            className="flex items-center gap-1 rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-bold text-neutral-700 active:scale-95 dark:bg-neutral-800 dark:text-neutral-200"
-          >
-            <RefreshCw size={13} /> Reorder
-          </button>
-        </div>
       )}
     </div>
   );

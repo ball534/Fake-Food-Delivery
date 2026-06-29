@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MessageSquare, Home as HomeIcon } from "lucide-react";
+import { MessageSquare, Home as HomeIcon, UserRound } from "lucide-react";
 import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
@@ -102,8 +102,12 @@ export default function OrderTracking() {
 
         {/* Driver card (no vehicle/plate; message only) */}
         <div className="card flex items-center gap-3 p-4">
-          <span className="grid h-12 w-12 place-items-center rounded-full bg-neutral-100 text-2xl dark:bg-neutral-800">
-            {order.driver.emoji}
+          {/* Default placeholder avatar (Instagram-style silhouette) */}
+          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700">
+            <UserRound
+              size={34}
+              className="translate-y-1 fill-neutral-400 text-neutral-400 dark:fill-neutral-500 dark:text-neutral-500"
+            />
           </span>
           <div className="flex-1">
             <p className="font-bold text-neutral-900 dark:text-white">

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Screen from "../components/Screen";
 import ConfirmDialog from "../components/ConfirmDialog";
+import AddressAutocomplete from "../components/AddressAutocomplete";
 import { useProfile, MAX_ADDRESSES } from "../store/profileStore";
 import { useToasts } from "../store/toastStore";
 import { STORES_BY_ID } from "../data/stores";
@@ -257,11 +258,10 @@ export default function Profile() {
                 placeholder="Label (e.g. Home, Work)"
                 className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
               />
-              <input
+              <AddressAutocomplete
                 value={addrLine}
-                onChange={(e) => setAddrLine(e.target.value)}
+                onChange={setAddrLine}
                 placeholder="Street address (e.g. 1 Raffles Place, #10-01)"
-                className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
               />
               <button
                 onClick={useMyLocation}
@@ -391,12 +391,7 @@ function AddressRow({
           placeholder="Label"
           className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
         />
-        <input
-          value={line}
-          onChange={(e) => setLine(e.target.value)}
-          placeholder="Street address"
-          className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
-        />
+        <AddressAutocomplete value={line} onChange={setLine} placeholder="Street address" />
         <div className="flex gap-2">
           <button
             onClick={() => setEditing(false)}

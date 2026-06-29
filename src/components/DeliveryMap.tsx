@@ -61,9 +61,14 @@ export default function DeliveryMap({ order, now }: { order: Order; now: number 
         scrollWheelZoom={false}
         style={{ height: "100%", width: "100%" }}
       >
+        {/* Minimal "Positron (no labels)" basemap — shows only roads, water,
+            and building footprints. No POIs, icons, or place labels, for a
+            clean delivery-route view. */}
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+          subdomains="abcd"
+          maxZoom={20}
         />
 
         {/* Planned route store → drop-off */}

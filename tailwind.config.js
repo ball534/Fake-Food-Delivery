@@ -5,19 +5,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand accent — a teal-green (chosen to evoke the Grab/Uber idiom
-        // without copying either trademark).
+        // Brand accent — a muted, desaturated sage-teal (evokes the Grab/Uber
+        // idiom without copying either trademark, with calmer saturation).
         brand: {
-          50: "#effdf5",
-          100: "#d7f9e6",
-          200: "#b2f1d0",
-          300: "#7ce4b3",
-          400: "#3fce8f",
-          500: "#16b574",
-          600: "#0a925d",
-          700: "#08744c",
-          800: "#0a5c3f",
-          900: "#094b35",
+          50: "#f1f6f3",
+          100: "#dde9e3",
+          200: "#bdd2c8",
+          300: "#94b3a4",
+          400: "#6b9484",
+          500: "#4f7d6a",
+          600: "#3f6555",
+          700: "#345245",
+          800: "#2c4339",
+          900: "#263830",
         },
       },
       fontFamily: {

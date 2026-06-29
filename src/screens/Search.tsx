@@ -4,8 +4,9 @@ import { Search as SearchIcon, X, Clock, SlidersHorizontal } from "lucide-react"
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import EmptyState from "../components/EmptyState";
-import { STORES } from "../data/stores";
+import { STORES, STORES_BY_ID } from "../data/stores";
 import type { Store } from "../data/types";
+import { useOrders } from "../store/orderStore";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { money } from "../lib/format";
 
@@ -26,8 +27,23 @@ export default function Search() {
   const [recent, setRecent] = useState<string[]>(() =>
     loadJSON<string[]>(STORAGE_KEYS.recentSearches, []),
   );
+  const orders = useOrders((s) => s.orders);
 
   const q = query.trim().toLowerCase();
+
+  // Shops the user has previously ordered from (newest first, de-duplicated),
+  // surfaced even if they were never searched for.
+  const previousStores = useMemo(() => {
+    const seen = new Set<string>();
+    const list: Store[] = [];
+    for (const o of orders) {
+      if (seen.has(o.storeId)) continue;
+      seen.add(o.storeId);
+      const store = STORES_BY_ID[o.storeId];
+      if (store) list.push(store);
+    }
+    return list;
+  }, [orders]);
 
   const commitSearch = (term: string) => {
     const t = term.trim();
@@ -117,6 +133,19 @@ export default function Search() {
                 <button key={r} onClick={() => setQuery(r)} className="chip">
                   <Clock size={13} /> {r}
                 </button>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {!q && previousStores.length > 0 && (
+          <section>
+            <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+              Order again
+            </h2>
+            <div className="space-y-3">
+              {previousStores.map((s) => (
+                <StoreCard key={s.id} store={s} />
               ))}
             </div>
           </section>

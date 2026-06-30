@@ -1559,15 +1559,15 @@
               "required": true,
               "options": [
                 {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
                   "name": "No ice",
                   "price": 0
                 },
                 {
                   "name": "Less ice",
-                  "price": 0
-                },
-                {
-                  "name": "Normal ice",
                   "price": 0
                 }
               ]
@@ -1585,15 +1585,15 @@
               "required": true,
               "options": [
                 {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
                   "name": "No ice",
                   "price": 0
                 },
                 {
                   "name": "Less ice",
-                  "price": 0
-                },
-                {
-                  "name": "Normal ice",
                   "price": 0
                 }
               ]
@@ -1611,15 +1611,15 @@
               "required": true,
               "options": [
                 {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
                   "name": "No ice",
                   "price": 0
                 },
                 {
                   "name": "Less ice",
-                  "price": 0
-                },
-                {
-                  "name": "Normal ice",
                   "price": 0
                 }
               ]

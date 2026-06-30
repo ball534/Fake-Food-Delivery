@@ -1,6 +1,8 @@
+import { useMemo } from "react";
 import { create } from "zustand";
 import { DEFAULT_DEALS, parseDealsCsv, type Deal } from "../data/promos";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
+import { useStores } from "./storesStore";
 
 export type GreetingPool = Record<string, string[]>;
 
@@ -68,3 +70,15 @@ export const useContent = create<ContentState>((set) => ({
     set({ greetings, deals, loaded: true });
   },
 }));
+
+// The rotation pool shown on Home / StoreMenu combines the global promo-code
+// deals (this store) with every shop's own combo/item deals (from shop.json).
+// Promo codes stay decoupled from shop data; they're only merged at read time.
+export function useDealPool(): Deal[] {
+  const codeDeals = useContent((s) => s.deals);
+  const stores = useStores((s) => s.stores);
+  return useMemo(
+    () => [...codeDeals, ...stores.flatMap((s) => s.deals)],
+    [codeDeals, stores],
+  );
+}

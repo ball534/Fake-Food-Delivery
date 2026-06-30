@@ -3,13 +3,14 @@ import { Search as SearchIcon, RefreshCw, Copy, Gift, Flame, ShoppingBag } from 
 import { AnimatePresence, motion } from "framer-motion";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
+import DealPrice from "../components/DealPrice";
 import { Link } from "react-router-dom";
 import { useStores, storesInCategory } from "../store/storesStore";
 import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
 import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
-import { useContent, DEFAULT_GREETINGS, GREETING_SEED } from "../store/contentStore";
+import { useContent, useDealPool, DEFAULT_GREETINGS, GREETING_SEED } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { formatCountdown } from "../lib/format";
 
@@ -32,7 +33,7 @@ export default function Home() {
   const showToast = useToasts((s) => s.show);
   const cartCount = useCart((s) => s.itemCount());
   const greetings = useContent((s) => s.greetings);
-  const deals = useContent((s) => s.deals);
+  const deals = useDealPool();
   const stores = useStores((s) => s.stores);
   const categories = useStores((s) => s.categories);
   const [category, setCategory] = useState<string | null>(null);
@@ -78,6 +79,7 @@ export default function Home() {
         <div className="min-w-0 flex-1">
           <p className="text-lg font-extrabold leading-tight">{deal.title}</p>
           <p className="text-sm text-brand-50/90">{deal.sub}</p>
+          <DealPrice deal={deal} className="mt-1.5" />
         </div>
       </div>
     </>

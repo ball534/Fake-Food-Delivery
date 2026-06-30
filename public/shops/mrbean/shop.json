@@ -230,6 +230,16 @@
       ]
     }
   ],
+  "deals": [
+    {
+      "kind": "item",
+      "emoji": "🍦",
+      "title": "Matcha Soft Serve",
+      "sub": "Seasonal special",
+      "price": 3.2,
+      "originalPrice": 3.8
+    }
+  ],
   "reviews": [
     {
       "author": "Wen",

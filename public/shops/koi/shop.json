@@ -631,6 +631,16 @@
       ]
     }
   ],
+  "deals": [
+    {
+      "kind": "combo",
+      "emoji": "🧋",
+      "title": "1-for-1 Bubble Tea",
+      "sub": "KOI Thé · today only",
+      "price": 4.2,
+      "originalPrice": 8.4
+    }
+  ],
   "reviews": [
     {
       "author": "Xin Yi",

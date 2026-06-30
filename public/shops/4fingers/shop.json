@@ -167,6 +167,16 @@
       ]
     }
   ],
+  "deals": [
+    {
+      "kind": "combo",
+      "emoji": "🍗",
+      "title": "Buy 3 Get 1 Free Wings",
+      "sub": "4Fingers · mix any sauce",
+      "price": 9,
+      "originalPrice": 12
+    }
+  ],
   "reviews": [
     {
       "author": "Jin",

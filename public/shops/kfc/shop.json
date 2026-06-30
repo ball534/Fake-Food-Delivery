@@ -265,6 +265,16 @@
       ]
     }
   ],
+  "deals": [
+    {
+      "kind": "item",
+      "emoji": "🧂",
+      "title": "Salted Egg Popcorn Chicken",
+      "sub": "While stocks last",
+      "price": 6.5,
+      "originalPrice": 7.5
+    }
+  ],
   "reviews": [
     {
       "author": "Priya",

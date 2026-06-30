@@ -9,6 +9,7 @@ import CartBar from "../components/CartBar";
 import EmptyState from "../components/EmptyState";
 import Stars from "../components/Stars";
 import Thumb from "../components/Thumb";
+import DealPrice from "../components/DealPrice";
 import { useStores } from "../store/storesStore";
 import { etaRange } from "../lib/format";
 import { pluralize } from "../lib/format";
@@ -16,7 +17,7 @@ import { etaRangeFor, distanceFor } from "../lib/delivery";
 import { useCart } from "../store/cartStore";
 import { useProfile } from "../store/profileStore";
 import { useToasts } from "../store/toastStore";
-import { useContent } from "../store/contentStore";
+import { useDealPool } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { selectDeal } from "../data/promos";
 
@@ -26,7 +27,7 @@ export default function StoreMenu() {
   const selectedAddress = useProfile((s) => s.selectedAddress)();
   const addLine = useCart((s) => s.addLine);
   const showToast = useToasts((s) => s.show);
-  const deals = useContent((s) => s.deals);
+  const deals = useDealPool();
   const now = useNow();
   const deal = selectDeal(deals, now);
   const storeDeal = deal.storeId === storeId ? deal : null;
@@ -112,9 +113,13 @@ export default function StoreMenu() {
 
   const addStoreDeal = () => {
     if (!storeDeal) return;
+    const dealItemId = `deal-${storeId}-${storeDeal.title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")}`;
     addLine({
       item: {
-        id: `deal-${storeDeal.id}`,
+        id: dealItemId,
         name: storeDeal.title,
         description: storeDeal.sub,
         icon: "",
@@ -171,6 +176,7 @@ export default function StoreMenu() {
               <div className="min-w-0 flex-1">
                 <p className="font-extrabold leading-tight">{storeDeal.title}</p>
                 <p className="text-xs text-brand-50/90">{storeDeal.sub}</p>
+                <DealPrice deal={storeDeal} className="mt-1" />
               </div>
               <motion.button
                 whileTap={{ scale: 0.85 }}
@@ -227,8 +233,8 @@ export default function StoreMenu() {
             </span>
           </h2>
           <div className="space-y-2.5">
-            {reviews.map((r) => (
-              <div key={r.id} className="card p-4">
+            {reviews.map((r, i) => (
+              <div key={i} className="card p-4">
                 <div className="flex items-center gap-3">
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-lg dark:bg-neutral-800">
                     {r.emoji}

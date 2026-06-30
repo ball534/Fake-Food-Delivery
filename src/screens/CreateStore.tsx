@@ -8,6 +8,7 @@ import {
   MessageSquare,
   Settings2,
   Store as StoreIcon,
+  Tag,
   X,
 } from "lucide-react";
 import Screen from "../components/Screen";
@@ -34,6 +35,15 @@ type FoodDraft = {
   icon?: File;
 };
 type CategoryDraft = { id: string; name: string; food: FoodDraft[] };
+type DealDraft = {
+  id: string;
+  kind: "combo" | "item";
+  emoji: string;
+  title: string;
+  sub: string;
+  price: string;
+  originalPrice: string;
+};
 type ReviewDraft = {
   id: string;
   author: string;
@@ -92,6 +102,15 @@ const newReview = (): ReviewDraft => ({
   rating: 5,
   text: "",
 });
+const newDeal = (): DealDraft => ({
+  id: uid(),
+  kind: "combo",
+  emoji: "🎁",
+  title: "",
+  sub: "",
+  price: "",
+  originalPrice: "",
+});
 
 const inputCls =
   "w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white";
@@ -107,6 +126,7 @@ export default function CreateStore() {
   const [logo, setLogo] = useState<File | undefined>();
 
   const [categories, setCategories] = useState<CategoryDraft[]>([newCategory()]);
+  const [deals, setDeals] = useState<DealDraft[]>([]);
   const [reviews, setReviews] = useState<ReviewDraft[]>([]);
 
   const [busy, setBusy] = useState(false);
@@ -155,6 +175,19 @@ export default function CreateStore() {
               return `Every choice in “${s.name.trim()}” needs a valid price`;
           }
         }
+      }
+    }
+    for (const d of deals) {
+      if (!d.title.trim()) return "Every deal needs a title";
+      if (!d.sub.trim()) return `Add a short description for “${d.title.trim()}”`;
+      if (!d.price.trim() || Number.isNaN(Number(d.price)))
+        return `Add a valid price for “${d.title.trim()}”`;
+      if (d.originalPrice.trim()) {
+        const orig = Number(d.originalPrice);
+        if (Number.isNaN(orig))
+          return `Original price for “${d.title.trim()}” must be a number`;
+        if (orig <= Number(d.price))
+          return `Original price for “${d.title.trim()}” must be higher than the deal price`;
       }
     }
     for (const rv of reviews) {
@@ -213,6 +246,19 @@ export default function CreateStore() {
       rating: Number(rating),
       menu,
     };
+
+    const dealsOut = deals.map((d) => {
+      const out: Record<string, unknown> = {
+        kind: d.kind,
+        emoji: d.emoji.trim() || "🎁",
+        title: d.title.trim(),
+        sub: d.sub.trim(),
+        price: Number(d.price) || 0,
+      };
+      if (d.originalPrice.trim()) out.originalPrice = Number(d.originalPrice);
+      return out;
+    });
+    if (dealsOut.length) shop.deals = dealsOut;
 
     const reviewOut = reviews.map((r) => ({
       author: r.author.trim(),
@@ -580,6 +626,117 @@ export default function CreateStore() {
             className="btn-secondary w-full py-2.5 text-sm"
           >
             <Plus size={16} /> Add category
+          </button>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900 dark:text-white">
+            <Tag size={18} /> Deals
+            <span className="text-xs font-medium text-neutral-400">Optional · limited-time specials</span>
+          </h2>
+
+          {deals.map((d) => (
+            <div key={d.id} className="card space-y-2.5 p-4">
+              <div className="flex items-center gap-2">
+                <input
+                  className="w-14 rounded-xl border border-neutral-200 bg-transparent px-2 py-2 text-center text-lg outline-none focus:border-brand-500 dark:border-neutral-700"
+                  value={d.emoji}
+                  onChange={(e) =>
+                    setDeals((ds) =>
+                      ds.map((x) => (x.id === d.id ? { ...x, emoji: e.target.value } : x)),
+                    )
+                  }
+                  placeholder="🎁"
+                />
+                <input
+                  className={inputCls}
+                  value={d.title}
+                  onChange={(e) =>
+                    setDeals((ds) =>
+                      ds.map((x) => (x.id === d.id ? { ...x, title: e.target.value } : x)),
+                    )
+                  }
+                  placeholder="Deal title"
+                />
+                <IconBtn
+                  label="Remove deal"
+                  onClick={() => setDeals((ds) => ds.filter((x) => x.id !== d.id))}
+                >
+                  <Trash2 size={16} />
+                </IconBtn>
+              </div>
+
+              <div className="flex gap-1.5">
+                {(["combo", "item"] as const).map((k) => (
+                  <button
+                    key={k}
+                    type="button"
+                    onClick={() =>
+                      setDeals((ds) => ds.map((x) => (x.id === d.id ? { ...x, kind: k } : x)))
+                    }
+                    className={`flex-1 rounded-xl py-2 text-sm font-bold capitalize transition ${
+                      d.kind === k
+                        ? "bg-brand-500 text-white"
+                        : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800"
+                    }`}
+                  >
+                    {k === "combo" ? "Special combo" : "Limited-time item"}
+                  </button>
+                ))}
+              </div>
+
+              <input
+                className={inputCls}
+                value={d.sub}
+                onChange={(e) =>
+                  setDeals((ds) =>
+                    ds.map((x) => (x.id === d.id ? { ...x, sub: e.target.value } : x)),
+                  )
+                }
+                placeholder="Short description"
+              />
+
+              <div className="grid grid-cols-2 gap-2">
+                <Field label="Deal price">
+                  <input
+                    className={inputCls}
+                    type="number"
+                    min={0}
+                    step={0.1}
+                    value={d.price}
+                    onChange={(e) =>
+                      setDeals((ds) =>
+                        ds.map((x) => (x.id === d.id ? { ...x, price: e.target.value } : x)),
+                      )
+                    }
+                  />
+                </Field>
+                <Field label="Original price" hint="Optional — shown struck through">
+                  <input
+                    className={inputCls}
+                    type="number"
+                    min={0}
+                    step={0.1}
+                    value={d.originalPrice}
+                    onChange={(e) =>
+                      setDeals((ds) =>
+                        ds.map((x) =>
+                          x.id === d.id ? { ...x, originalPrice: e.target.value } : x,
+                        ),
+                      )
+                    }
+                  />
+                </Field>
+              </div>
+            </div>
+          ))}
+
+          <button
+            type="button"
+            onClick={() => setDeals((ds) => [...ds, newDeal()])}
+            className="btn-secondary w-full py-2.5 text-sm"
+          >
+            <Plus size={16} /> Add deal
           </button>
         </section>
 

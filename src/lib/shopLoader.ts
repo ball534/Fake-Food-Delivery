@@ -6,6 +6,7 @@ import type {
   Review,
   Store,
 } from "../data/types";
+import type { Deal, DealKind } from "../data/promos";
 
 export type RawOption = { name: string; price?: number };
 
@@ -35,12 +36,22 @@ export type RawReview = {
   text: string;
 };
 
+export type RawDeal = {
+  kind?: string;
+  emoji?: string;
+  title: string;
+  sub?: string;
+  price?: number;
+  originalPrice?: number;
+};
+
 export type RawShop = {
   name: string;
   categories?: string[];
   pricelevel?: number;
   rating?: number;
   menu?: RawMenuGroup[];
+  deals?: RawDeal[];
   reviews?: RawReview[];
 };
 
@@ -112,13 +123,32 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
     items: (g.food ?? []).map((f) => parseFood(f, shopBase, usedItem)),
   }));
 
-  const reviews: Review[] = (raw.reviews ?? []).map((r, i) => ({
-    id: `r-${id}-${i}`,
+  const reviews: Review[] = (raw.reviews ?? []).map((r) => ({
     author: r.author,
     emoji: r.emoji ?? "🙂",
     rating: r.rating,
     text: r.text,
   }));
+
+  const deals: Deal[] = (raw.deals ?? [])
+    .filter((d) => d && d.title)
+    .map((d) => {
+      const kind: DealKind = d.kind === "combo" ? "combo" : "item";
+      const price = typeof d.price === "number" ? d.price : undefined;
+      const originalPrice =
+        typeof d.originalPrice === "number" && d.originalPrice > (price ?? 0)
+          ? d.originalPrice
+          : undefined;
+      return {
+        kind,
+        emoji: d.emoji || "🎁",
+        title: d.title,
+        sub: d.sub ?? "",
+        storeId: id,
+        price,
+        originalPrice,
+      };
+    });
 
   const priceLevel = Math.min(3, Math.max(1, Math.round(raw.pricelevel ?? 1))) as 1 | 2 | 3;
 
@@ -132,6 +162,7 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
     rating: typeof raw.rating === "number" ? raw.rating : 4.5,
     priceLevel,
     menu,
+    deals,
     reviews,
   };
 }

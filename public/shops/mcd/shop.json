@@ -492,6 +492,24 @@
       ]
     }
   ],
+  "deals": [
+    {
+      "kind": "combo",
+      "emoji": "🍔",
+      "title": "McSpicy + McCrispy Double Meal",
+      "sub": "McDonald's exclusive set",
+      "price": 12.9,
+      "originalPrice": 16.5
+    },
+    {
+      "kind": "item",
+      "emoji": "🍟",
+      "title": "Seaweed Shaker Fries",
+      "sub": "Back for a limited run",
+      "price": 4.5,
+      "originalPrice": 5.5
+    }
+  ],
   "reviews": [
     {
       "author": "Bryan T.",

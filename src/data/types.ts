@@ -1,3 +1,5 @@
+import type { Deal } from "./promos";
+
 export type ItemOptionChoice = {
   id: string;
   label: string;
@@ -39,11 +41,11 @@ export type Store = {
   rating: number;
   priceLevel: 1 | 2 | 3;
   menu: MenuCategory[];
+  deals: Deal[];
   reviews: Review[];
 };
 
 export type Review = {
-  id: string;
   author: string;
   emoji: string;
   rating: number;

@@ -1,12 +1,4 @@
-id,kind,emoji,title,sub,code,effect,storeId,price
-code-doubleup,code,✨,Double points day,2× points — tap to copy the code,DOUBLEUP,points2x,,
-code-loyalmax,code,💜,Loyalty in overdrive,Double loyalty gain — tap to copy,LOYALMAX,loyalty2x,,
-code-zoomzoom,code,⚡,Free Express delivery,Skip the wait — tap to copy,ZOOMZOOM,freeexpress,,
-combo-bogo-boba,combo,🧋,1-for-1 Bubble Tea,KOI Thé · today only,,,koi,4.2
-combo-wings-bogo,combo,🍗,Buy 3 Get 1 Free Wings,4Fingers · mix any sauce,,,4fingers,9.0
-combo-mcdouble,combo,🍔,McSpicy + McCrispy Double Meal,McDonald's exclusive set,,,mcd,12.9
-combo-whopper-duo,combo,👑,Whopper Duo Box,2 Whoppers + 2 fries + 2 drinks,,,bk,18.9
-item-seaweed-fries,item,🍟,Seaweed Shaker Fries,McDonald's · back for a limited run,,,mcd,4.5
-item-truffle-burger,item,🍔,Truffle Wagyu Burger,Burger King · new drop,,,bk,11.9
-item-saltedegg-popcorn,item,🧂,Salted Egg Popcorn Chicken,KFC · while stocks last,,,kfc,6.5
-item-matcha-soft,item,🍦,Matcha Soft Serve,Mr Bean · seasonal special,,,mrbean,3.2
+kind,emoji,title,sub,code,effect,storeId,price,originalPrice
+code,✨,Double points day,2× points — tap to copy the code,DOUBLEUP,points2x,,,
+code,💜,Loyalty in overdrive,Double loyalty gain — tap to copy,LOYALMAX,loyalty2x,,,
+code,⚡,Free Express delivery,Skip the wait — tap to copy,ZOOMZOOM,freeexpress,,,

@@ -347,6 +347,24 @@
       ]
     }
   ],
+  "deals": [
+    {
+      "kind": "combo",
+      "emoji": "👑",
+      "title": "Whopper Duo Box",
+      "sub": "2 Whoppers + 2 fries + 2 drinks",
+      "price": 18.9,
+      "originalPrice": 23.6
+    },
+    {
+      "kind": "item",
+      "emoji": "🍔",
+      "title": "Truffle Wagyu Burger",
+      "sub": "New drop",
+      "price": 11.9,
+      "originalPrice": 13.9
+    }
+  ],
   "reviews": [
     {
       "author": "Tom",

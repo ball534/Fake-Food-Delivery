@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-/** Animated page wrapper — gives every route a subtle fade/slide on enter. */
 export default function Screen({
   children,
   className = "",

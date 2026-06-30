@@ -2,7 +2,6 @@ import { ChevronLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import type { ReactNode } from "react";
 
-/** A back-arrow header used on sub-pages. */
 export default function TopBar({
   title,
   right,

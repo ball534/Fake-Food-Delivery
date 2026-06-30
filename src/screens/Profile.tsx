@@ -12,6 +12,7 @@ import {
   FileText,
   ChevronRight,
   UserRound,
+  Store as StoreIcon,
 } from "lucide-react";
 import Screen from "../components/Screen";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -56,8 +57,6 @@ export default function Profile() {
     setEditingName(false);
   };
 
-  // Use the device GPS for a precise drop-off, reverse-geocoded to a street
-  // address (falls back to raw coordinates if the lookup is unavailable).
   const useMyLocation = () => {
     if (!("geolocation" in navigator)) {
       showToast("Location isn't supported on this device", "⚠️");
@@ -108,10 +107,8 @@ export default function Profile() {
 
   return (
     <Screen className="pb-6">
-      {/* Header */}
       <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-6 pt-8 text-white">
         <div className="flex items-center gap-4">
-          {/* Default placeholder avatar (Instagram-style silhouette) */}
           <span className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-full bg-white/20 backdrop-blur">
             <UserRound
               size={44}
@@ -149,7 +146,6 @@ export default function Profile() {
       </div>
 
       <div className="space-y-5 p-4">
-        {/* Rewards: points + loyalty */}
         <section className="card p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
@@ -206,7 +202,6 @@ export default function Profile() {
           </div>
         </section>
 
-        {/* Addresses */}
         <section>
           <div className="mb-2 flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-base font-bold text-neutral-900 dark:text-white">
@@ -281,7 +276,22 @@ export default function Profile() {
           )}
         </section>
 
-        {/* Others */}
+        <Link
+          to="/create-store"
+          className="flex items-center gap-3 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-600 p-4 text-white shadow-card transition active:scale-[0.99]"
+        >
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/20 backdrop-blur">
+            <StoreIcon size={22} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="font-bold">Create your own store</p>
+            <p className="truncate text-xs text-white/80">
+              Build a menu, add reviews, export it as a ZIP
+            </p>
+          </div>
+          <ChevronRight size={20} className="text-white/80" />
+        </Link>
+
         <section>
           <h2 className="mb-2 text-base font-bold text-neutral-900 dark:text-white">
             Others

@@ -1,6 +1,3 @@
-// Small pure formatting helpers (platform-agnostic).
-
-/** Fake credits, shown SGD-style. */
 export function money(amount: number): string {
   return "$" + amount.toFixed(2);
 }
@@ -9,7 +6,6 @@ export function etaRange([min, max]: [number, number]): string {
   return `${min}–${max} min`;
 }
 
-/** "in 2m 30s" / "in 45s" style countdown from a millisecond delta. */
 export function formatCountdown(msRemaining: number): string {
   const s = Math.max(0, Math.round(msRemaining / 1000));
   if (s < 60) return `${s}s`;

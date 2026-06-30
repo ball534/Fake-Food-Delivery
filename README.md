@@ -31,7 +31,7 @@ npm run typecheck  # tsc --noEmit
   Filipino, Local, Drinks) with full menus, item customisation (size / spice /
   add-ons / toppings), tags, ratings, and **fake customer reviews**. Each store
   is a folder of static files under `public/shops/` — see
-  [`public/shops/README.md`](public/shops/README.md) for the format. Adding or
+  [Shop data format](#shop-data-format) below. Adding or
   editing a store needs no code changes.
 - **Rotating Special Deal** — one Home deal that cycles every 10 minutes through
   redeemable promo codes (copy & paste at checkout), special combos, and
@@ -68,7 +68,7 @@ The codebase is deliberately split so the logic could be reused in a future mobi
 
 ```
 public/
-└─ shops/       # data-driven store catalogue (one folder per shop + a README)
+└─ shops/       # data-driven store catalogue (one folder per shop)
 src/
 ├─ data/        # types.ts + promos.ts  (platform-agnostic types + promo seed data)
 ├─ lib/         # storage (localStorage seam), shopLoader, simulation, pricing,
@@ -93,6 +93,97 @@ generated at runtime from the chosen delivery address.
 
 **Portability rule:** `data/`, `lib/`, and `store/` are platform-agnostic — they touch the
 DOM only behind `lib/storage.ts`. Only `components/` and `screens/` are web-specific.
+
+## Shop data format
+
+Each subfolder under `public/shops/` is one shop. The app discovers them at
+**build time** (`scripts/build-shops-index.mjs` writes `public/index.json`) and
+loads each `shop.json` at runtime. To add a shop: drop a new folder with a
+`shop.json`, commit, and the next build picks it up — no code changes.
+
+The `example/` folder is a template and is **not** loaded by the app.
+
+### Folder layout
+
+```
+public/shops/<shop-id>/
+├─ shop.json          # required — the menu + metadata
+├─ banner.png         # optional — wide banner image
+├─ logo.png           # optional — square brand logo
+└─ icons/
+   └─ <food-name>.png # optional — one per menu item
+```
+
+- The **folder name is the shop id** (used in URLs, cart, loyalty). No `id`
+  field is needed in `shop.json`.
+- Image filenames are **fixed by convention**, so they're not listed in the
+  JSON: the banner is always `banner.png`, the logo always `logo.png`, and each
+  item's image is `icons/<food-name>.png` where `<food-name>` is the item's
+  name lower-cased with non-alphanumerics turned into `-`
+  (e.g. `"Big Mac Meal"` → `icons/big-mac-meal.png`, `"Curry'O"` → `icons/curry-o.png`).
+- **Any missing image falls back to a small text label** (`logo`, `banner`,
+  `food`), so the app works fine before you add real art.
+
+### `shop.json` schema
+
+```jsonc
+{
+  "name": "McDonald's",
+  "categories": ["Western"],   // first entry is the primary cuisine chip
+  "fastfood": true,            // also show under the cross-cutting "Fast Food" chip
+  "pricelevel": 1,             // 1–3  → $ / $$ / $$$
+  "rating": 4.4,               // 0–5, shown on the card
+  "menu": [
+    {
+      "category": "Set Meals",        // section heading on the store page
+      "food": [
+        {
+          "name": "Big Mac Meal",
+          "description": "Big Mac + fries + Coke.",
+          "price": 8.9,
+          "tags": ["popular"],        // optional: popular | new | spicy
+          "section": [                 // optional customisation groups
+            {
+              "name": "Size",
+              "multiselect": false,    // false = pick one (radio), true = pick many (checkbox)
+              "required": true,
+              "options": [
+                { "name": "Regular", "price": 0 },
+                { "name": "Upsize", "price": 1.2 }   // price = added to base
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,                // multi-select only: pick up to 3
+              "min": 0,                // multi-select only: must pick at least N (optional)
+              "options": [
+                { "name": "Pearls", "price": 0.7 },
+                { "name": "Pudding", "price": 0.8 },
+                { "name": "Grass jelly", "price": 0.7 },
+                { "name": "Cheese foam", "price": 1.2 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    { "author": "Bryan T.", "emoji": "🧑", "rating": 5, "text": "Crispy!", "daysAgo": 2 }
+  ]
+}
+```
+
+**Multi-select bounds.** `min`/`max` only apply when `multiselect` is `true`.
+`max: 3` = pick up to 3; `min: 2` = pick at least 2; `min: 3, max: 3` = pick
+exactly 3. A `required: true` multi-select implies `min` of at least 1. `max` is
+clamped to the number of options available.
+
+> Delivery time and distance are **not** in the data — they're generated at
+> runtime from the customer's chosen delivery address and re-roll whenever it
+> changes.
 
 ## Stack
 

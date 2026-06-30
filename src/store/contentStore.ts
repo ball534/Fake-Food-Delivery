@@ -2,14 +2,8 @@ import { create } from "zustand";
 import { DEFAULT_DEALS, parseDealsCsv, type Deal } from "../data/promos";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 
-// Editable content pools live in /public so they can be tweaked without a
-// rebuild: greetings.json (home greetings) and deals.csv (the Special Deal
-// rotation). Both are fetched once at startup; the hardcoded defaults below
-// are used until they load (and as a fallback if a file is missing/broken).
-
 export type GreetingPool = Record<string, string[]>;
 
-/** Fallback greetings, keyed by time-of-day bucket. Mirrors greetings.json. */
 export const DEFAULT_GREETINGS: GreetingPool = {
   morning: ["Good morning", "Rise and shine", "Morning"],
   afternoon: ["Good afternoon", "Hope you're peckish", "Afternoon"],
@@ -17,7 +11,6 @@ export const DEFAULT_GREETINGS: GreetingPool = {
   night: ["Late-night cravings", "Still up", "Hungry already"],
 };
 
-/** Parse greetings.json: `{ "<bucket>": ["greeting", …] }`. Tolerates junk. */
 export function parseGreetingsJson(text: string): GreetingPool {
   let data: unknown;
   try {
@@ -35,11 +28,6 @@ export function parseGreetingsJson(text: string): GreetingPool {
   return pool;
 }
 
-/**
- * A rotation seed that advances by one on every page load, persisted in
- * storage. The home screen mods this against the day's greeting pool, so each
- * refresh cycles to the next greeting. Computed once at module load.
- */
 export const GREETING_SEED: number = (() => {
   const prev = loadJSON<number>(STORAGE_KEYS.greetingRotation, 0);
   const seed = Number.isFinite(prev) ? prev : 0;
@@ -51,7 +39,6 @@ type ContentState = {
   greetings: GreetingPool;
   deals: Deal[];
   loaded: boolean;
-  /** Fetch the editable pools from /public. Safe to call once at startup. */
   load: () => Promise<void>;
 };
 

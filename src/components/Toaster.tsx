@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useToasts } from "../store/toastStore";
 
-/** Floating toast stack, rendered once near the top of the phone frame. */
 export default function Toaster() {
   const toasts = useToasts((s) => s.toasts);
   return (

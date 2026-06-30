@@ -1,6 +1,5 @@
 import { Star } from "lucide-react";
 
-/** Read-only or interactive 5-star rating. */
 export default function Stars({
   value,
   onChange,

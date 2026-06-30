@@ -1,25 +1,17 @@
 import type { DeliverySpeed } from "../data/types";
 
-// The three delivery speeds offered at checkout:
-// Express spends points and is fastest; Saver is slow but earns bonus points.
-
 export type DeliveryOption = {
   id: DeliverySpeed;
   label: string;
   emoji: string;
   desc: string;
-  /** Total delivery time range, in real minutes. */
   minutes: [number, number];
-  /** Multiplier applied to points earned. */
   pointsMultiplier: number;
-  /** Points spent to choose this option (Express). */
   pointsCost: number;
 };
 
 export const EXPRESS_COST = 150;
 
-// Each tier's time is a range we pick a value from per delivery address (see
-// `estimateMinutes`). Centres land near Regular ~20, Saver ~30, Express ~12 min.
 export const DELIVERY_OPTIONS: DeliveryOption[] = [
   {
     id: "regular",
@@ -56,7 +48,6 @@ export const DELIVERY_BY_ID: Record<DeliverySpeed, DeliveryOption> =
     DeliveryOption
   >;
 
-/** Stable 32-bit hash of a string (FNV-1a) — used to seed per-address timing. */
 function hashSeed(s: string): number {
   let h = 2166136261;
   for (let i = 0; i < s.length; i++) {
@@ -66,33 +57,19 @@ function hashSeed(s: string): number {
   return Math.abs(h);
 }
 
-/**
- * The estimated delivery time (whole minutes) for a speed at a given drop-off.
- * Deterministic from the address `seed`, so it stays put across re-renders but
- * re-rolls to a fresh value whenever the delivery location changes.
- */
 export function estimateMinutes(speed: DeliverySpeed, seed: string): number {
   const [min, max] = DELIVERY_BY_ID[speed].minutes;
   const frac = (hashSeed(`${seed}:${speed}`) % 1000) / 1000;
   return Math.round(min + frac * (max - min));
 }
 
-/**
- * A plausible store→drop distance (km, 1 d.p.) for a shop at a given delivery
- * location. Deterministic from (storeId, seed) so it's stable across renders
- * but re-rolls whenever the chosen address changes. ~0.6–4.8 km.
- */
 export function distanceFor(storeId: string, seed: string): number {
   const frac = (hashSeed(`${seed}:${storeId}:dist`) % 1000) / 1000;
   return Math.round((0.6 + frac * 4.2) * 10) / 10;
 }
 
-/**
- * A shop's headline delivery-time range (minutes) for the current delivery
- * location, loosely scaled by the derived distance. Re-rolls with the address.
- */
 export function etaRangeFor(storeId: string, seed: string): [number, number] {
   const km = distanceFor(storeId, seed);
-  const mid = Math.round(11 + km * 3.4); // ~13–27 min across the distance range
+  const mid = Math.round(11 + km * 3.4);
   return [Math.max(10, mid - 3), mid + 4];
 }

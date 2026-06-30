@@ -1,12 +1,9 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // Brand accent — forest green (#228B22), with a tonal scale built
-        // around it for hovers, fills, and dark-mode tints.
         brand: {
           50: "#f1f8f1",
           100: "#ddeedd",

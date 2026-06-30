@@ -74,8 +74,6 @@ export default function Checkout() {
   const effect = appliedCode ? PROMO_CODES[appliedCode]?.effect : null;
   const freeExpress = effect === "freeexpress";
 
-  // Delivery time is seeded by the drop-off, so it stays put across renders but
-  // re-rolls whenever the chosen address changes.
   const deliverySeed = selectedAddress?.id ?? "no-address";
   const option = DELIVERY_OPTIONS.find((o) => o.id === speed)!;
   const etaMinutes = estimateMinutes(speed, deliverySeed);
@@ -108,9 +106,6 @@ export default function Checkout() {
   const place = async () => {
     if (placing || blocked) return;
     setPlacing(true);
-    // The map drops a pin at the address's real coordinates. Addresses picked
-    // from the autocomplete already carry them; for a hand-typed address, look
-    // them up now so the map lands on the right place (not the default drop).
     const dropLoc =
       selectedAddress?.loc ??
       (selectedAddress?.line ? await geocodeAddress(selectedAddress.line) : null) ??
@@ -143,7 +138,6 @@ export default function Checkout() {
       <TopBar title="Checkout" />
 
       <div className="space-y-4 p-4">
-        {/* Store header */}
         <div className="flex items-center gap-5">
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
             <Thumb src={store.logo} alt={store.name} fallback="logo" />
@@ -156,7 +150,6 @@ export default function Checkout() {
           </div>
         </div>
 
-        {/* Cart lines */}
         <div className="divide-y divide-neutral-100 overflow-hidden rounded-2xl bg-white shadow-card dark:divide-neutral-800 dark:bg-neutral-900">
           {cart.lines.map((line) => {
             const item = store.menu.flatMap((c) => c.items).find((i) => i.id === line.itemId);
@@ -229,7 +222,6 @@ export default function Checkout() {
           + Add more items
         </button>
 
-        {/* Address */}
         <section className="card p-4">
           {selectedAddress ? (
             <button
@@ -261,7 +253,6 @@ export default function Checkout() {
           )}
         </section>
 
-        {/* Delivery speed */}
         <section>
           <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
             Delivery
@@ -314,7 +305,6 @@ export default function Checkout() {
           </div>
         </section>
 
-        {/* Promo code */}
         <section>
           <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
             Promo code
@@ -352,7 +342,6 @@ export default function Checkout() {
           )}
         </section>
 
-        {/* Points preview */}
         <section className="flex items-center gap-2 rounded-2xl bg-brand-50 px-4 py-3 text-sm dark:bg-brand-500/10">
           <Sparkles size={16} className="shrink-0 text-brand-600 dark:text-brand-400" />
           <span className="text-brand-800 dark:text-brand-200">
@@ -361,7 +350,6 @@ export default function Checkout() {
           </span>
         </section>
 
-        {/* Total */}
         <section className="card flex items-center justify-between p-4 text-base font-bold text-neutral-900 dark:text-white">
           <span>Total</span>
           <span>{money(total)}</span>

@@ -29,7 +29,6 @@ export default function Orders() {
     <Screen className="pb-6">
       <Header />
       <div className="space-y-6 p-4">
-        {/* Active deliveries first */}
         {active.length > 0 && (
           <section>
             <SectionHeading
@@ -44,7 +43,6 @@ export default function Orders() {
           </section>
         )}
 
-        {/* Past orders below */}
         {past.length > 0 && (
           <section>
             <SectionHeading title="Past orders" count={`${past.length}`} />

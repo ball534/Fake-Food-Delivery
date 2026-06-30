@@ -5,13 +5,8 @@ import "leaflet/dist/leaflet.css";
 import type { GeoPoint, Order } from "../data/types";
 import { deliveringProgress } from "../lib/simulation";
 
-// A real OpenStreetMap (via Leaflet). Geolocation isn't used — every order
-// delivers to a fixed real drop-off with the store placed a short distance
-// away. The driver follows actual roads (routed via OSRM), highlighted green.
-
 const ROUTE_GREEN = "#228B22";
 
-/** Build an emoji map pin as a Leaflet divIcon (avoids bundling marker images). */
 function emojiPin(emoji: string, ring: string) {
   return L.divIcon({
     className: "",
@@ -34,10 +29,6 @@ function segLen(a: LatLng, b: LatLng) {
   return Math.hypot(a[0] - b[0], a[1] - b[1]);
 }
 
-/**
- * Walk `path` to the point a fraction `t` of its total length along, returning
- * the driver position and the portion of the path travelled so far.
- */
 function pathAt(path: LatLng[], t: number): { driver: LatLng; travelled: LatLng[] } {
   if (path.length === 1) return { driver: path[0], travelled: [path[0]] };
   const lengths: number[] = [];
@@ -67,7 +58,6 @@ function pathAt(path: LatLng[], t: number): { driver: LatLng; travelled: LatLng[
 function FitBounds({ points }: { points: LatLng[] }) {
   const map = useMap();
   useEffect(() => {
-    // Wait out the page's enter animation, then size + frame the route.
     const id = setTimeout(() => {
       map.invalidateSize();
       map.fitBounds(points, { padding: [44, 44], maxZoom: 16 });
@@ -77,7 +67,6 @@ function FitBounds({ points }: { points: LatLng[] }) {
   return null;
 }
 
-/** Fetch a road-following route (store → drop) from the public OSRM service. */
 function useRoute(storeLoc: GeoPoint, dropLoc: GeoPoint): LatLng[] {
   const straight: LatLng[] = [
     [storeLoc.lat, storeLoc.lng],
@@ -95,12 +84,10 @@ function useRoute(storeLoc: GeoPoint, dropLoc: GeoPoint): LatLng[] {
           | [number, number][]
           | undefined;
         if (!cancelled && coords && coords.length > 1) {
-          // OSRM returns [lng, lat] — flip to Leaflet's [lat, lng].
           setRoute(coords.map(([lng, lat]) => [lat, lng] as LatLng));
         }
       })
       .catch(() => {
-        /* keep the straight-line fallback */
       });
     return () => {
       cancelled = true;
@@ -131,21 +118,16 @@ export default function DeliveryMap({ order, now }: { order: Order; now: number 
         attributionControl={false}
         style={{ height: "100%", width: "100%" }}
       >
-        {/* Minimal "Positron (no labels)" basemap — shows only roads, water,
-            and building footprints. No POIs, icons, or place labels, for a
-            clean delivery-route view. */}
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
           subdomains="abcd"
           maxZoom={20}
         />
 
-        {/* Full road route store → drop-off, highlighted green */}
         <Polyline
           positions={route}
           pathOptions={{ color: ROUTE_GREEN, weight: 5, opacity: 0.4 }}
         />
-        {/* Travelled portion along the road, only while delivering */}
         {showDriver && (
           <Polyline
             positions={travelled}

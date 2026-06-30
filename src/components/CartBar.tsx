@@ -8,11 +8,6 @@ import { useStores } from "../store/storesStore";
 import { describeChoices } from "../lib/pricing";
 import Thumb from "./Thumb";
 
-/**
- * Floating cart on the store menu. Tap to expand an inline list of your items
- * — adjust quantities and pick-and-mix without leaving the menu — then check
- * out. Collapsed it just shows the running count + subtotal.
- */
 export default function CartBar() {
   const navigate = useNavigate();
   const cart = useCart((s) => s.cart);
@@ -36,7 +31,6 @@ export default function CartBar() {
           exit={{ y: 80, opacity: 0 }}
           className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto flex max-w-[440px] flex-col gap-2 p-3"
         >
-          {/* Expandable item list (pick & mix) */}
           <AnimatePresence>
             {showList && (
               <motion.div
@@ -111,7 +105,6 @@ export default function CartBar() {
             )}
           </AnimatePresence>
 
-          {/* The bar itself — tap to expand/collapse the order */}
           <button
             onClick={() => setExpanded((v) => !v)}
             className="pointer-events-auto flex w-full items-center justify-between rounded-2xl bg-brand-500 px-4 py-3.5 text-white shadow-card-hover active:scale-[0.99]"

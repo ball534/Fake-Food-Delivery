@@ -20,7 +20,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -39,7 +39,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -62,7 +62,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -81,7 +81,7 @@
             },
             {
               "name": "Toppings",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -114,7 +114,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -133,7 +133,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -156,7 +156,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -175,7 +175,7 @@
             },
             {
               "name": "Toppings",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -205,7 +205,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -224,7 +224,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -247,7 +247,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -266,7 +266,7 @@
             },
             {
               "name": "Toppings",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -299,7 +299,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -318,7 +318,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -341,7 +341,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -360,7 +360,7 @@
             },
             {
               "name": "Toppings",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -395,7 +395,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -414,7 +414,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -437,7 +437,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -456,7 +456,7 @@
             },
             {
               "name": "Toppings",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -486,7 +486,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -505,7 +505,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -528,7 +528,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -554,7 +554,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -573,7 +573,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -596,7 +596,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -615,7 +615,7 @@
             },
             {
               "name": "Toppings",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {

@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 
 const PIECES = ["🎉", "🎊", "✨", "🥳", "🍔", "🍟", "🧋", "⭐"];
 
-/** A one-shot emoji confetti burst from the top of the screen. */
 export default function Confetti() {
   return (
     <div className="pointer-events-none fixed inset-0 z-40 overflow-hidden">

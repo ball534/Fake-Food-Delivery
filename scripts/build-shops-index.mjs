@@ -1,16 +1,3 @@
-// Build-time shop discovery.
-//
-// Browsers can't list a directory, so the app can't know which shop folders
-// exist under public/shops/ on its own. This script scans that folder for any
-// subdirectory containing a shop.json and writes the list to public/index.json,
-// which the app fetches at startup.
-//
-// It runs automatically before `dev` and `build` (see package.json), so adding
-// a new shop is just: drop a folder with a shop.json (+ optional banner.png /
-// logo.png / icons), commit, and the next build (e.g. on Vercel) regenerates
-// the index. No code changes needed.
-//
-// The "example" folder is a template/documentation only and is skipped.
 import { readdirSync, statSync, existsSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";

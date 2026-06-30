@@ -2,12 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { MapPin } from "lucide-react";
 import type { GeoPoint } from "../data/types";
 
-// A street-address input with a live "find the most relevant location"
-// dropdown, powered by OpenStreetMap's Nominatim search API (the same service
-// already used for reverse-geocoding in Profile). Typing fires a debounced
-// query; matching places appear in a dropdown you can tap to fill the field.
-// Picking a suggestion also captures its real coordinates (for the map).
-
 type Suggestion = { id: string; line: string; loc?: GeoPoint };
 
 export default function AddressAutocomplete({
@@ -17,7 +11,6 @@ export default function AddressAutocomplete({
   autoFocus,
 }: {
   value: string;
-  /** `loc` is provided only when a suggestion is picked (not on free typing). */
   onChange: (line: string, loc?: GeoPoint) => void;
   placeholder?: string;
   autoFocus?: boolean;
@@ -26,8 +19,6 @@ export default function AddressAutocomplete({
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [loading, setLoading] = useState(false);
   const boxRef = useRef<HTMLDivElement>(null);
-  // When a suggestion is picked we set the value programmatically — skip the
-  // next lookup so the dropdown doesn't immediately reopen.
   const skipNext = useRef(false);
 
   useEffect(() => {
@@ -72,7 +63,6 @@ export default function AddressAutocomplete({
         setSuggestions(list);
         setOpen(list.length > 0);
       } catch {
-        // Aborted (newer keystroke) or offline — leave any existing list be.
       } finally {
         setLoading(false);
       }
@@ -84,7 +74,6 @@ export default function AddressAutocomplete({
     };
   }, [value]);
 
-  // Dismiss the dropdown when tapping outside the field.
   useEffect(() => {
     const onPointerDown = (e: MouseEvent) => {
       if (boxRef.current && !boxRef.current.contains(e.target as Node)) {

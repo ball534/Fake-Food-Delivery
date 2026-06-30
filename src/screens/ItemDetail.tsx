@@ -47,27 +47,44 @@ export default function ItemDetail() {
   const isChosen = (optionId: string, choiceId: string) =>
     choices.some((c) => c.optionId === optionId && c.choiceId === choiceId);
 
+  const countFor = (optionId: string) =>
+    choices.filter((c) => c.optionId === optionId).length;
+
+  const minFor = (o: ItemOption) =>
+    o.required ? Math.max(1, o.min ?? 1) : o.min ?? 0;
+
   const selectChoice = (opt: ItemOption, choiceId: string) => {
-    setChoices((prev) => {
-      if (opt.multiSelect) {
-        const exists = prev.some(
-          (c) => c.optionId === opt.id && c.choiceId === choiceId,
-        );
-        return exists
-          ? prev.filter((c) => !(c.optionId === opt.id && c.choiceId === choiceId))
-          : [...prev, { optionId: opt.id, choiceId }];
+    if (opt.multiSelect) {
+      const exists = isChosen(opt.id, choiceId);
+      if (!exists && opt.max != null && countFor(opt.id) >= opt.max) {
+        showToast(`You can pick up to ${opt.max}`, "✋");
+        return;
       }
-      // single-select: replace any existing choice for this option
-      return [
-        ...prev.filter((c) => c.optionId !== opt.id),
-        { optionId: opt.id, choiceId },
-      ];
-    });
+      setChoices((prev) =>
+        exists
+          ? prev.filter((c) => !(c.optionId === opt.id && c.choiceId === choiceId))
+          : [...prev, { optionId: opt.id, choiceId }],
+      );
+      return;
+    }
+    setChoices((prev) => [
+      ...prev.filter((c) => c.optionId !== opt.id),
+      { optionId: opt.id, choiceId },
+    ]);
   };
 
   const missingRequired = (item.options ?? []).filter(
-    (o) => o.required && !choices.some((c) => c.optionId === o.id),
+    (o) => countFor(o.id) < minFor(o),
   );
+
+  const optionHint = (o: ItemOption): string => {
+    if (!o.multiSelect) return o.required ? "Required" : "Optional";
+    const { min, max } = o;
+    if (min && max) return min === max ? `Pick ${min}` : `Pick ${min}–${max}`;
+    if (max) return `Pick up to ${max}`;
+    if (min) return `Pick at least ${min}`;
+    return o.required ? "Pick 1 or more" : "Optional · pick any";
+  };
 
   const doAdd = () => {
     addLine({ item, storeId, qty, selectedChoices: choices, note });
@@ -86,7 +103,6 @@ export default function ItemDetail() {
 
   return (
     <Screen className="pb-28">
-      {/* Hero */}
       <div className="relative grid h-52 place-items-center overflow-hidden bg-neutral-200 text-8xl dark:bg-neutral-800">
         <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="" />
         <div className="absolute inset-x-0 top-0">
@@ -107,53 +123,57 @@ export default function ItemDetail() {
           </p>
         </div>
 
-        {/* Options */}
-        {(item.options ?? []).map((opt) => (
-          <section key={opt.id}>
-            <div className="mb-2 flex items-center justify-between">
-              <h3 className="font-bold text-neutral-900 dark:text-white">{opt.label}</h3>
-              <span className="text-xs font-medium text-neutral-400">
-                {opt.required ? "Required" : opt.multiSelect ? "Optional · multi" : "Optional"}
-              </span>
-            </div>
-            <div className="overflow-hidden rounded-2xl bg-white shadow-card dark:bg-neutral-900">
-              {opt.choices.map((choice, idx) => {
-                const checked = isChosen(opt.id, choice.id);
-                return (
-                  <button
-                    key={choice.id}
-                    onClick={() => selectChoice(opt, choice.id)}
-                    className={`flex w-full items-center justify-between px-4 py-3 text-left ${
-                      idx > 0 ? "border-t border-neutral-100 dark:border-neutral-800" : ""
-                    }`}
-                  >
-                    <span className="flex items-center gap-3">
-                      <span
-                        className={`h-4 w-4 shrink-0 border-2 transition ${
-                          opt.multiSelect ? "rounded" : "rounded-full"
-                        } ${
-                          checked
-                            ? "border-brand-500 bg-brand-500"
-                            : "border-neutral-300 dark:border-neutral-600"
-                        }`}
-                      />
-                      <span className="text-neutral-800 dark:text-neutral-100">
-                        {choice.label}
+        {(item.options ?? []).map((opt) => {
+          const atMax =
+            opt.multiSelect && opt.max != null && countFor(opt.id) >= opt.max;
+          return (
+            <section key={opt.id}>
+              <div className="mb-2 flex items-center justify-between">
+                <h3 className="font-bold text-neutral-900 dark:text-white">{opt.label}</h3>
+                <span className="text-xs font-medium text-neutral-400">
+                  {optionHint(opt)}
+                </span>
+              </div>
+              <div className="overflow-hidden rounded-2xl bg-white shadow-card dark:bg-neutral-900">
+                {opt.choices.map((choice, idx) => {
+                  const checked = isChosen(opt.id, choice.id);
+                  const locked = atMax && !checked;
+                  return (
+                    <button
+                      key={choice.id}
+                      onClick={() => selectChoice(opt, choice.id)}
+                      disabled={locked}
+                      className={`flex w-full items-center justify-between px-4 py-3 text-left transition disabled:opacity-40 ${
+                        idx > 0 ? "border-t border-neutral-100 dark:border-neutral-800" : ""
+                      }`}
+                    >
+                      <span className="flex items-center gap-3">
+                        <span
+                          className={`h-4 w-4 shrink-0 border-2 transition ${
+                            opt.multiSelect ? "rounded" : "rounded-full"
+                          } ${
+                            checked
+                              ? "border-brand-500 bg-brand-500"
+                              : "border-neutral-300 dark:border-neutral-600"
+                          }`}
+                        />
+                        <span className="text-neutral-800 dark:text-neutral-100">
+                          {choice.label}
+                        </span>
                       </span>
-                    </span>
-                    {choice.priceDelta > 0 && (
-                      <span className="text-sm text-neutral-500">
-                        +{money(choice.priceDelta)}
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </section>
-        ))}
+                      {choice.priceDelta > 0 && (
+                        <span className="text-sm text-neutral-500">
+                          +{money(choice.priceDelta)}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
 
-        {/* Special instructions */}
         <section>
           <h3 className="mb-2 font-bold text-neutral-900 dark:text-white">
             Special instructions
@@ -167,7 +187,6 @@ export default function ItemDetail() {
           />
         </section>
 
-        {/* Quantity */}
         <section className="flex items-center justify-between">
           <h3 className="font-bold text-neutral-900 dark:text-white">Quantity</h3>
           <div className="flex items-center gap-4">
@@ -193,7 +212,6 @@ export default function ItemDetail() {
         </section>
       </div>
 
-      {/* Sticky add bar */}
       <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px] border-t border-neutral-200 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
         <button onClick={handleAdd} disabled={missingRequired.length > 0} className="btn-primary w-full">
           {missingRequired.length > 0

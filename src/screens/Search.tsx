@@ -20,8 +20,6 @@ export default function Search() {
 
   const q = query.trim().toLowerCase();
 
-  // Shops the user has previously ordered from (newest first, de-duplicated),
-  // surfaced even if they were never searched for.
   const previousStores = useMemo(() => {
     const seen = new Set<string>();
     const list: Store[] = [];
@@ -42,7 +40,6 @@ export default function Search() {
     saveJSON(STORAGE_KEYS.recentSearches, next);
   };
 
-  // Matching stores: by name, cuisine, or any dish name (in seed order).
   const results = useMemo(() => {
     if (!q) return [] as Store[];
     return stores.filter(

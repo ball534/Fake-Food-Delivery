@@ -63,7 +63,7 @@
           "section": [
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -93,7 +93,7 @@
           "section": [
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -119,7 +119,7 @@
           "section": [
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {

@@ -1,12 +1,5 @@
 import { useState } from "react";
 
-/**
- * Renders a food/brand picture for the data-driven shops. Prefers the image at
- * `src`; if it's missing or fails to load it falls back to `emoji` (used by
- * promo/deal snapshot items) or, failing that, the `fallback` text label (e.g.
- * "logo", "banner", "food") so the UI reads sensibly before real art is added.
- * The parent element is expected to size + center this (e.g. a fixed-size box).
- */
 export default function Thumb({
   src,
   emoji,

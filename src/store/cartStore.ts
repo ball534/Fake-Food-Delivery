@@ -4,9 +4,6 @@ import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { computeUnitPrice } from "../lib/pricing";
 import { makeId } from "../lib/id";
 
-// Single-store cart (like Grab/Uber). Adding from a different store requires
-// clearing the current cart first.
-
 function emptyCart(): Cart {
   return { storeId: null, lines: [] };
 }
@@ -21,13 +18,11 @@ type AddArgs = {
 
 type CartState = {
   cart: Cart;
-  /** True if adding from `storeId` would require clearing a non-empty cart. */
   wouldReplace: (storeId: string) => boolean;
   addLine: (args: AddArgs) => void;
   setQty: (lineId: string, qty: number) => void;
   removeLine: (lineId: string) => void;
   clear: () => void;
-  /** Replace the whole cart with a past order's lines (Reorder). */
   reorder: (storeId: string, lines: CartLine[]) => void;
   itemCount: () => number;
   subtotal: () => number;
@@ -61,7 +56,6 @@ export const useCart = create<CartState>((set, get) => ({
         icon: item.icon || undefined,
         emoji: item.emoji,
       };
-      // If switching stores, replace the cart entirely.
       const switching = s.cart.storeId !== null && s.cart.storeId !== storeId;
       const cart: Cart = switching
         ? { storeId, lines: [line] }

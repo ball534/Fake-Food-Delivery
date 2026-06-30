@@ -38,13 +38,9 @@ export default function Home() {
   const [category, setCategory] = useState<string | null>(null);
   const now = useNow();
 
-  // The Special Deal rotates every 10 minutes.
   const deal = useMemo(() => selectDeal(deals, now), [deals, now]);
   const rotatesIn = msUntilRotation(now);
 
-  // A greeting picked for the current time of day that cycles on every page
-  // refresh (GREETING_SEED advances once per load). If the chosen line contains
-  // {name} it's substituted in place; otherwise the first name is appended.
   const greeting = useMemo(() => {
     const bucket = partOfDay(new Date(now).getHours());
     const pool = greetings[bucket] ?? DEFAULT_GREETINGS[bucket];
@@ -89,7 +85,6 @@ export default function Home() {
 
   return (
     <Screen className="pb-6">
-      {/* Header */}
       <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-5 pt-8 text-white">
         <p className="text-lg font-bold">{greeting}</p>
         <p className="text-sm text-brand-50/90">What are you craving?</p>
@@ -103,7 +98,6 @@ export default function Home() {
       </div>
 
       <div className="space-y-5 p-4">
-        {/* Special Deal */}
         <section>
           <div className="mb-2 flex items-center justify-between">
             <h2 className="flex items-center gap-1.5 text-base font-bold text-neutral-900 dark:text-white">
@@ -114,7 +108,6 @@ export default function Home() {
             </span>
           </div>
           {deal.storeId ? (
-            // Combo / limited-time item — tap through to the shop running it.
             <Link
               to={`/store/${deal.storeId}`}
               className="block overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 px-4 pb-4 pt-3 text-white shadow-card transition active:scale-[0.99]"
@@ -141,7 +134,6 @@ export default function Home() {
           )}
         </section>
 
-        {/* Category chips */}
         <div className="-mx-4 flex gap-2 overflow-x-auto px-4 no-scrollbar">
           <button
             onClick={() => setCategory(null)}
@@ -161,7 +153,6 @@ export default function Home() {
         </div>
 
         {category ? (
-          /* Filtered results for the chosen category */
           <section>
             <h2 className="mb-2 text-base font-bold text-neutral-900 dark:text-white">
               {category} · {filtered.length}
@@ -173,7 +164,6 @@ export default function Home() {
             </div>
           </section>
         ) : (
-          /* Featured — top 3 shops */
           <section>
             <h2 className="mb-2 flex items-center gap-1.5 text-base font-bold text-neutral-900 dark:text-white">
               <Flame size={18} className="text-brand-500" /> Featured
@@ -187,7 +177,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Floating cart button — quick jump to checkout when you've got items */}
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px]">
         <AnimatePresence>
           {cartCount > 0 && (

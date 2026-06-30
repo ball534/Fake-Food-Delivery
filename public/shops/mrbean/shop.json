@@ -20,7 +20,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -39,7 +39,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -62,7 +62,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -88,7 +88,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -107,7 +107,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -130,7 +130,7 @@
             },
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -156,7 +156,7 @@
           "section": [
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -182,7 +182,7 @@
           "section": [
             {
               "name": "Ice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {

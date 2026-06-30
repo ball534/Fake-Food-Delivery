@@ -1,9 +1,5 @@
 import type { MenuItem, SelectedChoice } from "../data/types";
 
-/**
- * Pre-select the first choice of every *required* option — used for quick-add
- * and as the initial state of the customise screen.
- */
 export function buildDefaultChoices(item: MenuItem): SelectedChoice[] {
   const out: SelectedChoice[] = [];
   for (const opt of item.options ?? []) {
@@ -14,12 +10,10 @@ export function buildDefaultChoices(item: MenuItem): SelectedChoice[] {
   return out;
 }
 
-/** Does the item require a choice the user must actively make? */
 export function needsCustomisation(item: MenuItem): boolean {
   return (item.options?.length ?? 0) > 0;
 }
 
-/** Unit price = base + the priceDelta of every selected choice. Pure. */
 export function computeUnitPrice(
   item: MenuItem,
   selected: SelectedChoice[],
@@ -33,7 +27,6 @@ export function computeUnitPrice(
   return Math.round(price * 100) / 100;
 }
 
-/** Human-readable summary of the chosen options, e.g. "Large · 50% · Pearls". */
 export function describeChoices(
   item: MenuItem,
   selected: SelectedChoice[],

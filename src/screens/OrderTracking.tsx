@@ -53,7 +53,6 @@ export default function OrderTracking() {
   const store = byId[order.storeId];
   const delivered = order.status === "delivered";
 
-  // Per-stage progress for the segmented bar.
   const prepFill = clamp01(
     (now - order.placedAt) / (order.stageTimes.delivering - order.placedAt),
   );
@@ -69,7 +68,6 @@ export default function OrderTracking() {
       <TopBar title="Track order" />
 
       <div className="space-y-4 p-4">
-        {/* Stage + progress */}
         <div className="rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-4 text-white">
           <p className="text-xs font-medium text-brand-50/90">
             {delivered ? "Your order is" : "Status"}
@@ -78,7 +76,6 @@ export default function OrderTracking() {
             {STATUS_LABEL[order.status]}
           </p>
 
-          {/* Segmented progress bar (pulses on the active leg) */}
           <div className="mt-4 flex items-center gap-1.5">
             <Segment fill={prepFill} active={order.status === "preparing"} />
             <Segment fill={driveFill} active={order.status === "delivering"} />
@@ -101,9 +98,7 @@ export default function OrderTracking() {
 
         <DeliveryMap order={order} now={now} />
 
-        {/* Driver card (no vehicle/plate; message only) */}
         <div className="card flex items-center gap-3 p-4">
-          {/* Default placeholder avatar (Instagram-style silhouette) */}
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700">
             <UserRound
               size={34}
@@ -124,7 +119,6 @@ export default function OrderTracking() {
           </button>
         </div>
 
-        {/* Rating prompt on delivery */}
         {delivered && (
           <div className="card flex flex-col items-center gap-2 p-4 text-center">
             <p className="font-bold text-neutral-900 dark:text-white">
@@ -141,7 +135,6 @@ export default function OrderTracking() {
           </div>
         )}
 
-        {/* Receipt — milky, paper-like stock */}
         <div
           className="rounded-2xl p-5 font-mono text-[13px] leading-relaxed shadow-card"
           style={{ backgroundColor: "#f7f2e7", color: "#4a4334" }}
@@ -222,7 +215,6 @@ function Segment({ fill, active }: { fill: number; active: boolean }) {
         animate={{ width: `${fill * 100}%` }}
         transition={{ ease: "linear", duration: 0.6 }}
       >
-        {/* A bright streak that sweeps forward (in the direction of progress). */}
         {active && (
           <motion.span
             className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-white/0 via-white to-white/0"

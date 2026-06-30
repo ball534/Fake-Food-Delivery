@@ -1,11 +1,3 @@
-// Loads the data-driven shops from /public/shops at runtime and maps the
-// on-disk JSON shape (see public/shops/example/shop.json and the README there)
-// into the app's internal Store types.
-//
-// The file format is intentionally minimal/authorable — it carries no ids and
-// no image paths. This module is the single seam that derives everything the UI
-// needs from it: stable option/choice/item ids (which the cart relies on) and
-// image URLs (by fixed convention: banner.png, logo.png, icons/<food>.png).
 import type {
   ItemOption,
   ItemOptionChoice,
@@ -15,15 +7,15 @@ import type {
   Store,
 } from "../data/types";
 
-// ---- Raw on-disk shapes (what shop.json contains) ------------------------
-
 export type RawOption = { name: string; price?: number };
 
 export type RawSection = {
   name: string;
-  /** "single-select" (radio) or "multi-select" (checkbox). Defaults to single. */
-  type?: string;
+  multiselect?: boolean;
+  min?: number;
+  max?: number;
   required?: boolean;
+  type?: string;
   options?: RawOption[];
 };
 
@@ -55,9 +47,6 @@ export type RawShop = {
   reviews?: RawReview[];
 };
 
-// ---- Helpers -------------------------------------------------------------
-
-/** kebab-case slug — derives stable ids and image filenames from names. */
 function slug(s: string): string {
   return (
     s
@@ -67,7 +56,6 @@ function slug(s: string): string {
   );
 }
 
-/** Return a slug guaranteed unique within `used` (appends -2, -3, … on clash). */
 function uniqueSlug(base: string, used: Set<string>): string {
   let id = base;
   let n = 2;
@@ -83,11 +71,18 @@ function parseSection(raw: RawSection, idx: number, usedOpt: Set<string>): ItemO
     label: o.name,
     priceDelta: Number(o.price) || 0,
   }));
+  const multiSelect =
+    raw.multiselect === true || raw.type === "multi-select" || raw.type === "multi";
   return {
     id: uniqueSlug(slug(raw.name) || `opt-${idx}`, usedOpt),
     label: raw.name,
     required: !!raw.required,
-    multiSelect: raw.type === "multi-select" || raw.type === "multi",
+    multiSelect,
+    min: multiSelect && typeof raw.min === "number" ? Math.max(0, raw.min) : undefined,
+    max:
+      multiSelect && typeof raw.max === "number"
+        ? Math.min(choices.length, Math.max(1, raw.max))
+        : undefined,
     choices,
   };
 }
@@ -97,8 +92,6 @@ function parseFood(
   shopBase: string,
   usedItem: Set<string>,
 ): MenuItem {
-  // The item id and its image filename both derive from the name, so a dropped-in
-  // icons/<id>.png lines up automatically.
   const id = uniqueSlug(slug(raw.name), usedItem);
   const usedOpt = new Set<string>();
   return {
@@ -112,11 +105,6 @@ function parseFood(
   };
 }
 
-/**
- * Map one raw shop.json blob into a fully-formed internal Store. `folderId` is
- * the shop's folder name, which serves as its id; images live alongside it by
- * fixed convention (banner.png / logo.png / icons/<food>.png).
- */
 export function parseShop(raw: RawShop, folderId: string, base: string): Store {
   const id = folderId;
   const shopBase = `${base}shops/${id}`;
@@ -154,11 +142,6 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
   };
 }
 
-/**
- * Fetch the shop index (built at build time — see scripts/build-shops-index.mjs)
- * and then every shop.json it lists, in parallel. A shop that fails to load is
- * skipped rather than breaking the whole catalogue.
- */
 export async function loadShops(base: string): Promise<Store[]> {
   const idxRes = await fetch(`${base}index.json`);
   if (!idxRes.ok) throw new Error(`index.json: ${idxRes.status}`);

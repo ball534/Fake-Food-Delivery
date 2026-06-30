@@ -12,7 +12,6 @@ import {
 } from "../lib/simulation";
 import { getStoreById } from "../store/storesStore";
 
-/** Most orders that can be in-flight (not yet delivered) at once. */
 export const MAX_ACTIVE_ORDERS = 3;
 
 type PlaceArgs = {
@@ -24,17 +23,14 @@ type PlaceArgs = {
   addressLabel?: string;
   pointsEarned: number;
   deliverySpeed: DeliverySpeed;
-  /** Concrete estimated delivery time (minutes), seeded by the drop-off. */
   etaMinutes: number;
   promoCode?: string;
-  /** Real drop-off coordinates (from the chosen address); falls back to DEFAULT_DROP. */
   dropLoc?: GeoPoint;
 };
 
 type OrderState = {
-  orders: Order[]; // newest first
+  orders: Order[];
   placeOrder: (args: PlaceArgs) => Order;
-  /** Recompute statuses for all active orders; persists if anything changed. */
   tick: () => void;
   rateOrder: (orderId: string, rating: number) => void;
   getOrder: (orderId: string) => Order | undefined;

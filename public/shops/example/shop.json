@@ -16,7 +16,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 { "name": "Regular", "price": 0 },
@@ -24,12 +24,15 @@
               ]
             },
             {
-              "name": "Add-ons",
-              "type": "multi-select",
+              "name": "Add-ons (pick up to 2)",
+              "multiselect": true,
               "required": false,
+              "max": 2,
               "options": [
                 { "name": "Extra cheese", "price": 1.0 },
-                { "name": "Add egg", "price": 1.0 }
+                { "name": "Add egg", "price": 1.0 },
+                { "name": "Add bacon", "price": 1.5 },
+                { "name": "Extra patty", "price": 2.5 }
               ]
             }
           ]

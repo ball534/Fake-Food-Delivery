@@ -20,17 +20,14 @@ function defaultProfile(): UserProfile {
     points: 0,
     loyalty: {},
     lastLoyaltyShopId: null,
-    addresses: [], // start blank — the user adds their own
+    addresses: [],
     selectedAddressId: "",
   };
 }
 
 export type PurchaseOpts = {
-  /** Bonus multiplier on points (e.g. Saver 1.5×, or a 2× promo). */
   pointsMultiplier?: number;
-  /** Multiplier on loyalty XP gained this order (default 1; a promo can double it). */
   loyaltyTiers?: number;
-  /** Points spent (e.g. Express). */
   pointsSpent?: number;
 };
 
@@ -46,14 +43,12 @@ type ProfileState = {
   profile: UserProfile;
   setName: (name: string) => void;
   setEmoji: (emoji: string) => void;
-  addAddress: (label: string, line: string, loc?: GeoPoint) => boolean; // false if at max
+  addAddress: (label: string, line: string, loc?: GeoPoint) => boolean;
   editAddress: (id: string, label: string, line: string, loc?: GeoPoint) => void;
   removeAddress: (id: string) => void;
   selectAddress: (id: string) => void;
   selectedAddress: () => Address | undefined;
-  /** Raw accumulated loyalty XP for a shop. */
   loyaltyXp: (storeId: string) => number;
-  /** Loyalty level for a shop, derived from its XP. */
   loyaltyTier: (storeId: string) => number;
   multiplierFor: (storeId: string) => number;
   recordPurchase: (storeId: string, orderTotal: number, opts?: PurchaseOpts) => PurchaseResult;
@@ -64,7 +59,6 @@ function persist(profile: UserProfile) {
   saveJSON(STORAGE_KEYS.profile, profile);
 }
 
-// Merge defaults over whatever is stored so older/partial blobs gain new fields.
 const stored = loadJSON<Partial<UserProfile>>(STORAGE_KEYS.profile, {});
 const initialProfile: UserProfile = { ...defaultProfile(), ...stored };
 
@@ -153,8 +147,6 @@ export const useProfile = create<ProfileState>((set, get) => ({
 
     const loyalty: Record<string, number> = { ...profile.loyalty };
 
-    // Straying to a different shop only chips a little XP off your previous
-    // one (gentle decay — loyalty is hard to lose, see lib/loyalty.ts).
     let droppedShopId: string | null = null;
     const prev = profile.lastLoyaltyShopId;
     if (prev && prev !== storeId) {
@@ -162,7 +154,6 @@ export const useProfile = create<ProfileState>((set, get) => ({
       droppedShopId = prev;
     }
 
-    // Earn XP at the shop you ordered from (loyaltyTiers doubles it for a promo).
     const newXp = currentXp + xpForOrder(orderTotal) * loyaltyTiers;
     loyalty[storeId] = newXp;
     const newTier = levelForXp(newXp);

@@ -28,19 +28,13 @@ export default function StoreMenu() {
   const showToast = useToasts((s) => s.show);
   const deals = useContent((s) => s.deals);
   const now = useNow();
-  // The currently-rotating Special Deal, surfaced here only when it's featured
-  // at this shop (combo / limited-time item deals carry a storeId).
   const deal = selectDeal(deals, now);
   const storeDeal = deal.storeId === storeId ? deal : null;
   const [activeCat, setActiveCat] = useState<string | null>(null);
   const chipRefs = useRef<Record<string, HTMLButtonElement | null>>({});
-  // True while a tap-driven smooth scroll is in flight — pauses the scroll-spy
-  // so it doesn't hijack the highlight to sections we're only passing through.
   const programmatic = useRef(false);
   const settleTimer = useRef<number | undefined>(undefined);
 
-  // Scroll-spy: highlight the chip for whichever category section is currently
-  // in the main viewing area as the user scrolls the menu.
   useEffect(() => {
     if (!store) return;
     const root = document.querySelector("main");
@@ -53,7 +47,6 @@ export default function StoreMenu() {
           if (e.isIntersecting) visible.set(label, e.boundingClientRect.top);
           else visible.delete(label);
         }
-        // A tap does its own scroll + highlight; don't fight it mid-animation.
         if (programmatic.current || visible.size === 0) return;
         const topMost = [...visible.entries()].sort((a, b) => a[1] - b[1])[0][0];
         setActiveCat(topMost);
@@ -67,9 +60,6 @@ export default function StoreMenu() {
     return () => observer.disconnect();
   }, [store]);
 
-  // Keep the active chip centered within the horizontal nav. Scroll only the
-  // nav itself (never via scrollIntoView, which can also scroll the vertical
-  // page container and cancel an in-flight tap scroll).
   useEffect(() => {
     if (!activeCat) return;
     const chip = chipRefs.current[activeCat];
@@ -97,18 +87,10 @@ export default function StoreMenu() {
   const distanceKm = distanceFor(store.id, seed);
 
   const scrollToCat = (label: string) => {
-    // Highlight immediately so a single tap turns the chip green right away.
     setActiveCat(label);
-    // Scroll the <main> container manually (rather than scrollIntoView, which
-    // is unreliable across nested scroll/sticky contexts) so the section lands
-    // just below the sticky category nav.
     const main = document.querySelector("main");
     const el = document.getElementById(`cat-${label}`);
     if (!main || !el) return;
-    // Suspend the scroll-spy for the whole journey, not a fixed guess — a far
-    // section can take well over a second to reach, and if the spy wakes mid
-    // scroll it snaps the highlight to a section we're only passing through
-    // (the bug that made a second tap necessary).
     programmatic.current = true;
     const STICKY_NAV = 56;
     const top =
@@ -123,15 +105,11 @@ export default function StoreMenu() {
       main.removeEventListener("scrollend", release);
       if (settleTimer.current) clearTimeout(settleTimer.current);
     };
-    // `scrollend` fires when the smooth scroll truly settles…
     main.addEventListener("scrollend", release);
-    // …with a fallback for browsers that don't support it (e.g. Safari).
     if (settleTimer.current) clearTimeout(settleTimer.current);
     settleTimer.current = window.setTimeout(release, 1000);
   };
 
-  // Add the featured combo / limited-time item straight to the cart. It isn't a
-  // real menu item, so we add it as a snapshot line (name + emoji travel with it).
   const addStoreDeal = () => {
     if (!storeDeal) return;
     addLine({
@@ -152,7 +130,6 @@ export default function StoreMenu() {
 
   return (
     <Screen className="pb-28">
-      {/* Banner */}
       <div className="relative grid h-44 place-items-center overflow-hidden bg-neutral-200 dark:bg-neutral-800">
         <Thumb src={store.banner} alt={store.name} fallback="banner" rounded="" />
         <div className="absolute inset-0 bg-black/5" />
@@ -161,9 +138,7 @@ export default function StoreMenu() {
         </div>
       </div>
 
-      {/* Store info card */}
       <div className="relative -mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8 dark:bg-neutral-950">
-        {/* Brand logo overlapping the banner's bottom-left, above the name */}
         <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
           <Thumb src={store.logo} alt={store.name} fallback="logo" rounded="rounded-2xl" />
         </span>
@@ -186,7 +161,6 @@ export default function StoreMenu() {
           </span>
         </div>
 
-        {/* Featured special running at this shop right now */}
         {storeDeal && (
           <div className="mt-3 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-3 text-white shadow-card">
             <span className="text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
@@ -211,7 +185,6 @@ export default function StoreMenu() {
         )}
       </div>
 
-      {/* Sticky category nav */}
       <div className="sticky top-0 z-10 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
         <div className="flex gap-2 overflow-x-auto px-4 py-2.5 no-scrollbar">
           {store.menu.map((cat) => (
@@ -227,7 +200,6 @@ export default function StoreMenu() {
         </div>
       </div>
 
-      {/* Menu */}
       <div className="space-y-7 p-4">
         {store.menu.map((cat) => (
           <section
@@ -247,7 +219,6 @@ export default function StoreMenu() {
           </section>
         ))}
 
-        {/* Reviews */}
         <section>
           <h2 className="mb-3 flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
             Reviews

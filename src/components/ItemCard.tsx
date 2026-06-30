@@ -8,12 +8,6 @@ import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
 import Thumb from "./Thumb";
 
-/**
- * A menu-item row. Tapping the row opens the customise page. The + button
- * quick-adds items with no options, or opens customise when choices matter.
- * If adding from a different store, defers to the StoreMenu's clear-cart flow
- * by routing through the detail page.
- */
 export default function ItemCard({
   item,
   storeId,
@@ -30,7 +24,6 @@ export default function ItemCard({
 
   const quickAdd = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // Anything needing customisation or a store switch goes through detail.
     if (needsCustomisation(item) || wouldReplace(storeId)) {
       open();
       return;

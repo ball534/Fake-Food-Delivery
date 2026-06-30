@@ -20,7 +20,7 @@
           "section": [
             {
               "name": "Upsize meal?",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -42,7 +42,7 @@
           "section": [
             {
               "name": "Upsize meal?",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -93,7 +93,7 @@
           "section": [
             {
               "name": "Spice level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -134,7 +134,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -160,7 +160,7 @@
           "section": [
             {
               "name": "Dip",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -195,7 +195,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -214,7 +214,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -244,7 +244,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -263,7 +263,7 @@
             },
             {
               "name": "Sugar level",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {

@@ -17,6 +17,7 @@ import ItemDetail from "./screens/ItemDetail";
 import Checkout from "./screens/Checkout";
 import OrderTracking from "./screens/OrderTracking";
 import Legal from "./screens/Legal";
+import CreateStore from "./screens/CreateStore";
 
 const TABS = [
   { to: "/", label: "Home", icon: HomeIcon, end: true },
@@ -58,7 +59,6 @@ function TabBar() {
   );
 }
 
-/** Startup / error state shown while the shop catalogue loads from /public. */
 function Splash({ error = false }: { error?: boolean }) {
   return (
     <div className="grid h-full place-items-center p-8 text-center">
@@ -93,22 +93,16 @@ export default function App() {
   const storesLoaded = useStores((s) => s.loaded);
   const storesError = useStores((s) => s.error);
 
-  // Load the editable greetings/deals pools and the data-driven shop catalogue
-  // from /public once at startup.
   useEffect(() => {
     loadContent();
     loadStores();
   }, [loadContent, loadStores]);
 
-  // The <main> scroll container persists across routes, so a new screen would
-  // otherwise inherit the previous screen's scroll position (e.g. opening a
-  // shop part-way down the page). Reset to the top on every navigation.
   useEffect(() => {
     mainRef.current?.scrollTo({ top: 0 });
   }, [location.pathname]);
 
-  // The tab bar is hidden on "full-screen" sub-pages for an app-like feel.
-  const hideTabBar = /^\/(store|item|cart|checkout|track|legal)\b/.test(
+  const hideTabBar = /^\/(store|item|cart|checkout|track|legal|create-store)\b/.test(
     location.pathname,
   );
 
@@ -131,6 +125,7 @@ export default function App() {
                 <Route path="/search" element={<Search />} />
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/create-store" element={<CreateStore />} />
                 <Route path="/store/:storeId" element={<StoreMenu />} />
                 <Route path="/item/:storeId/:itemId" element={<ItemDetail />} />
                 <Route path="/cart" element={<Navigate to="/checkout" replace />} />

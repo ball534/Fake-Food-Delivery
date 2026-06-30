@@ -20,7 +20,7 @@
           "section": [
             {
               "name": "Upsize meal?",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -42,7 +42,7 @@
           "section": [
             {
               "name": "Upsize meal?",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -64,7 +64,7 @@
           "section": [
             {
               "name": "Upsize meal?",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -94,7 +94,7 @@
           "section": [
             {
               "name": "Add-ons",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -124,7 +124,7 @@
           "section": [
             {
               "name": "Add-ons",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -159,7 +159,7 @@
           "section": [
             {
               "name": "Add-ons",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -189,7 +189,7 @@
           "section": [
             {
               "name": "Add-ons",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -229,7 +229,7 @@
           "section": [
             {
               "name": "Dip",
-              "type": "multi-select",
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -259,7 +259,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -290,7 +290,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {
@@ -316,7 +316,7 @@
           "section": [
             {
               "name": "Size",
-              "type": "single-select",
+              "multiselect": false,
               "required": true,
               "options": [
                 {

@@ -1,4 +1,3 @@
-/** Short unique-ish id for cart lines and orders (runtime only). */
 export function makeId(prefix = ""): string {
   return (
     prefix +

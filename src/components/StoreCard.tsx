@@ -7,8 +7,6 @@ import { useProfile } from "../store/profileStore";
 import Thumb from "./Thumb";
 
 export default function StoreCard({ store }: { store: Store }) {
-  // Delivery time + distance are derived from the chosen drop-off, so they
-  // re-roll whenever the selected address changes.
   const selectedAddress = useProfile((s) => s.selectedAddress)();
   const seed = selectedAddress?.id ?? "no-address";
   const eta = etaRangeFor(store.id, seed);
@@ -24,7 +22,6 @@ export default function StoreCard({ store }: { store: Store }) {
       </div>
       <div className="p-3">
         <div className="flex gap-3">
-          {/* Square brand logo, sitting to the left of the shop name */}
           <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 shadow-sm dark:bg-neutral-800">
             <Thumb src={store.logo} alt={store.name} fallback="logo" />
           </span>
@@ -43,7 +40,6 @@ export default function StoreCard({ store }: { store: Store }) {
             </p>
           </div>
         </div>
-        {/* Delivery time + distance, flush below the logo to keep the card tight */}
         <div className="mt-2 flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
           <span className="flex items-center gap-1">
             <Clock size={13} /> {etaRange(eta)}

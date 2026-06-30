@@ -1,18 +1,5 @@
 {
-  "shops": [
-    "4fingers",
-    "bk",
-    "jollibee",
-    "kfc",
-    "koi",
-    "liho",
-    "mcd",
-    "mos",
-    "mrbean",
-    "occ",
-    "subway",
-    "sushiro"
-  ],
+  "shops": ["mcdonalds"],
   "greetings": {
     "morning": [
       "Good morning",

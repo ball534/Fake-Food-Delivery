@@ -79,14 +79,14 @@ src/
 │               # OrderTracking, Legal
 └─ styles/      # Tailwind entry + component classes
 scripts/
-└─ build-shops-index.mjs   # build step: scans public/shops → public/index.json
+└─ build-shops-index.mjs   # build step: scans public/shops → shops[] in public/content.json
 ```
 
 **Data-driven shops.** The store catalogue lives in `public/shops/<id>/shop.json`
 (+ optional `banner.png` / `logo.png` / `icons/*.png`). A prebuild step
 (`scripts/build-shops-index.mjs`, wired to `predev`/`prebuild`) scans the folder
-and writes `public/index.json`; the app fetches that at startup and loads each
-shop. `src/lib/shopLoader.ts` maps the authorable file format onto the internal
+and refreshes the `shops` array in `public/content.json`; the app fetches that at
+startup and loads each shop. `src/lib/shopLoader.ts` maps the authorable file format onto the internal
 types (deriving stable ids and image URLs), and `src/store/storesStore.ts` holds
 the loaded catalogue. Delivery time + distance are **not** in the data — they're
 generated at runtime from the chosen delivery address.
@@ -97,8 +97,8 @@ DOM only behind `lib/storage.ts`. Only `components/` and `screens/` are web-spec
 ## Shop data format
 
 Each subfolder under `public/shops/` is one shop. The app discovers them at
-**build time** (`scripts/build-shops-index.mjs` writes `public/index.json`) and
-loads each `shop.json` at runtime. To add a shop: drop a new folder with a
+**build time** (`scripts/build-shops-index.mjs` writes the `shops` list into
+`public/content.json`) and loads each `shop.json` at runtime. To add a shop: drop a new folder with a
 `shop.json`, commit, and the next build picks it up — no code changes.
 
 The `example/` folder is a template and is **not** loaded by the app.

@@ -1,9 +1,10 @@
-import { readdirSync, statSync, existsSync, writeFileSync } from "node:fs";
+import { readdirSync, statSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SHOPS_DIR = join(ROOT, "public", "shops");
+const CONTENT = join(ROOT, "public", "content.json");
 const SKIP = new Set(["example"]);
 
 function listShops() {
@@ -17,7 +18,21 @@ function listShops() {
     .sort();
 }
 
+// content.json holds both hand-authored content (greetings, deals) and the
+// generated shop list. We read-merge-write so the `shops` array is refreshed
+// without clobbering the authored sections.
+let content = {};
+if (existsSync(CONTENT)) {
+  try {
+    content = JSON.parse(readFileSync(CONTENT, "utf8"));
+  } catch {
+    content = {};
+  }
+}
+
 const shops = listShops();
-const out = join(ROOT, "public", "index.json");
-writeFileSync(out, JSON.stringify(shops, null, 2) + "\n");
-console.log(`build-shops-index: wrote ${shops.length} shops → public/index.json`);
+const { shops: _prev, ...rest } = content;
+const out = { shops, ...rest };
+
+writeFileSync(CONTENT, JSON.stringify(out, null, 2) + "\n");
+console.log(`build-shops-index: wrote ${shops.length} shops → public/content.json`);

@@ -69,7 +69,7 @@ function Splash({ error = false }: { error?: boolean }) {
             Couldn't load the shops
           </p>
           <p className="text-sm text-neutral-500 dark:text-neutral-400">
-            Check that <code>public/index.json</code> and the shop folders exist,
+            Check that <code>public/content.json</code> and the shop folders exist,
             then reload.
           </p>
         </div>

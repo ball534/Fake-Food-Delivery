@@ -98,14 +98,14 @@ const newCategory = (): CategoryDraft => ({
 const newReview = (): ReviewDraft => ({
   id: uid(),
   author: "",
-  emoji: "🙂",
+  emoji: "",
   rating: 5,
   text: "",
 });
 const newDeal = (): DealDraft => ({
   id: uid(),
   kind: "combo",
-  emoji: "🎁",
+  emoji: "",
   title: "",
   sub: "",
   price: "",
@@ -121,7 +121,7 @@ export default function CreateStore() {
   const [name, setName] = useState("");
   const [cuisines, setCuisines] = useState<string[]>([]);
   const [priceLevel, setPriceLevel] = useState<1 | 2 | 3>(1);
-  const [rating, setRating] = useState("4.5");
+  const [rating, setRating] = useState("");
   const [banner, setBanner] = useState<File | undefined>();
   const [logo, setLogo] = useState<File | undefined>();
 
@@ -305,17 +305,14 @@ export default function CreateStore() {
         </p>
 
         <FormCard icon={<StoreIcon size={18} />} title="Store details">
-          <Field label="Store name" hint="Required — also becomes the folder id.">
+          <Field label="Store name">
             <input
               className={inputCls}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Field>
-          <Field
-            label="Cuisine categories"
-            hint="Required — pick from the list. The first is the main chip."
-          >
+          <Field label="Cuisine categories">
             <CuisinePicker selected={cuisines} onChange={setCuisines} />
           </Field>
           <div className="grid grid-cols-2 gap-3">
@@ -351,7 +348,7 @@ export default function CreateStore() {
           </div>
         </FormCard>
 
-        <FormCard icon={<ImagePlus size={18} />} title="Images" subtitle="Optional">
+        <FormCard icon={<ImagePlus size={18} />} title="Images">
           <div className="grid grid-cols-2 gap-3">
             <ImagePicker label="Logo" file={logo} onPick={setLogo} />
             <ImagePicker label="Banner" file={banner} onPick={setBanner} />
@@ -363,7 +360,7 @@ export default function CreateStore() {
             <Utensils size={18} /> Menu
           </h2>
 
-          {categories.map((cat, ci) => (
+          {categories.map((cat) => (
             <div key={cat.id} className="card space-y-3 p-4">
               <div className="flex items-center gap-2">
                 <input
@@ -372,7 +369,7 @@ export default function CreateStore() {
                   onChange={(e) =>
                     patchCategory(cat.id, (c) => ({ ...c, name: e.target.value }))
                   }
-                  placeholder={`Category ${ci + 1}`}
+                  placeholder="Category"
                 />
                 {categories.length > 1 && (
                   <IconBtn
@@ -387,7 +384,7 @@ export default function CreateStore() {
               </div>
 
               <div className="space-y-3">
-                {cat.food.map((food, fi) => (
+                {cat.food.map((food) => (
                   <div
                     key={food.id}
                     className="space-y-2.5 rounded-xl border border-neutral-200 p-3 dark:border-neutral-700"
@@ -399,7 +396,7 @@ export default function CreateStore() {
                         onChange={(e) =>
                           patchFood(cat.id, food.id, (f) => ({ ...f, name: e.target.value }))
                         }
-                        placeholder={`Item ${fi + 1} name`}
+                        placeholder="Name"
                       />
                       <IconBtn
                         label="Remove item"
@@ -437,6 +434,7 @@ export default function CreateStore() {
                         onChange={(e) =>
                           patchFood(cat.id, food.id, (f) => ({ ...f, price: e.target.value }))
                         }
+                        placeholder="Price"
                       />
                       <ImagePicker
                         label="Photo"
@@ -1030,8 +1028,8 @@ function installNote(id: string): string {
     `       public/shops/${id}/`,
     "",
     "3. Rebuild (or restart the dev server). The build step",
-    "   regenerates public/index.json and your store appears",
-    "   automatically — no code changes needed.",
+    "   refreshes the shop list in public/content.json and your",
+    "   store appears automatically — no code changes needed.",
     "",
     "Folder contents:",
     "   shop.json   - your store's menu + details (required)",

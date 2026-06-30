@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { create } from "zustand";
-import { DEFAULT_DEALS, parseDealsCsv, type Deal } from "../data/promos";
+import { DEFAULT_DEALS, parseDealsJson, type Deal } from "../data/promos";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { useStores } from "./storesStore";
 
@@ -13,18 +13,12 @@ export const DEFAULT_GREETINGS: GreetingPool = {
   night: ["Late-night cravings", "Still up", "Hungry already"],
 };
 
-export function parseGreetingsJson(text: string): GreetingPool {
-  let data: unknown;
-  try {
-    data = JSON.parse(text);
-  } catch {
-    return {};
-  }
-  if (!data || typeof data !== "object" || Array.isArray(data)) return {};
+export function normalizeGreetings(value: unknown): GreetingPool {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return {};
   const pool: GreetingPool = {};
-  for (const [bucket, value] of Object.entries(data as Record<string, unknown>)) {
-    if (!Array.isArray(value)) continue;
-    const lines = value.filter((v): v is string => typeof v === "string" && v.trim() !== "");
+  for (const [bucket, v] of Object.entries(value as Record<string, unknown>)) {
+    if (!Array.isArray(v)) continue;
+    const lines = v.filter((x): x is string => typeof x === "string" && x.trim() !== "");
     if (lines.length > 0) pool[bucket.toLowerCase()] = lines;
   }
   return pool;
@@ -51,23 +45,21 @@ export const useContent = create<ContentState>((set) => ({
 
   load: async () => {
     const base = import.meta.env.BASE_URL ?? "/";
-    const [greetings, deals] = await Promise.all([
-      fetch(`${base}greetings.json`)
-        .then((r) => (r.ok ? r.text() : ""))
-        .then((t) => {
-          const p = parseGreetingsJson(t);
-          return Object.keys(p).length > 0 ? p : DEFAULT_GREETINGS;
-        })
-        .catch(() => DEFAULT_GREETINGS),
-      fetch(`${base}deals.csv`)
-        .then((r) => (r.ok ? r.text() : ""))
-        .then((t) => {
-          const d = parseDealsCsv(t);
-          return d.length > 0 ? d : DEFAULT_DEALS;
-        })
-        .catch(() => DEFAULT_DEALS),
-    ]);
-    set({ greetings, deals, loaded: true });
+    try {
+      const res = await fetch(`${base}content.json`);
+      const data: unknown = res.ok ? await res.json() : {};
+      const obj =
+        data && typeof data === "object" ? (data as Record<string, unknown>) : {};
+      const greetings = normalizeGreetings(obj.greetings);
+      const deals = parseDealsJson(obj.deals);
+      set({
+        greetings: Object.keys(greetings).length > 0 ? greetings : DEFAULT_GREETINGS,
+        deals: deals.length > 0 ? deals : DEFAULT_DEALS,
+        loaded: true,
+      });
+    } catch {
+      set({ greetings: DEFAULT_GREETINGS, deals: DEFAULT_DEALS, loaded: true });
+    }
   },
 }));
 

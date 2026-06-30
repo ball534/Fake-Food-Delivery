@@ -1,0 +1,72 @@
+{
+  "shops": [
+    "4fingers",
+    "bk",
+    "jollibee",
+    "kfc",
+    "koi",
+    "liho",
+    "mcd",
+    "mos",
+    "mrbean",
+    "occ",
+    "subway",
+    "sushiro"
+  ],
+  "greetings": {
+    "morning": [
+      "Good morning",
+      "Rise and shine",
+      "Morning",
+      "Top of the morning",
+      "Breakfast o'clock"
+    ],
+    "afternoon": [
+      "Good afternoon",
+      "Hope you're peckish",
+      "Afternoon",
+      "Lunch is calling",
+      "Midday munchies"
+    ],
+    "evening": [
+      "Good evening",
+      "Winding down",
+      "Evening",
+      "Dinner time",
+      "Treat yourself tonight"
+    ],
+    "night": [
+      "Late-night cravings",
+      "Still up",
+      "Hungry already",
+      "Midnight snack run",
+      "Burning the midnight oil"
+    ]
+  },
+  "deals": [
+    {
+      "kind": "code",
+      "emoji": "✨",
+      "title": "Double points day",
+      "sub": "2× points — tap to copy the code",
+      "code": "DOUBLEUP",
+      "effect": "points2x"
+    },
+    {
+      "kind": "code",
+      "emoji": "💜",
+      "title": "Loyalty in overdrive",
+      "sub": "Double loyalty gain — tap to copy",
+      "code": "LOYALMAX",
+      "effect": "loyalty2x"
+    },
+    {
+      "kind": "code",
+      "emoji": "⚡",
+      "title": "Free Express delivery",
+      "sub": "Skip the wait — tap to copy",
+      "code": "ZOOMZOOM",
+      "effect": "freeexpress"
+    }
+  ]
+}

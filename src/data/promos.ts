@@ -53,77 +53,31 @@ export function selectDeal(pool: Deal[], now: number): Deal {
 const DEAL_KINDS = new Set<DealKind>(["code", "combo", "item"]);
 const EFFECTS = new Set<PromoEffect>(["points2x", "loyalty2x", "freeexpress"]);
 
-function splitCsvLine(line: string): string[] {
-  const out: string[] = [];
-  let cur = "";
-  let quoted = false;
-  for (let i = 0; i < line.length; i++) {
-    const c = line[i];
-    if (quoted) {
-      if (c === '"') {
-        if (line[i + 1] === '"') {
-          cur += '"';
-          i++;
-        } else quoted = false;
-      } else cur += c;
-    } else if (c === '"') {
-      quoted = true;
-    } else if (c === ",") {
-      out.push(cur);
-      cur = "";
-    } else cur += c;
-  }
-  out.push(cur);
-  return out.map((s) => s.trim());
-}
+const num = (v: unknown): number | undefined =>
+  typeof v === "number" && Number.isFinite(v) ? v : undefined;
+const str = (v: unknown): string => (typeof v === "string" ? v : "");
 
-export function parseDealsCsv(text: string): Deal[] {
-  const lines = text
-    .split(/\r?\n/)
-    .map((l) => l.trim())
-    .filter((l) => l && !l.startsWith("#"));
-  if (lines.length < 2) return [];
-
-  const header = splitCsvLine(lines[0]).map((h) => h.toLowerCase());
-  const col = (name: string) => header.indexOf(name);
-  const ci = {
-    kind: col("kind"),
-    emoji: col("emoji"),
-    title: col("title"),
-    sub: col("sub"),
-    code: col("code"),
-    effect: col("effect"),
-    storeId: col("storeid"),
-    price: col("price"),
-    originalPrice: col("originalprice"),
-  };
-
+export function parseDealsJson(value: unknown): Deal[] {
+  if (!Array.isArray(value)) return [];
   const deals: Deal[] = [];
-  for (const line of lines.slice(1)) {
-    const f = splitCsvLine(line);
-    const get = (i: number) => (i >= 0 && i < f.length ? f[i] : "");
-    const kind = get(ci.kind) as DealKind;
-    const title = get(ci.title);
+  for (const raw of value) {
+    if (!raw || typeof raw !== "object") continue;
+    const r = raw as Record<string, unknown>;
+    const kind = r.kind as DealKind;
+    const title = str(r.title);
     if (!title || !DEAL_KINDS.has(kind)) continue;
 
-    const effectRaw = get(ci.effect) as PromoEffect;
-    const priceRaw = get(ci.price);
-    const price = priceRaw ? Number(priceRaw) : undefined;
-    const origRaw = get(ci.originalPrice);
-    const originalPrice = origRaw ? Number(origRaw) : undefined;
+    const effect = r.effect as PromoEffect;
     deals.push({
       kind,
-      emoji: get(ci.emoji) || "🎁",
+      emoji: str(r.emoji) || "🎁",
       title,
-      sub: get(ci.sub),
-      code: get(ci.code) || undefined,
-      effect: EFFECTS.has(effectRaw) ? effectRaw : undefined,
-      storeId: get(ci.storeId) || undefined,
-      price: price !== undefined && Number.isFinite(price) ? price : undefined,
-      originalPrice:
-        originalPrice !== undefined && Number.isFinite(originalPrice)
-          ? originalPrice
-          : undefined,
+      sub: str(r.sub),
+      code: str(r.code) || undefined,
+      effect: EFFECTS.has(effect) ? effect : undefined,
+      storeId: str(r.storeId) || undefined,
+      price: num(r.price),
+      originalPrice: num(r.originalPrice),
     });
   }
   return deals;

@@ -168,9 +168,12 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
 }
 
 export async function loadShops(base: string): Promise<Store[]> {
-  const idxRes = await fetch(`${base}index.json`);
-  if (!idxRes.ok) throw new Error(`index.json: ${idxRes.status}`);
-  const ids = (await idxRes.json()) as string[];
+  const res = await fetch(`${base}content.json`);
+  if (!res.ok) throw new Error(`content.json: ${res.status}`);
+  const data = (await res.json()) as { shops?: unknown };
+  const ids = Array.isArray(data.shops)
+    ? (data.shops.filter((s) => typeof s === "string") as string[])
+    : [];
 
   const shops = await Promise.all(
     ids.map(async (id) => {

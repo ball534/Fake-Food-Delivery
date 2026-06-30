@@ -1,0 +1,167 @@
+{
+  "name": "Sushiro",
+  "categories": [
+    "Japanese"
+  ],
+  "fastfood": false,
+  "pricelevel": 2,
+  "rating": 4.6,
+  "menu": [
+    {
+      "category": "Set Meals",
+      "food": [
+        {
+          "name": "Chirashi Don Set",
+          "description": "Assorted sashimi over rice + miso soup + chawanmushi.",
+          "price": 14.8,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Salmon Lover Set",
+          "description": "Eight pieces of salmon sushi + miso soup.",
+          "price": 16.5
+        }
+      ]
+    },
+    {
+      "category": "À la carte",
+      "food": [
+        {
+          "name": "Salmon Sushi (2pc)",
+          "description": "Fresh salmon over seasoned rice.",
+          "price": 3.6,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Tuna Sushi (2pc)",
+          "description": "Lean, fresh tuna over seasoned rice.",
+          "price": 3.8
+        },
+        {
+          "name": "Unagi Sushi (2pc)",
+          "description": "Grilled freshwater eel glazed with sweet sauce.",
+          "price": 5.5,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Ebi Tempura Roll",
+          "description": "Crispy shrimp tempura roll with mayo.",
+          "price": 5.2,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "California Roll",
+          "description": "Crab, avocado and cucumber roll.",
+          "price": 4.6
+        },
+        {
+          "name": "Chirashi Don",
+          "description": "A bowl of assorted sashimi over rice.",
+          "price": 12.5
+        },
+        {
+          "name": "Tamago Sushi (2pc)",
+          "description": "Sweet Japanese omelette sushi.",
+          "price": 2.8
+        }
+      ]
+    },
+    {
+      "category": "Sides",
+      "food": [
+        {
+          "name": "Chawanmushi",
+          "description": "Silky steamed egg custard.",
+          "price": 3.2
+        },
+        {
+          "name": "Miso Soup",
+          "description": "Warm, comforting miso.",
+          "price": 1.8
+        },
+        {
+          "name": "Edamame",
+          "description": "Lightly salted steamed soybeans.",
+          "price": 3
+        },
+        {
+          "name": "Chicken Karaage (5pc)",
+          "description": "Crunchy Japanese fried chicken.",
+          "price": 5.5,
+          "tags": [
+            "popular"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Ramune Soda",
+          "description": "Classic marble-bottle soda.",
+          "price": 3
+        },
+        {
+          "name": "Iced Green Tea",
+          "description": "Bottomless, fragrant green tea.",
+          "price": 2
+        },
+        {
+          "name": "Calpis Soda",
+          "description": "Sweet, milky cultured soda.",
+          "price": 3
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Mochi Ice Cream",
+          "description": "Chewy mochi wrapped around ice cream.",
+          "price": 3.4,
+          "tags": [
+            "new"
+          ]
+        },
+        {
+          "name": "Matcha Ice Cream",
+          "description": "Smooth green-tea soft serve.",
+          "price": 3.6
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Hana",
+      "emoji": "👩",
+      "rating": 5,
+      "text": "Salmon was fresh and the chirashi don was generous.",
+      "daysAgo": 2
+    },
+    {
+      "author": "Jun",
+      "emoji": "🧑",
+      "rating": 5,
+      "text": "Best value sushi delivery. Mochi ice cream is a must.",
+      "daysAgo": 4
+    },
+    {
+      "author": "Cheryl",
+      "emoji": "👩‍🦰",
+      "rating": 4,
+      "text": "Came well-packed, nothing squished. Tamago was sweet.",
+      "daysAgo": 10
+    }
+  ]
+}

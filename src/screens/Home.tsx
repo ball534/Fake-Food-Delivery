@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import { Link } from "react-router-dom";
-import { STORES, CATEGORIES, storesInCategory } from "../data/stores";
+import { useStores, storesInCategory } from "../store/storesStore";
 import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
 import { useCart } from "../store/cartStore";
@@ -33,6 +33,8 @@ export default function Home() {
   const cartCount = useCart((s) => s.itemCount());
   const greetings = useContent((s) => s.greetings);
   const deals = useContent((s) => s.deals);
+  const stores = useStores((s) => s.stores);
+  const categories = useStores((s) => s.categories);
   const [category, setCategory] = useState<string | null>(null);
   const now = useNow();
 
@@ -55,12 +57,12 @@ export default function Home() {
 
   const filtered = useMemo(
     () => (category ? storesInCategory(category) : []),
-    [category],
+    [category, stores],
   );
 
   const featured = useMemo(
-    () => [...STORES].sort((a, b) => b.rating - a.rating).slice(0, 3),
-    [],
+    () => [...stores].sort((a, b) => b.rating - a.rating).slice(0, 3),
+    [stores],
   );
 
   const copyCode = () => {
@@ -147,7 +149,7 @@ export default function Home() {
           >
             All
           </button>
-          {CATEGORIES.map((c) => (
+          {categories.map((c) => (
             <button
               key={c}
               onClick={() => setCategory(category === c ? null : c)}

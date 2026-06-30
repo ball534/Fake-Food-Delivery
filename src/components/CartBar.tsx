@@ -4,8 +4,9 @@ import { ShoppingBag, ChevronDown, Minus, Plus, Trash2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "../store/cartStore";
 import { money, pluralize } from "../lib/format";
-import { STORES_BY_ID } from "../data/stores";
+import { useStores } from "../store/storesStore";
 import { describeChoices } from "../lib/pricing";
+import Thumb from "./Thumb";
 
 /**
  * Floating cart on the store menu. Tap to expand an inline list of your items
@@ -21,7 +22,8 @@ export default function CartBar() {
   const removeLine = useCart((s) => s.removeLine);
   const [expanded, setExpanded] = useState(false);
 
-  const store = cart.storeId ? STORES_BY_ID[cart.storeId] : null;
+  const byId = useStores((s) => s.byId);
+  const store = cart.storeId ? byId[cart.storeId] : null;
   const open = count > 0;
   const showList = expanded && open;
 
@@ -49,14 +51,15 @@ export default function CartBar() {
                       .flatMap((c) => c.items)
                       .find((i) => i.id === line.itemId);
                     const name = item?.name ?? line.name ?? "Item";
-                    const emoji = item?.emoji ?? line.emoji ?? "🍽️";
+                    const icon = item?.icon ?? line.icon;
+                    const emoji = item?.emoji ?? line.emoji;
                     const summary = item
                       ? describeChoices(item, line.selectedChoices)
                       : "";
                     return (
                       <div key={line.lineId} className="flex items-center gap-3 p-3">
-                        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-neutral-100 text-xl dark:bg-neutral-800">
-                          {emoji}
+                        <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+                          <Thumb src={icon} emoji={emoji} fallback="food" alt={name} />
                         </span>
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-semibold text-neutral-900 dark:text-white">

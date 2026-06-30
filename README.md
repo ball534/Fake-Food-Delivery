@@ -27,9 +27,12 @@ npm run typecheck  # tsc --noEmit
 ## What's inside
 
 - **4 tabs** — Home, Search, Orders, Profile (bottom navigation bar).
-- **12 stores** grouped by broad cuisine (Western, Japanese, Korean, Filipino,
-  Local, Drinks) with full menus, item customisation (size / spice / add-ons /
-  toppings), tags, ratings, ETAs, and **fake customer reviews**.
+- **12 data-driven stores** grouped by broad cuisine (Western, Japanese, Korean,
+  Filipino, Local, Drinks) with full menus, item customisation (size / spice /
+  add-ons / toppings), tags, ratings, and **fake customer reviews**. Each store
+  is a folder of static files under `public/shops/` — see
+  [`public/shops/README.md`](public/shops/README.md) for the format. Adding or
+  editing a store needs no code changes.
 - **Rotating Special Deal** — one Home deal that cycles every 10 minutes through
   redeemable promo codes (copy & paste at checkout), special combos, and
   limited-time items.
@@ -51,9 +54,12 @@ npm run typecheck  # tsc --noEmit
   current location"), profile picture & name, and a light-themed, phone-framed UI.
 - **Privacy Policy and Terms & Conditions** are available in-app from the Profile tab
   (and reproduced in full below).
-- **Runs entirely on your device** — static seed data + `localStorage`. The only
-  network request is map tiles loaded from OpenStreetMap at runtime.
-- **Emoji "photos"** instead of scraped brand imagery (free, offline, safe).
+- **Runs entirely on your device** — static files + `localStorage`. The only
+  external network request is map tiles loaded from OpenStreetMap at runtime;
+  the shop catalogue is fetched from the app's own bundled static files.
+- **Image-driven shop art** — each store/item points at a PNG under
+  `public/shops/`; any missing image falls back to a small text label, so the app
+  works before real art is added.
 
 ## Architecture
 
@@ -61,15 +67,29 @@ The codebase is deliberately split so the logic could be reused in a future mobi
 (React Native / Expo) port — only the UI layer would be rebuilt.
 
 ```
+public/
+└─ shops/       # data-driven store catalogue (one folder per shop + a README)
 src/
-├─ data/        # types.ts + stores.ts + promos.ts + reviews.ts  (platform-agnostic seed data)
-├─ lib/         # storage (localStorage seam), simulation, pricing, loyalty, delivery, format, hooks
-├─ store/       # zustand: cartStore, orderStore, profileStore, toastStore
-├─ components/  # reusable UI (StoreCard, ItemCard, DeliveryMap, CartBar, Toaster…)
+├─ data/        # types.ts + promos.ts  (platform-agnostic types + promo seed data)
+├─ lib/         # storage (localStorage seam), shopLoader, simulation, pricing,
+│               # loyalty, delivery, format, hooks
+├─ store/       # zustand: storesStore, cartStore, orderStore, profileStore, toastStore
+├─ components/  # reusable UI (StoreCard, ItemCard, Thumb, DeliveryMap, CartBar, Toaster…)
 ├─ screens/     # Home, Search, Orders, Profile, StoreMenu, ItemDetail, Checkout,
 │               # OrderTracking, Legal
 └─ styles/      # Tailwind entry + component classes
+scripts/
+└─ build-shops-index.mjs   # build step: scans public/shops → public/index.json
 ```
+
+**Data-driven shops.** The store catalogue lives in `public/shops/<id>/shop.json`
+(+ optional `banner.png` / `logo.png` / `icons/*.png`). A prebuild step
+(`scripts/build-shops-index.mjs`, wired to `predev`/`prebuild`) scans the folder
+and writes `public/index.json`; the app fetches that at startup and loads each
+shop. `src/lib/shopLoader.ts` maps the authorable file format onto the internal
+types (deriving stable ids and image URLs), and `src/store/storesStore.ts` holds
+the loaded catalogue. Delivery time + distance are **not** in the data — they're
+generated at runtime from the chosen delivery address.
 
 **Portability rule:** `data/`, `lib/`, and `store/` are platform-agnostic — they touch the
 DOM only behind `lib/storage.ts`. Only `components/` and `screens/` are web-specific.

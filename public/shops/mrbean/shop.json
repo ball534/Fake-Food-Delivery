@@ -1,0 +1,262 @@
+{
+  "name": "Mr Bean",
+  "categories": [
+    "Local"
+  ],
+  "fastfood": false,
+  "pricelevel": 1,
+  "rating": 4.4,
+  "menu": [
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Soya Milk",
+          "description": "Freshly ground, smooth soya milk.",
+          "price": 2,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Soya Milk Tea",
+          "description": "Soya milk blended with fragrant tea and pearls.",
+          "price": 3,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Iced Milo Soya",
+          "description": "Chocolate-malt Milo swirled with soya milk.",
+          "price": 3.2,
+          "section": [
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Grass Jelly Soya",
+          "description": "Soya milk with cooling grass jelly cubes.",
+          "price": 3.4,
+          "section": [
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Soya Pancake",
+          "description": "Fluffy pancake with a soft custard centre.",
+          "price": 2.2
+        },
+        {
+          "name": "Soya Soft Serve",
+          "description": "Silky soy-based soft serve ice cream.",
+          "price": 2.8,
+          "tags": [
+            "new"
+          ]
+        },
+        {
+          "name": "Soya Ice Cream Waffle",
+          "description": "Warm crisp waffle topped with soya soft serve.",
+          "price": 4,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Red Bean Pancake",
+          "description": "Pillowy pancake filled with sweet red bean.",
+          "price": 2.4
+        },
+        {
+          "name": "Soya Bean Curd",
+          "description": "Classic silky tau huay in syrup.",
+          "price": 2.2,
+          "tags": [
+            "popular"
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Wen",
+      "emoji": "👩",
+      "rating": 5,
+      "text": "Soya milk so smooth and not too sweet. Pancakes fluffy.",
+      "daysAgo": 2
+    },
+    {
+      "author": "Hafiz",
+      "emoji": "🧑",
+      "rating": 4,
+      "text": "Soya soft serve is a guilt-free treat. Yum.",
+      "daysAgo": 6
+    }
+  ]
+}

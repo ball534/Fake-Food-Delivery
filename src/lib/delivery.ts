@@ -76,3 +76,23 @@ export function estimateMinutes(speed: DeliverySpeed, seed: string): number {
   const frac = (hashSeed(`${seed}:${speed}`) % 1000) / 1000;
   return Math.round(min + frac * (max - min));
 }
+
+/**
+ * A plausible store→drop distance (km, 1 d.p.) for a shop at a given delivery
+ * location. Deterministic from (storeId, seed) so it's stable across renders
+ * but re-rolls whenever the chosen address changes. ~0.6–4.8 km.
+ */
+export function distanceFor(storeId: string, seed: string): number {
+  const frac = (hashSeed(`${seed}:${storeId}:dist`) % 1000) / 1000;
+  return Math.round((0.6 + frac * 4.2) * 10) / 10;
+}
+
+/**
+ * A shop's headline delivery-time range (minutes) for the current delivery
+ * location, loosely scaled by the derived distance. Re-rolls with the address.
+ */
+export function etaRangeFor(storeId: string, seed: string): [number, number] {
+  const km = distanceFor(storeId, seed);
+  const mid = Math.round(11 + km * 3.4); // ~13–27 min across the distance range
+  return [Math.max(10, mid - 3), mid + 4];
+}

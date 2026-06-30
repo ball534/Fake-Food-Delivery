@@ -1,0 +1,546 @@
+{
+  "name": "LiHO Tea",
+  "categories": [
+    "Drinks"
+  ],
+  "fastfood": false,
+  "pricelevel": 1,
+  "rating": 4.4,
+  "menu": [
+    {
+      "category": "Signature",
+      "food": [
+        {
+          "name": "Cheese Brown Sugar Pearl",
+          "description": "Brown sugar pearl milk with cheese foam.",
+          "price": 4.6,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                {
+                  "name": "Golden pearls",
+                  "price": 0.7
+                },
+                {
+                  "name": "Pudding",
+                  "price": 0.8
+                },
+                {
+                  "name": "Grass jelly",
+                  "price": 0.7
+                },
+                {
+                  "name": "Cheese foam",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Fruit Tea",
+          "description": "Refreshing tea with real fruit pieces.",
+          "price": 4.2,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cheese Milk Tea",
+          "description": "Classic milk tea capped with salty cheese foam.",
+          "price": 4.4,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                {
+                  "name": "Golden pearls",
+                  "price": 0.7
+                },
+                {
+                  "name": "Pudding",
+                  "price": 0.8
+                },
+                {
+                  "name": "Grass jelly",
+                  "price": 0.7
+                },
+                {
+                  "name": "Cheese foam",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Tea & Latte",
+      "food": [
+        {
+          "name": "Matcha Milk",
+          "description": "Smooth matcha blended with fresh milk.",
+          "price": 4.6,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                {
+                  "name": "Golden pearls",
+                  "price": 0.7
+                },
+                {
+                  "name": "Pudding",
+                  "price": 0.8
+                },
+                {
+                  "name": "Grass jelly",
+                  "price": 0.7
+                },
+                {
+                  "name": "Cheese foam",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Roasted Oolong Tea",
+          "description": "Fragrant charcoal-roasted oolong.",
+          "price": 3.8,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Taro Milk Shake",
+          "description": "Creamy blended taro with chewy pearls.",
+          "price": 4.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                {
+                  "name": "Golden pearls",
+                  "price": 0.7
+                },
+                {
+                  "name": "Pudding",
+                  "price": 0.8
+                },
+                {
+                  "name": "Grass jelly",
+                  "price": 0.7
+                },
+                {
+                  "name": "Cheese foam",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Joel",
+      "emoji": "🧑",
+      "rating": 4,
+      "text": "Cheese brown sugar pearl is decadent. Loved it.",
+      "daysAgo": 2
+    },
+    {
+      "author": "Mei",
+      "emoji": "👩",
+      "rating": 4,
+      "text": "Fruit tea was refreshing with real fruit bits.",
+      "daysAgo": 8
+    }
+  ]
+}

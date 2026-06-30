@@ -1,0 +1,310 @@
+{
+  "name": "KFC",
+  "categories": [
+    "Western"
+  ],
+  "fastfood": true,
+  "pricelevel": 2,
+  "rating": 4.3,
+  "menu": [
+    {
+      "category": "Set Meals",
+      "food": [
+        {
+          "name": "Zinger Burger Meal",
+          "description": "Zinger + whipped potato + drink.",
+          "price": 9.8,
+          "tags": [
+            "popular",
+            "spicy"
+          ],
+          "section": [
+            {
+              "name": "Upsize meal?",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Regular",
+                  "price": 0
+                },
+                {
+                  "name": "Upsize (+$1.20)",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "2pc Chicken Meal",
+          "description": "2 pieces of signature fried chicken + side + drink.",
+          "price": 10.5,
+          "section": [
+            {
+              "name": "Upsize meal?",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Regular",
+                  "price": 0
+                },
+                {
+                  "name": "Upsize (+$1.20)",
+                  "price": 1.2
+                }
+              ]
+            },
+            {
+              "name": "Spice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Mild",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0
+                },
+                {
+                  "name": "Hot 🔥",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "6pc Bucket Meal",
+          "description": "Six pieces of signature chicken + 2 sides. For sharing.",
+          "price": 28.9,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Spice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Mild",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0
+                },
+                {
+                  "name": "Hot 🔥",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "À la carte",
+      "food": [
+        {
+          "name": "Zinger Burger",
+          "description": "Crunchy spicy chicken fillet, lettuce, mayo.",
+          "price": 6.8,
+          "tags": [
+            "spicy"
+          ]
+        },
+        {
+          "name": "2pc Fried Chicken",
+          "description": "Crispy on the outside, juicy inside.",
+          "price": 7.5,
+          "section": [
+            {
+              "name": "Spice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Mild",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0
+                },
+                {
+                  "name": "Hot 🔥",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cheese Zinger",
+          "description": "The Zinger with an extra slice of melty cheese.",
+          "price": 7.6,
+          "tags": [
+            "spicy"
+          ]
+        },
+        {
+          "name": "Chicken Rice Box",
+          "description": "Fried chicken over fragrant rice with gravy.",
+          "price": 6.9
+        }
+      ]
+    },
+    {
+      "category": "Sides",
+      "food": [
+        {
+          "name": "Popcorn Chicken",
+          "description": "Poppable golden bites.",
+          "price": 5,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Dip",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                {
+                  "name": "BBQ sauce",
+                  "price": 0.3
+                },
+                {
+                  "name": "Sweet & sour",
+                  "price": 0.3
+                },
+                {
+                  "name": "Curry sauce",
+                  "price": 0.3
+                },
+                {
+                  "name": "Garlic mayo",
+                  "price": 0.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cheese Fries",
+          "description": "Fries smothered in cheese sauce.",
+          "price": 4.2
+        },
+        {
+          "name": "Whipped Potato",
+          "description": "Smooth mashed potato with savoury gravy.",
+          "price": 2.6
+        },
+        {
+          "name": "Coleslaw",
+          "description": "Cool, creamy cabbage slaw.",
+          "price": 2.8
+        }
+      ]
+    },
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Pepsi",
+          "description": "Chilled cola.",
+          "price": 2.4,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mountain Dew",
+          "description": "Bold citrus soda.",
+          "price": 2.4,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Portuguese Egg Tart",
+          "description": "Flaky pastry with silky custard centre.",
+          "price": 2.2,
+          "tags": [
+            "popular"
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Priya",
+      "emoji": "👩",
+      "rating": 5,
+      "text": "Zinger is unbeatable. Crispy and juicy!",
+      "daysAgo": 1
+    },
+    {
+      "author": "Wei Jie",
+      "emoji": "🧑",
+      "rating": 4,
+      "text": "Popcorn chicken was great for sharing.",
+      "daysAgo": 6
+    },
+    {
+      "author": "Sam",
+      "emoji": "👨",
+      "rating": 3,
+      "text": "Bit oily this time but flavour was solid.",
+      "daysAgo": 12
+    }
+  ]
+}

@@ -2,26 +2,31 @@ import { Link } from "react-router-dom";
 import { Star, Clock, Bike } from "lucide-react";
 import type { Store } from "../data/types";
 import { etaRange } from "../lib/format";
+import { etaRangeFor, distanceFor } from "../lib/delivery";
+import { useProfile } from "../store/profileStore";
+import Thumb from "./Thumb";
 
 export default function StoreCard({ store }: { store: Store }) {
+  // Delivery time + distance are derived from the chosen drop-off, so they
+  // re-roll whenever the selected address changes.
+  const selectedAddress = useProfile((s) => s.selectedAddress)();
+  const seed = selectedAddress?.id ?? "no-address";
+  const eta = etaRangeFor(store.id, seed);
+  const distanceKm = distanceFor(store.id, seed);
+
   return (
     <Link
       to={`/store/${store.id}`}
       className="block overflow-hidden rounded-2xl bg-white shadow-card transition active:scale-[0.99] dark:bg-neutral-900"
     >
-      <div
-        className="relative grid h-28 place-items-center text-5xl"
-        style={{
-          backgroundImage: `linear-gradient(135deg, ${store.bannerFrom}, ${store.bannerTo})`,
-        }}
-      >
-        <span className="drop-shadow">{store.emoji}</span>
+      <div className="relative grid h-28 place-items-center overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+        <Thumb src={store.banner} alt={store.name} fallback="banner" rounded="" />
       </div>
       <div className="p-3">
         <div className="flex gap-3">
           {/* Square brand logo, sitting to the left of the shop name */}
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-neutral-100 text-2xl shadow-sm dark:bg-neutral-800">
-            {store.logo}
+          <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 shadow-sm dark:bg-neutral-800">
+            <Thumb src={store.logo} alt={store.name} fallback="logo" />
           </span>
           <div className="min-w-0 flex-1">
             <div className="flex items-start justify-between gap-2">
@@ -41,10 +46,10 @@ export default function StoreCard({ store }: { store: Store }) {
         {/* Delivery time + distance, flush below the logo to keep the card tight */}
         <div className="mt-2 flex items-center gap-3 text-xs text-neutral-500 dark:text-neutral-400">
           <span className="flex items-center gap-1">
-            <Clock size={13} /> {etaRange(store.etaMinutes)}
+            <Clock size={13} /> {etaRange(eta)}
           </span>
           <span className="flex items-center gap-1">
-            <Bike size={13} /> {store.distanceKm.toFixed(1)} km
+            <Bike size={13} /> {distanceKm.toFixed(1)} km
           </span>
         </div>
       </div>

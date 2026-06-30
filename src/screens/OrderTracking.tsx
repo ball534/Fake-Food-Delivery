@@ -14,7 +14,7 @@ import { useNow } from "../lib/hooks";
 import { STATUS_LABEL } from "../lib/simulation";
 import { describeChoices } from "../lib/pricing";
 import { DELIVERY_BY_ID } from "../lib/delivery";
-import { STORES_BY_ID } from "../data/stores";
+import { useStores } from "../store/storesStore";
 import { formatClock, formatDate, money } from "../lib/format";
 
 function clamp01(n: number) {
@@ -28,6 +28,7 @@ export default function OrderTracking() {
   const order = useOrders((s) => s.orders.find((o) => o.id === orderId));
   const rateOrder = useOrders((s) => s.rateOrder);
   const showToast = useToasts((s) => s.show);
+  const byId = useStores((s) => s.byId);
 
   const [confetti, setConfetti] = useState(false);
   const celebrated = useRef(false);
@@ -49,7 +50,7 @@ export default function OrderTracking() {
     );
   }
 
-  const store = STORES_BY_ID[order.storeId];
+  const store = byId[order.storeId];
   const delivered = order.status === "delivered";
 
   // Per-stage progress for the segmented bar.

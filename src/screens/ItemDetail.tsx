@@ -5,7 +5,8 @@ import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import EmptyState from "../components/EmptyState";
 import ConfirmDialog from "../components/ConfirmDialog";
-import { STORES_BY_ID } from "../data/stores";
+import Thumb from "../components/Thumb";
+import { useStores } from "../store/storesStore";
 import type { ItemOption, SelectedChoice } from "../data/types";
 import { money } from "../lib/format";
 import { buildDefaultChoices, computeUnitPrice } from "../lib/pricing";
@@ -15,7 +16,7 @@ import { useToasts } from "../store/toastStore";
 export default function ItemDetail() {
   const { storeId = "", itemId = "" } = useParams();
   const navigate = useNavigate();
-  const store = STORES_BY_ID[storeId];
+  const store = useStores((s) => s.byId[storeId]);
   const item = store?.menu.flatMap((c) => c.items).find((i) => i.id === itemId);
 
   const addLine = useCart((s) => s.addLine);
@@ -86,13 +87,8 @@ export default function ItemDetail() {
   return (
     <Screen className="pb-28">
       {/* Hero */}
-      <div
-        className="relative grid h-52 place-items-center text-8xl"
-        style={{
-          backgroundImage: `linear-gradient(135deg, ${store.bannerFrom}, ${store.bannerTo})`,
-        }}
-      >
-        <span className="drop-shadow-lg">{item.emoji}</span>
+      <div className="relative grid h-52 place-items-center overflow-hidden bg-neutral-200 text-8xl dark:bg-neutral-800">
+        <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="" />
         <div className="absolute inset-x-0 top-0">
           <TopBar transparent />
         </div>

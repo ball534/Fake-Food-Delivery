@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { useApplyTheme, useOrderTicker } from "./lib/hooks";
 import { useOrders } from "./store/orderStore";
 import { useContent } from "./store/contentStore";
+import { useStores } from "./store/storesStore";
 import Toaster from "./components/Toaster";
 
 import Home from "./screens/Home";
@@ -57,17 +58,47 @@ function TabBar() {
   );
 }
 
+/** Startup / error state shown while the shop catalogue loads from /public. */
+function Splash({ error = false }: { error?: boolean }) {
+  return (
+    <div className="grid h-full place-items-center p-8 text-center">
+      {error ? (
+        <div className="space-y-2">
+          <p className="text-3xl">🍽️</p>
+          <p className="font-bold text-neutral-900 dark:text-white">
+            Couldn't load the shops
+          </p>
+          <p className="text-sm text-neutral-500 dark:text-neutral-400">
+            Check that <code>public/index.json</code> and the shop folders exist,
+            then reload.
+          </p>
+        </div>
+      ) : (
+        <div className="flex flex-col items-center gap-3 text-neutral-400">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-neutral-300 border-t-brand-500" />
+          <p className="text-sm font-medium">Loading shops…</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function App() {
   useApplyTheme();
   useOrderTicker();
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
   const loadContent = useContent((s) => s.load);
+  const loadStores = useStores((s) => s.load);
+  const storesLoaded = useStores((s) => s.loaded);
+  const storesError = useStores((s) => s.error);
 
-  // Load the editable greetings/deals pools from /public once at startup.
+  // Load the editable greetings/deals pools and the data-driven shop catalogue
+  // from /public once at startup.
   useEffect(() => {
     loadContent();
-  }, [loadContent]);
+    loadStores();
+  }, [loadContent, loadStores]);
 
   // The <main> scroll container persists across routes, so a new screen would
   // otherwise inherit the previous screen's scroll position (e.g. opening a
@@ -89,23 +120,29 @@ export default function App() {
           ref={mainRef}
           className="relative flex-1 overflow-y-auto overflow-x-hidden bg-neutral-50 dark:bg-neutral-950"
         >
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/store/:storeId" element={<StoreMenu />} />
-              <Route path="/item/:storeId/:itemId" element={<ItemDetail />} />
-              <Route path="/cart" element={<Navigate to="/checkout" replace />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/track/:orderId" element={<OrderTracking />} />
-              <Route path="/legal/:doc" element={<Legal />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </AnimatePresence>
+          {!storesLoaded ? (
+            <Splash />
+          ) : storesError ? (
+            <Splash error />
+          ) : (
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/store/:storeId" element={<StoreMenu />} />
+                <Route path="/item/:storeId/:itemId" element={<ItemDetail />} />
+                <Route path="/cart" element={<Navigate to="/checkout" replace />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/track/:orderId" element={<OrderTracking />} />
+                <Route path="/legal/:doc" element={<Legal />} />
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </AnimatePresence>
+          )}
         </main>
-        {!hideTabBar && <TabBar />}
+        {storesLoaded && !storesError && !hideTabBar && <TabBar />}
       </div>
     </div>
   );

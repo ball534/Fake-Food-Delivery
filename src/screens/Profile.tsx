@@ -16,9 +16,10 @@ import {
 import Screen from "../components/Screen";
 import ConfirmDialog from "../components/ConfirmDialog";
 import AddressAutocomplete from "../components/AddressAutocomplete";
+import Thumb from "../components/Thumb";
 import { useProfile, MAX_ADDRESSES } from "../store/profileStore";
 import { useToasts } from "../store/toastStore";
-import { STORES_BY_ID } from "../data/stores";
+import { useStores } from "../store/storesStore";
 import { clearAll } from "../lib/storage";
 import { levelForXp, multiplierForTier, tierName } from "../lib/loyalty";
 import type { Address, GeoPoint } from "../data/types";
@@ -31,6 +32,7 @@ export default function Profile() {
   const removeAddress = useProfile((s) => s.removeAddress);
   const selectAddress = useProfile((s) => s.selectAddress);
   const showToast = useToasts((s) => s.show);
+  const byId = useStores((s) => s.byId);
 
   const [editingName, setEditingName] = useState(false);
   const [nameDraft, setNameDraft] = useState(profile.name);
@@ -44,7 +46,7 @@ export default function Profile() {
   const atMax = profile.addresses.length >= MAX_ADDRESSES;
 
   const loyalties = Object.entries(profile.loyalty)
-    .map(([storeId, xp]) => ({ store: STORES_BY_ID[storeId], level: levelForXp(xp) }))
+    .map(([storeId, xp]) => ({ store: byId[storeId], level: levelForXp(xp) }))
     .filter((l) => l.store && l.level > 0)
     .sort((a, b) => b.level - a.level);
 
@@ -178,8 +180,8 @@ export default function Profile() {
                     to={`/store/${store.id}`}
                     className="flex items-center gap-3 rounded-xl bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
                   >
-                    <span className="grid h-9 w-9 place-items-center rounded-full bg-white text-lg shadow-card dark:bg-neutral-800">
-                      {store.emoji}
+                    <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white shadow-card dark:bg-neutral-800">
+                      <Thumb src={store.logo} alt={store.name} fallback="logo" rounded="rounded-full" />
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold text-neutral-900 dark:text-white">

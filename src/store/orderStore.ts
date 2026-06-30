@@ -10,7 +10,7 @@ import {
   statusAt,
   storeLocationFor,
 } from "../lib/simulation";
-import { STORES_BY_ID } from "../data/stores";
+import { getStoreById } from "../store/storesStore";
 
 /** Most orders that can be in-flight (not yet delivered) at once. */
 export const MAX_ACTIVE_ORDERS = 3;
@@ -52,13 +52,13 @@ export const useOrders = create<OrderState>((set, get) => ({
   placeOrder: ({ storeId, lines, subtotal, total, address, addressLabel, pointsEarned, deliverySpeed, etaMinutes, promoCode, dropLoc }) => {
     const placedAt = Date.now();
     const { stageTimes, etaAt } = computeStageTimes(placedAt, etaMinutes);
-    const store = STORES_BY_ID[storeId];
+    const store = getStoreById(storeId);
     const drop = dropLoc ?? DEFAULT_DROP;
     const order: Order = {
       id: makeId("ord-"),
       storeId,
       storeName: store?.name ?? "Store",
-      storeEmoji: store?.emoji ?? "🍽️",
+      storeLogo: store?.logo,
       lines,
       subtotal,
       total,

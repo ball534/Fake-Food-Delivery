@@ -1,0 +1,174 @@
+{
+  "name": "Old Chang Kee",
+  "categories": [
+    "Local"
+  ],
+  "fastfood": false,
+  "pricelevel": 1,
+  "rating": 4.3,
+  "menu": [
+    {
+      "category": "Snacks",
+      "food": [
+        {
+          "name": "Curry'O (Curry Puff)",
+          "description": "Flaky pastry with curried potato, chicken & egg.",
+          "price": 1.9,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Sotong Ball",
+          "description": "Bouncy deep-fried cuttlefish balls.",
+          "price": 3.2
+        },
+        {
+          "name": "Fishball Stick",
+          "description": "Skewered springy fishballs.",
+          "price": 2.4
+        },
+        {
+          "name": "Chicken Wing",
+          "description": "Crispy, marinated mid-joint chicken wing.",
+          "price": 2.5,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Spring Roll",
+          "description": "Crunchy roll packed with seasoned vegetables.",
+          "price": 2
+        },
+        {
+          "name": "Prawn Fritter",
+          "description": "Golden battered prawn cracker fritter.",
+          "price": 3
+        },
+        {
+          "name": "Sausage on Stick",
+          "description": "Juicy battered sausage, deep-fried.",
+          "price": 2.2
+        }
+      ]
+    },
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Teh Tarik",
+          "description": "Frothy pulled milk tea.",
+          "price": 1.8,
+          "section": [
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Bandung",
+          "description": "Sweet rose-syrup milk drink.",
+          "price": 2,
+          "section": [
+            {
+              "name": "Ice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "No ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Kopi",
+          "description": "Strong local-style coffee.",
+          "price": 1.8,
+          "section": [
+            {
+              "name": "Sugar level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "0%",
+                  "price": 0
+                },
+                {
+                  "name": "30%",
+                  "price": 0
+                },
+                {
+                  "name": "50%",
+                  "price": 0
+                },
+                {
+                  "name": "100%",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Tau Huay",
+          "description": "Silky soya bean curd in light syrup.",
+          "price": 1.8
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Uncle Lim",
+      "emoji": "👨",
+      "rating": 5,
+      "text": "Curry'O is still the GOAT. Flaky and fragrant.",
+      "daysAgo": 3
+    },
+    {
+      "author": "Farah",
+      "emoji": "🧕",
+      "rating": 4,
+      "text": "Sotong balls bouncy and fresh. Nostalgic snack run.",
+      "daysAgo": 7
+    }
+  ]
+}

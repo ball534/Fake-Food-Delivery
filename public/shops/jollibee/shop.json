@@ -1,0 +1,283 @@
+{
+  "name": "Jollibee",
+  "categories": [
+    "Filipino"
+  ],
+  "fastfood": true,
+  "pricelevel": 2,
+  "rating": 4.5,
+  "menu": [
+    {
+      "category": "Set Meals",
+      "food": [
+        {
+          "name": "Chickenjoy + Spaghetti Combo",
+          "description": "1pc Chickenjoy, Jolly Spaghetti, and a drink.",
+          "price": 10.9,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Upsize meal?",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Regular",
+                  "price": 0
+                },
+                {
+                  "name": "Upsize (+$1.20)",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "2pc Chickenjoy Combo",
+          "description": "Two pieces of Chickenjoy + rice + drink.",
+          "price": 13.5,
+          "section": [
+            {
+              "name": "Upsize meal?",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Regular",
+                  "price": 0
+                },
+                {
+                  "name": "Upsize (+$1.20)",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Burger Steak Combo",
+          "description": "Two burger steaks with mushroom gravy + rice + drink.",
+          "price": 9.9,
+          "section": [
+            {
+              "name": "Upsize meal?",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Regular",
+                  "price": 0
+                },
+                {
+                  "name": "Upsize (+$1.20)",
+                  "price": 1.2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "À la carte",
+      "food": [
+        {
+          "name": "Chickenjoy (1pc)",
+          "description": "Crispylicious, juicylicious fried chicken.",
+          "price": 5.2,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Spice level",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Mild",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0
+                },
+                {
+                  "name": "Hot 🔥",
+                  "price": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Jolly Spaghetti",
+          "description": "Sweet-style spaghetti with hotdog slices.",
+          "price": 4.8
+        },
+        {
+          "name": "Yumburger",
+          "description": "Juicy beef patty with Jollibee's signature dressing.",
+          "price": 3.2
+        },
+        {
+          "name": "Cheesy Yumburger",
+          "description": "The Yumburger with a slice of melty cheese.",
+          "price": 3.9
+        },
+        {
+          "name": "Burger Steak",
+          "description": "Beef patty smothered in savoury mushroom gravy.",
+          "price": 5.5
+        },
+        {
+          "name": "Palabok Fiesta",
+          "description": "Rice noodles in shrimp sauce with egg and chicharron.",
+          "price": 5.8
+        }
+      ]
+    },
+    {
+      "category": "Sides",
+      "food": [
+        {
+          "name": "Jolly Crispy Fries",
+          "description": "Light, crispy golden fries.",
+          "price": 3,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chicken Nuggets",
+          "description": "Tender chicken nuggets with dip.",
+          "price": 4.5,
+          "section": [
+            {
+              "name": "Dip",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                {
+                  "name": "BBQ sauce",
+                  "price": 0.3
+                },
+                {
+                  "name": "Sweet & sour",
+                  "price": 0.3
+                },
+                {
+                  "name": "Curry sauce",
+                  "price": 0.3
+                },
+                {
+                  "name": "Garlic mayo",
+                  "price": 0.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Pineapple Juice",
+          "description": "Sweet, tangy chilled pineapple juice.",
+          "price": 2.6,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Coke Float",
+          "description": "Coca-Cola topped with vanilla soft serve.",
+          "price": 3.2
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Peach Mango Pie",
+          "description": "Crispy pie with warm peach-mango filling.",
+          "price": 2.6,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Halo-Halo",
+          "description": "Shaved ice with beans, jelly, leche flan and ube.",
+          "price": 4.5,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Choco Sundae",
+          "description": "Vanilla soft serve with rich chocolate syrup.",
+          "price": 2.4
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Maria",
+      "emoji": "👩",
+      "rating": 5,
+      "text": "Chickenjoy + Jolly Spaghetti = childhood in a box.",
+      "daysAgo": 2
+    },
+    {
+      "author": "Ken",
+      "emoji": "🧑",
+      "rating": 4,
+      "text": "Peach mango pie was piping hot. Loved it.",
+      "daysAgo": 9
+    }
+  ]
+}

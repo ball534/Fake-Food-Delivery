@@ -6,6 +6,7 @@ import { money } from "../lib/format";
 import { needsCustomisation, buildDefaultChoices } from "../lib/pricing";
 import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
+import Thumb from "./Thumb";
 
 /**
  * A menu-item row. Tapping the row opens the customise page. The + button
@@ -65,8 +66,8 @@ export default function ItemCard({
         </p>
       </div>
       <div className="relative shrink-0">
-        <div className="grid h-20 w-20 place-items-center rounded-xl bg-neutral-100 text-4xl dark:bg-neutral-800">
-          {item.emoji}
+        <div className="grid h-20 w-20 place-items-center overflow-hidden rounded-xl bg-neutral-100 text-4xl dark:bg-neutral-800">
+          <Thumb src={item.icon} emoji={item.emoji} alt={item.name} />
         </div>
         <motion.button
           whileTap={{ scale: 0.85 }}

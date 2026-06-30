@@ -8,11 +8,13 @@ import ItemCard from "../components/ItemCard";
 import CartBar from "../components/CartBar";
 import EmptyState from "../components/EmptyState";
 import Stars from "../components/Stars";
-import { STORES_BY_ID } from "../data/stores";
-import { getReviews } from "../data/reviews";
+import Thumb from "../components/Thumb";
+import { useStores } from "../store/storesStore";
 import { etaRange } from "../lib/format";
 import { pluralize } from "../lib/format";
+import { etaRangeFor, distanceFor } from "../lib/delivery";
 import { useCart } from "../store/cartStore";
+import { useProfile } from "../store/profileStore";
 import { useToasts } from "../store/toastStore";
 import { useContent } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
@@ -20,7 +22,8 @@ import { selectDeal } from "../data/promos";
 
 export default function StoreMenu() {
   const { storeId = "" } = useParams();
-  const store = STORES_BY_ID[storeId];
+  const store = useStores((s) => s.byId[storeId]);
+  const selectedAddress = useProfile((s) => s.selectedAddress)();
   const addLine = useCart((s) => s.addLine);
   const showToast = useToasts((s) => s.show);
   const deals = useContent((s) => s.deals);
@@ -88,7 +91,10 @@ export default function StoreMenu() {
     );
   }
 
-  const reviews = getReviews(store.id);
+  const reviews = store.reviews;
+  const seed = selectedAddress?.id ?? "no-address";
+  const eta = etaRangeFor(store.id, seed);
+  const distanceKm = distanceFor(store.id, seed);
 
   const scrollToCat = (label: string) => {
     // Highlight immediately so a single tap turns the chip green right away.
@@ -133,6 +139,7 @@ export default function StoreMenu() {
         id: `deal-${storeDeal.id}`,
         name: storeDeal.title,
         description: storeDeal.sub,
+        icon: "",
         emoji: storeDeal.emoji,
         basePrice: storeDeal.price ?? 0,
       },
@@ -146,14 +153,9 @@ export default function StoreMenu() {
   return (
     <Screen className="pb-28">
       {/* Banner */}
-      <div
-        className="relative grid h-44 place-items-center text-7xl"
-        style={{
-          backgroundImage: `linear-gradient(135deg, ${store.bannerFrom}, ${store.bannerTo})`,
-        }}
-      >
+      <div className="relative grid h-44 place-items-center overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+        <Thumb src={store.banner} alt={store.name} fallback="banner" rounded="" />
         <div className="absolute inset-0 bg-black/5" />
-        <span className="relative drop-shadow-lg">{store.emoji}</span>
         <div className="absolute inset-x-0 top-0">
           <TopBar transparent />
         </div>
@@ -162,8 +164,8 @@ export default function StoreMenu() {
       {/* Store info card */}
       <div className="relative -mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8 dark:bg-neutral-950">
         {/* Brand logo overlapping the banner's bottom-left, above the name */}
-        <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center rounded-2xl bg-white text-3xl shadow-card-hover ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
-          {store.logo}
+        <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
+          <Thumb src={store.logo} alt={store.name} fallback="logo" rounded="rounded-2xl" />
         </span>
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-neutral-900 dark:text-white">
           {store.name}
@@ -177,10 +179,10 @@ export default function StoreMenu() {
             {store.rating.toFixed(1)}
           </span>
           <span className="flex items-center gap-1">
-            <Clock size={15} /> {etaRange(store.etaMinutes)}
+            <Clock size={15} /> {etaRange(eta)}
           </span>
           <span className="flex items-center gap-1">
-            <Bike size={15} /> {store.distanceKm.toFixed(1)} km
+            <Bike size={15} /> {distanceKm.toFixed(1)} km
           </span>
         </div>
 

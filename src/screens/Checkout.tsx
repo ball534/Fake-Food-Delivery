@@ -18,7 +18,8 @@ import { useCart } from "../store/cartStore";
 import { useProfile } from "../store/profileStore";
 import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
 import { useToasts } from "../store/toastStore";
-import { STORES_BY_ID } from "../data/stores";
+import { useStores } from "../store/storesStore";
+import Thumb from "../components/Thumb";
 import { describeChoices } from "../lib/pricing";
 import { money } from "../lib/format";
 import { basePointsFor } from "../lib/loyalty";
@@ -48,7 +49,8 @@ export default function Checkout() {
   const [appliedCode, setAppliedCode] = useState<string | null>(null);
   const [placing, setPlacing] = useState(false);
 
-  const store = cart.storeId ? STORES_BY_ID[cart.storeId] : null;
+  const byId = useStores((s) => s.byId);
+  const store = cart.storeId ? byId[cart.storeId] : null;
 
   if (!store || cart.lines.length === 0) {
     return (
@@ -143,13 +145,8 @@ export default function Checkout() {
       <div className="space-y-4 p-4">
         {/* Store header */}
         <div className="flex items-center gap-5">
-          <span
-            className="grid h-12 w-12 place-items-center rounded-xl text-2xl"
-            style={{
-              backgroundImage: `linear-gradient(135deg, ${store.bannerFrom}, ${store.bannerTo})`,
-            }}
-          >
-            {store.emoji}
+          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+            <Thumb src={store.logo} alt={store.name} fallback="logo" />
           </span>
           <div>
             <p className="font-bold text-neutral-900 dark:text-white">{store.name}</p>
@@ -164,12 +161,13 @@ export default function Checkout() {
           {cart.lines.map((line) => {
             const item = store.menu.flatMap((c) => c.items).find((i) => i.id === line.itemId);
             const name = item?.name ?? line.name ?? "Item";
-            const emoji = item?.emoji ?? line.emoji ?? "🍽️";
+            const icon = item?.icon ?? line.icon;
+            const emoji = item?.emoji ?? line.emoji;
             const summary = item ? describeChoices(item, line.selectedChoices) : "";
             return (
               <div key={line.lineId} className="flex gap-3 p-3">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-neutral-100 text-2xl dark:bg-neutral-800">
-                  {emoji}
+                <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+                  <Thumb src={icon} emoji={emoji} fallback="food" alt={name} />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">

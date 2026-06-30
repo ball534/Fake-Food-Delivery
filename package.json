@@ -5,7 +5,10 @@
   "type": "module",
   "description": "A fake food-delivery simulation game (Grab/Uber Eats look-alike).",
   "scripts": {
+    "shops:index": "node ./scripts/build-shops-index.mjs",
+    "predev": "npm run shops:index",
     "dev": "vite",
+    "prebuild": "npm run shops:index",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"

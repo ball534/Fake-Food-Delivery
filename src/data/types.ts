@@ -2,13 +2,6 @@
 // These are 100% platform-agnostic (no DOM / web APIs) so they port to
 // React Native unchanged.
 
-export type MenuCategoryType =
-  | "set_meal"
-  | "a_la_carte"
-  | "side"
-  | "drink"
-  | "dessert";
-
 export type ItemOptionChoice = {
   id: string;
   label: string;
@@ -27,15 +20,17 @@ export type MenuItem = {
   id: string;
   name: string;
   description: string;
-  /** Emoji used as a lightweight, license-free "photo". See §8 / §13 Q5. */
-  emoji: string;
+  /** Item image URL, resolved from the shop folder (e.g. /shops/mcd/icons/x.png). */
+  icon: string;
+  /** Optional emoji — used only by snapshot items added straight from a promo/deal. */
+  emoji?: string;
   basePrice: number; // fake credits
   options?: ItemOption[];
   tags?: string[]; // "spicy", "popular", "new"
 };
 
 export type MenuCategory = {
-  type: MenuCategoryType;
+  /** Section heading shown on the store page, e.g. "Set Meals", "Drinks". */
   label: string;
   items: MenuItem[];
 };
@@ -43,19 +38,24 @@ export type MenuCategory = {
 export type Store = {
   id: string;
   name: string;
-  /** Broad cuisine bucket — the Home filter chips + the card subtitle (e.g. "Western"). */
+  /** Primary cuisine bucket (categories[0]) — the card subtitle (e.g. "Western"). */
   cuisine: string;
-  /** Emoji "food example" shown big on the banner — keeps assets free. */
-  emoji: string;
-  /** Small square brand mark shown beside the shop name on cards. */
+  /** Every cuisine bucket this shop belongs to — drives the Home filter chips. */
+  categories: string[];
+  /** Whether this shop is surfaced by the cross-cutting "Fast Food" chip. */
+  fastFood: boolean;
+  /** Banner image URL (shops/<id>/banner.png) — text fallback if absent. */
+  banner: string;
+  /** Square brand-logo image URL (shops/<id>/logo.png) — text fallback if absent. */
   logo: string;
-  bannerFrom: string; // tailwind color stop, e.g. "#fbbf24"
-  bannerTo: string;
   rating: number; // 4.0–4.9
-  etaMinutes: [number, number];
-  distanceKm: number;
   priceLevel: 1 | 2 | 3; // $ / $$ / $$$ (rough)
   menu: MenuCategory[];
+  /** Fake customer reviews shown on the store page. */
+  reviews: Review[];
+  // NOTE: delivery time + distance are NOT stored here — they are derived at
+  // runtime from the chosen delivery address (see lib/delivery.ts), so they
+  // re-roll whenever the drop-off location changes.
 };
 
 /** A fake customer review shown on the store page. */
@@ -88,6 +88,9 @@ export type CartLine = {
   /** Display snapshot — lets lines render even when the item isn't in the
    *  live store menu (e.g. a promo "Special Deal" added straight from a banner). */
   name?: string;
+  /** Image URL snapshot for real menu items. */
+  icon?: string;
+  /** Emoji snapshot for promo/deal items that have no image. */
   emoji?: string;
 };
 
@@ -112,7 +115,10 @@ export type Order = {
   id: string;
   storeId: string;
   storeName: string;
-  storeEmoji: string;
+  /** Brand-logo image URL snapshot, for the order list/receipt. */
+  storeLogo?: string;
+  /** Legacy emoji snapshot — kept for orders placed before the image switch. */
+  storeEmoji?: string;
   lines: CartLine[];
   subtotal: number;
   total: number;

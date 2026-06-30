@@ -1,0 +1,200 @@
+{
+  "name": "4Fingers",
+  "categories": [
+    "Korean"
+  ],
+  "fastfood": true,
+  "pricelevel": 2,
+  "rating": 4.5,
+  "menu": [
+    {
+      "category": "À la carte",
+      "food": [
+        {
+          "name": "Crispy Wings (6pc)",
+          "description": "Korean-style wings tossed in soy-garlic or hot sauce.",
+          "price": 9,
+          "tags": [
+            "popular",
+            "spicy"
+          ],
+          "section": [
+            {
+              "name": "Sauce",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Soy Garlic",
+                  "price": 0
+                },
+                {
+                  "name": "Spicy 🔥",
+                  "price": 0
+                },
+                {
+                  "name": "Half & Half",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Crispy Wings (12pc)",
+          "description": "A dozen wings to share — pick your sauce.",
+          "price": 16.5,
+          "tags": [
+            "popular",
+            "spicy"
+          ],
+          "section": [
+            {
+              "name": "Sauce",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Soy Garlic",
+                  "price": 0
+                },
+                {
+                  "name": "Spicy 🔥",
+                  "price": 0
+                },
+                {
+                  "name": "Half & Half",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chicken Rice Box",
+          "description": "Wings or drumlets over rice with seaweed.",
+          "price": 8.5
+        },
+        {
+          "name": "Chicken Burger",
+          "description": "Crispy chicken thigh in a soft bun with slaw.",
+          "price": 7.5,
+          "section": [
+            {
+              "name": "Sauce",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Soy Garlic",
+                  "price": 0
+                },
+                {
+                  "name": "Spicy 🔥",
+                  "price": 0
+                },
+                {
+                  "name": "Half & Half",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Loaded Fries",
+          "description": "Fries topped with chicken bits and sauce.",
+          "price": 6,
+          "tags": [
+            "spicy"
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Sides",
+      "food": [
+        {
+          "name": "Kimchi Coleslaw",
+          "description": "Tangy, spicy slaw.",
+          "price": 3
+        },
+        {
+          "name": "Seaweed Fries",
+          "description": "Crispy fries dusted with savoury seaweed.",
+          "price": 4.5,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Popcorn Chicken",
+          "description": "Bite-size crunchy chicken with seaweed dusting.",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Coke",
+          "description": "Ice-cold cola.",
+          "price": 2.4,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Calamansi Soda",
+          "description": "Zesty Southeast-Asian lime soda.",
+          "price": 3.2
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Soft Serve",
+          "description": "Cooling vanilla soft serve — tames the spice.",
+          "price": 2.5
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Jin",
+      "emoji": "🧑",
+      "rating": 5,
+      "text": "Soy garlic wings are addictive. Get the rice box too.",
+      "daysAgo": 1
+    },
+    {
+      "author": "Rachel",
+      "emoji": "👩",
+      "rating": 4,
+      "text": "Spicy is genuinely spicy. Kimchi slaw balances it.",
+      "daysAgo": 5
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Screen from "../components/Screen";
 import EmptyState from "../components/EmptyState";
+import Thumb from "../components/Thumb";
 import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
 import { STATUS_LABEL } from "../lib/simulation";
 import { formatClock, formatDate, money, pluralize } from "../lib/format";
@@ -88,8 +89,8 @@ function OrderRow({ order }: { order: Order }) {
       className="cursor-pointer rounded-2xl bg-white p-4 shadow-card active:scale-[0.99] dark:bg-neutral-900"
     >
       <div className="flex items-center gap-3">
-        <span className="grid h-11 w-11 place-items-center rounded-xl bg-neutral-100 text-2xl dark:bg-neutral-800">
-          {order.storeEmoji}
+        <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+          <Thumb src={order.storeLogo} emoji={order.storeEmoji} fallback="logo" alt={order.storeName} />
         </span>
         <div className="min-w-0 flex-1">
           <p className="truncate font-bold text-neutral-900 dark:text-white">

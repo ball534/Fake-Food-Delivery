@@ -1,0 +1,49 @@
+{
+  "name": "Example Shop",
+  "categories": ["Western"],
+  "fastfood": false,
+  "pricelevel": 1,
+  "rating": 4.5,
+  "menu": [
+    {
+      "category": "Set Meals",
+      "food": [
+        {
+          "name": "Example Combo",
+          "description": "Lorem ipsum — a short, appetising description.",
+          "price": 5.6,
+          "tags": ["popular"],
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                { "name": "Regular", "price": 0 },
+                { "name": "Upsize", "price": 1.2 }
+              ]
+            },
+            {
+              "name": "Add-ons",
+              "type": "multi-select",
+              "required": false,
+              "options": [
+                { "name": "Extra cheese", "price": 1.0 },
+                { "name": "Add egg", "price": 1.0 }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "A. Foodie",
+      "emoji": "🙂",
+      "rating": 5,
+      "text": "Tasty and arrived on time. Would order again.",
+      "daysAgo": 2
+    }
+  ]
+}

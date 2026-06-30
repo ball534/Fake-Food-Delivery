@@ -58,6 +58,7 @@ export const useCart = create<CartState>((set, get) => ({
         unitPrice,
         lineTotal: Math.round(unitPrice * qty * 100) / 100,
         name: item.name,
+        icon: item.icon || undefined,
         emoji: item.emoji,
       };
       // If switching stores, replace the cart entirely.

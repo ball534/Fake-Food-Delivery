@@ -1,0 +1,349 @@
+{
+  "name": "Subway",
+  "categories": [
+    "Western"
+  ],
+  "fastfood": true,
+  "pricelevel": 2,
+  "rating": 4.3,
+  "menu": [
+    {
+      "category": "Combos",
+      "food": [
+        {
+          "name": "Italian B.M.T. Combo",
+          "description": "6-inch sub + cookie + drink.",
+          "price": 9.5,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Teriyaki Chicken Combo",
+          "description": "6-inch teriyaki chicken sub + cookie + drink.",
+          "price": 9.8,
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tuna Combo",
+          "description": "6-inch tuna sub + cookie + drink.",
+          "price": 9.2,
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "À la carte",
+      "food": [
+        {
+          "name": "Italian B.M.T. (6-inch)",
+          "description": "Pepperoni, salami, ham, and your choice of veggies.",
+          "price": 6.5,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Teriyaki Chicken (6-inch)",
+          "description": "Sweet-savory glazed chicken strips.",
+          "price": 6.8,
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Roast Beef (6-inch)",
+          "description": "Lean, tender roast beef with fresh veggies.",
+          "price": 7.2,
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tuna (6-inch)",
+          "description": "Creamy tuna mayo with your choice of veggies.",
+          "price": 6.5,
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Veggie Delite (6-inch)",
+          "description": "A crisp, fresh medley of garden vegetables.",
+          "price": 5.5,
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Meatball Marinara (6-inch)",
+          "description": "Italian meatballs in rich marinara sauce.",
+          "price": 6.6,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Bread",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Italian",
+                  "price": 0
+                },
+                {
+                  "name": "Hearty Wheat",
+                  "price": 0
+                },
+                {
+                  "name": "Parmesan Oregano",
+                  "price": 0.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Sides",
+      "food": [
+        {
+          "name": "Hash Browns",
+          "description": "Crispy golden potato bites.",
+          "price": 2.4
+        },
+        {
+          "name": "Chips",
+          "description": "A crunchy bag of potato chips.",
+          "price": 1.8
+        }
+      ]
+    },
+    {
+      "category": "Drinks",
+      "food": [
+        {
+          "name": "Fountain Drink",
+          "description": "Your choice of chilled fountain soda.",
+          "price": 2.2,
+          "section": [
+            {
+              "name": "Size",
+              "type": "single-select",
+              "required": true,
+              "options": [
+                {
+                  "name": "Small",
+                  "price": 0
+                },
+                {
+                  "name": "Medium",
+                  "price": 0.8
+                },
+                {
+                  "name": "Large",
+                  "price": 1.5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Choc-Chip Cookie",
+          "description": "Warm, gooey, freshly baked.",
+          "price": 1.6
+        },
+        {
+          "name": "Double Choc Cookie",
+          "description": "Extra cocoa with chunks of dark chocolate.",
+          "price": 1.6
+        },
+        {
+          "name": "Raspberry Cheesecake Cookie",
+          "description": "Sweet cheesecake cookie with raspberry swirls.",
+          "price": 1.8,
+          "tags": [
+            "new"
+          ]
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Hui Min",
+      "emoji": "👩",
+      "rating": 4,
+      "text": "Fresh and customisable. B.M.T. never disappoints.",
+      "daysAgo": 4
+    },
+    {
+      "author": "Arjun",
+      "emoji": "🧑",
+      "rating": 5,
+      "text": "Cookie arrived warm somehow. Made my day.",
+      "daysAgo": 11
+    }
+  ]
+}

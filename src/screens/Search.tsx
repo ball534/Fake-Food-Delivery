@@ -4,7 +4,7 @@ import { Search as SearchIcon, X } from "lucide-react";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import EmptyState from "../components/EmptyState";
-import { STORES, STORES_BY_ID } from "../data/stores";
+import { useStores } from "../store/storesStore";
 import type { Store } from "../data/types";
 import { useOrders } from "../store/orderStore";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
@@ -15,6 +15,8 @@ export default function Search() {
     loadJSON<string[]>(STORAGE_KEYS.recentSearches, []),
   );
   const orders = useOrders((s) => s.orders);
+  const stores = useStores((s) => s.stores);
+  const byId = useStores((s) => s.byId);
 
   const q = query.trim().toLowerCase();
 
@@ -26,11 +28,11 @@ export default function Search() {
     for (const o of orders) {
       if (seen.has(o.storeId)) continue;
       seen.add(o.storeId);
-      const store = STORES_BY_ID[o.storeId];
+      const store = byId[o.storeId];
       if (store) list.push(store);
     }
     return list;
-  }, [orders]);
+  }, [orders, byId]);
 
   const commitSearch = (term: string) => {
     const t = term.trim();
@@ -41,15 +43,15 @@ export default function Search() {
   };
 
   // Matching stores: by name, cuisine, or any dish name (in seed order).
-  const stores = useMemo(() => {
+  const results = useMemo(() => {
     if (!q) return [] as Store[];
-    return STORES.filter(
+    return stores.filter(
       (s) =>
         s.name.toLowerCase().includes(q) ||
-        s.cuisine.toLowerCase().includes(q) ||
+        s.categories.some((c) => c.toLowerCase().includes(q)) ||
         s.menu.some((cat) => cat.items.some((i) => i.name.toLowerCase().includes(q))),
     );
-  }, [q]);
+  }, [q, stores]);
 
   return (
     <Screen className="pb-6">
@@ -106,9 +108,9 @@ export default function Search() {
         {q && (
           <section>
             <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
-              Stores · {stores.length}
+              Stores · {results.length}
             </h2>
-            {stores.length === 0 ? (
+            {results.length === 0 ? (
               <EmptyState
                 emoji="🔍"
                 title="No matches"
@@ -116,7 +118,7 @@ export default function Search() {
               />
             ) : (
               <div className="space-y-3">
-                {stores.map((s) => (
+                {results.map((s) => (
                   <StoreCard key={s.id} store={s} />
                 ))}
               </div>

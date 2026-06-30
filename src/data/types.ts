@@ -22,7 +22,6 @@ export type MenuItem = {
   emoji?: string;
   basePrice: number;
   options?: ItemOption[];
-  tags?: string[];
 };
 
 export type MenuCategory = {
@@ -35,7 +34,6 @@ export type Store = {
   name: string;
   cuisine: string;
   categories: string[];
-  fastFood: boolean;
   banner: string;
   logo: string;
   rating: number;
@@ -50,7 +48,6 @@ export type Review = {
   emoji: string;
   rating: number;
   text: string;
-  daysAgo: number;
 };
 
 export type SelectedChoice = {

@@ -3,7 +3,6 @@
   "categories": [
     "Local"
   ],
-  "fastfood": false,
   "pricelevel": 1,
   "rating": 4.3,
   "menu": [
@@ -13,10 +12,7 @@
         {
           "name": "Curry'O (Curry Puff)",
           "description": "Flaky pastry with curried potato, chicken & egg.",
-          "price": 1.9,
-          "tags": [
-            "popular"
-          ]
+          "price": 1.9
         },
         {
           "name": "Sotong Ball",
@@ -31,10 +27,7 @@
         {
           "name": "Chicken Wing",
           "description": "Crispy, marinated mid-joint chicken wing.",
-          "price": 2.5,
-          "tags": [
-            "popular"
-          ]
+          "price": 2.5
         },
         {
           "name": "Spring Roll",
@@ -160,15 +153,13 @@
       "author": "Uncle Lim",
       "emoji": "👨",
       "rating": 5,
-      "text": "Curry'O is still the GOAT. Flaky and fragrant.",
-      "daysAgo": 3
+      "text": "Curry'O is still the GOAT. Flaky and fragrant."
     },
     {
       "author": "Farah",
       "emoji": "🧕",
       "rating": 4,
-      "text": "Sotong balls bouncy and fresh. Nostalgic snack run.",
-      "daysAgo": 7
+      "text": "Sotong balls bouncy and fresh. Nostalgic snack run."
     }
   ]
 }

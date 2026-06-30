@@ -1,9 +1,9 @@
 {
   "name": "McDonald's",
   "categories": [
-    "Western"
+    "Western",
+    "Fast Food"
   ],
-  "fastfood": true,
   "pricelevel": 1,
   "rating": 4.4,
   "menu": [
@@ -14,9 +14,6 @@
           "name": "Big Mac Meal",
           "description": "Big Mac + fries + Coke. The classic.",
           "price": 8.9,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Upsize meal?",
@@ -39,10 +36,6 @@
           "name": "McSpicy Meal",
           "description": "Spicy chicken fillet burger + fries + drink.",
           "price": 9.4,
-          "tags": [
-            "spicy",
-            "popular"
-          ],
           "section": [
             {
               "name": "Upsize meal?",
@@ -163,9 +156,6 @@
           "name": "McSpicy",
           "description": "Fiery whole chicken-thigh fillet burger.",
           "price": 7,
-          "tags": [
-            "spicy"
-          ],
           "section": [
             {
               "name": "Add-ons",
@@ -285,9 +275,6 @@
           "name": "World Famous Fries",
           "description": "Golden, crispy, salted.",
           "price": 3.2,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -373,10 +360,7 @@
         {
           "name": "Garlic Mushroom Fries",
           "description": "Fries tossed in savoury garlic and mushroom seasoning.",
-          "price": 4.5,
-          "tags": [
-            "new"
-          ]
+          "price": 4.5
         }
       ]
     },
@@ -488,10 +472,7 @@
         {
           "name": "McFlurry Oreo",
           "description": "Soft serve with crushed Oreo.",
-          "price": 3.9,
-          "tags": [
-            "popular"
-          ]
+          "price": 3.9
         },
         {
           "name": "Hot Fudge Sundae",
@@ -516,22 +497,19 @@
       "author": "Bryan T.",
       "emoji": "🧑",
       "rating": 5,
-      "text": "Fries were hot and crispy, classic never misses.",
-      "daysAgo": 2
+      "text": "Fries were hot and crispy, classic never misses."
     },
     {
       "author": "Nurul",
       "emoji": "🧕",
       "rating": 4,
-      "text": "McSpicy had a good kick. Delivery was quick.",
-      "daysAgo": 5
+      "text": "McSpicy had a good kick. Delivery was quick."
     },
     {
       "author": "Daniel L.",
       "emoji": "🧔",
       "rating": 4,
-      "text": "Reliable comfort food. Big Mac sauce hits.",
-      "daysAgo": 9
+      "text": "Reliable comfort food. Big Mac sauce hits."
     }
   ]
 }

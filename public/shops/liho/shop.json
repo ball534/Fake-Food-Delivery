@@ -3,7 +3,6 @@
   "categories": [
     "Drinks"
   ],
-  "fastfood": false,
   "pricelevel": 1,
   "rating": 4.4,
   "menu": [
@@ -14,9 +13,6 @@
           "name": "Cheese Brown Sugar Pearl",
           "description": "Brown sugar pearl milk with cheese foam.",
           "price": 4.6,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -176,9 +172,6 @@
           "name": "Cheese Milk Tea",
           "description": "Classic milk tea capped with salty cheese foam.",
           "price": 4.4,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -434,9 +427,6 @@
           "name": "Taro Milk Shake",
           "description": "Creamy blended taro with chewy pearls.",
           "price": 4.8,
-          "tags": [
-            "new"
-          ],
           "section": [
             {
               "name": "Size",
@@ -532,15 +522,13 @@
       "author": "Joel",
       "emoji": "🧑",
       "rating": 4,
-      "text": "Cheese brown sugar pearl is decadent. Loved it.",
-      "daysAgo": 2
+      "text": "Cheese brown sugar pearl is decadent. Loved it."
     },
     {
       "author": "Mei",
       "emoji": "👩",
       "rating": 4,
-      "text": "Fruit tea was refreshing with real fruit bits.",
-      "daysAgo": 8
+      "text": "Fruit tea was refreshing with real fruit bits."
     }
   ]
 }

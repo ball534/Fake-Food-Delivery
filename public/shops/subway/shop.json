@@ -1,9 +1,9 @@
 {
   "name": "Subway",
   "categories": [
-    "Western"
+    "Western",
+    "Fast Food"
   ],
-  "fastfood": true,
   "pricelevel": 2,
   "rating": 4.3,
   "menu": [
@@ -14,9 +14,6 @@
           "name": "Italian B.M.T. Combo",
           "description": "6-inch sub + cookie + drink.",
           "price": 9.5,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Bread",
@@ -100,9 +97,6 @@
           "name": "Italian B.M.T. (6-inch)",
           "description": "Pepperoni, salami, ham, and your choice of veggies.",
           "price": 6.5,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Bread",
@@ -233,9 +227,6 @@
           "name": "Meatball Marinara (6-inch)",
           "description": "Italian meatballs in rich marinara sauce.",
           "price": 6.6,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Bread",
@@ -322,10 +313,7 @@
         {
           "name": "Raspberry Cheesecake Cookie",
           "description": "Sweet cheesecake cookie with raspberry swirls.",
-          "price": 1.8,
-          "tags": [
-            "new"
-          ]
+          "price": 1.8
         }
       ]
     }
@@ -335,15 +323,13 @@
       "author": "Hui Min",
       "emoji": "👩",
       "rating": 4,
-      "text": "Fresh and customisable. B.M.T. never disappoints.",
-      "daysAgo": 4
+      "text": "Fresh and customisable. B.M.T. never disappoints."
     },
     {
       "author": "Arjun",
       "emoji": "🧑",
       "rating": 5,
-      "text": "Cookie arrived warm somehow. Made my day.",
-      "daysAgo": 11
+      "text": "Cookie arrived warm somehow. Made my day."
     }
   ]
 }

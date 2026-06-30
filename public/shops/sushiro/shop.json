@@ -3,7 +3,6 @@
   "categories": [
     "Japanese"
   ],
-  "fastfood": false,
   "pricelevel": 2,
   "rating": 4.6,
   "menu": [
@@ -13,10 +12,7 @@
         {
           "name": "Chirashi Don Set",
           "description": "Assorted sashimi over rice + miso soup + chawanmushi.",
-          "price": 14.8,
-          "tags": [
-            "popular"
-          ]
+          "price": 14.8
         },
         {
           "name": "Salmon Lover Set",
@@ -31,10 +27,7 @@
         {
           "name": "Salmon Sushi (2pc)",
           "description": "Fresh salmon over seasoned rice.",
-          "price": 3.6,
-          "tags": [
-            "popular"
-          ]
+          "price": 3.6
         },
         {
           "name": "Tuna Sushi (2pc)",
@@ -44,18 +37,12 @@
         {
           "name": "Unagi Sushi (2pc)",
           "description": "Grilled freshwater eel glazed with sweet sauce.",
-          "price": 5.5,
-          "tags": [
-            "popular"
-          ]
+          "price": 5.5
         },
         {
           "name": "Ebi Tempura Roll",
           "description": "Crispy shrimp tempura roll with mayo.",
-          "price": 5.2,
-          "tags": [
-            "popular"
-          ]
+          "price": 5.2
         },
         {
           "name": "California Roll",
@@ -95,10 +82,7 @@
         {
           "name": "Chicken Karaage (5pc)",
           "description": "Crunchy Japanese fried chicken.",
-          "price": 5.5,
-          "tags": [
-            "popular"
-          ]
+          "price": 5.5
         }
       ]
     },
@@ -128,10 +112,7 @@
         {
           "name": "Mochi Ice Cream",
           "description": "Chewy mochi wrapped around ice cream.",
-          "price": 3.4,
-          "tags": [
-            "new"
-          ]
+          "price": 3.4
         },
         {
           "name": "Matcha Ice Cream",
@@ -146,22 +127,19 @@
       "author": "Hana",
       "emoji": "👩",
       "rating": 5,
-      "text": "Salmon was fresh and the chirashi don was generous.",
-      "daysAgo": 2
+      "text": "Salmon was fresh and the chirashi don was generous."
     },
     {
       "author": "Jun",
       "emoji": "🧑",
       "rating": 5,
-      "text": "Best value sushi delivery. Mochi ice cream is a must.",
-      "daysAgo": 4
+      "text": "Best value sushi delivery. Mochi ice cream is a must."
     },
     {
       "author": "Cheryl",
       "emoji": "👩‍🦰",
       "rating": 4,
-      "text": "Came well-packed, nothing squished. Tamago was sweet.",
-      "daysAgo": 10
+      "text": "Came well-packed, nothing squished. Tamago was sweet."
     }
   ]
 }

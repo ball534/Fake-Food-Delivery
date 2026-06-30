@@ -3,7 +3,6 @@
   "categories": [
     "Drinks"
   ],
-  "fastfood": false,
   "pricelevel": 1,
   "rating": 4.7,
   "menu": [
@@ -14,9 +13,6 @@
           "name": "Golden Bubble Milk Tea",
           "description": "Signature milk tea with golden pearls.",
           "price": 4.2,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -108,9 +104,6 @@
           "name": "Macchiato Milk Tea",
           "description": "Milk tea topped with salty-sweet cheese macchiato foam.",
           "price": 4.8,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -293,9 +286,6 @@
           "name": "Brown Sugar Pearl Milk",
           "description": "Fresh milk layered with caramelised brown-sugar pearls.",
           "price": 4.9,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -646,15 +636,13 @@
       "author": "Xin Yi",
       "emoji": "👩",
       "rating": 5,
-      "text": "Golden bubbles are chewy perfection. 50% sugar just right.",
-      "daysAgo": 1
+      "text": "Golden bubbles are chewy perfection. 50% sugar just right."
     },
     {
       "author": "Faris",
       "emoji": "🧑",
       "rating": 4,
-      "text": "Macchiato foam is so good. A bit pricey but worth it.",
-      "daysAgo": 7
+      "text": "Macchiato foam is so good. A bit pricey but worth it."
     }
   ]
 }

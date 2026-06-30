@@ -1,27 +1,13 @@
 import { create } from "zustand";
 import type { Store } from "../data/types";
 import { loadShops } from "../lib/shopLoader";
-
-export const FAST_FOOD_CATEGORY = "Fast Food";
-
-const CATEGORY_ORDER = [
-  "Western",
-  "Japanese",
-  "Korean",
-  "Chinese",
-  "Filipino",
-  "Local",
-  "Drinks",
-];
+import { CUISINE_CATEGORIES } from "../data/categories";
 
 function computeCategories(stores: Store[]): string[] {
   const present = new Set(stores.flatMap((s) => s.categories));
-  const ordered = CATEGORY_ORDER.filter((c) => present.has(c));
-  const extra = [...present].filter((c) => !CATEGORY_ORDER.includes(c)).sort();
-  const cuisines = [...ordered, ...extra];
-  return stores.some((s) => s.fastFood)
-    ? [FAST_FOOD_CATEGORY, ...cuisines]
-    : cuisines;
+  const ordered = CUISINE_CATEGORIES.filter((c) => present.has(c));
+  const extra = [...present].filter((c) => !CUISINE_CATEGORIES.includes(c)).sort();
+  return [...ordered, ...extra];
 }
 
 type StoresState = {
@@ -64,6 +50,5 @@ export function getStoreById(id: string): Store | undefined {
 
 export function storesInCategory(category: string): Store[] {
   const { stores } = useStores.getState();
-  if (category === FAST_FOOD_CATEGORY) return stores.filter((s) => s.fastFood);
   return stores.filter((s) => s.categories.includes(category));
 }

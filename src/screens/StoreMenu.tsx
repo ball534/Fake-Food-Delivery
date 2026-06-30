@@ -237,9 +237,6 @@ export default function StoreMenu() {
                     <p className="font-semibold text-neutral-900 dark:text-white">
                       {r.author}
                     </p>
-                    <p className="mt-0.5 text-xs text-neutral-400">
-                      {r.daysAgo === 0 ? "Today" : pluralize(r.daysAgo, "day") + " ago"}
-                    </p>
                   </div>
                   <Stars value={r.rating} size={14} />
                 </div>

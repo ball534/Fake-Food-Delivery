@@ -3,7 +3,6 @@
   "categories": [
     "Japanese"
   ],
-  "fastfood": false,
   "pricelevel": 2,
   "rating": 4.5,
   "menu": [
@@ -14,9 +13,6 @@
           "name": "Rice Burger Set",
           "description": "Grilled rice 'buns' + side + green tea.",
           "price": 10.2,
-          "tags": [
-            "new"
-          ],
           "section": [
             {
               "name": "Upsize meal?",
@@ -65,10 +61,7 @@
         {
           "name": "Yakiniku Rice Burger",
           "description": "Savory beef between two grilled rice patties.",
-          "price": 7.4,
-          "tags": [
-            "popular"
-          ]
+          "price": 7.4
         },
         {
           "name": "Teriyaki Chicken Burger",
@@ -78,18 +71,12 @@
         {
           "name": "Ebi (Shrimp) Burger",
           "description": "Whole crispy shrimp patty with tangy sauce.",
-          "price": 7.2,
-          "tags": [
-            "popular"
-          ]
+          "price": 7.2
         },
         {
           "name": "Spicy MOS Cheeseburger",
           "description": "Beef patty, spicy meat sauce, melty cheese.",
           "price": 7,
-          "tags": [
-            "spicy"
-          ],
           "section": [
             {
               "name": "Spice level",
@@ -294,10 +281,7 @@
         {
           "name": "Matcha Sundae",
           "description": "Soft serve swirled with stone-ground matcha.",
-          "price": 3.4,
-          "tags": [
-            "new"
-          ]
+          "price": 3.4
         }
       ]
     }
@@ -307,15 +291,13 @@
       "author": "Aiko",
       "emoji": "👩",
       "rating": 5,
-      "text": "Rice burger is genius. So filling and tasty.",
-      "daysAgo": 3
+      "text": "Rice burger is genius. So filling and tasty."
     },
     {
       "author": "Marcus",
       "emoji": "🧑",
       "rating": 4,
-      "text": "Teriyaki chicken burger was lovely. Onion rings 10/10.",
-      "daysAgo": 8
+      "text": "Teriyaki chicken burger was lovely. Onion rings 10/10."
     }
   ]
 }

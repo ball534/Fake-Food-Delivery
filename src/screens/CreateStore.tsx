@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Plus,
   Trash2,
@@ -14,6 +14,7 @@ import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import { useToasts } from "../store/toastStore";
 import { makeZip, downloadBlob, type ZipEntry } from "../lib/zip";
+import { CUISINE_CATEGORIES } from "../data/categories";
 
 type OptionDraft = { id: string; name: string; price: string };
 type SectionDraft = {
@@ -29,7 +30,6 @@ type FoodDraft = {
   name: string;
   description: string;
   price: string;
-  tags: string[];
   sections: SectionDraft[];
   icon?: File;
 };
@@ -40,10 +40,7 @@ type ReviewDraft = {
   emoji: string;
   rating: number;
   text: string;
-  daysAgo: string;
 };
-
-const TAG_CHOICES = ["popular", "new", "spicy"];
 
 const uid = () =>
   typeof crypto !== "undefined" && "randomUUID" in crypto
@@ -81,7 +78,6 @@ const newFood = (): FoodDraft => ({
   name: "",
   description: "",
   price: "",
-  tags: [],
   sections: [],
 });
 const newCategory = (): CategoryDraft => ({
@@ -95,7 +91,6 @@ const newReview = (): ReviewDraft => ({
   emoji: "🙂",
   rating: 5,
   text: "",
-  daysAgo: "1",
 });
 
 const inputCls =
@@ -105,8 +100,7 @@ export default function CreateStore() {
   const showToast = useToasts((s) => s.show);
 
   const [name, setName] = useState("");
-  const [cuisines, setCuisines] = useState("");
-  const [fastFood, setFastFood] = useState(false);
+  const [cuisines, setCuisines] = useState<string[]>([]);
   const [priceLevel, setPriceLevel] = useState<1 | 2 | 3>(1);
   const [rating, setRating] = useState("4.5");
   const [banner, setBanner] = useState<File | undefined>();
@@ -137,79 +131,95 @@ export default function CreateStore() {
       sections: f.sections.map((s) => (s.id === sid ? fn(s) : s)),
     }));
 
+  const validateForm = (): string | null => {
+    if (!name.trim()) return "Give your store a name";
+    if (!cuisines.length) return "Pick at least one cuisine category";
+    const r = Number(rating);
+    if (!rating.trim() || Number.isNaN(r) || r < 0 || r > 5)
+      return "Enter a rating between 0 and 5";
+    if (!categories.length) return "Add at least one menu category";
+    for (const c of categories) {
+      if (!c.name.trim()) return "Every menu category needs a name";
+      if (!c.food.length) return `Add at least one item to “${c.name.trim() || "your category"}”`;
+      for (const f of c.food) {
+        if (!f.name.trim()) return "Every item needs a name";
+        if (!f.description.trim()) return `Add a description for “${f.name.trim()}”`;
+        if (!f.price.trim() || Number.isNaN(Number(f.price)))
+          return `Add a valid price for “${f.name.trim()}”`;
+        for (const s of f.sections) {
+          if (!s.name.trim()) return `Name the option group on “${f.name.trim()}”`;
+          if (!s.options.length) return `Add choices to “${s.name.trim()}”`;
+          for (const o of s.options) {
+            if (!o.name.trim()) return `Every choice in “${s.name.trim()}” needs a name`;
+            if (!o.price.trim() || Number.isNaN(Number(o.price)))
+              return `Every choice in “${s.name.trim()}” needs a valid price`;
+          }
+        }
+      }
+    }
+    for (const rv of reviews) {
+      if (!rv.author.trim()) return "Every review needs a reviewer name";
+      if (!rv.text.trim()) return "Every review needs some text";
+    }
+    return null;
+  };
+
   const exportZip = async () => {
-    const shopName = name.trim();
-    if (!shopName) {
-      showToast("Give your store a name first", "⚠️");
+    const error = validateForm();
+    if (error) {
+      showToast(error, "⚠️");
       return;
     }
 
+    const shopName = name.trim();
     const id = slug(shopName);
     const usedItem = new Set<string>();
     const iconFiles: { path: string; file: File }[] = [];
 
-    const menu = categories
-      .map((c) => ({
-        category: c.name.trim(),
-        food: c.food
-          .filter((f) => f.name.trim())
-          .map((f) => {
-            const itemId = uniqueSlug(slug(f.name.trim()), usedItem);
-            if (f.icon) iconFiles.push({ path: `icons/${itemId}.png`, file: f.icon });
+    const menu = categories.map((c) => ({
+      category: c.name.trim(),
+      food: c.food.map((f) => {
+        const itemId = uniqueSlug(slug(f.name.trim()), usedItem);
+        if (f.icon) iconFiles.push({ path: `icons/${itemId}.png`, file: f.icon });
 
-            const section = f.sections
-              .filter((s) => s.name.trim() && s.options.some((o) => o.name.trim()))
-              .map((s) => {
-                const out: Record<string, unknown> = {
-                  name: s.name.trim(),
-                  multiselect: s.multiselect,
-                  required: s.required,
-                };
-                if (s.multiselect && s.max.trim()) out.max = Number(s.max);
-                out.options = s.options
-                  .filter((o) => o.name.trim())
-                  .map((o) => ({ name: o.name.trim(), price: Number(o.price) || 0 }));
-                return out;
-              });
+        const section = f.sections.map((s) => {
+          const out: Record<string, unknown> = {
+            name: s.name.trim(),
+            multiselect: s.multiselect,
+            required: s.required,
+          };
+          if (s.multiselect && s.max.trim()) out.max = Number(s.max);
+          out.options = s.options.map((o) => ({
+            name: o.name.trim(),
+            price: Number(o.price) || 0,
+          }));
+          return out;
+        });
 
-            const food: Record<string, unknown> = { name: f.name.trim() };
-            if (f.description.trim()) food.description = f.description.trim();
-            food.price = Number(f.price) || 0;
-            if (f.tags.length) food.tags = f.tags;
-            if (section.length) food.section = section;
-            return food;
-          }),
-      }))
-      .filter((c) => c.category && c.food.length);
-
-    if (!menu.length) {
-      showToast("Add at least one category with one item", "⚠️");
-      return;
-    }
-
-    const cats = cuisines
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
+        const food: Record<string, unknown> = {
+          name: f.name.trim(),
+          description: f.description.trim(),
+          price: Number(f.price) || 0,
+        };
+        if (section.length) food.section = section;
+        return food;
+      }),
+    }));
 
     const shop: Record<string, unknown> = {
       name: shopName,
-      categories: cats.length ? cats : ["Other"],
-      fastfood: fastFood,
+      categories: cuisines,
       pricelevel: priceLevel,
-      rating: Number(rating) || 4.5,
+      rating: Number(rating),
       menu,
     };
 
-    const reviewOut = reviews
-      .filter((r) => r.author.trim() && r.text.trim())
-      .map((r) => ({
-        author: r.author.trim(),
-        emoji: r.emoji.trim() || "🙂",
-        rating: r.rating,
-        text: r.text.trim(),
-        daysAgo: Number(r.daysAgo) || 0,
-      }));
+    const reviewOut = reviews.map((r) => ({
+      author: r.author.trim(),
+      emoji: r.emoji.trim() || "🙂",
+      rating: r.rating,
+      text: r.text.trim(),
+    }));
     if (reviewOut.length) shop.reviews = reviewOut;
 
     try {
@@ -254,16 +264,13 @@ export default function CreateStore() {
               className={inputCls}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Sunny Burgers"
             />
           </Field>
-          <Field label="Cuisine categories" hint="Comma-separated. The first is the main chip.">
-            <input
-              className={inputCls}
-              value={cuisines}
-              onChange={(e) => setCuisines(e.target.value)}
-              placeholder="e.g. Western, Burgers"
-            />
+          <Field
+            label="Cuisine categories"
+            hint="Required — pick from the list. The first is the main chip."
+          >
+            <CuisinePicker selected={cuisines} onChange={setCuisines} />
           </Field>
           <div className="grid grid-cols-2 gap-3">
             <Field label="Price level">
@@ -296,15 +303,6 @@ export default function CreateStore() {
               />
             </Field>
           </div>
-          <label className="flex items-center gap-2.5 text-sm font-medium text-neutral-700 dark:text-neutral-200">
-            <input
-              type="checkbox"
-              checked={fastFood}
-              onChange={(e) => setFastFood(e.target.checked)}
-              className="h-4 w-4 accent-brand-500"
-            />
-            Show under the “Fast Food” filter
-          </label>
         </FormCard>
 
         <FormCard icon={<ImagePlus size={18} />} title="Images" subtitle="Optional">
@@ -328,7 +326,7 @@ export default function CreateStore() {
                   onChange={(e) =>
                     patchCategory(cat.id, (c) => ({ ...c, name: e.target.value }))
                   }
-                  placeholder={`Category ${ci + 1} (e.g. Burgers)`}
+                  placeholder={`Category ${ci + 1}`}
                 />
                 {categories.length > 1 && (
                   <IconBtn
@@ -393,7 +391,6 @@ export default function CreateStore() {
                         onChange={(e) =>
                           patchFood(cat.id, food.id, (f) => ({ ...f, price: e.target.value }))
                         }
-                        placeholder="Price"
                       />
                       <ImagePicker
                         label="Photo"
@@ -403,29 +400,6 @@ export default function CreateStore() {
                           patchFood(cat.id, food.id, (f) => ({ ...f, icon: file }))
                         }
                       />
-                    </div>
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {TAG_CHOICES.map((tag) => {
-                        const on = food.tags.includes(tag);
-                        return (
-                          <button
-                            key={tag}
-                            type="button"
-                            onClick={() =>
-                              patchFood(cat.id, food.id, (f) => ({
-                                ...f,
-                                tags: on
-                                  ? f.tags.filter((t) => t !== tag)
-                                  : [...f.tags, tag],
-                              }))
-                            }
-                            className={on ? "chip chip-active" : "chip"}
-                          >
-                            {tag}
-                          </button>
-                        );
-                      })}
                     </div>
 
                     {food.sections.map((sec) => (
@@ -444,7 +418,7 @@ export default function CreateStore() {
                                 name: e.target.value,
                               }))
                             }
-                            placeholder="Option group (e.g. Size)"
+                            placeholder="Option group"
                           />
                           <IconBtn
                             label="Remove option group"
@@ -656,40 +630,25 @@ export default function CreateStore() {
                 }
                 placeholder="What did they say?"
               />
-              <div className="grid grid-cols-2 gap-2">
-                <Field label="Rating">
-                  <select
-                    className={inputCls}
-                    value={r.rating}
-                    onChange={(e) =>
-                      setReviews((rs) =>
-                        rs.map((x) =>
-                          x.id === r.id ? { ...x, rating: Number(e.target.value) } : x,
-                        ),
-                      )
-                    }
-                  >
-                    {[5, 4, 3, 2, 1].map((n) => (
-                      <option key={n} value={n}>
-                        {n} ★
-                      </option>
-                    ))}
-                  </select>
-                </Field>
-                <Field label="Days ago">
-                  <input
-                    className={inputCls}
-                    type="number"
-                    min={0}
-                    value={r.daysAgo}
-                    onChange={(e) =>
-                      setReviews((rs) =>
-                        rs.map((x) => (x.id === r.id ? { ...x, daysAgo: e.target.value } : x)),
-                      )
-                    }
-                  />
-                </Field>
-              </div>
+              <Field label="Rating">
+                <select
+                  className={inputCls}
+                  value={r.rating}
+                  onChange={(e) =>
+                    setReviews((rs) =>
+                      rs.map((x) =>
+                        x.id === r.id ? { ...x, rating: Number(e.target.value) } : x,
+                      ),
+                    )
+                  }
+                >
+                  {[5, 4, 3, 2, 1].map((n) => (
+                    <option key={n} value={n}>
+                      {n} ★
+                    </option>
+                  ))}
+                </select>
+              </Field>
             </div>
           ))}
 
@@ -808,6 +767,97 @@ function ImagePicker({
         onChange={(e) => onPick(e.target.files?.[0])}
       />
     </label>
+  );
+}
+
+function CuisinePicker({
+  selected,
+  onChange,
+}: {
+  selected: string[];
+  onChange: (next: string[]) => void;
+}) {
+  const [query, setQuery] = useState("");
+  const [open, setOpen] = useState(false);
+  const boxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onPointerDown = (e: MouseEvent) => {
+      if (boxRef.current && !boxRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onPointerDown);
+    return () => document.removeEventListener("mousedown", onPointerDown);
+  }, []);
+
+  const q = query.trim().toLowerCase();
+  const matches = CUISINE_CATEGORIES.filter(
+    (c) => !selected.includes(c) && c.toLowerCase().includes(q),
+  );
+
+  const add = (c: string) => {
+    if (selected.includes(c) || !CUISINE_CATEGORIES.includes(c)) return;
+    onChange([...selected, c]);
+    setQuery("");
+    setOpen(false);
+  };
+  const remove = (c: string) => onChange(selected.filter((x) => x !== c));
+
+  return (
+    <div ref={boxRef} className="relative">
+      {selected.length > 0 && (
+        <div className="mb-1.5 flex flex-wrap gap-1.5">
+          {selected.map((c) => (
+            <span key={c} className="chip chip-active inline-flex items-center gap-1">
+              {c}
+              <button
+                type="button"
+                aria-label={`Remove ${c}`}
+                onClick={() => remove(c)}
+                className="-mr-0.5 transition active:scale-90"
+              >
+                <X size={13} />
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+      <input
+        className={inputCls}
+        value={query}
+        onChange={(e) => {
+          setQuery(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            if (matches.length) add(matches[0]);
+          }
+        }}
+        placeholder={selected.length ? "Add another category…" : "Type to search categories"}
+      />
+      {open && matches.length > 0 && (
+        <ul className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-card dark:border-neutral-700 dark:bg-neutral-900">
+          {matches.map((c) => (
+            <li key={c}>
+              <button
+                type="button"
+                onClick={() => add(c)}
+                className="flex w-full items-center px-3 py-2 text-left text-sm text-neutral-700 transition hover:bg-neutral-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
+              >
+                {c}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {open && q && matches.length === 0 && (
+        <p className="mt-1 px-1 text-xs text-neutral-400">No matching categories</p>
+      )}
+    </div>
   );
 }
 

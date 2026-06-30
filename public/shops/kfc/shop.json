@@ -1,9 +1,9 @@
 {
   "name": "KFC",
   "categories": [
-    "Western"
+    "Western",
+    "Fast Food"
   ],
-  "fastfood": true,
   "pricelevel": 2,
   "rating": 4.3,
   "menu": [
@@ -14,10 +14,6 @@
           "name": "Zinger Burger Meal",
           "description": "Zinger + whipped potato + drink.",
           "price": 9.8,
-          "tags": [
-            "popular",
-            "spicy"
-          ],
           "section": [
             {
               "name": "Upsize meal?",
@@ -81,9 +77,6 @@
           "name": "6pc Bucket Meal",
           "description": "Six pieces of signature chicken + 2 sides. For sharing.",
           "price": 28.9,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Spice level",
@@ -114,10 +107,7 @@
         {
           "name": "Zinger Burger",
           "description": "Crunchy spicy chicken fillet, lettuce, mayo.",
-          "price": 6.8,
-          "tags": [
-            "spicy"
-          ]
+          "price": 6.8
         },
         {
           "name": "2pc Fried Chicken",
@@ -148,10 +138,7 @@
         {
           "name": "Cheese Zinger",
           "description": "The Zinger with an extra slice of melty cheese.",
-          "price": 7.6,
-          "tags": [
-            "spicy"
-          ]
+          "price": 7.6
         },
         {
           "name": "Chicken Rice Box",
@@ -167,9 +154,6 @@
           "name": "Popcorn Chicken",
           "description": "Poppable golden bites.",
           "price": 5,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Dip",
@@ -276,10 +260,7 @@
         {
           "name": "Portuguese Egg Tart",
           "description": "Flaky pastry with silky custard centre.",
-          "price": 2.2,
-          "tags": [
-            "popular"
-          ]
+          "price": 2.2
         }
       ]
     }
@@ -289,22 +270,19 @@
       "author": "Priya",
       "emoji": "👩",
       "rating": 5,
-      "text": "Zinger is unbeatable. Crispy and juicy!",
-      "daysAgo": 1
+      "text": "Zinger is unbeatable. Crispy and juicy!"
     },
     {
       "author": "Wei Jie",
       "emoji": "🧑",
       "rating": 4,
-      "text": "Popcorn chicken was great for sharing.",
-      "daysAgo": 6
+      "text": "Popcorn chicken was great for sharing."
     },
     {
       "author": "Sam",
       "emoji": "👨",
       "rating": 3,
-      "text": "Bit oily this time but flavour was solid.",
-      "daysAgo": 12
+      "text": "Bit oily this time but flavour was solid."
     }
   ]
 }

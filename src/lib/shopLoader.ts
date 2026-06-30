@@ -23,7 +23,6 @@ export type RawFood = {
   name: string;
   description?: string;
   price?: number;
-  tags?: string[];
   section?: RawSection[];
 };
 
@@ -34,13 +33,11 @@ export type RawReview = {
   emoji?: string;
   rating: number;
   text: string;
-  daysAgo: number;
 };
 
 export type RawShop = {
   name: string;
   categories?: string[];
-  fastfood?: boolean;
   pricelevel?: number;
   rating?: number;
   menu?: RawMenuGroup[];
@@ -101,7 +98,6 @@ function parseFood(
     icon: `${shopBase}/icons/${id}.png`,
     basePrice: Number(raw.price) || 0,
     options: (raw.section ?? []).map((s, i) => parseSection(s, i, usedOpt)),
-    tags: raw.tags && raw.tags.length ? raw.tags : undefined,
   };
 }
 
@@ -122,7 +118,6 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
     emoji: r.emoji ?? "🙂",
     rating: r.rating,
     text: r.text,
-    daysAgo: r.daysAgo,
   }));
 
   const priceLevel = Math.min(3, Math.max(1, Math.round(raw.pricelevel ?? 1))) as 1 | 2 | 3;
@@ -132,7 +127,6 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
     name: raw.name,
     cuisine: categories[0] ?? "Other",
     categories: categories.length ? categories : ["Other"],
-    fastFood: !!raw.fastfood,
     banner: `${shopBase}/banner.png`,
     logo: `${shopBase}/logo.png`,
     rating: typeof raw.rating === "number" ? raw.rating : 4.5,

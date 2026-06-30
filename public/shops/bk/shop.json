@@ -1,9 +1,9 @@
 {
   "name": "Burger King",
   "categories": [
-    "Western"
+    "Western",
+    "Fast Food"
   ],
-  "fastfood": true,
   "pricelevel": 2,
   "rating": 4.2,
   "menu": [
@@ -14,9 +14,6 @@
           "name": "Whopper Meal",
           "description": "Flame-grilled Whopper + fries + drink.",
           "price": 10.2,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Upsize meal?",
@@ -88,9 +85,6 @@
           "name": "Whopper",
           "description": "Flame-grilled beef, tomatoes, lettuce, mayo.",
           "price": 7.8,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Add-ons",
@@ -348,10 +342,7 @@
         {
           "name": "Hershey's Sundae Pie",
           "description": "Rich chocolate pie with a crunchy crust.",
-          "price": 2.8,
-          "tags": [
-            "popular"
-          ]
+          "price": 2.8
         }
       ]
     }
@@ -361,15 +352,13 @@
       "author": "Tom",
       "emoji": "👨",
       "rating": 4,
-      "text": "Flame-grilled Whopper actually tastes grilled. Nice.",
-      "daysAgo": 3
+      "text": "Flame-grilled Whopper actually tastes grilled. Nice."
     },
     {
       "author": "Siti",
       "emoji": "🧕",
       "rating": 4,
-      "text": "Mushroom Swiss is underrated. Quick delivery too.",
-      "daysAgo": 6
+      "text": "Mushroom Swiss is underrated. Quick delivery too."
     }
   ]
 }

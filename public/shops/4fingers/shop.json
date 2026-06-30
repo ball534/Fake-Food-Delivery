@@ -1,9 +1,9 @@
 {
   "name": "4Fingers",
   "categories": [
-    "Korean"
+    "Korean",
+    "Fast Food"
   ],
-  "fastfood": true,
   "pricelevel": 2,
   "rating": 4.5,
   "menu": [
@@ -14,10 +14,6 @@
           "name": "Crispy Wings (6pc)",
           "description": "Korean-style wings tossed in soy-garlic or hot sauce.",
           "price": 9,
-          "tags": [
-            "popular",
-            "spicy"
-          ],
           "section": [
             {
               "name": "Sauce",
@@ -44,10 +40,6 @@
           "name": "Crispy Wings (12pc)",
           "description": "A dozen wings to share — pick your sauce.",
           "price": 16.5,
-          "tags": [
-            "popular",
-            "spicy"
-          ],
           "section": [
             {
               "name": "Sauce",
@@ -104,10 +96,7 @@
         {
           "name": "Loaded Fries",
           "description": "Fries topped with chicken bits and sauce.",
-          "price": 6,
-          "tags": [
-            "spicy"
-          ]
+          "price": 6
         }
       ]
     },
@@ -122,10 +111,7 @@
         {
           "name": "Seaweed Fries",
           "description": "Crispy fries dusted with savoury seaweed.",
-          "price": 4.5,
-          "tags": [
-            "popular"
-          ]
+          "price": 4.5
         },
         {
           "name": "Popcorn Chicken",
@@ -186,15 +172,13 @@
       "author": "Jin",
       "emoji": "🧑",
       "rating": 5,
-      "text": "Soy garlic wings are addictive. Get the rice box too.",
-      "daysAgo": 1
+      "text": "Soy garlic wings are addictive. Get the rice box too."
     },
     {
       "author": "Rachel",
       "emoji": "👩",
       "rating": 4,
-      "text": "Spicy is genuinely spicy. Kimchi slaw balances it.",
-      "daysAgo": 5
+      "text": "Spicy is genuinely spicy. Kimchi slaw balances it."
     }
   ]
 }

@@ -1,9 +1,9 @@
 {
   "name": "Jollibee",
   "categories": [
-    "Filipino"
+    "Filipino",
+    "Fast Food"
   ],
-  "fastfood": true,
   "pricelevel": 2,
   "rating": 4.5,
   "menu": [
@@ -14,9 +14,6 @@
           "name": "Chickenjoy + Spaghetti Combo",
           "description": "1pc Chickenjoy, Jolly Spaghetti, and a drink.",
           "price": 10.9,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Upsize meal?",
@@ -88,9 +85,6 @@
           "name": "Chickenjoy (1pc)",
           "description": "Crispylicious, juicylicious fried chicken.",
           "price": 5.2,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Spice level",
@@ -243,18 +237,12 @@
         {
           "name": "Peach Mango Pie",
           "description": "Crispy pie with warm peach-mango filling.",
-          "price": 2.6,
-          "tags": [
-            "popular"
-          ]
+          "price": 2.6
         },
         {
           "name": "Halo-Halo",
           "description": "Shaved ice with beans, jelly, leche flan and ube.",
-          "price": 4.5,
-          "tags": [
-            "popular"
-          ]
+          "price": 4.5
         },
         {
           "name": "Choco Sundae",
@@ -269,15 +257,13 @@
       "author": "Maria",
       "emoji": "👩",
       "rating": 5,
-      "text": "Chickenjoy + Jolly Spaghetti = childhood in a box.",
-      "daysAgo": 2
+      "text": "Chickenjoy + Jolly Spaghetti = childhood in a box."
     },
     {
       "author": "Ken",
       "emoji": "🧑",
       "rating": 4,
-      "text": "Peach mango pie was piping hot. Loved it.",
-      "daysAgo": 9
+      "text": "Peach mango pie was piping hot. Loved it."
     }
   ]
 }

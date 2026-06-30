@@ -1,7 +1,8 @@
 {
   "name": "Example Shop",
-  "categories": ["Western"],
-  "fastfood": false,
+  "categories": [
+    "Western"
+  ],
   "pricelevel": 1,
   "rating": 4.5,
   "menu": [
@@ -12,15 +13,20 @@
           "name": "Example Combo",
           "description": "Lorem ipsum — a short, appetising description.",
           "price": 5.6,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Regular", "price": 0 },
-                { "name": "Upsize", "price": 1.2 }
+                {
+                  "name": "Regular",
+                  "price": 0
+                },
+                {
+                  "name": "Upsize",
+                  "price": 1.2
+                }
               ]
             },
             {
@@ -29,10 +35,22 @@
               "required": false,
               "max": 2,
               "options": [
-                { "name": "Extra cheese", "price": 1.0 },
-                { "name": "Add egg", "price": 1.0 },
-                { "name": "Add bacon", "price": 1.5 },
-                { "name": "Extra patty", "price": 2.5 }
+                {
+                  "name": "Extra cheese",
+                  "price": 1
+                },
+                {
+                  "name": "Add egg",
+                  "price": 1
+                },
+                {
+                  "name": "Add bacon",
+                  "price": 1.5
+                },
+                {
+                  "name": "Extra patty",
+                  "price": 2.5
+                }
               ]
             }
           ]
@@ -45,8 +63,7 @@
       "author": "A. Foodie",
       "emoji": "🙂",
       "rating": 5,
-      "text": "Tasty and arrived on time. Would order again.",
-      "daysAgo": 2
+      "text": "Tasty and arrived on time. Would order again."
     }
   ]
 }

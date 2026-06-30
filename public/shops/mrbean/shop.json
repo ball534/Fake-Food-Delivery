@@ -3,7 +3,6 @@
   "categories": [
     "Local"
   ],
-  "fastfood": false,
   "pricelevel": 1,
   "rating": 4.4,
   "menu": [
@@ -14,9 +13,6 @@
           "name": "Soya Milk",
           "description": "Freshly ground, smooth soya milk.",
           "price": 2,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size",
@@ -214,18 +210,12 @@
         {
           "name": "Soya Soft Serve",
           "description": "Silky soy-based soft serve ice cream.",
-          "price": 2.8,
-          "tags": [
-            "new"
-          ]
+          "price": 2.8
         },
         {
           "name": "Soya Ice Cream Waffle",
           "description": "Warm crisp waffle topped with soya soft serve.",
-          "price": 4,
-          "tags": [
-            "popular"
-          ]
+          "price": 4
         },
         {
           "name": "Red Bean Pancake",
@@ -235,10 +225,7 @@
         {
           "name": "Soya Bean Curd",
           "description": "Classic silky tau huay in syrup.",
-          "price": 2.2,
-          "tags": [
-            "popular"
-          ]
+          "price": 2.2
         }
       ]
     }
@@ -248,15 +235,13 @@
       "author": "Wen",
       "emoji": "👩",
       "rating": 5,
-      "text": "Soya milk so smooth and not too sweet. Pancakes fluffy.",
-      "daysAgo": 2
+      "text": "Soya milk so smooth and not too sweet. Pancakes fluffy."
     },
     {
       "author": "Hafiz",
       "emoji": "🧑",
       "rating": 4,
-      "text": "Soya soft serve is a guilt-free treat. Yum.",
-      "daysAgo": 6
+      "text": "Soya soft serve is a guilt-free treat. Yum."
     }
   ]
 }

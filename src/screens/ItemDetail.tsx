@@ -103,8 +103,8 @@ export default function ItemDetail() {
 
   return (
     <Screen className="pb-28">
-      <div className="relative grid h-52 place-items-center overflow-hidden bg-neutral-200 text-8xl dark:bg-neutral-800">
-        <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="" />
+      <div className="relative grid h-52 place-items-center overflow-hidden bg-neutral-100 text-8xl dark:bg-neutral-800">
+        <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="" fit="contain" />
         <div className="absolute inset-x-0 top-0">
           <TopBar transparent />
         </div>

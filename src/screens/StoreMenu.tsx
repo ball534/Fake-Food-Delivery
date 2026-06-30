@@ -172,7 +172,7 @@ export default function StoreMenu() {
               {storeDeal.kind === "combo" ? "Special combo" : "Limited-time item"}
             </span>
             <div className="mt-0.5 flex items-center gap-3">
-              <span className="text-3xl">{storeDeal.emoji}</span>
+              {storeDeal.emoji && <span className="text-3xl">{storeDeal.emoji}</span>}
               <div className="min-w-0 flex-1">
                 <p className="font-extrabold leading-tight">{storeDeal.title}</p>
                 <p className="text-xs text-brand-50/90">{storeDeal.sub}</p>
@@ -236,8 +236,8 @@ export default function StoreMenu() {
             {reviews.map((r, i) => (
               <div key={i} className="card p-4">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-lg dark:bg-neutral-800">
-                    {r.emoji}
+                  <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-lg font-semibold text-neutral-500 dark:bg-neutral-800 dark:text-neutral-300">
+                    {r.emoji || r.author.charAt(0).toUpperCase()}
                   </span>
                   <div className="min-w-0 flex-1 leading-tight">
                     <p className="font-semibold text-neutral-900 dark:text-white">

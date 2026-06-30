@@ -6,23 +6,26 @@ export default function Thumb({
   fallback = "img",
   alt = "",
   rounded = "rounded-xl",
+  fit = "cover",
 }: {
   src?: string;
   emoji?: string;
   fallback?: string;
   alt?: string;
   rounded?: string;
+  fit?: "cover" | "contain";
 }) {
   const [failed, setFailed] = useState(false);
 
   if (src && !failed) {
+    const fitClass = fit === "contain" ? "object-contain" : "object-cover";
     return (
       <img
         src={src}
         alt={alt}
         loading="lazy"
         onError={() => setFailed(true)}
-        className={`h-full w-full object-cover ${rounded}`}
+        className={`h-full w-full ${fitClass} ${rounded}`}
       />
     );
   }

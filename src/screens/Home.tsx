@@ -75,7 +75,7 @@ export default function Home() {
         {KIND_LABEL[deal.kind]}
       </span>
       <div className="mt-1 flex items-center gap-3">
-        <span className="text-4xl">{deal.emoji}</span>
+        {deal.emoji && <span className="text-4xl">{deal.emoji}</span>}
         <div className="min-w-0 flex-1">
           <p className="text-lg font-extrabold leading-tight">{deal.title}</p>
           <p className="text-sm text-brand-50/90">{deal.sub}</p>

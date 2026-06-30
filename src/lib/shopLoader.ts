@@ -125,7 +125,7 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
 
   const reviews: Review[] = (raw.reviews ?? []).map((r) => ({
     author: r.author,
-    emoji: r.emoji ?? "🙂",
+    emoji: r.emoji ?? "",
     rating: r.rating,
     text: r.text,
   }));
@@ -141,7 +141,7 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
           : undefined;
       return {
         kind,
-        emoji: d.emoji || "🎁",
+        emoji: d.emoji || "",
         title: d.title,
         sub: d.sub ?? "",
         storeId: id,

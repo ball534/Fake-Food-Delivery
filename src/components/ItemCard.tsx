@@ -60,7 +60,7 @@ export default function ItemCard({
       </div>
       <div className="relative shrink-0">
         <div className="grid h-20 w-20 place-items-center overflow-hidden rounded-xl bg-neutral-100 text-4xl dark:bg-neutral-800">
-          <Thumb src={item.icon} emoji={item.emoji} alt={item.name} />
+          <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fit="contain" />
         </div>
         <motion.button
           whileTap={{ scale: 0.85 }}

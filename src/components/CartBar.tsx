@@ -53,7 +53,7 @@ export default function CartBar() {
                     return (
                       <div key={line.lineId} className="flex items-center gap-3 p-3">
                         <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
-                          <Thumb src={icon} emoji={emoji} fallback="food" alt={name} />
+                          <Thumb src={icon} emoji={emoji} fallback="food" alt={name} fit="contain" />
                         </span>
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-semibold text-neutral-900 dark:text-white">

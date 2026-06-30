@@ -160,7 +160,7 @@ export default function Checkout() {
             return (
               <div key={line.lineId} className="flex gap-3 p-3">
                 <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
-                  <Thumb src={icon} emoji={emoji} fallback="food" alt={name} />
+                  <Thumb src={icon} emoji={emoji} fallback="food" alt={name} fit="contain" />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">

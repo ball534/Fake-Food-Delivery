@@ -47,7 +47,6 @@ export type Store = {
 
 export type Review = {
   author: string;
-  emoji: string;
   rating: number;
   text: string;
 };

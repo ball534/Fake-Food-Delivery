@@ -32,3 +32,11 @@ export function formatDate(epochMs: number): string {
 export function pluralize(n: number, word: string): string {
   return `${n} ${word}${n === 1 ? "" : "s"}`;
 }
+
+// Up to two uppercase initials from a name, e.g. "Jane Doe" -> "JD", "Sam" -> "S".
+export function initials(name: string): string {
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  const letters = parts.slice(0, 2).map((w) => w[0]!.toUpperCase());
+  return letters.join("");
+}

@@ -106,7 +106,7 @@ function parseFood(
     id,
     name: raw.name,
     description: raw.description ?? "",
-    icon: `${shopBase}/icons/${id}.png`,
+    icon: `${shopBase}/icons/${id}.webp`,
     basePrice: Number(raw.price) || 0,
     options: (raw.section ?? []).map((s, i) => parseSection(s, i, usedOpt)),
   };
@@ -125,7 +125,6 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
 
   const reviews: Review[] = (raw.reviews ?? []).map((r) => ({
     author: r.author,
-    emoji: r.emoji ?? "",
     rating: r.rating,
     text: r.text,
   }));
@@ -157,8 +156,8 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
     name: raw.name,
     cuisine: categories[0] ?? "Other",
     categories: categories.length ? categories : ["Other"],
-    banner: `${shopBase}/banner.png`,
-    logo: `${shopBase}/logo.png`,
+    banner: `${shopBase}/banner.webp`,
+    logo: `${shopBase}/logo.webp`,
     rating: typeof raw.rating === "number" ? raw.rating : 4.5,
     priceLevel,
     menu,

@@ -70,7 +70,7 @@ export function parseDealsJson(value: unknown): Deal[] {
     const effect = r.effect as PromoEffect;
     deals.push({
       kind,
-      emoji: str(r.emoji) || "🎁",
+      emoji: str(r.emoji),
       title,
       sub: str(r.sub),
       code: str(r.code) || undefined,

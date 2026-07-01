@@ -12,7 +12,7 @@ import Thumb from "../components/Thumb";
 import DealPrice from "../components/DealPrice";
 import { useStores } from "../store/storesStore";
 import { etaRange } from "../lib/format";
-import { pluralize } from "../lib/format";
+import { pluralize, initials } from "../lib/format";
 import { etaRangeFor, distanceFor } from "../lib/delivery";
 import { useCart } from "../store/cartStore";
 import { useProfile } from "../store/profileStore";
@@ -236,8 +236,8 @@ export default function StoreMenu() {
             {reviews.map((r, i) => (
               <div key={i} className="card p-4">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-lg font-semibold text-neutral-500 dark:bg-neutral-800 dark:text-neutral-300">
-                    {r.emoji || r.author.charAt(0).toUpperCase()}
+                  <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-sm font-semibold text-neutral-500 dark:bg-neutral-800 dark:text-neutral-300">
+                    {initials(r.author)}
                   </span>
                   <div className="min-w-0 flex-1 leading-tight">
                     <p className="font-semibold text-neutral-900 dark:text-white">

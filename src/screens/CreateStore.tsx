@@ -47,7 +47,6 @@ type DealDraft = {
 type ReviewDraft = {
   id: string;
   author: string;
-  emoji: string;
   rating: number;
   text: string;
 };
@@ -74,6 +73,30 @@ function uniqueSlug(base: string, used: Set<string>): string {
   return id;
 }
 
+// Resize + re-encode an uploaded image to WebP so exported stores stay light
+// and match the .webp paths the shop loader builds.
+async function fileToWebp(file: File, max: number, quality = 0.82): Promise<Uint8Array> {
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
+  const w = Math.max(1, Math.round(bitmap.width * scale));
+  const h = Math.max(1, Math.round(bitmap.height * scale));
+  const canvas = document.createElement("canvas");
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("no 2d context");
+  ctx.drawImage(bitmap, 0, 0, w, h);
+  bitmap.close();
+  const blob = await new Promise<Blob>((resolve, reject) =>
+    canvas.toBlob(
+      (b) => (b ? resolve(b) : reject(new Error("webp encode failed"))),
+      "image/webp",
+      quality,
+    ),
+  );
+  return new Uint8Array(await blob.arrayBuffer());
+}
+
 const newOption = (): OptionDraft => ({ id: uid(), name: "", price: "0" });
 const newSection = (): SectionDraft => ({
   id: uid(),
@@ -98,7 +121,6 @@ const newCategory = (): CategoryDraft => ({
 const newReview = (): ReviewDraft => ({
   id: uid(),
   author: "",
-  emoji: "",
   rating: 5,
   text: "",
 });
@@ -213,7 +235,7 @@ export default function CreateStore() {
       category: c.name.trim(),
       food: c.food.map((f) => {
         const itemId = uniqueSlug(slug(f.name.trim()), usedItem);
-        if (f.icon) iconFiles.push({ path: `icons/${itemId}.png`, file: f.icon });
+        if (f.icon) iconFiles.push({ path: `icons/${itemId}.webp`, file: f.icon });
 
         const section = f.sections.map((s) => {
           const out: Record<string, unknown> = {
@@ -250,7 +272,7 @@ export default function CreateStore() {
     const dealsOut = deals.map((d) => {
       const out: Record<string, unknown> = {
         kind: d.kind,
-        emoji: d.emoji.trim() || "🎁",
+        emoji: d.emoji.trim(),
         title: d.title.trim(),
         sub: d.sub.trim(),
         price: Number(d.price) || 0,
@@ -262,7 +284,6 @@ export default function CreateStore() {
 
     const reviewOut = reviews.map((r) => ({
       author: r.author.trim(),
-      emoji: r.emoji.trim() || "🙂",
       rating: r.rating,
       text: r.text.trim(),
     }));
@@ -276,13 +297,13 @@ export default function CreateStore() {
         { name: `${id}/HOW-TO-INSTALL.txt`, data: enc.encode(installNote(id)) },
       ];
       if (banner)
-        entries.push({ name: `${id}/banner.png`, data: new Uint8Array(await banner.arrayBuffer()) });
+        entries.push({ name: `${id}/banner.webp`, data: await fileToWebp(banner, 1200, 0.8) });
       if (logo)
-        entries.push({ name: `${id}/logo.png`, data: new Uint8Array(await logo.arrayBuffer()) });
+        entries.push({ name: `${id}/logo.webp`, data: await fileToWebp(logo, 400, 0.85) });
       for (const ic of iconFiles)
         entries.push({
           name: `${id}/${ic.path}`,
-          data: new Uint8Array(await ic.file.arrayBuffer()),
+          data: await fileToWebp(ic.file, 600),
         });
 
       downloadBlob(makeZip(entries), `${id}.zip`);
@@ -305,46 +326,40 @@ export default function CreateStore() {
         </p>
 
         <FormCard icon={<StoreIcon size={18} />} title="Store details">
-          <Field label="Store name">
+          <input
+            className={inputCls}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Store name"
+          />
+          <CuisinePicker selected={cuisines} onChange={setCuisines} />
+          <div className="grid grid-cols-2 gap-3">
+            <div className="flex gap-1.5">
+              {([1, 2, 3] as const).map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  onClick={() => setPriceLevel(p)}
+                  className={`flex-1 rounded-xl py-2 text-sm font-bold transition ${
+                    priceLevel === p
+                      ? "bg-brand-500 text-white"
+                      : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800"
+                  }`}
+                >
+                  {"$".repeat(p)}
+                </button>
+              ))}
+            </div>
             <input
               className={inputCls}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              type="number"
+              min={0}
+              max={5}
+              step={0.1}
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+              placeholder="Rating (0–5)"
             />
-          </Field>
-          <Field label="Cuisine categories">
-            <CuisinePicker selected={cuisines} onChange={setCuisines} />
-          </Field>
-          <div className="grid grid-cols-2 gap-3">
-            <Field label="Price level">
-              <div className="flex gap-1.5">
-                {([1, 2, 3] as const).map((p) => (
-                  <button
-                    key={p}
-                    type="button"
-                    onClick={() => setPriceLevel(p)}
-                    className={`flex-1 rounded-xl py-2 text-sm font-bold transition ${
-                      priceLevel === p
-                        ? "bg-brand-500 text-white"
-                        : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800"
-                    }`}
-                  >
-                    {"$".repeat(p)}
-                  </button>
-                ))}
-              </div>
-            </Field>
-            <Field label="Rating" hint="0–5">
-              <input
-                className={inputCls}
-                type="number"
-                min={0}
-                max={5}
-                step={0.1}
-                value={rating}
-                onChange={(e) => setRating(e.target.value)}
-              />
-            </Field>
           </div>
         </FormCard>
 
@@ -644,7 +659,7 @@ export default function CreateStore() {
                       ds.map((x) => (x.id === d.id ? { ...x, emoji: e.target.value } : x)),
                     )
                   }
-                  placeholder="🎁"
+                  placeholder="Icon"
                 />
                 <input
                   className={inputCls}
@@ -747,16 +762,6 @@ export default function CreateStore() {
           {reviews.map((r) => (
             <div key={r.id} className="card space-y-2.5 p-4">
               <div className="flex items-center gap-2">
-                <input
-                  className="w-14 rounded-xl border border-neutral-200 bg-transparent px-2 py-2 text-center text-lg outline-none focus:border-brand-500 dark:border-neutral-700"
-                  value={r.emoji}
-                  onChange={(e) =>
-                    setReviews((rs) =>
-                      rs.map((x) => (x.id === r.id ? { ...x, emoji: e.target.value } : x)),
-                    )
-                  }
-                  placeholder="🙂"
-                />
                 <input
                   className={inputCls}
                   value={r.author}
@@ -1032,10 +1037,10 @@ function installNote(id: string): string {
     "   store appears automatically — no code changes needed.",
     "",
     "Folder contents:",
-    "   shop.json   - your store's menu + details (required)",
-    "   logo.png    - square brand logo (optional)",
-    "   banner.png  - wide banner image (optional)",
-    "   icons/*.png - one image per menu item (optional)",
+    "   shop.json    - your store's menu + details (required)",
+    "   logo.webp    - square brand logo (optional)",
+    "   banner.webp  - wide banner image (optional)",
+    "   icons/*.webp - one image per menu item (optional)",
     "",
     "Any missing image falls back to a text label, so the",
     "store works even without art.",

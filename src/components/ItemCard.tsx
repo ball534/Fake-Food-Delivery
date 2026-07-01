@@ -71,7 +71,7 @@ export default function ItemCard({
           whileTap={{ scale: 0.85 }}
           onClick={quickAdd}
           aria-label={`Add ${item.name}`}
-          className="absolute -bottom-2 -right-2 grid h-9 w-9 place-items-center rounded-full bg-gradient-to-b from-brand-400 to-brand-600 text-white shadow-card-hover ring-1 ring-white/40"
+          className="absolute -bottom-2 -right-2 grid h-9 w-9 place-items-center rounded-full bg-brand-500 text-white shadow-card-hover ring-1 ring-white/40"
         >
           <Plus size={18} strokeWidth={3} />
         </motion.button>

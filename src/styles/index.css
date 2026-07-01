@@ -39,15 +39,15 @@ body {
      chrome/controls that overlap content (search bars, chips, sheets), not
      for opaque content cards. */
   .glass {
-    @apply border border-white/50 bg-white/55 backdrop-blur-xl backdrop-saturate-150;
+    @apply border border-white/40 bg-white/25 backdrop-blur-3xl backdrop-saturate-150;
     box-shadow:
-      0 8px 32px -12px rgba(16, 24, 40, 0.22),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.55);
+      0 8px 32px -12px rgba(16, 24, 40, 0.18),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
   }
 
   /* Translucent bar treatment for sticky top/bottom navigation. */
   .glass-nav {
-    @apply bg-white/70 backdrop-blur-xl backdrop-saturate-150;
+    @apply bg-white/40 backdrop-blur-2xl backdrop-saturate-150;
   }
 
   /* Specular top highlight — layer over any element to give it the glossy,
@@ -72,39 +72,20 @@ body {
   }
 
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl px-5 py-3 font-semibold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
-    background-image: linear-gradient(to bottom, #43a843, #1d761d);
-    box-shadow:
-      0 8px 20px -6px rgba(34, 139, 34, 0.5),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
-  }
-  .btn-primary::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 50%;
-    border-radius: inherit;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.28),
-      rgba(255, 255, 255, 0)
-    );
-    pointer-events: none;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-5 py-3 font-semibold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+    box-shadow: 0 8px 20px -6px rgba(34, 139, 34, 0.45);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-5 py-3 font-semibold text-neutral-800 backdrop-blur-xl transition active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/55 bg-white/40 px-5 py-3 font-semibold text-neutral-800 backdrop-blur-2xl transition active:scale-[0.98];
   }
 
   .chip {
-    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-white/60 bg-white/65 px-3.5 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-md transition;
+    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-white/50 bg-white/35 px-3.5 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-2xl transition;
   }
 
   .chip-active {
-    @apply border-transparent text-white shadow-[0_4px_12px_-3px_rgba(34,139,34,0.55)];
-    background-image: linear-gradient(to bottom, #43a843, #1d761d);
+    @apply border-transparent bg-brand-500 text-white shadow-[0_4px_12px_-3px_rgba(34,139,34,0.55)];
   }
 
   .card {

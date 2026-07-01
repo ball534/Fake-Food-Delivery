@@ -214,7 +214,7 @@ export default function Home() {
               <Link
                 to="/checkout"
                 aria-label={`Cart, ${cartCount} items`}
-                className="pointer-events-auto absolute bottom-20 right-4 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-b from-brand-400 to-brand-600 text-white shadow-card-hover active:scale-95"
+                className="pointer-events-auto absolute bottom-20 right-4 grid h-14 w-14 place-items-center rounded-full bg-brand-500 text-white shadow-card-hover active:scale-95"
               >
                 <ShoppingBag size={22} />
                 <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px] font-bold text-brand-600 shadow">

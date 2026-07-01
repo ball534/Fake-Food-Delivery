@@ -120,7 +120,7 @@ export default function CartBar() {
 
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="gloss pointer-events-auto flex w-full items-center justify-between rounded-2xl bg-gradient-to-b from-brand-400 to-brand-600 px-4 py-3.5 text-white shadow-card-hover active:scale-[0.99]"
+            className="pointer-events-auto flex w-full items-center justify-between rounded-2xl bg-brand-500 px-4 py-3.5 text-white shadow-card-hover active:scale-[0.99]"
           >
             <span className="flex items-center gap-2 font-semibold">
               <span className="relative">

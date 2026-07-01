@@ -18,14 +18,19 @@ export default function Thumb({
   const [failed, setFailed] = useState(false);
 
   if (src && !failed) {
-    const fitClass = fit === "contain" ? "object-contain" : "object-cover";
+    // "contain" caps the image by both dimensions so a square image never
+    // overflows a wide box (which would clip it). "cover" fills and crops.
+    const fitClass =
+      fit === "contain"
+        ? "max-h-full max-w-full object-contain"
+        : "h-full w-full object-cover";
     return (
       <img
         src={src}
         alt={alt}
         loading="lazy"
         onError={() => setFailed(true)}
-        className={`h-full w-full ${fitClass} ${rounded}`}
+        className={`${fitClass} ${rounded}`}
       />
     );
   }

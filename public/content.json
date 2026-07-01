@@ -1,5 +1,7 @@
 {
-  "shops": ["mcdonalds"],
+  "shops": [
+    "mcdonalds"
+  ],
   "greetings": {
     "morning": [
       "Good morning",

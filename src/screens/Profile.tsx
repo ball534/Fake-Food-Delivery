@@ -109,7 +109,7 @@ export default function Profile() {
     <Screen className="relative pb-6">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
       />
       <div
         aria-hidden

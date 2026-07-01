@@ -102,7 +102,7 @@ export default function Home() {
       {/* Soft green wash that dissolves into the page — no hard seam. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
       />
       <div
         aria-hidden
@@ -136,12 +136,12 @@ export default function Home() {
           {deal.storeId ? (
             <Link
               to={`/store/${deal.storeId}`}
-              className="gloss block rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 px-4 pb-4 pt-3 text-white shadow-card-hover transition active:scale-[0.99]"
+              className="block rounded-2xl bg-brand-500 px-4 pb-4 pt-3 text-white shadow-card-hover transition active:scale-[0.99]"
             >
               {dealHeader}
             </Link>
           ) : (
-            <div className="gloss rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 px-4 pb-4 pt-3 text-white shadow-card-hover">
+            <div className="rounded-2xl bg-brand-500 px-4 pb-4 pt-3 text-white shadow-card-hover">
               {dealHeader}
               {deal.kind === "code" && deal.code && (
                 <button

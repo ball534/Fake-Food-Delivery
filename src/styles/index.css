@@ -77,11 +77,11 @@ body {
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/55 bg-white/40 px-5 py-3 font-semibold text-neutral-800 backdrop-blur-2xl transition active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-black/10 bg-white/40 px-5 py-3 font-semibold text-neutral-800 backdrop-blur-2xl transition active:scale-[0.98];
   }
 
   .chip {
-    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-white/50 bg-white/35 px-3.5 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-2xl transition;
+    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-black/10 bg-white/35 px-3.5 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-2xl transition;
   }
 
   .chip-active {

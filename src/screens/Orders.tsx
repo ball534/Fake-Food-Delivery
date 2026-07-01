@@ -72,7 +72,7 @@ function Header() {
     <div className="relative">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
       />
       <div
         aria-hidden

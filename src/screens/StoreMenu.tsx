@@ -191,7 +191,7 @@ export default function StoreMenu() {
         </div>
 
         {storeDeal && (
-          <div className="gloss mt-3 rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 p-3 text-white shadow-card-hover">
+          <div className="mt-3 rounded-2xl bg-brand-500 p-3 text-white shadow-card-hover">
             <span className="relative z-[1] text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
               {storeDeal.kind === "combo"
                 ? "Special combo"

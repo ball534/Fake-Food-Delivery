@@ -75,7 +75,7 @@ function uniqueSlug(base: string, used: Set<string>): string {
 
 // Resize + re-encode an uploaded image to WebP so exported stores stay light
 // and match the .webp paths the shop loader builds.
-async function fileToWebp(file: File, max: number, quality = 0.82): Promise<Uint8Array> {
+async function encodeWebp(file: File, max: number, quality = 0.82): Promise<Blob> {
   const bitmap = await createImageBitmap(file);
   const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
   const w = Math.max(1, Math.round(bitmap.width * scale));
@@ -87,14 +87,29 @@ async function fileToWebp(file: File, max: number, quality = 0.82): Promise<Uint
   if (!ctx) throw new Error("no 2d context");
   ctx.drawImage(bitmap, 0, 0, w, h);
   bitmap.close();
-  const blob = await new Promise<Blob>((resolve, reject) =>
+  return new Promise<Blob>((resolve, reject) =>
     canvas.toBlob(
       (b) => (b ? resolve(b) : reject(new Error("webp encode failed"))),
       "image/webp",
       quality,
     ),
   );
-  return new Uint8Array(await blob.arrayBuffer());
+}
+
+// Optimise on upload: resize + re-encode to a .webp File so the preview shows
+// the real exported asset and the ZIP step can use the bytes as-is.
+async function toWebpFile(file: File, max: number, quality?: number): Promise<File> {
+  const blob = await encodeWebp(file, max, quality);
+  const base = file.name.replace(/\.[^./\\]+$/, "") || "image";
+  return new File([blob], `${base}.webp`, { type: "image/webp" });
+}
+
+// Bytes for the ZIP. Files picked through ImagePicker are already optimised
+// WebP; anything else (e.g. a picker that fell back to the raw file) is
+// converted here so the exported paths always hold valid WebP.
+async function imageBytes(file: File, max: number, quality?: number): Promise<Uint8Array> {
+  if (file.type === "image/webp") return new Uint8Array(await file.arrayBuffer());
+  return new Uint8Array(await (await encodeWebp(file, max, quality)).arrayBuffer());
 }
 
 const newOption = (): OptionDraft => ({ id: uid(), name: "", price: "0" });
@@ -297,13 +312,13 @@ export default function CreateStore() {
         { name: `${id}/HOW-TO-INSTALL.txt`, data: enc.encode(installNote(id)) },
       ];
       if (banner)
-        entries.push({ name: `${id}/banner.webp`, data: await fileToWebp(banner, 1200, 0.8) });
+        entries.push({ name: `${id}/banner.webp`, data: await imageBytes(banner, 1200, 0.8) });
       if (logo)
-        entries.push({ name: `${id}/logo.webp`, data: await fileToWebp(logo, 400, 0.85) });
+        entries.push({ name: `${id}/logo.webp`, data: await imageBytes(logo, 400, 0.85) });
       for (const ic of iconFiles)
         entries.push({
           name: `${id}/${ic.path}`,
-          data: await fileToWebp(ic.file, 600),
+          data: await imageBytes(ic.file, 600),
         });
 
       downloadBlob(makeZip(entries), `${id}.zip`);
@@ -365,8 +380,8 @@ export default function CreateStore() {
 
         <FormCard icon={<ImagePlus size={18} />} title="Images">
           <div className="grid grid-cols-2 gap-3">
-            <ImagePicker label="Logo" file={logo} onPick={setLogo} />
-            <ImagePicker label="Banner" file={banner} onPick={setBanner} />
+            <ImagePicker label="Logo" file={logo} onPick={setLogo} max={400} quality={0.85} />
+            <ImagePicker label="Banner" file={banner} onPick={setBanner} max={1200} quality={0.8} />
           </div>
         </FormCard>
 
@@ -454,6 +469,7 @@ export default function CreateStore() {
                       <ImagePicker
                         label="Photo"
                         compact
+                        max={600}
                         file={food.icon}
                         onPick={(file) =>
                           patchFood(cat.id, food.id, (f) => ({ ...f, icon: file }))
@@ -905,26 +921,94 @@ function ImagePicker({
   label,
   file,
   onPick,
+  max,
+  quality,
   compact = false,
 }: {
   label: string;
   file?: File;
   onPick: (f: File | undefined) => void;
+  max: number;
+  quality?: number;
   compact?: boolean;
 }) {
+  const [url, setUrl] = useState<string>();
+  const [busy, setBusy] = useState(false);
+
+  // Preview straight from the picked File, revoking the object URL on change.
+  useEffect(() => {
+    if (!file) {
+      setUrl(undefined);
+      return;
+    }
+    const u = URL.createObjectURL(file);
+    setUrl(u);
+    return () => URL.revokeObjectURL(u);
+  }, [file]);
+
+  const pick = async (f?: File) => {
+    if (!f) return;
+    setBusy(true);
+    try {
+      onPick(await toWebpFile(f, max, quality)); // optimise on upload
+    } catch {
+      onPick(f); // fall back to raw; export re-encodes as a safety net
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const heightCls = compact ? "h-20" : "h-28";
+
+  if (url) {
+    return (
+      <div className={`group relative overflow-hidden rounded-xl border border-brand-500 ${heightCls}`}>
+        <img src={url} alt={label} className="h-full w-full object-cover" />
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-1 bg-black/50 px-2 py-1 text-xs font-medium text-white">
+          <span className="truncate">{label}</span>
+          <div className="flex shrink-0 items-center gap-0.5">
+            <label className="cursor-pointer rounded px-1.5 py-0.5 transition hover:bg-white/20">
+              Change
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                disabled={busy}
+                onChange={(e) => pick(e.target.files?.[0])}
+              />
+            </label>
+            <button
+              type="button"
+              aria-label={`Remove ${label}`}
+              onClick={() => onPick(undefined)}
+              className="grid place-items-center rounded p-0.5 transition hover:bg-white/20"
+            >
+              <X size={14} />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <label
-      className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-neutral-300 text-sm font-medium text-neutral-500 transition hover:border-brand-500 hover:text-brand-600 dark:border-neutral-700 ${
-        compact ? "py-2" : "py-3"
-      } ${file ? "border-brand-500 text-brand-600 dark:text-brand-400" : ""}`}
+      className={`flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-300 text-sm font-medium text-neutral-500 transition hover:border-brand-500 hover:text-brand-600 dark:border-neutral-700 ${heightCls}`}
     >
-      <ImagePlus size={16} />
-      <span className="truncate">{file ? file.name : label}</span>
+      {busy ? (
+        <span className="text-xs">Optimising…</span>
+      ) : (
+        <>
+          <ImagePlus size={18} />
+          <span className="truncate">{label}</span>
+        </>
+      )}
       <input
         type="file"
         accept="image/*"
         className="hidden"
-        onChange={(e) => onPick(e.target.files?.[0])}
+        disabled={busy}
+        onChange={(e) => pick(e.target.files?.[0])}
       />
     </label>
   );

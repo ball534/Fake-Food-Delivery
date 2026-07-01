@@ -1723,19 +1723,65 @@
   "deals": [
     {
       "kind": "combo",
+      "emoji": "🍔",
+      "title": "Big Mac Sharing Box",
+      "sub": "2 Big Macs, 2 fries & 2 drinks",
+      "price": 22.9,
+      "originalPrice": 27
+    },
+    {
+      "kind": "combo",
       "emoji": "🌶️",
       "title": "Double McSpicy with Cheese Bundle",
-      "sub": "Two fiery fillets + cheese, McDonald's exclusive",
+      "sub": "Two fiery fillets + cheese, exclusive",
       "price": 12.9,
       "originalPrice": 16.5
     },
     {
-      "kind": "item",
+      "kind": "combo",
       "emoji": "🍗",
-      "title": "McWings 2pc",
-      "sub": "Crispy spiced wings, back for a limited run",
-      "price": 3,
-      "originalPrice": 3.6
+      "title": "McNuggets Party Pack",
+      "sub": "9pc Nuggets, fries & a drink",
+      "price": 11.9,
+      "originalPrice": 14
+    },
+    {
+      "kind": "item",
+      "emoji": "🌿",
+      "title": "Seaweed Shaker Fries",
+      "sub": "Fries + seaweed shaker sachet — shake it up!",
+      "price": 3.5,
+      "originalPrice": 4.2
+    },
+    {
+      "kind": "item",
+      "emoji": "🧂",
+      "title": "Salted Egg Shaker Fries",
+      "sub": "Fries + salted egg shaker sachet",
+      "price": 3.9,
+      "originalPrice": 4.5
+    },
+    {
+      "kind": "item",
+      "emoji": "🌶️",
+      "title": "Spicy Buffalo Shaker Fries",
+      "sub": "Fries + spicy buffalo shaker sachet",
+      "price": 3.9
+    },
+    {
+      "kind": "item",
+      "emoji": "🧀",
+      "title": "Cheese Shaker Fries",
+      "sub": "Fries + savoury cheese shaker sachet",
+      "price": 3.9
+    },
+    {
+      "kind": "item",
+      "emoji": "🍜",
+      "title": "Tom Yum Shaker Fries",
+      "sub": "Fries + tangy tom yum shaker sachet",
+      "price": 3.9,
+      "originalPrice": 4.5
     }
   ],
   "reviews": [

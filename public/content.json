@@ -36,7 +36,6 @@
   },
   "deals": [
     {
-      "kind": "code",
       "emoji": "✨",
       "title": "Double points day",
       "sub": "2× points — tap to copy the code",
@@ -44,7 +43,83 @@
       "effect": "points2x"
     },
     {
-      "kind": "code",
+      "emoji": "✨",
+      "title": "Points party",
+      "sub": "Everything earns 2× points — tap to copy",
+      "code": "POINTSPARTY",
+      "effect": "points2x"
+    },
+    {
+      "emoji": "✨",
+      "title": "Stack 'em up",
+      "sub": "Double points this order — tap to copy",
+      "code": "STACKUP",
+      "effect": "points2x"
+    },
+    {
+      "emoji": "✨",
+      "title": "Bonus points blast",
+      "sub": "2× points at checkout — tap to copy",
+      "code": "BONUSPTS",
+      "effect": "points2x"
+    },
+    {
+      "emoji": "✨",
+      "title": "Points storm",
+      "sub": "Twice the points — tap to copy",
+      "code": "POINTSTORM",
+      "effect": "points2x"
+    },
+    {
+      "emoji": "✨",
+      "title": "Score big",
+      "sub": "2× points, bigger rewards — tap to copy",
+      "code": "SCOREBIG",
+      "effect": "points2x"
+    },
+    {
+      "emoji": "✨",
+      "title": "Point push",
+      "sub": "Double your points — tap to copy",
+      "code": "POINTPUSH",
+      "effect": "points2x"
+    },
+    {
+      "emoji": "🌟",
+      "title": "Triple points treat",
+      "sub": "3× points this order — tap to copy",
+      "code": "TRIPLEPTS",
+      "effect": "points3x"
+    },
+    {
+      "emoji": "🌟",
+      "title": "Points times three",
+      "sub": "Earn 3× points — tap to copy",
+      "code": "POINTS3X",
+      "effect": "points3x"
+    },
+    {
+      "emoji": "🌟",
+      "title": "Mega points mode",
+      "sub": "3× points at checkout — tap to copy",
+      "code": "MEGAPOINTS",
+      "effect": "points3x"
+    },
+    {
+      "emoji": "💥",
+      "title": "Points overload",
+      "sub": "A massive 5× points — tap to copy",
+      "code": "POINTS5X",
+      "effect": "points5x"
+    },
+    {
+      "emoji": "💥",
+      "title": "5× frenzy",
+      "sub": "Quintuple your points — tap to copy",
+      "code": "FIVEXFRENZY",
+      "effect": "points5x"
+    },
+    {
       "emoji": "💜",
       "title": "Loyalty in overdrive",
       "sub": "Double loyalty gain — tap to copy",
@@ -52,12 +127,151 @@
       "effect": "loyalty2x"
     },
     {
-      "kind": "code",
+      "emoji": "💜",
+      "title": "Tier up faster",
+      "sub": "2× loyalty progress — tap to copy",
+      "code": "TIERUP",
+      "effect": "loyalty2x"
+    },
+    {
+      "emoji": "💜",
+      "title": "VIP climb",
+      "sub": "Double loyalty this order — tap to copy",
+      "code": "VIPCLIMB",
+      "effect": "loyalty2x"
+    },
+    {
+      "emoji": "💜",
+      "title": "Loyalty love",
+      "sub": "Twice the loyalty gain — tap to copy",
+      "code": "LOVEBACK",
+      "effect": "loyalty2x"
+    },
+    {
+      "emoji": "💜",
+      "title": "Rank up rush",
+      "sub": "Double loyalty gain — tap to copy",
+      "code": "RANKUP",
+      "effect": "loyalty2x"
+    },
+    {
+      "emoji": "💜",
+      "title": "Golden path",
+      "sub": "2× loyalty toward your next tier — tap to copy",
+      "code": "GOLDPATH",
+      "effect": "loyalty2x"
+    },
+    {
+      "emoji": "💜",
+      "title": "Loyalty doubler",
+      "sub": "Double loyalty gain — tap to copy",
+      "code": "LOYAL2X",
+      "effect": "loyalty2x"
+    },
+    {
+      "emoji": "💖",
+      "title": "Loyalty triple threat",
+      "sub": "3× loyalty gain — tap to copy",
+      "code": "LOYALTY3X",
+      "effect": "loyalty3x"
+    },
+    {
+      "emoji": "💖",
+      "title": "Triple loyalty boost",
+      "sub": "Triple your loyalty progress — tap to copy",
+      "code": "TRIPLELOYAL",
+      "effect": "loyalty3x"
+    },
+    {
       "emoji": "⚡",
       "title": "Free Express delivery",
       "sub": "Skip the wait — tap to copy",
       "code": "ZOOMZOOM",
       "effect": "freeexpress"
+    },
+    {
+      "emoji": "⚡",
+      "title": "Fast lane, free",
+      "sub": "Free Express delivery — tap to copy",
+      "code": "FASTLANE",
+      "effect": "freeexpress"
+    },
+    {
+      "emoji": "⚡",
+      "title": "Speed's on us",
+      "sub": "Free Express delivery — tap to copy",
+      "code": "SPEEDFREE",
+      "effect": "freeexpress"
+    },
+    {
+      "emoji": "⚡",
+      "title": "No waiting around",
+      "sub": "Free Express delivery — tap to copy",
+      "code": "NOWAIT",
+      "effect": "freeexpress"
+    },
+    {
+      "emoji": "⚡",
+      "title": "Flash ride",
+      "sub": "Express delivery, free — tap to copy",
+      "code": "FLASHRIDE",
+      "effect": "freeexpress"
+    },
+    {
+      "emoji": "⚡",
+      "title": "Quick drop",
+      "sub": "Free Express delivery — tap to copy",
+      "code": "QUICKDROP",
+      "effect": "freeexpress"
+    },
+    {
+      "emoji": "⚡",
+      "title": "Turbo drop",
+      "sub": "Free Express delivery — tap to copy",
+      "code": "TURBODROP",
+      "effect": "freeexpress"
+    },
+    {
+      "emoji": "🎁",
+      "title": "100 points, on us",
+      "sub": "+100 bonus points free — tap to copy",
+      "code": "FREE100",
+      "effect": "bonus100"
+    },
+    {
+      "emoji": "🎁",
+      "title": "Gift of 100",
+      "sub": "+100 points, our treat — tap to copy",
+      "code": "GIFT100",
+      "effect": "bonus100"
+    },
+    {
+      "emoji": "🎁",
+      "title": "250 points free",
+      "sub": "+250 bonus points free — tap to copy",
+      "code": "FREE250",
+      "effect": "bonus250"
+    },
+    {
+      "emoji": "🎁",
+      "title": "Big 250 bonus",
+      "sub": "+250 points added — tap to copy",
+      "code": "BONUS250",
+      "effect": "bonus250"
+    },
+    {
+      "emoji": "🎁",
+      "title": "500 points jackpot",
+      "sub": "+500 bonus points free — tap to copy",
+      "code": "FREE500",
+      "effect": "bonus500"
+    },
+    {
+      "emoji": "🎁",
+      "title": "Jackpot 500",
+      "sub": "+500 points, on the house — tap to copy",
+      "code": "JACKPOT500",
+      "effect": "bonus500"
     }
   ]
 }

@@ -6614,7 +6614,70 @@
       ]
     }
   ],
-  "deals": [],
+  "deals": [
+    {
+      "kind": "combo",
+      "emoji": "🧋",
+      "title": "Bubble Tea Duo",
+      "sub": "Any two classic milk teas to share",
+      "price": 9.8,
+      "originalPrice": 11.6
+    },
+    {
+      "kind": "combo",
+      "emoji": "🍵",
+      "title": "Hojicha Lover's Set",
+      "sub": "Premium Hojicha Latte + a macaron",
+      "price": 9.5,
+      "originalPrice": 11
+    },
+    {
+      "kind": "combo",
+      "emoji": "🎁",
+      "title": "Sweet Treat Combo",
+      "sub": "A milk tea paired with a 2pc macaron box",
+      "price": 13.5,
+      "originalPrice": 15.4
+    },
+    {
+      "kind": "item",
+      "emoji": "🍓",
+      "title": "Strawberry Cloud Milk Tea",
+      "sub": "Fresh strawberry over cloud milk foam",
+      "price": 6.7,
+      "originalPrice": 7.4
+    },
+    {
+      "kind": "item",
+      "emoji": "🌸",
+      "title": "Sakura Milk Tea",
+      "sub": "Spring-only cherry blossom milk tea",
+      "price": 6.7,
+      "originalPrice": 7.2
+    },
+    {
+      "kind": "item",
+      "emoji": "🍡",
+      "title": "Brown Sugar Mochi Milk Tea",
+      "sub": "Chewy mochi + brown sugar pearls",
+      "price": 7.2
+    },
+    {
+      "kind": "item",
+      "emoji": "🥭",
+      "title": "Mango Pomelo Sago",
+      "sub": "Chilled mango, pomelo & sago",
+      "price": 6.8,
+      "originalPrice": 7.5
+    },
+    {
+      "kind": "item",
+      "emoji": "🍊",
+      "title": "Yuzu Citrus Sparkle",
+      "sub": "Sparkling yuzu green tea, limited run",
+      "price": 6.2
+    }
+  ],
   "reviews": [
     {
       "author": "Wei Ling",

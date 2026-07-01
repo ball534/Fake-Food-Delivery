@@ -29,6 +29,7 @@ export type PurchaseOpts = {
   pointsMultiplier?: number;
   loyaltyTiers?: number;
   pointsSpent?: number;
+  bonusPoints?: number;
 };
 
 export type PurchaseResult = {
@@ -138,12 +139,13 @@ export const useProfile = create<ProfileState>((set, get) => ({
     multiplierForTier(levelForXp(get().profile.loyalty[storeId] ?? 0)),
 
   recordPurchase: (storeId, orderTotal, opts = {}) => {
-    const { pointsMultiplier = 1, loyaltyTiers = 1, pointsSpent = 0 } = opts;
+    const { pointsMultiplier = 1, loyaltyTiers = 1, pointsSpent = 0, bonusPoints = 0 } = opts;
     const { profile } = get();
     const currentXp = profile.loyalty[storeId] ?? 0;
     const currentTier = levelForXp(currentXp);
     const multiplier = multiplierForTier(currentTier);
-    const pointsEarned = pointsForOrder(orderTotal, currentTier, pointsMultiplier);
+    const pointsEarned =
+      pointsForOrder(orderTotal, currentTier, pointsMultiplier) + bonusPoints;
 
     const loyalty: Record<string, number> = { ...profile.loyalty };
 

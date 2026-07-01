@@ -25,7 +25,7 @@ import { money } from "../lib/format";
 import { basePointsFor } from "../lib/loyalty";
 import { DELIVERY_OPTIONS, EXPRESS_COST, estimateMinutes } from "../lib/delivery";
 import { geocodeAddress } from "../lib/geocode";
-import { PROMO_CODES, EFFECT_LABEL } from "../data/promos";
+import { PROMO_CODES, EFFECTS } from "../data/promos";
 import type { DeliverySpeed } from "../data/types";
 
 export default function Checkout() {
@@ -72,19 +72,21 @@ export default function Checkout() {
 
   const total = subtotal;
   const effect = appliedCode ? PROMO_CODES[appliedCode]?.effect : null;
-  const freeExpress = effect === "freeexpress";
+  const effectCfg = effect ? EFFECTS[effect] : null;
+  const freeExpress = !!effectCfg?.freeExpress;
 
   const deliverySeed = selectedAddress?.id ?? "no-address";
   const option = DELIVERY_OPTIONS.find((o) => o.id === speed)!;
   const etaMinutes = estimateMinutes(speed, deliverySeed);
   const pointsCost =
     speed === "express" ? (freeExpress ? 0 : EXPRESS_COST) : 0;
-  const pointsMultiplier = option.pointsMultiplier * (effect === "points2x" ? 2 : 1);
-  const loyaltyTiers = effect === "loyalty2x" ? 2 : 1;
+  const pointsMultiplier = option.pointsMultiplier * (effectCfg?.pointsMultiplier ?? 1);
+  const loyaltyTiers = effectCfg?.loyaltyMultiplier ?? 1;
+  const bonusPoints = effectCfg?.bonusPoints ?? 0;
 
-  const estPoints = Math.round(
-    basePointsFor(total) * multiplierFor(store.id) * pointsMultiplier,
-  );
+  const estPoints =
+    Math.round(basePointsFor(total) * multiplierFor(store.id) * pointsMultiplier) +
+    bonusPoints;
 
   const cannotAffordExpress = pointsCost > profile.points;
   const noAddress = !selectedAddress;
@@ -97,7 +99,7 @@ export default function Checkout() {
     if (PROMO_CODES[code]) {
       setAppliedCode(code);
       setCodeInput("");
-      showToast(`Promo applied: ${EFFECT_LABEL[PROMO_CODES[code].effect]}`, "🏷️");
+      showToast(`Promo applied: ${EFFECTS[PROMO_CODES[code].effect].label}`, "🏷️");
     } else {
       showToast("Invalid promo code", "⚠️");
     }
@@ -114,6 +116,7 @@ export default function Checkout() {
       pointsMultiplier,
       loyaltyTiers,
       pointsSpent: pointsCost,
+      bonusPoints,
     });
     const order = placeOrder({
       storeId: store.id,
@@ -315,7 +318,7 @@ export default function Checkout() {
               <div className="flex-1">
                 <p className="font-bold text-brand-700 dark:text-brand-300">{appliedCode}</p>
                 <p className="text-xs text-brand-600/80 dark:text-brand-400/80">
-                  {EFFECT_LABEL[PROMO_CODES[appliedCode].effect]}
+                  {EFFECTS[PROMO_CODES[appliedCode].effect].label}
                 </p>
               </div>
               <button

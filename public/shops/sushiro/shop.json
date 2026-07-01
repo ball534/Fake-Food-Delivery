@@ -1200,7 +1200,70 @@
       ]
     }
   ],
-  "deals": [],
+  "deals": [
+    {
+      "kind": "combo",
+      "emoji": "🍣",
+      "title": "Salmon Lover's Platter Set",
+      "sub": "Sushiro Salmon Platter + miso soup",
+      "price": 18.5,
+      "originalPrice": 21
+    },
+    {
+      "kind": "combo",
+      "emoji": "🍱",
+      "title": "Family Feast Combo",
+      "sub": "Platter 10, Mix Platter & edamame",
+      "price": 28.9,
+      "originalPrice": 31.3
+    },
+    {
+      "kind": "combo",
+      "emoji": "🍜",
+      "title": "Ramen & Sushi Set",
+      "sub": "Tonkotsu Ramen + 2 salmon nigiri",
+      "price": 11.9,
+      "originalPrice": 13.5
+    },
+    {
+      "kind": "item",
+      "emoji": "🐟",
+      "title": "Aburi Otoro Nigiri",
+      "sub": "Seared bluefin fatty tuna, limited catch",
+      "price": 5.9,
+      "originalPrice": 6.9
+    },
+    {
+      "kind": "item",
+      "emoji": "🦀",
+      "title": "Snow Crab Gunkan",
+      "sub": "Sweet snow crab over sushi rice",
+      "price": 4.9
+    },
+    {
+      "kind": "item",
+      "emoji": "🍤",
+      "title": "Ebi Tempura Roll",
+      "sub": "Crispy prawn tempura roll, back briefly",
+      "price": 5.5,
+      "originalPrice": 6.2
+    },
+    {
+      "kind": "item",
+      "emoji": "🍮",
+      "title": "Matcha Pudding Parfait",
+      "sub": "Layered matcha pudding parfait",
+      "price": 4.5
+    },
+    {
+      "kind": "item",
+      "emoji": "🦑",
+      "title": "Grilled Squid Skewer",
+      "sub": "Charcoal-grilled squid skewer",
+      "price": 3.9,
+      "originalPrice": 4.5
+    }
+  ],
   "reviews": [
     {
       "author": "Jia Hui",

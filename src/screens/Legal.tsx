@@ -91,15 +91,15 @@ export default function Legal() {
         <p className="text-xs text-neutral-400">
           Last updated {content.updated}
         </p>
-        <p className="text-sm text-neutral-600 dark:text-neutral-300">
+        <p className="text-sm text-neutral-600">
           {content.intro}
         </p>
         {content.sections.map((s) => (
           <section key={s.heading}>
-            <h2 className="mb-1 text-base font-bold text-neutral-900 dark:text-white">
+            <h2 className="mb-1 text-base font-bold text-neutral-900">
               {s.heading}
             </h2>
-            <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+            <p className="text-sm leading-relaxed text-neutral-600">
               {s.body}
             </p>
           </section>

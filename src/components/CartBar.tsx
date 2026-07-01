@@ -37,9 +37,9 @@ export default function CartBar() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 12 }}
-                className="pointer-events-auto overflow-hidden rounded-2xl bg-white shadow-card-hover dark:bg-neutral-900"
+                className="pointer-events-auto overflow-hidden rounded-2xl bg-white shadow-card-hover"
               >
-                <div className="max-h-[44vh] divide-y divide-neutral-100 overflow-y-auto dark:divide-neutral-800">
+                <div className="max-h-[44vh] divide-y divide-neutral-100 overflow-y-auto">
                   {cart.lines.map((line) => {
                     const item = store?.menu
                       .flatMap((c) => c.items)
@@ -55,7 +55,7 @@ export default function CartBar() {
                         key={line.lineId}
                         className="flex items-center gap-3 p-3"
                       >
-                        <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+                        <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100">
                           <Thumb
                             src={icon}
                             emoji={emoji}
@@ -65,15 +65,15 @@ export default function CartBar() {
                           />
                         </span>
                         <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
+                          <p className="truncate text-sm font-semibold text-neutral-900">
                             {name}
                           </p>
                           {summary && (
-                            <p className="truncate text-xs text-neutral-500 dark:text-neutral-400">
+                            <p className="truncate text-xs text-neutral-500">
                               {summary}
                             </p>
                           )}
-                          <p className="text-xs font-bold text-neutral-700 dark:text-neutral-300">
+                          <p className="text-xs font-bold text-neutral-700">
                             {money(line.lineTotal)}
                           </p>
                         </div>
@@ -85,7 +85,7 @@ export default function CartBar() {
                                 : setQty(line.lineId, line.qty - 1)
                             }
                             aria-label={line.qty <= 1 ? "Remove" : "Decrease"}
-                            className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 text-neutral-600 active:scale-90 dark:bg-neutral-800 dark:text-neutral-300"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 text-neutral-600 active:scale-90"
                           >
                             {line.qty <= 1 ? (
                               <Trash2 size={13} />
@@ -93,13 +93,13 @@ export default function CartBar() {
                               <Minus size={14} />
                             )}
                           </button>
-                          <span className="w-4 text-center text-sm font-bold text-neutral-900 dark:text-white">
+                          <span className="w-4 text-center text-sm font-bold text-neutral-900">
                             {line.qty}
                           </span>
                           <button
                             onClick={() => setQty(line.lineId, line.qty + 1)}
                             aria-label="Increase"
-                            className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 text-neutral-600 active:scale-90 dark:bg-neutral-800 dark:text-neutral-300"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 text-neutral-600 active:scale-90"
                           >
                             <Plus size={14} />
                           </button>
@@ -120,7 +120,7 @@ export default function CartBar() {
 
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="pointer-events-auto flex w-full items-center justify-between rounded-2xl bg-brand-500 px-4 py-3.5 text-white shadow-card-hover active:scale-[0.99]"
+            className="gloss pointer-events-auto flex w-full items-center justify-between rounded-2xl bg-gradient-to-b from-brand-400 to-brand-600 px-4 py-3.5 text-white shadow-card-hover active:scale-[0.99]"
           >
             <span className="flex items-center gap-2 font-semibold">
               <span className="relative">

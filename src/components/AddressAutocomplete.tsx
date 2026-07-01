@@ -108,17 +108,17 @@ export default function AddressAutocomplete({
         onChange={(e) => onChange(e.target.value)}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
+        className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500"
       />
 
       {open && suggestions.length > 0 && (
-        <ul className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-card dark:border-neutral-700 dark:bg-neutral-900">
+        <ul className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-card">
           {suggestions.map((s) => (
             <li key={s.id}>
               <button
                 type="button"
                 onClick={() => pick(s)}
-                className="flex w-full items-start gap-2 px-3 py-2 text-left text-sm text-neutral-700 transition hover:bg-neutral-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
+                className="flex w-full items-start gap-2 px-3 py-2 text-left text-sm text-neutral-700 transition hover:bg-neutral-50"
               >
                 <MapPin size={15} className="mt-0.5 shrink-0 text-brand-500" />
                 <span className="line-clamp-2">{s.line}</span>

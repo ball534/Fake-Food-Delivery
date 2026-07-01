@@ -1,6 +1,5 @@
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
-  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -31,9 +30,11 @@ export default {
         ],
       },
       boxShadow: {
-        card: "0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
-        "card-hover": "0 6px 20px rgba(0,0,0,0.10)",
-        sheet: "0 -4px 24px rgba(0,0,0,0.12)",
+        card: "0 1px 2px rgba(16,24,40,0.04), 0 6px 20px -6px rgba(16,24,40,0.12)",
+        "card-hover": "0 14px 36px -10px rgba(16,24,40,0.22)",
+        sheet: "0 -6px 28px -6px rgba(16,24,40,0.16)",
+        glass:
+          "0 8px 32px -12px rgba(16,24,40,0.22), inset 0 1px 0 0 rgba(255,255,255,0.55)",
       },
       borderRadius: {
         xl: "0.875rem",

@@ -109,7 +109,7 @@ export default function ItemDetail() {
 
       <div className="space-y-5 p-4">
         <div className="flex items-start gap-4">
-          <span className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-neutral-100 text-5xl shadow-card ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
+          <span className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-neutral-100 text-5xl shadow-card ring-1 ring-black/5">
             <Thumb
               src={item.icon}
               emoji={item.emoji}
@@ -120,13 +120,13 @@ export default function ItemDetail() {
             />
           </span>
           <div className="min-w-0 flex-1">
-            <h1 className="text-2xl font-extrabold text-neutral-900 dark:text-white">
+            <h1 className="text-2xl font-extrabold text-neutral-900">
               {item.name}
             </h1>
-            <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+            <p className="mt-2 text-sm text-neutral-500">
               {item.description}
             </p>
-            <p className="mt-2 text-xl font-bold text-neutral-900 dark:text-white">
+            <p className="mt-2 text-xl font-bold text-neutral-900">
               {money(item.basePrice)}
             </p>
           </div>
@@ -138,14 +138,14 @@ export default function ItemDetail() {
           return (
             <section key={opt.id}>
               <div className="mb-2 flex items-center justify-between">
-                <h3 className="font-bold text-neutral-900 dark:text-white">
+                <h3 className="font-bold text-neutral-900">
                   {opt.label}
                 </h3>
                 <span className="text-xs font-medium text-neutral-400">
                   {optionHint(opt)}
                 </span>
               </div>
-              <div className="overflow-hidden rounded-2xl bg-white shadow-card dark:bg-neutral-900">
+              <div className="overflow-hidden rounded-2xl bg-white shadow-card">
                 {opt.choices.map((choice, idx) => {
                   const checked = isChosen(opt.id, choice.id);
                   const locked = atMax && !checked;
@@ -156,7 +156,7 @@ export default function ItemDetail() {
                       disabled={locked}
                       className={`flex w-full items-center justify-between px-4 py-3 text-left transition disabled:opacity-40 ${
                         idx > 0
-                          ? "border-t border-neutral-100 dark:border-neutral-800"
+                          ? "border-t border-neutral-100"
                           : ""
                       }`}
                     >
@@ -167,10 +167,10 @@ export default function ItemDetail() {
                           } ${
                             checked
                               ? "border-brand-500 bg-brand-500"
-                              : "border-neutral-300 dark:border-neutral-600"
+                              : "border-neutral-300"
                           }`}
                         />
-                        <span className="text-neutral-800 dark:text-neutral-100">
+                        <span className="text-neutral-800">
                           {choice.label}
                         </span>
                       </span>
@@ -188,7 +188,7 @@ export default function ItemDetail() {
         })}
 
         <section>
-          <h3 className="mb-2 font-bold text-neutral-900 dark:text-white">
+          <h3 className="mb-2 font-bold text-neutral-900">
             Special instructions
           </h3>
           <textarea
@@ -196,30 +196,30 @@ export default function ItemDetail() {
             onChange={(e) => setNote(e.target.value)}
             rows={2}
             placeholder="e.g. no onions, extra napkins"
-            className="w-full resize-none rounded-2xl border border-neutral-200 bg-white p-3 text-sm text-neutral-800 outline-none focus:border-brand-500 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100"
+            className="w-full resize-none rounded-2xl border border-neutral-200 bg-white p-3 text-sm text-neutral-800 outline-none focus:border-brand-500"
           />
         </section>
 
         <section className="flex items-center justify-between">
-          <h3 className="font-bold text-neutral-900 dark:text-white">
+          <h3 className="font-bold text-neutral-900">
             Quantity
           </h3>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setQty((q) => Math.max(1, q - 1))}
               aria-label="Decrease quantity"
-              className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 active:scale-90 disabled:opacity-40 dark:bg-neutral-800"
+              className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 active:scale-90 disabled:opacity-40"
               disabled={qty <= 1}
             >
               <Minus size={18} />
             </button>
-            <span className="w-6 text-center text-lg font-bold text-neutral-900 dark:text-white">
+            <span className="w-6 text-center text-lg font-bold text-neutral-900">
               {qty}
             </span>
             <button
               onClick={() => setQty((q) => Math.min(20, q + 1))}
               aria-label="Increase quantity"
-              className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 active:scale-90 dark:bg-neutral-800"
+              className="grid h-10 w-10 place-items-center rounded-full bg-neutral-100 active:scale-90"
             >
               <Plus size={18} />
             </button>
@@ -227,7 +227,7 @@ export default function ItemDetail() {
         </section>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px] border-t border-neutral-200 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
+      <div className="glass-nav fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px] border-t border-black/5 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <button
           onClick={handleAdd}
           disabled={missingRequired.length > 0}

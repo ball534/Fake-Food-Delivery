@@ -57,8 +57,8 @@ export default function Search() {
 
   return (
     <Screen className="pb-6">
-      <div className="sticky top-0 z-10 space-y-3 border-b border-neutral-200 bg-neutral-50/95 px-4 pb-3 pt-6 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
-        <div className="flex items-center gap-2 rounded-2xl bg-white px-4 py-3 shadow-card dark:bg-neutral-900">
+      <div className="glass-nav sticky top-0 z-10 space-y-3 border-b border-black/5 px-4 pb-3 pt-6">
+        <div className="glass flex items-center gap-2 rounded-2xl px-4 py-3">
           <SearchIcon size={18} className="text-neutral-400" />
           <input
             autoFocus
@@ -66,7 +66,7 @@ export default function Search() {
             onChange={(e) => setQuery(e.target.value)}
             onBlur={() => commitSearch(query)}
             placeholder="Search stores, cuisines, dishes"
-            className="flex-1 bg-transparent text-sm text-neutral-900 outline-none dark:text-white"
+            className="flex-1 bg-transparent text-sm text-neutral-900 outline-none"
           />
           {query && (
             <button onClick={() => setQuery("")} aria-label="Clear">
@@ -79,7 +79,7 @@ export default function Search() {
       <div className="space-y-5 p-4">
         {!q && recent.length > 0 && (
           <section>
-            <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+            <h2 className="mb-2 text-sm font-bold text-neutral-900">
               Recent
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -94,7 +94,7 @@ export default function Search() {
 
         {!q && previousStores.length > 0 && (
           <section>
-            <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+            <h2 className="mb-2 text-sm font-bold text-neutral-900">
               Order again
             </h2>
             <div className="flex flex-wrap gap-2">
@@ -109,7 +109,7 @@ export default function Search() {
 
         {q && (
           <section>
-            <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+            <h2 className="mb-2 text-sm font-bold text-neutral-900">
               Stores · {results.length}
             </h2>
             {results.length === 0 ? (

@@ -165,7 +165,7 @@ const newDeal = (): DealDraft => ({
 });
 
 const inputCls =
-  "w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white";
+  "w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500";
 
 export default function CreateStore() {
   const showToast = useToasts((s) => s.show);
@@ -373,7 +373,7 @@ export default function CreateStore() {
       <TopBar title="Create a store" />
 
       <div className="space-y-5 p-4">
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+        <p className="text-sm text-neutral-500">
           Build your own shop by filling in the form below, then export it as a{" "}
           <code>.zip</code> you can drop into <code>public/shops/</code>.
         </p>
@@ -396,7 +396,7 @@ export default function CreateStore() {
                   className={`flex-1 rounded-xl py-2 text-sm font-bold transition ${
                     priceLevel === p
                       ? "bg-brand-500 text-white"
-                      : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800"
+                      : "bg-neutral-100 text-neutral-500"
                   }`}
                 >
                   {"$".repeat(p)}
@@ -436,7 +436,7 @@ export default function CreateStore() {
         </FormCard>
 
         <section className="space-y-3">
-          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900 dark:text-white">
+          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900">
             <Utensils size={18} /> Menu
           </h2>
 
@@ -470,7 +470,7 @@ export default function CreateStore() {
                 {cat.food.map((food) => (
                   <div
                     key={food.id}
-                    className="space-y-2.5 rounded-xl border border-neutral-200 p-3 dark:border-neutral-700"
+                    className="space-y-2.5 rounded-xl border border-neutral-200 p-3"
                   >
                     <div className="flex items-center gap-2">
                       <input
@@ -542,7 +542,7 @@ export default function CreateStore() {
                     {food.sections.map((sec) => (
                       <div
                         key={sec.id}
-                        className="space-y-2 rounded-lg bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
+                        className="space-y-2 rounded-lg bg-neutral-50 p-2.5"
                       >
                         <div className="flex items-center gap-2">
                           <Settings2
@@ -575,7 +575,7 @@ export default function CreateStore() {
                           </IconBtn>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pl-6 text-xs font-medium text-neutral-600 dark:text-neutral-300">
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 pl-6 text-xs font-medium text-neutral-600">
                           <label className="flex items-center gap-1.5">
                             <input
                               type="checkbox"
@@ -622,7 +622,7 @@ export default function CreateStore() {
                                     }),
                                   )
                                 }
-                                className="w-14 rounded-md border border-neutral-200 bg-transparent px-1.5 py-0.5 outline-none focus:border-brand-500 dark:border-neutral-700"
+                                className="w-14 rounded-md border border-neutral-200 bg-transparent px-1.5 py-0.5 outline-none focus:border-brand-500"
                               />
                             </label>
                           )}
@@ -659,7 +659,7 @@ export default function CreateStore() {
                                   +$
                                 </span>
                                 <input
-                                  className="w-16 rounded-lg border border-neutral-200 bg-transparent px-2 py-1.5 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
+                                  className="w-16 rounded-lg border border-neutral-200 bg-transparent px-2 py-1.5 text-sm outline-none focus:border-brand-500"
                                   type="number"
                                   min={0}
                                   step={0.1}
@@ -711,7 +711,7 @@ export default function CreateStore() {
                                 options: [...s.options, newOption()],
                               }))
                             }
-                            className="text-xs font-semibold text-brand-600 dark:text-brand-400"
+                            className="text-xs font-semibold text-brand-600"
                           >
                             + Add choice
                           </button>
@@ -727,7 +727,7 @@ export default function CreateStore() {
                           sections: [...f.sections, newSection()],
                         }))
                       }
-                      className="text-xs font-semibold text-brand-600 dark:text-brand-400"
+                      className="text-xs font-semibold text-brand-600"
                     >
                       + Add customisation group
                     </button>
@@ -760,7 +760,7 @@ export default function CreateStore() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900 dark:text-white">
+          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900">
             <Tag size={18} /> Deals
             <span className="text-xs font-medium text-neutral-400">
               Optional · limited-time specials
@@ -771,7 +771,7 @@ export default function CreateStore() {
             <div key={d.id} className="card space-y-2.5 p-4">
               <div className="flex items-center gap-2">
                 <input
-                  className="w-14 rounded-xl border border-neutral-200 bg-transparent px-2 py-2 text-center text-lg outline-none focus:border-brand-500 dark:border-neutral-700"
+                  className="w-14 rounded-xl border border-neutral-200 bg-transparent px-2 py-2 text-center text-lg outline-none focus:border-brand-500"
                   value={d.emoji}
                   onChange={(e) =>
                     setDeals((ds) =>
@@ -817,7 +817,7 @@ export default function CreateStore() {
                     className={`flex-1 rounded-xl py-2 text-sm font-bold capitalize transition ${
                       d.kind === k
                         ? "bg-brand-500 text-white"
-                        : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800"
+                        : "bg-neutral-100 text-neutral-500"
                     }`}
                   >
                     {k === "combo" ? "Special combo" : "Limited-time item"}
@@ -890,7 +890,7 @@ export default function CreateStore() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900 dark:text-white">
+          <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900">
             <MessageSquare size={18} /> Reviews
             <span className="text-xs font-medium text-neutral-400">
               Optional
@@ -968,7 +968,7 @@ export default function CreateStore() {
         </section>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-20 mx-auto max-w-[440px] border-t border-neutral-200 bg-white/95 p-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
+      <div className="fixed inset-x-0 bottom-0 z-20 mx-auto max-w-[440px] border-t border-neutral-200 bg-white/95 p-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] backdrop-blur">
         <button
           onClick={exportZip}
           disabled={busy}
@@ -995,7 +995,7 @@ function FormCard({
 }) {
   return (
     <section className="card space-y-3 p-4">
-      <h2 className="flex items-center gap-2 text-base font-bold text-neutral-900 dark:text-white">
+      <h2 className="flex items-center gap-2 text-base font-bold text-neutral-900">
         {icon} {title}
         {subtitle && (
           <span className="text-xs font-medium text-neutral-400">
@@ -1019,7 +1019,7 @@ function Field({
 }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-semibold text-neutral-700 dark:text-neutral-200">
+      <span className="text-sm font-semibold text-neutral-700">
         {label}
       </span>
       {children}
@@ -1127,7 +1127,7 @@ function ImagePicker({
 
   return (
     <label
-      className={`flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-300 text-sm font-medium text-neutral-500 transition hover:border-brand-500 hover:text-brand-600 dark:border-neutral-700 ${heightCls}`}
+      className={`flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-neutral-300 text-sm font-medium text-neutral-500 transition hover:border-brand-500 hover:text-brand-600 ${heightCls}`}
     >
       {busy ? (
         <span className="text-xs">Optimising…</span>
@@ -1225,13 +1225,13 @@ function CuisinePicker({
         }
       />
       {open && matches.length > 0 && (
-        <ul className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-card dark:border-neutral-700 dark:bg-neutral-900">
+        <ul className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-card">
           {matches.map((c) => (
             <li key={c}>
               <button
                 type="button"
                 onClick={() => add(c)}
-                className="flex w-full items-center px-3 py-2 text-left text-sm text-neutral-700 transition hover:bg-neutral-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
+                className="flex w-full items-center px-3 py-2 text-left text-sm text-neutral-700 transition hover:bg-neutral-50"
               >
                 {c}
               </button>

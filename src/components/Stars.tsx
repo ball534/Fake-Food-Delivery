@@ -20,7 +20,7 @@ export default function Stars({
             className={
               filled
                 ? "fill-amber-400 text-amber-400"
-                : "text-neutral-300 dark:text-neutral-600"
+                : "text-neutral-300"
             }
           />
         );

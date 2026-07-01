@@ -36,7 +36,7 @@ export default function Thumb({
   }
   if (emoji) return <span>{emoji}</span>;
   return (
-    <span className="px-1 text-center text-xs font-medium lowercase text-neutral-400 dark:text-neutral-500">
+    <span className="px-1 text-center text-xs font-medium lowercase text-neutral-400">
       {fallback}
     </span>
   );

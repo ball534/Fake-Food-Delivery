@@ -40,18 +40,18 @@ export default function ItemCard({
   return (
     <div
       onClick={open}
-      className="flex cursor-pointer gap-3 rounded-2xl bg-white p-3 shadow-card transition active:scale-[0.99] dark:bg-neutral-900"
+      className="flex cursor-pointer gap-3 rounded-2xl bg-white p-3 shadow-card transition active:scale-[0.99]"
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-center gap-1.5">
-          <h4 className="truncate font-semibold leading-snug text-neutral-900 dark:text-white">
+          <h4 className="truncate font-semibold leading-snug text-neutral-900">
             {item.name}
           </h4>
         </div>
-        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+        <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-neutral-500">
           {item.description}
         </p>
-        <p className="mt-auto pt-2 text-sm font-bold text-neutral-900 dark:text-white">
+        <p className="mt-auto pt-2 text-sm font-bold text-neutral-900">
           {money(item.basePrice)}
           {needsCustomisation(item) && (
             <span className="ml-1 text-xs font-normal text-neutral-400">+</span>
@@ -59,7 +59,7 @@ export default function ItemCard({
         </p>
       </div>
       <div className="relative shrink-0">
-        <div className="grid h-20 w-20 place-items-center overflow-hidden rounded-xl bg-neutral-100 text-4xl dark:bg-neutral-800">
+        <div className="grid h-20 w-20 place-items-center overflow-hidden rounded-xl bg-neutral-100 text-4xl">
           <Thumb
             src={item.icon}
             emoji={item.emoji}
@@ -71,7 +71,7 @@ export default function ItemCard({
           whileTap={{ scale: 0.85 }}
           onClick={quickAdd}
           aria-label={`Add ${item.name}`}
-          className="absolute -bottom-2 -right-2 grid h-9 w-9 place-items-center rounded-full bg-brand-500 text-white shadow-card-hover"
+          className="absolute -bottom-2 -right-2 grid h-9 w-9 place-items-center rounded-full bg-gradient-to-b from-brand-400 to-brand-600 text-white shadow-card-hover ring-1 ring-white/40"
         >
           <Plus size={18} strokeWidth={3} />
         </motion.button>

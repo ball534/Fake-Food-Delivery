@@ -149,7 +149,7 @@ export default function StoreMenu() {
 
   return (
     <Screen className="pb-28">
-      <div className="relative grid h-44 place-items-center overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+      <div className="relative grid h-44 place-items-center overflow-hidden bg-neutral-200">
         <Thumb
           src={store.banner}
           alt={store.name}
@@ -162,8 +162,8 @@ export default function StoreMenu() {
         </div>
       </div>
 
-      <div className="relative -mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8 dark:bg-neutral-950">
-        <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
+      <div className="relative -mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8">
+        <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5">
           <Thumb
             src={store.logo}
             alt={store.name}
@@ -171,13 +171,13 @@ export default function StoreMenu() {
             rounded="rounded-2xl"
           />
         </span>
-        <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-neutral-900 dark:text-white">
+        <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-neutral-900">
           {store.name}
         </h1>
-        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+        <p className="mt-1.5 text-sm text-neutral-500">
           {store.cuisine} · {"$".repeat(store.priceLevel)}
         </p>
-        <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-600 dark:text-neutral-300">
+        <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-600">
           <span className="flex items-center gap-1 font-semibold">
             <Star size={15} className="fill-amber-400 text-amber-400" />
             {store.rating.toFixed(1)}
@@ -191,13 +191,13 @@ export default function StoreMenu() {
         </div>
 
         {storeDeal && (
-          <div className="mt-3 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-3 text-white shadow-card">
-            <span className="text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
+          <div className="gloss mt-3 rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 p-3 text-white shadow-card-hover">
+            <span className="relative z-[1] text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
               {storeDeal.kind === "combo"
                 ? "Special combo"
                 : "Limited-time item"}
             </span>
-            <div className="mt-0.5 flex items-center gap-3">
+            <div className="relative z-[1] mt-0.5 flex items-center gap-3">
               {storeDeal.emoji && (
                 <span className="text-3xl">{storeDeal.emoji}</span>
               )}
@@ -237,7 +237,7 @@ export default function StoreMenu() {
         )}
       </div>
 
-      <div className="sticky top-0 z-10 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
+      <div className="glass-nav sticky top-0 z-10 border-b border-black/5">
         <div className="flex gap-2 overflow-x-auto px-4 py-2.5 no-scrollbar">
           {store.menu.map((cat) => (
             <button
@@ -260,7 +260,7 @@ export default function StoreMenu() {
             data-cat={cat.label}
             className="scroll-mt-16"
           >
-            <h2 className="mb-3 text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
+            <h2 className="mb-3 text-lg font-bold tracking-tight text-neutral-900">
               {cat.label}
             </h2>
             <div className="space-y-2.5">
@@ -272,7 +272,7 @@ export default function StoreMenu() {
         ))}
 
         <section>
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900 dark:text-white">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900">
             Reviews
             <span className="text-sm font-medium text-neutral-400">
               {pluralize(reviews.length, "review")}
@@ -282,17 +282,17 @@ export default function StoreMenu() {
             {reviews.map((r, i) => (
               <div key={i} className="card p-4">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-sm font-semibold text-neutral-500 dark:bg-neutral-800 dark:text-neutral-300">
+                  <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-sm font-semibold text-neutral-500">
                     {initials(r.author)}
                   </span>
                   <div className="min-w-0 flex-1 leading-tight">
-                    <p className="font-semibold text-neutral-900 dark:text-white">
+                    <p className="font-semibold text-neutral-900">
                       {r.author}
                     </p>
                   </div>
                   <Stars value={r.rating} size={14} />
                 </div>
-                <p className="mt-2.5 text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
+                <p className="mt-2.5 text-sm leading-relaxed text-neutral-600">
                   {r.text}
                 </p>
               </div>

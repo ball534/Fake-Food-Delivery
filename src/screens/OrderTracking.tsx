@@ -73,7 +73,7 @@ export default function OrderTracking() {
       <TopBar title="Track order" />
 
       <div className="space-y-4 p-4">
-        <div className="rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-4 text-white">
+        <div className="gloss rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 p-4 text-white shadow-card-hover">
           <p className="text-xs font-medium text-brand-50/90">
             {delivered ? "Your order is" : "Status"}
           </p>
@@ -104,21 +104,21 @@ export default function OrderTracking() {
         <DeliveryMap order={order} now={now} />
 
         <div className="card flex items-center gap-3 p-4">
-          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700">
+          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-neutral-200">
             <UserRound
               size={34}
-              className="translate-y-1 fill-neutral-400 text-neutral-400 dark:fill-neutral-500 dark:text-neutral-500"
+              className="translate-y-1 fill-neutral-400 text-neutral-400"
             />
           </span>
           <div className="flex-1">
-            <p className="font-bold text-neutral-900 dark:text-white">
+            <p className="font-bold text-neutral-900">
               {order.driver.name}
             </p>
           </div>
           <button
             onClick={() => showToast("Message sent into the void ✉️", "💬")}
             aria-label="Message driver"
-            className="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 active:scale-90 dark:bg-brand-500/15 dark:text-brand-400"
+            className="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 active:scale-90"
           >
             <MessageSquare size={18} />
           </button>
@@ -126,7 +126,7 @@ export default function OrderTracking() {
 
         {delivered && (
           <div className="card flex flex-col items-center gap-2 p-4 text-center">
-            <p className="font-bold text-neutral-900 dark:text-white">
+            <p className="font-bold text-neutral-900">
               {order.rating ? "Thanks for rating!" : "How was it?"}
             </p>
             <Stars
@@ -186,17 +186,17 @@ export default function OrderTracking() {
             <span>TOTAL</span>
             <span>{money(order.total)}</span>
           </div>
-          <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
+          <div className="flex justify-between text-neutral-500">
             <span>Delivery</span>
             <span>{DELIVERY_BY_ID[order.deliverySpeed].label}</span>
           </div>
           {order.promoCode && (
-            <div className="flex justify-between text-neutral-500 dark:text-neutral-400">
+            <div className="flex justify-between text-neutral-500">
               <span>Promo</span>
               <span>{order.promoCode}</span>
             </div>
           )}
-          <div className="flex justify-between text-brand-600 dark:text-brand-400">
+          <div className="flex justify-between text-brand-600">
             <span>Points earned</span>
             <span>+{order.pointsEarned}</span>
           </div>
@@ -243,6 +243,6 @@ function Segment({ fill, active }: { fill: number; active: boolean }) {
 
 function Dashed() {
   return (
-    <div className="my-2 border-t border-dashed border-neutral-300 dark:border-neutral-700" />
+    <div className="my-2 border-t border-dashed border-neutral-300" />
   );
 }

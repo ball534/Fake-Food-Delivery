@@ -29,17 +29,17 @@ export default function ConfirmDialog({
           onClick={onCancel}
         >
           <motion.div
-            className="m-4 w-full max-w-sm rounded-2xl bg-white p-5 shadow-card-hover dark:bg-neutral-900"
+            className="m-4 w-full max-w-sm rounded-2xl bg-white p-5 shadow-card-hover"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 30, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+            <h3 className="text-lg font-bold text-neutral-900">
               {title}
             </h3>
             {body && (
-              <div className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+              <div className="mt-2 text-sm text-neutral-500">
                 {body}
               </div>
             )}

@@ -1,5 +1,9 @@
 {
-  "shops": ["koi-the", "mcdonalds", "sushiro"],
+  "shops": [
+    "koi-the",
+    "mcdonalds",
+    "sushiro"
+  ],
   "greetings": {
     "morning": [
       "Good morning",

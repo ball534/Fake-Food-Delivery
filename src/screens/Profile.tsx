@@ -106,10 +106,18 @@ export default function Profile() {
   };
 
   return (
-    <Screen className="pb-6">
-      <div className="bg-gradient-to-b from-brand-500 to-brand-600 px-4 pb-6 pt-8 text-white">
+    <Screen className="relative pb-6">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-brand-300/40 blur-3xl"
+      />
+      <div className="relative px-4 pb-6 pt-9 text-white">
         <div className="flex items-center gap-4">
-          <span className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-full bg-white/20 backdrop-blur">
+          <span className="grid h-16 w-16 shrink-0 place-items-center overflow-hidden rounded-full border border-white/30 bg-white/20 backdrop-blur-xl">
             <UserRound
               size={44}
               className="translate-y-1.5 fill-white/70 text-white/70"
@@ -150,22 +158,22 @@ export default function Profile() {
       <div className="space-y-5 p-4">
         <section className="card p-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
+            <div className="flex items-center gap-2 text-neutral-500">
               <Sparkles size={18} className="text-brand-500" />
               <span className="text-sm font-medium">Reward points</span>
             </div>
           </div>
-          <p className="mt-1 text-3xl font-extrabold text-neutral-900 dark:text-white">
+          <p className="mt-1 text-3xl font-extrabold text-neutral-900">
             {profile.points.toLocaleString()}{" "}
             <span className="text-base font-bold text-neutral-400">pts</span>
           </p>
 
           <div className="mt-4">
-            <p className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+            <p className="mb-2 text-sm font-bold text-neutral-900">
               Shop loyalty
             </p>
             {loyalties.length === 0 ? (
-              <p className="text-xs text-neutral-500 dark:text-neutral-400">
+              <p className="text-xs text-neutral-500">
                 Order from a shop to build loyalty. Higher tiers multiply the
                 points you earn there — but ordering elsewhere lowers it.
               </p>
@@ -175,9 +183,9 @@ export default function Profile() {
                   <Link
                     key={store.id}
                     to={`/store/${store.id}`}
-                    className="flex items-center gap-3 rounded-xl bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
+                    className="flex items-center gap-3 rounded-xl bg-neutral-50 p-2.5"
                   >
-                    <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white shadow-card dark:bg-neutral-800">
+                    <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white shadow-card">
                       <Thumb
                         src={store.logo}
                         alt={store.name}
@@ -186,15 +194,15 @@ export default function Profile() {
                       />
                     </span>
                     <div className="min-w-0 flex-1">
-                      <p className="truncate font-semibold text-neutral-900 dark:text-white">
+                      <p className="truncate font-semibold text-neutral-900">
                         {store.name}
                       </p>
-                      <p className="truncate text-xs text-brand-600 dark:text-brand-400">
+                      <p className="truncate text-xs text-brand-600">
                         {multiplierForTier(level).toFixed(1)}× points
                       </p>
                     </div>
                     <div className="shrink-0 text-right">
-                      <p className="text-sm font-extrabold leading-tight text-brand-600 dark:text-brand-400">
+                      <p className="text-sm font-extrabold leading-tight text-brand-600">
                         {tierName(level)}
                       </p>
                     </div>
@@ -207,7 +215,7 @@ export default function Profile() {
 
         <section>
           <div className="mb-2 flex items-center justify-between">
-            <h2 className="flex items-center gap-2 text-base font-bold text-neutral-900 dark:text-white">
+            <h2 className="flex items-center gap-2 text-base font-bold text-neutral-900">
               <MapPin size={18} /> Saved addresses
               <span className="text-xs font-medium text-neutral-400">
                 {profile.addresses.length}/{MAX_ADDRESSES}
@@ -216,7 +224,7 @@ export default function Profile() {
             {!atMax && (
               <button
                 onClick={() => setAddingAddr((v) => !v)}
-                className="text-sm font-semibold text-brand-600 dark:text-brand-400"
+                className="text-sm font-semibold text-brand-600"
               >
                 {addingAddr ? "Cancel" : "+ Add"}
               </button>
@@ -224,12 +232,12 @@ export default function Profile() {
           </div>
 
           {addingAddr && !atMax && (
-            <div className="mb-3 space-y-2 rounded-2xl bg-white p-3 shadow-card dark:bg-neutral-900">
+            <div className="mb-3 space-y-2 rounded-2xl bg-white p-3 shadow-card">
               <input
                 value={addrLabel}
                 onChange={(e) => setAddrLabel(e.target.value)}
                 placeholder="Label (e.g. Home, Work)"
-                className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
+                className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500"
               />
               <AddressAutocomplete
                 value={addrLine}
@@ -242,7 +250,7 @@ export default function Profile() {
               <button
                 onClick={useMyLocation}
                 disabled={locating}
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-brand-500 py-2 text-sm font-semibold text-brand-600 transition active:scale-[0.99] disabled:opacity-60 dark:text-brand-400"
+                className="flex w-full items-center justify-center gap-2 rounded-xl border border-brand-500 py-2 text-sm font-semibold text-brand-600 transition active:scale-[0.99] disabled:opacity-60"
               >
                 <LocateFixed
                   size={16}
@@ -260,7 +268,7 @@ export default function Profile() {
           )}
 
           {profile.addresses.length === 0 && !addingAddr ? (
-            <p className="rounded-2xl bg-white p-4 text-sm text-neutral-400 shadow-card dark:bg-neutral-900">
+            <p className="rounded-2xl bg-white p-4 text-sm text-neutral-400 shadow-card">
               No addresses yet. Add a delivery address to start ordering.
             </p>
           ) : (
@@ -287,9 +295,9 @@ export default function Profile() {
 
         <Link
           to="/create-store"
-          className="flex items-center gap-3 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-600 p-4 text-white shadow-card transition active:scale-[0.99]"
+          className="gloss flex items-center gap-3 rounded-2xl bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 p-4 text-white shadow-card-hover transition active:scale-[0.99]"
         >
-          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/20 backdrop-blur">
+          <span className="relative z-[1] grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/20 backdrop-blur">
             <StoreIcon size={22} />
           </span>
           <div className="min-w-0 flex-1">
@@ -302,41 +310,41 @@ export default function Profile() {
         </Link>
 
         <section>
-          <h2 className="mb-2 text-base font-bold text-neutral-900 dark:text-white">
+          <h2 className="mb-2 text-base font-bold text-neutral-900">
             Others
           </h2>
-          <div className="overflow-hidden rounded-2xl bg-white shadow-card dark:bg-neutral-900">
+          <div className="overflow-hidden rounded-2xl bg-white shadow-card">
             <Link
               to="/legal/privacy"
               className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
             >
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-neutral-600">
                 <ShieldCheck size={17} />
               </span>
-              <span className="flex-1 font-semibold text-neutral-900 dark:text-white">
+              <span className="flex-1 font-semibold text-neutral-900">
                 Privacy Policy
               </span>
               <ChevronRight size={18} className="text-neutral-300" />
             </Link>
-            <div className="border-t border-neutral-100 dark:border-neutral-800" />
+            <div className="border-t border-neutral-100" />
             <Link
               to="/legal/terms"
               className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
             >
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-neutral-100 text-neutral-600">
                 <FileText size={17} />
               </span>
-              <span className="flex-1 font-semibold text-neutral-900 dark:text-white">
+              <span className="flex-1 font-semibold text-neutral-900">
                 Terms &amp; Conditions
               </span>
               <ChevronRight size={18} className="text-neutral-300" />
             </Link>
-            <div className="border-t border-neutral-100 dark:border-neutral-800" />
+            <div className="border-t border-neutral-100" />
             <button
               onClick={() => setResetOpen(true)}
               className="flex w-full items-center gap-3 px-4 py-3.5 text-left"
             >
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-red-50 text-red-500 dark:bg-red-500/15">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-red-50 text-red-500">
                 <Trash2 size={17} />
               </span>
               <span className="flex-1 font-semibold text-red-500">
@@ -382,12 +390,12 @@ function AddressRow({
 
   if (editing) {
     return (
-      <div className="space-y-2 rounded-2xl bg-white p-3 shadow-card dark:bg-neutral-900">
+      <div className="space-y-2 rounded-2xl bg-white p-3 shadow-card">
         <input
           value={label}
           onChange={(e) => setLabel(e.target.value)}
           placeholder="Label"
-          className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
+          className="w-full rounded-xl border border-neutral-200 bg-transparent px-3 py-2 text-sm outline-none focus:border-brand-500"
         />
         <AddressAutocomplete
           value={line}
@@ -421,28 +429,28 @@ function AddressRow({
   }
 
   return (
-    <div className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-card dark:bg-neutral-900">
+    <div className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-card">
       <button
         onClick={onSelect}
         className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${
           selected
             ? "bg-brand-500 text-white"
-            : "bg-neutral-100 text-neutral-500 dark:bg-neutral-800"
+            : "bg-neutral-100 text-neutral-500"
         }`}
         aria-label="Select address"
       >
         <MapPin size={16} />
       </button>
       <button onClick={onSelect} className="min-w-0 flex-1 text-left">
-        <p className="flex items-center gap-1.5 font-semibold text-neutral-900 dark:text-white">
+        <p className="flex items-center gap-1.5 font-semibold text-neutral-900">
           {addr.label}
           {selected && (
-            <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold text-brand-600 dark:bg-brand-500/15 dark:text-brand-400">
+            <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold text-brand-600">
               Selected
             </span>
           )}
         </p>
-        <p className="truncate text-xs text-neutral-500 dark:text-neutral-400">
+        <p className="truncate text-xs text-neutral-500">
           {addr.line}
         </p>
       </button>

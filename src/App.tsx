@@ -13,7 +13,7 @@ import {
   User,
 } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
-import { useApplyTheme, useOrderTicker } from "./lib/hooks";
+import { useOrderTicker } from "./lib/hooks";
 import { useOrders } from "./store/orderStore";
 import { useContent } from "./store/contentStore";
 import { useStores } from "./store/storesStore";
@@ -41,7 +41,7 @@ function TabBar() {
   const activeCount = useOrders((s) => s.activeOrders().length);
 
   return (
-    <nav className="flex shrink-0 items-stretch border-t border-neutral-200 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
+    <nav className="glass-nav flex shrink-0 items-stretch border-t border-black/5 pb-[env(safe-area-inset-bottom)]">
       {TABS.map(({ to, label, icon: Icon, end }) => (
         <NavLink
           key={to}
@@ -50,8 +50,8 @@ function TabBar() {
           className={({ isActive }) =>
             `relative flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] font-medium transition ${
               isActive
-                ? "text-brand-600 dark:text-brand-400"
-                : "text-neutral-400 dark:text-neutral-500"
+                ? "text-brand-600"
+                : "text-neutral-400"
             }`
           }
         >
@@ -76,10 +76,10 @@ function Splash({ error = false }: { error?: boolean }) {
       {error ? (
         <div className="space-y-2">
           <p className="text-3xl">🍽️</p>
-          <p className="font-bold text-neutral-900 dark:text-white">
+          <p className="font-bold text-neutral-900">
             Couldn't load the shops
           </p>
-          <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          <p className="text-sm text-neutral-500">
             Check that <code>public/content.json</code> and the shop folders
             exist, then reload.
           </p>
@@ -95,7 +95,6 @@ function Splash({ error = false }: { error?: boolean }) {
 }
 
 export default function App() {
-  useApplyTheme();
   useOrderTicker();
   const location = useLocation();
   const mainRef = useRef<HTMLElement>(null);
@@ -119,12 +118,12 @@ export default function App() {
     );
 
   return (
-    <div className="min-h-[100dvh] bg-neutral-100 dark:bg-black">
+    <div className="min-h-[100dvh] bg-neutral-100">
       <div className="phone-frame">
         <Toaster />
         <main
           ref={mainRef}
-          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-neutral-50 dark:bg-neutral-950"
+          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-neutral-50"
         >
           {!storesLoaded ? (
             <Splash />

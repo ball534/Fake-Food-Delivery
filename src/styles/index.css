@@ -32,26 +32,82 @@ body {
 
 @layer components {
   .phone-frame {
-    @apply mx-auto flex h-[100dvh] w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl dark:bg-neutral-950 sm:my-0 sm:h-[100dvh];
+    @apply mx-auto flex h-[100dvh] w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl sm:my-0 sm:h-[100dvh];
+  }
+
+  /* Frosted translucent surface — Apple "liquid glass". Meant for floating
+     chrome/controls that overlap content (search bars, chips, sheets), not
+     for opaque content cards. */
+  .glass {
+    @apply border border-white/50 bg-white/55 backdrop-blur-xl backdrop-saturate-150;
+    box-shadow:
+      0 8px 32px -12px rgba(16, 24, 40, 0.22),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.55);
+  }
+
+  /* Translucent bar treatment for sticky top/bottom navigation. */
+  .glass-nav {
+    @apply bg-white/70 backdrop-blur-xl backdrop-saturate-150;
+  }
+
+  /* Specular top highlight — layer over any element to give it the glossy,
+     lit-from-above sheen of liquid glass. Element must be able to clip. */
+  .gloss {
+    @apply relative overflow-hidden;
+  }
+  .gloss::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 45%;
+    border-radius: inherit;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0)
+    );
+    pointer-events: none;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-5 py-3 font-semibold text-white shadow-card transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl px-5 py-3 font-semibold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+    background-image: linear-gradient(to bottom, #43a843, #1d761d);
+    box-shadow:
+      0 8px 20px -6px rgba(34, 139, 34, 0.5),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.28);
+  }
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 50%;
+    border-radius: inherit;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.28),
+      rgba(255, 255, 255, 0)
+    );
+    pointer-events: none;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-neutral-100 px-5 py-3 font-semibold text-neutral-800 transition active:scale-[0.98] dark:bg-neutral-800 dark:text-neutral-100;
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-white/60 bg-white/70 px-5 py-3 font-semibold text-neutral-800 backdrop-blur-xl transition active:scale-[0.98];
   }
 
   .chip {
-    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-700 transition dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-200;
+    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-white/60 bg-white/65 px-3.5 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-md transition;
   }
 
   .chip-active {
-    @apply border-brand-500 bg-brand-500 text-white dark:border-brand-500 dark:bg-brand-500 dark:text-white;
+    @apply border-transparent text-white shadow-[0_4px_12px_-3px_rgba(34,139,34,0.55)];
+    background-image: linear-gradient(to bottom, #43a843, #1d761d);
   }
 
   .card {
-    @apply rounded-2xl bg-white shadow-card dark:bg-neutral-900;
+    @apply rounded-2xl bg-white shadow-card ring-1 ring-black/[0.04];
   }
 }

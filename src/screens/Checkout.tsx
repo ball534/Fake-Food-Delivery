@@ -159,20 +159,20 @@ export default function Checkout() {
 
       <div className="space-y-4 p-4">
         <div className="flex items-center gap-5">
-          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+          <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-xl bg-neutral-100">
             <Thumb src={store.logo} alt={store.name} fallback="logo" />
           </span>
           <div>
-            <p className="font-bold text-neutral-900 dark:text-white">
+            <p className="font-bold text-neutral-900">
               {store.name}
             </p>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400">
+            <p className="text-xs text-neutral-500">
               {store.cuisine}
             </p>
           </div>
         </div>
 
-        <div className="divide-y divide-neutral-100 overflow-hidden rounded-2xl bg-white shadow-card dark:divide-neutral-800 dark:bg-neutral-900">
+        <div className="divide-y divide-neutral-100 overflow-hidden rounded-2xl bg-white shadow-card">
           {cart.lines.map((line) => {
             const item = store.menu
               .flatMap((c) => c.items)
@@ -185,7 +185,7 @@ export default function Checkout() {
               : "";
             return (
               <div key={line.lineId} className="flex gap-3 p-3">
-                <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
+                <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100">
                   <Thumb
                     src={icon}
                     emoji={emoji}
@@ -197,11 +197,11 @@ export default function Checkout() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
-                      <p className="font-semibold text-neutral-900 dark:text-white">
+                      <p className="font-semibold text-neutral-900">
                         {name}
                       </p>
                       {line.pointsCost != null && line.pointsCost > 0 && (
-                        <span className="mt-0.5 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700 dark:bg-amber-400/15 dark:text-amber-300">
+                        <span className="mt-0.5 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700">
                           🔓 Redeemed · {line.pointsCost} pts
                         </span>
                       )}
@@ -215,7 +215,7 @@ export default function Checkout() {
                     </button>
                   </div>
                   {summary && (
-                    <p className="mt-0.5 truncate text-xs text-neutral-500 dark:text-neutral-400">
+                    <p className="mt-0.5 truncate text-xs text-neutral-500">
                       {summary}
                     </p>
                   )}
@@ -229,22 +229,22 @@ export default function Checkout() {
                       <button
                         onClick={() => setQty(line.lineId, line.qty - 1)}
                         aria-label="Decrease"
-                        className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 active:scale-90 dark:bg-neutral-800"
+                        className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 active:scale-90"
                       >
                         <Minus size={14} />
                       </button>
-                      <span className="w-5 text-center font-bold text-neutral-900 dark:text-white">
+                      <span className="w-5 text-center font-bold text-neutral-900">
                         {line.qty}
                       </span>
                       <button
                         onClick={() => setQty(line.lineId, line.qty + 1)}
                         aria-label="Increase"
-                        className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 active:scale-90 dark:bg-neutral-800"
+                        className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 active:scale-90"
                       >
                         <Plus size={14} />
                       </button>
                     </div>
-                    <span className="font-bold text-neutral-900 dark:text-white">
+                    <span className="font-bold text-neutral-900">
                       {money(line.lineTotal)}
                     </span>
                   </div>
@@ -256,7 +256,7 @@ export default function Checkout() {
 
         <button
           onClick={() => navigate(`/store/${store.id}`)}
-          className="w-full rounded-2xl border border-dashed border-neutral-300 py-3 text-sm font-semibold text-neutral-500 active:scale-[0.99] dark:border-neutral-700"
+          className="w-full rounded-2xl border border-dashed border-neutral-300 py-3 text-sm font-semibold text-neutral-500 active:scale-[0.99]"
         >
           + Add more items
         </button>
@@ -267,14 +267,14 @@ export default function Checkout() {
               onClick={() => navigate("/profile")}
               className="flex w-full items-center gap-3 text-left"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 dark:bg-brand-500/15">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600">
                 <MapPin size={18} />
               </span>
               <div className="flex-1">
                 <p className="text-xs text-neutral-400">
                   Delivering to · {selectedAddress.label}
                 </p>
-                <p className="font-semibold text-neutral-900 dark:text-white">
+                <p className="font-semibold text-neutral-900">
                   {selectedAddress.line}
                 </p>
               </div>
@@ -285,7 +285,7 @@ export default function Checkout() {
               to="/profile"
               className="flex w-full items-center gap-3 text-left"
             >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-red-50 text-red-500 dark:bg-red-500/15">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-red-50 text-red-500">
                 <MapPin size={18} />
               </span>
               <div className="flex-1">
@@ -302,7 +302,7 @@ export default function Checkout() {
         </section>
 
         <section>
-          <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+          <h2 className="mb-2 text-sm font-bold text-neutral-900">
             Delivery
           </h2>
           <div className="space-y-2">
@@ -320,13 +320,13 @@ export default function Checkout() {
                   disabled={disabled}
                   className={`flex w-full items-center gap-3 rounded-2xl border-2 p-3 text-left transition disabled:opacity-50 ${
                     active
-                      ? "border-brand-500 bg-brand-50 dark:bg-brand-500/10"
-                      : "border-transparent bg-white dark:bg-neutral-900"
+                      ? "border-brand-500 bg-brand-50"
+                      : "border-transparent bg-white"
                   }`}
                 >
                   <span className="text-2xl">{o.emoji}</span>
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-neutral-900 dark:text-white">
+                    <p className="font-semibold text-neutral-900">
                       {o.label}
                       {expressFree && (
                         <span className="ml-2 rounded-full bg-brand-500 px-1.5 py-0.5 text-[9px] font-bold text-white">
@@ -334,7 +334,7 @@ export default function Checkout() {
                         </span>
                       )}
                     </p>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                    <p className="text-xs text-neutral-500">
                       ~{est} min · {expressFree ? "free with promo" : o.desc}
                       {disabled && " · not enough points"}
                     </p>
@@ -343,7 +343,7 @@ export default function Checkout() {
                     className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 ${
                       active
                         ? "border-brand-500 bg-brand-500"
-                        : "border-neutral-300 dark:border-neutral-600"
+                        : "border-neutral-300"
                     }`}
                   >
                     {active && (
@@ -357,17 +357,17 @@ export default function Checkout() {
         </section>
 
         <section>
-          <h2 className="mb-2 text-sm font-bold text-neutral-900 dark:text-white">
+          <h2 className="mb-2 text-sm font-bold text-neutral-900">
             Promo code
           </h2>
           {appliedCode ? (
-            <div className="flex items-center gap-3 rounded-2xl bg-brand-50 p-3 dark:bg-brand-500/10">
-              <Tag size={18} className="text-brand-600 dark:text-brand-400" />
+            <div className="flex items-center gap-3 rounded-2xl bg-brand-50 p-3">
+              <Tag size={18} className="text-brand-600" />
               <div className="flex-1">
-                <p className="font-bold text-brand-700 dark:text-brand-300">
+                <p className="font-bold text-brand-700">
                   {appliedCode}
                 </p>
-                <p className="text-xs text-brand-600/80 dark:text-brand-400/80">
+                <p className="text-xs text-brand-600/80">
                   {EFFECTS[PROMO_CODES[appliedCode].effect].label}
                 </p>
               </div>
@@ -386,7 +386,7 @@ export default function Checkout() {
                 onChange={(e) => setCodeInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && applyCode()}
                 placeholder="Enter code (e.g. DOUBLEUP)"
-                className="flex-1 rounded-xl border border-neutral-200 bg-white px-3 py-2.5 text-sm uppercase outline-none placeholder:normal-case focus:border-brand-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white"
+                className="flex-1 rounded-xl border border-neutral-200 bg-white px-3 py-2.5 text-sm uppercase outline-none placeholder:normal-case focus:border-brand-500"
               />
               <button
                 onClick={applyCode}
@@ -398,12 +398,12 @@ export default function Checkout() {
           )}
         </section>
 
-        <section className="flex items-center gap-2 rounded-2xl bg-brand-50 px-4 py-3 text-sm dark:bg-brand-500/10">
+        <section className="flex items-center gap-2 rounded-2xl bg-brand-50 px-4 py-3 text-sm">
           <Sparkles
             size={16}
-            className="shrink-0 text-brand-600 dark:text-brand-400"
+            className="shrink-0 text-brand-600"
           />
-          <span className="text-brand-800 dark:text-brand-200">
+          <span className="text-brand-800">
             You'll earn <strong>{estPoints} points</strong>
             {pointsCost > 0 && (
               <>
@@ -419,13 +419,13 @@ export default function Checkout() {
           </span>
         </section>
 
-        <section className="card flex items-center justify-between p-4 text-base font-bold text-neutral-900 dark:text-white">
+        <section className="card flex items-center justify-between p-4 text-base font-bold text-neutral-900">
           <span>Total</span>
           <span>{money(total)}</span>
         </section>
       </div>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px] border-t border-neutral-200 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
+      <div className="glass-nav fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px] border-t border-black/5 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <button
           onClick={place}
           disabled={blocked || placing}

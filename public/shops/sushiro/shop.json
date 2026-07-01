@@ -1,6 +1,9 @@
 {
   "name": "Sushiro",
-  "categories": ["Japanese", "Sushi"],
+  "categories": [
+    "Japanese",
+    "Sushi"
+  ],
   "fastfood": false,
   "pricelevel": 2,
   "rating": 4.5,
@@ -12,7 +15,9 @@
           "name": "Sushiro Salmon Platter",
           "description": "A salmon lover's dream - broiled salmon belly, salmon, salmon belly, salmon with cheese and salmon with onion.",
           "price": 16.25,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Portion",
@@ -62,7 +67,9 @@
           "name": "Sushiro Platter 10",
           "description": "Ten crowd-favourite pieces - tuna, salmon belly, broiled salmon belly, shrimp, squid, grilled eel, scallop, tamago and more.",
           "price": 15.95,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Portion",
@@ -108,7 +115,9 @@
           "name": "Recommended Mix Platter",
           "description": "The chef's recommended mix - broiled salmon belly, salmon belly, swordfish, shrimp, grilled eel and more.",
           "price": 11.1,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Portion",
@@ -212,7 +221,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -227,7 +236,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         }
@@ -244,7 +254,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -259,7 +269,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -271,7 +282,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -286,7 +297,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -294,11 +306,13 @@
           "name": "Grilled Eel (Unagi)",
           "description": "Sweet, glazed grilled eel over warm rice.",
           "price": 2.9,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -313,7 +327,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -325,7 +340,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -340,7 +355,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         }
@@ -353,11 +369,13 @@
           "name": "Salmon",
           "description": "Fresh, fatty salmon nigiri - the all-time favourite.",
           "price": 2.3,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -372,7 +390,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -380,11 +399,13 @@
           "name": "Salmon Belly",
           "description": "Rich, marbled salmon belly.",
           "price": 2.3,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -399,7 +420,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -411,7 +433,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -426,7 +448,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -434,11 +457,13 @@
           "name": "Tuna (Maguro)",
           "description": "Lean red tuna over vinegared rice.",
           "price": 2.3,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -453,7 +478,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -465,7 +491,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -480,7 +506,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -492,7 +519,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -507,7 +534,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -519,7 +547,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -534,7 +562,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -546,7 +575,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -561,7 +590,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -573,7 +603,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -588,7 +618,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -600,7 +631,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -615,7 +646,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -627,7 +659,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -642,7 +674,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         }
@@ -655,11 +688,13 @@
           "name": "Bluefin Fatty Tuna (Otoro)",
           "description": "Melt-in-your-mouth bluefin toro - the ultimate cut.",
           "price": 4.9,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -674,7 +709,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -682,11 +718,13 @@
           "name": "Medium Fatty Tuna (Chutoro)",
           "description": "Beautifully marbled medium-fatty tuna.",
           "price": 3.9,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -701,7 +739,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -713,7 +752,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -728,7 +767,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -740,7 +780,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -755,7 +795,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -767,7 +808,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -782,7 +823,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         }
@@ -795,11 +837,13 @@
           "name": "Salmon Roe Gunkan (Ikura)",
           "description": "A generous gunkan piled with glistening salmon roe.",
           "price": 4.9,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -814,7 +858,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -826,7 +871,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -841,7 +886,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -853,7 +899,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -868,7 +914,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -876,7 +923,9 @@
           "name": "Salmon Avocado Roll",
           "description": "Fresh salmon and creamy avocado roll.",
           "price": 4.9,
-          "tags": ["popular"]
+          "tags": [
+            "popular"
+          ]
         },
         {
           "name": "Eel Avocado Roll",
@@ -905,11 +954,13 @@
           "name": "Fresh Salmon Sashimi",
           "description": "Thick slices of fresh, fatty salmon.",
           "price": 5,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -924,7 +975,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -936,7 +988,7 @@
           "section": [
             {
               "name": "Wasabi",
-              "multiselect": false,
+              "multiselect": true,
               "required": false,
               "options": [
                 {
@@ -951,7 +1003,8 @@
                   "name": "No wasabi",
                   "price": 0
                 }
-              ]
+              ],
+              "max": 1
             }
           ]
         },
@@ -959,7 +1012,9 @@
           "name": "Chawanmushi",
           "description": "Silky steamed egg custard with hidden savoury morsels.",
           "price": 3.5,
-          "tags": ["popular"]
+          "tags": [
+            "popular"
+          ]
         },
         {
           "name": "Edamame",
@@ -976,7 +1031,9 @@
           "name": "Chicken Karaage",
           "description": "Tender, juicy bite-size chicken thigh in a crisp batter.",
           "price": 5.15,
-          "tags": ["popular"]
+          "tags": [
+            "popular"
+          ]
         },
         {
           "name": "Octopus Karaage",
@@ -1011,7 +1068,9 @@
           "name": "Tonkotsu Ramen",
           "description": "Rich, milky pork-bone broth ramen.",
           "price": 6.3,
-          "tags": ["popular"],
+          "tags": [
+            "popular"
+          ],
           "section": [
             {
               "name": "Egg",

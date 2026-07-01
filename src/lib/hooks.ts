@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { useOrders } from "../store/orderStore";
 
-export function useApplyTheme() {
-  useEffect(() => {
-    document.documentElement.classList.remove("dark");
-  }, []);
-}
-
 export function useOrderTicker(intervalMs = 1000) {
   const tick = useOrders((s) => s.tick);
   useEffect(() => {

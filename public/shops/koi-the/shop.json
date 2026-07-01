@@ -1,0 +1,6640 @@
+{
+  "name": "KOI Thé",
+  "categories": [
+    "Drinks",
+    "Bubble Tea"
+  ],
+  "fastfood": false,
+  "pricelevel": 1,
+  "rating": 4.5,
+  "menu": [
+    {
+      "category": "Milk Tea",
+      "food": [
+        {
+          "name": "Milk Tea",
+          "description": "KOI's signature milk tea - smooth, fragrant black tea blended with creamy milk. Add Golden Bubble to make it the classic.",
+          "price": 5.1,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Brown Sugar Milk Tea",
+          "description": "Rich milk tea kissed with caramelised brown sugar for a deep, toffee-like sweetness.",
+          "price": 5.8,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Caramel Milk Tea",
+          "description": "Creamy milk tea swirled with buttery caramel.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Milk Tea",
+          "description": "Nutty roasted hazelnut folded into KOI's creamy milk tea.",
+          "price": 5.8,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Honey Milk Tea",
+          "description": "Milk tea sweetened with mellow, floral honey.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lychee Milk Tea",
+          "description": "Fragrant lychee layered over smooth milk tea.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Milk Tea",
+          "description": "Milk tea rounded out with soft, sweet vanilla.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wildflower Honey Milk Tea",
+          "description": "Creamy milk tea sweetened with pure Thai wildflower honey.",
+          "price": 6.2,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Green & Oolong Milk Tea",
+      "food": [
+        {
+          "name": "Green Milk Tea",
+          "description": "Jasmine green tea blended with fresh milk for a lighter, grassy-sweet cup.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Oolong Milk Tea",
+          "description": "Roasted golden oolong with creamy milk and a toasty finish.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Peach Oolong Milk Tea",
+          "description": "Ripe peach over creamy oolong milk tea.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Low Fat Milk Tea",
+      "food": [
+        {
+          "name": "Low Fat Milk Tea",
+          "description": "The signature milk tea made with low-fat milk - lighter, just as satisfying.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Low Fat Hazelnut Milk Tea",
+          "description": "Roasted hazelnut milk tea made with low-fat milk.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Low Fat Peach Oolong Milk Tea",
+          "description": "Peach oolong milk tea made with low-fat milk.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Fresh Milk Latte",
+      "food": [
+        {
+          "name": "Black Tea Latte",
+          "description": "Fresh-milk latte built on robust Assam black tea.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Brown Sugar Fresh Milk",
+          "description": "Fresh milk layered with warm caramelised brown sugar - pairs perfectly with Golden Bubble.",
+          "price": 6.2,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Pink Guava Series",
+      "food": [
+        {
+          "name": "Blushing Guava Green Tea",
+          "description": "Sweet pink guava shaken into crisp green tea for a rosy, tropical cooler.",
+          "price": 5.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Peachy Guava Green Tea",
+          "description": "Pink guava and juicy peach over refreshing green tea.",
+          "price": 6.2,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Milky Guava Green Milk Tea",
+          "description": "Creamy green milk tea blended with sweet pink guava.",
+          "price": 6.2,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cloud Guava Green Milk Tea",
+          "description": "Pink guava green milk tea crowned with a fluffy salted cream cloud.",
+          "price": 6.7,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Premium Hojicha",
+      "food": [
+        {
+          "name": "Premium Hojicha Latte",
+          "description": "Premium roasted hojicha with fresh milk - smoky, toasty and smooth.",
+          "price": 6.2,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Premium Hojicha Oat Milk",
+          "description": "Roasted hojicha with creamy oat milk, dairy-free and nutty.",
+          "price": 6.2,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Brown Sugar Hojicha Latte",
+          "description": "Roasted hojicha latte deepened with caramelised brown sugar.",
+          "price": 6.7,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hazelnut Hojicha Oat Milk",
+          "description": "Toasty hojicha and hazelnut over oat milk.",
+          "price": 6.7,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Almond Tofu w Red Bean Hazelnut Hojicha Oat Milk",
+          "description": "Silky almond tofu and red bean atop hazelnut hojicha oat milk - a dessert in a cup.",
+          "price": 7.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Almond Tofu w Red Bean Hojicha Latte",
+          "description": "Almond tofu and red bean over roasted hojicha latte.",
+          "price": 7.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Almond Tofu w Red Bean Hojicha Oat Milk",
+          "description": "Almond tofu and red bean over hojicha oat milk.",
+          "price": 7.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Almond Tofu w Red Bean Brown Sugar Hojicha Latte",
+          "description": "Almond tofu and red bean over brown sugar hojicha latte.",
+          "price": 7.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Premium Hojicha w Red Bean",
+          "description": "Premium roasted hojicha topped with sweet red bean.",
+          "price": 7.4,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Green Tea",
+      "food": [
+        {
+          "name": "Jasmine Green Tea",
+          "description": "Freshly brewed jasmine green tea - clean, fragrant and refreshing.",
+          "price": 4.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Honey Green Tea",
+          "description": "Jasmine green tea sweetened with mellow honey.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Ume Green Tea",
+          "description": "Sweet-sour preserved plum steeped into green tea for a nostalgic tang.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Peach Green Tea",
+          "description": "Ripe peach aroma over crisp green tea - an all-time crowd-pleaser.",
+          "price": 5.1,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Ume Lemon Green Tea",
+          "description": "Preserved plum and fresh lemon over green tea, tart and bright.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Yuzu Green Tea",
+          "description": "Zesty Japanese yuzu brightening fragrant green tea.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lemon Green Tea",
+          "description": "Fresh-pressed lemon over green tea, tangy and thirst-quenching.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Honey Ume Green Tea",
+          "description": "Honey and preserved plum layered into green tea.",
+          "price": 6.7,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lychee Passion Green Tea",
+          "description": "Lychee and passionfruit swirled through green tea - sweet and tropical.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Summer Passion",
+          "description": "A bright passionfruit cooler, tropical and tangy.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Yakult Green Tea",
+          "description": "Green tea shaken with Yakult for a tangy-sweet probiotic kick.",
+          "price": 6.2,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1.5
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Oolong Tea",
+      "food": [
+        {
+          "name": "Golden Oolong Tea",
+          "description": "Toasty, floral golden oolong with a smooth roasted finish.",
+          "price": 4.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Honey Oolong Tea",
+          "description": "Roasted oolong sweetened with mellow honey.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Peach Oolong Tea",
+          "description": "Ripe peach over fragrant golden oolong.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Yuzu Oolong Tea",
+          "description": "Zesty yuzu citrus brightening roasted oolong.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wildflower Honey Oolong Tea",
+          "description": "Golden oolong sweetened with pure Thai wildflower honey.",
+          "price": 5.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Black Tea",
+      "food": [
+        {
+          "name": "Assam Black Tea",
+          "description": "Robust, full-bodied Assam black tea, freshly brewed.",
+          "price": 4.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lychee Black Tea",
+          "description": "Juicy lychee sweetness layered over bright Assam black tea.",
+          "price": 5.1,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lychee Passion Black Tea",
+          "description": "Lychee and passionfruit swirled through black tea - sweet, tropical, tart.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Chrysanthemum",
+      "food": [
+        {
+          "name": "Chrysanthemum Milk Tea",
+          "description": "Fragrant chrysanthemum blended into creamy milk tea.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chrysanthemum Ice Tea",
+          "description": "Cooling, floral chrysanthemum tea - caffeine-free and lightly sweet.",
+          "price": 5.1,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wildflower Honey Chrysanthemum Tea",
+          "description": "Floral chrysanthemum tea sweetened with Thai wildflower honey.",
+          "price": 5.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Cocoa & Malt",
+      "food": [
+        {
+          "name": "62 Nama Chocolate",
+          "description": "A decadent milk drink made with 62% nama dark chocolate.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Milk",
+          "description": "Smooth, indulgent chocolate milk - caffeine-free.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Ovaltine",
+          "description": "Malty, comforting Ovaltine - pairs beautifully with Golden Bubble.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Hot",
+                  "price": 0
+                },
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Caffeine-Free & Juice",
+      "food": [
+        {
+          "name": "Lemon juice",
+          "description": "Fresh-pressed lemon juice, tart and refreshing.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Ume Juice",
+          "description": "Sweet-sour preserved plum juice, a nostalgic thirst-quencher.",
+          "price": 5.8,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wildflower Ice Honey",
+          "description": "Chilled pure Thai wildflower honey drink, lightly floral.",
+          "price": 5.8,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wildflower Honey Lemon Lime Juice",
+          "description": "Wildflower honey with fresh lemon and lime - sweet, sour, refreshing.",
+          "price": 6.7,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Medium (480ml)",
+                  "price": 0
+                },
+                {
+                  "name": "Large (600ml)",
+                  "price": 1
+                }
+              ]
+            },
+            {
+              "name": "Sugar level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "100% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "70% sugar (less sweet)",
+                  "price": 0
+                },
+                {
+                  "name": "50% sugar (half)",
+                  "price": 0
+                },
+                {
+                  "name": "25% sugar",
+                  "price": 0
+                },
+                {
+                  "name": "0% sugar (none)",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Ice level",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Normal ice",
+                  "price": 0
+                },
+                {
+                  "name": "Less ice",
+                  "price": 0
+                },
+                {
+                  "name": "Little ice",
+                  "price": 0
+                },
+                {
+                  "name": "No ice",
+                  "price": 0
+                }
+              ]
+            },
+            {
+              "name": "Toppings",
+              "multiselect": true,
+              "required": false,
+              "max": 3,
+              "options": [
+                {
+                  "name": "Golden Bubble (signature pearls)",
+                  "price": 1
+                },
+                {
+                  "name": "Grass Jelly Q",
+                  "price": 1
+                },
+                {
+                  "name": "Ai Yu Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Aloe Vera",
+                  "price": 1.3
+                },
+                {
+                  "name": "Coconut Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Konjac Jelly",
+                  "price": 1.3
+                },
+                {
+                  "name": "Chew Chew (brown sugar pearls)",
+                  "price": 1.4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "KOI Macarons",
+      "food": [
+        {
+          "name": "Seasonal Twin Box",
+          "description": "A seasonal pair of KOI's delicate French macarons.",
+          "price": 8.6,
+          "tags": [
+            "new"
+          ]
+        },
+        {
+          "name": "1pc Macaron",
+          "description": "A single delicate French macaron with a crisp shell and soft centre.",
+          "price": 4.8
+        },
+        {
+          "name": "2pc Macaron",
+          "description": "Two of KOI's delicate French macarons.",
+          "price": 9.6
+        },
+        {
+          "name": "5pc Macaron",
+          "description": "Five assorted French macarons - great for sharing.",
+          "price": 20.4
+        },
+        {
+          "name": "Starter Box of 5",
+          "description": "A gift-ready box of five assorted macarons.",
+          "price": 20.4
+        },
+        {
+          "name": "Starter Box of 10",
+          "description": "A gift-ready box of ten assorted macarons.",
+          "price": 36
+        }
+      ]
+    }
+  ],
+  "deals": [],
+  "reviews": [
+    {
+      "author": "Wei Ling",
+      "rating": 5,
+      "text": "Golden Bubble Milk Tea 50% sugar is my daily order. Bubbles always perfectly chewy."
+    },
+    {
+      "author": "Marcus",
+      "rating": 5,
+      "text": "The new Pink Guava series is so good. Cloud Guava is a must-try."
+    },
+    {
+      "author": "Aisyah",
+      "rating": 4,
+      "text": "Peach Green Tea never misses. Delivery came sealed and cold."
+    },
+    {
+      "author": "Jonathan",
+      "rating": 4,
+      "text": "Hojicha latte with oat milk is such a treat. Slightly pricey but worth it."
+    }
+  ]
+}

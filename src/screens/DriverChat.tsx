@@ -102,9 +102,7 @@ export default function DriverChat() {
 
       <div className="flex items-center gap-3 border-b border-black/5 bg-white px-4 py-3">
         <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-brand-50 text-xl">
-          {order.driver.emoji || (
-            <UserRound size={24} className="text-brand-400" />
-          )}
+          <UserRound size={24} className="text-brand-400" />
         </span>
         <div className="min-w-0 flex-1">
           <p className="truncate font-bold text-neutral-900">

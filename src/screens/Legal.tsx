@@ -15,17 +15,21 @@ type Doc = {
 const DOCS: Record<string, Doc> = {
   privacy: {
     title: "Privacy Policy",
-    updated: "29 June 2026",
+    updated: "1 July 2026",
     intro:
       "FakeEats is a food-delivery simulation built for fun and learning. This policy explains, in plain language, what happens with your information.",
     sections: [
       {
         heading: "What we store",
-        body: "Everything you do in FakeEats — your name, chosen avatar, saved addresses, orders, reward points and loyalty — is stored only on this device, in your browser's local storage. It never leaves your device and is not sent to any server.",
+        body: "Everything you do in FakeEats — your name, chosen avatar, saved addresses, orders, reward points and loyalty — is stored only on this device, in your browser's local storage. We run no servers and keep no user accounts, so this information stays with you unless you clear it.",
+      },
+      {
+        heading: "Address search & maps",
+        body: "Two features reach the internet. When you type a delivery address, the text you enter is sent to OpenStreetMap's Nominatim service to suggest matches and look up map coordinates. When you track an order, the map tiles are loaded from CARTO's basemap service. Those providers handle the requests under their own privacy policies and can see your IP address. If you never search an address or open a live map, nothing leaves your device.",
       },
       {
         heading: "What we collect",
-        body: "Nothing. There are no analytics, no trackers, no cookies for advertising, and no third-party data sharing. We could not see your data even if we wanted to.",
+        body: "Beyond the address search and map tiles described above, nothing. There are no analytics, no trackers, no advertising cookies, and we never sell or share your data. We could not see your simulation data even if we wanted to.",
       },
       {
         heading: "Payments",
@@ -43,7 +47,7 @@ const DOCS: Record<string, Doc> = {
   },
   terms: {
     title: "Terms & Conditions",
-    updated: "29 June 2026",
+    updated: "1 July 2026",
     intro:
       "By using FakeEats you agree to these simple terms. FakeEats is a simulation — a toy app — and not a real food-delivery service.",
     sections: [
@@ -58,6 +62,14 @@ const DOCS: Record<string, Doc> = {
       {
         heading: "Points & loyalty",
         body: "Reward points and shop loyalty have no monetary value and cannot be redeemed for anything. They exist purely to demonstrate the feature. Ordering from a different shop may reduce loyalty you had built with a previous shop.",
+      },
+      {
+        heading: "Stores you create",
+        body: "FakeEats lets you build your own fictional stores and download them as a file to your device. Keep what you create lawful and respectful — don't include real people's private details or content you don't have the right to use.",
+      },
+      {
+        heading: "Third-party maps & search",
+        body: "Address search is powered by OpenStreetMap and map tiles are provided by CARTO. When you use those features your requests are also subject to the OpenStreetMap Foundation's and CARTO's own terms of use.",
       },
       {
         heading: "Brand names",

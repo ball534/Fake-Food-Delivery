@@ -4,6 +4,196 @@
     "mcdonalds",
     "sushiro"
   ],
+  "drivers": [
+    "Wei Ming",
+    "Siti",
+    "Raj",
+    "Hafiz",
+    "Mei Ling",
+    "Daniel",
+    "Aisyah",
+    "Kumar",
+    "Jia Hui",
+    "Faizal"
+  ],
+  "driverChat": {
+    "greeting": "Hey, it's {driver}! 🛵 I've got your {store} order and I'm on the way. Let me know if you need anything!",
+    "intents": [
+      {
+        "id": "eta",
+        "keywords": [
+          "how long",
+          "eta",
+          "when",
+          "what time",
+          "arrive",
+          "ready yet",
+          "how far",
+          "almost",
+          "still coming",
+          "nearly"
+        ],
+        "replies": [
+          "I'm about {eta} away — hang tight! 🛵",
+          "Should be roughly {eta} out, moving as fast as I safely can!",
+          "Around {eta} to go. Almost there!"
+        ]
+      },
+      {
+        "id": "location",
+        "keywords": [
+          "where are you",
+          "where you",
+          "where r u",
+          "your location",
+          "which street",
+          "you lost",
+          "can't find",
+          "cant find",
+          "outside"
+        ],
+        "replies": [
+          "Just a few streets away, following the map to you now.",
+          "I'm close! Pulling into your area shortly.",
+          "Almost on your road — I'll ping you when I'm right outside. 📍"
+        ]
+      },
+      {
+        "id": "handling",
+        "keywords": [
+          "cold",
+          "hot",
+          "spill",
+          "careful",
+          "shake",
+          "melt",
+          "soggy",
+          "leak",
+          "keep it warm"
+        ],
+        "replies": [
+          "Don't worry, it's sealed up and riding safely in the insulated bag! 🔒",
+          "Keeping it flat and warm the whole way — it'll arrive in great shape.",
+          "Handling it with care, promise. It'll be just as good as it left the kitchen!"
+        ]
+      },
+      {
+        "id": "instructions",
+        "keywords": [
+          "leave",
+          "door",
+          "drop",
+          "reception",
+          "lobby",
+          "guard",
+          "gate",
+          "buzz",
+          "knock",
+          "don't ring",
+          "dont ring",
+          "call me",
+          "meet"
+        ],
+        "replies": [
+          "Got it — I'll follow those instructions exactly. 👍",
+          "Understood! I'll do just that when I arrive.",
+          "No problem, noted! I'll handle the drop-off the way you asked."
+        ]
+      },
+      {
+        "id": "cancel",
+        "keywords": [
+          "cancel",
+          "refund",
+          "wrong order",
+          "change order",
+          "add item",
+          "remove",
+          "mistake"
+        ],
+        "replies": [
+          "I can't change the order from the road, but the app's Help section can sort that out for you.",
+          "Sorry, the order's already packed and with me — best to raise that in the app so support can help.",
+          "That's out of my hands once I've picked it up, but support in the app can take care of it!"
+        ]
+      },
+      {
+        "id": "thanks",
+        "keywords": [
+          "thank",
+          "thanks",
+          "thx",
+          "appreciate",
+          "cheers",
+          "great",
+          "awesome",
+          "legend",
+          "nice"
+        ],
+        "replies": [
+          "You're welcome! 😊 See you in a bit.",
+          "Anytime! Happy to help. 🙌",
+          "No problem at all — enjoy your meal!"
+        ]
+      },
+      {
+        "id": "tip",
+        "keywords": [
+          "tip",
+          "extra",
+          "reward",
+          "buy you",
+          "coffee for you"
+        ],
+        "replies": [
+          "That's really kind of you, thank you! 🙏 You can add a tip in the app after delivery.",
+          "Aw, appreciate the thought! Tips can be added in the app once I've dropped off.",
+          "You're too kind! No pressure at all — but thank you! 😊"
+        ]
+      },
+      {
+        "id": "greeting",
+        "keywords": [
+          "hi",
+          "hello",
+          "hey",
+          "yo",
+          "good morning",
+          "good afternoon",
+          "good evening",
+          "howdy",
+          "sup"
+        ],
+        "replies": [
+          "Hey there! 👋 Everything's on track with your order.",
+          "Hi! 🛵 On my way to you now.",
+          "Hello! Your food's with me and heading your way."
+        ]
+      },
+      {
+        "id": "bye",
+        "keywords": [
+          "bye",
+          "see you",
+          "later",
+          "goodbye",
+          "cya",
+          "ttyl"
+        ],
+        "replies": [
+          "See you soon! 🛵",
+          "Catch you at the door! 👋",
+          "Talk in a bit — almost there!"
+        ]
+      }
+    ],
+    "fallback": [
+      "Got it! 👍 I'll keep that in mind.",
+      "No worries — I'm on my way with your order. 🛵",
+      "Sure thing! See you soon.",
+      "Understood! Let me know if there's anything else."
+    ]
+  },
   "greetings": {
     "morning": [
       "Good morning",

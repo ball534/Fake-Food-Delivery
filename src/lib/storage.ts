@@ -33,4 +33,5 @@ export const STORAGE_KEYS = {
   profile: "profile",
   recentSearches: "recentSearches",
   greetingRotation: "greetingRotation",
+  driverChats: "driverChats",
 } as const;

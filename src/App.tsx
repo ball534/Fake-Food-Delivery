@@ -27,6 +27,7 @@ import StoreMenu from "./screens/StoreMenu";
 import ItemDetail from "./screens/ItemDetail";
 import Checkout from "./screens/Checkout";
 import OrderTracking from "./screens/OrderTracking";
+import DriverChat from "./screens/DriverChat";
 import Legal from "./screens/Legal";
 import CreateStore from "./screens/CreateStore";
 
@@ -141,6 +142,10 @@ export default function App() {
                 />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/track/:orderId" element={<OrderTracking />} />
+                <Route
+                  path="/track/:orderId/chat"
+                  element={<DriverChat />}
+                />
                 <Route path="/legal/:doc" element={<Legal />} />
                 <Route path="*" element={<Home />} />
               </Routes>

@@ -114,7 +114,7 @@ export default function OrderTracking() {
             <p className="font-bold text-neutral-900">{order.driver.name}</p>
           </div>
           <button
-            onClick={() => showToast("Message sent into the void ✉️", "💬")}
+            onClick={() => navigate(`/track/${order.id}/chat`)}
             aria-label="Message driver"
             className="grid h-10 w-10 place-items-center rounded-full bg-brand-50 text-brand-600 active:scale-90"
           >

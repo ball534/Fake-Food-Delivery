@@ -1,6 +1,12 @@
 import { useMemo } from "react";
 import { create } from "zustand";
 import { DEFAULT_DEALS, parseDealsJson, type Deal } from "../data/promos";
+import {
+  DEFAULT_DRIVER_CHAT,
+  parseDriverChat,
+  type DriverChatConfig,
+} from "../lib/driverChat";
+import { DEFAULT_DRIVER_NAMES } from "../lib/simulation";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { useStores } from "./storesStore";
 
@@ -26,6 +32,13 @@ export function normalizeGreetings(value: unknown): GreetingPool {
   return pool;
 }
 
+export function normalizeDrivers(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter(
+    (x): x is string => typeof x === "string" && x.trim() !== "",
+  );
+}
+
 export const GREETING_SEED: number = (() => {
   const prev = loadJSON<number>(STORAGE_KEYS.greetingRotation, 0);
   const seed = Number.isFinite(prev) ? prev : 0;
@@ -36,6 +49,8 @@ export const GREETING_SEED: number = (() => {
 type ContentState = {
   greetings: GreetingPool;
   deals: Deal[];
+  drivers: string[];
+  driverChat: DriverChatConfig;
   loaded: boolean;
   load: () => Promise<void>;
 };
@@ -43,6 +58,8 @@ type ContentState = {
 export const useContent = create<ContentState>((set) => ({
   greetings: DEFAULT_GREETINGS,
   deals: DEFAULT_DEALS,
+  drivers: DEFAULT_DRIVER_NAMES,
+  driverChat: DEFAULT_DRIVER_CHAT,
   loaded: false,
 
   load: async () => {
@@ -56,14 +73,23 @@ export const useContent = create<ContentState>((set) => ({
           : {};
       const greetings = normalizeGreetings(obj.greetings);
       const deals = parseDealsJson(obj.deals);
+      const drivers = normalizeDrivers(obj.drivers);
       set({
         greetings:
           Object.keys(greetings).length > 0 ? greetings : DEFAULT_GREETINGS,
         deals: deals.length > 0 ? deals : DEFAULT_DEALS,
+        drivers: drivers.length > 0 ? drivers : DEFAULT_DRIVER_NAMES,
+        driverChat: parseDriverChat(obj.driverChat),
         loaded: true,
       });
     } catch {
-      set({ greetings: DEFAULT_GREETINGS, deals: DEFAULT_DEALS, loaded: true });
+      set({
+        greetings: DEFAULT_GREETINGS,
+        deals: DEFAULT_DEALS,
+        drivers: DEFAULT_DRIVER_NAMES,
+        driverChat: DEFAULT_DRIVER_CHAT,
+        loaded: true,
+      });
     }
   },
 }));

@@ -11,6 +11,7 @@ import {
   storeLocationFor,
 } from "../lib/simulation";
 import { getStoreById } from "../store/storesStore";
+import { useContent } from "../store/contentStore";
 
 export const MAX_ACTIVE_ORDERS = 3;
 
@@ -74,7 +75,7 @@ export const useOrders = create<OrderState>((set, get) => ({
       placedAt,
       stageTimes,
       etaAt,
-      driver: generateDriver(placedAt),
+      driver: generateDriver(placedAt, useContent.getState().drivers),
       address,
       addressLabel,
       pointsEarned,

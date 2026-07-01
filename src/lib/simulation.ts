@@ -10,7 +10,10 @@ export const STATUS_LABEL: Record<OrderStatus, string> = {
   delivered: "Delivered",
 };
 
-const DRIVER_NAMES = [
+// Fallback pool used only when content.json has no `drivers` list (or it fails
+// to load). The live names are authored in public/content.json and threaded in
+// via generateDriver's `names` argument — see contentStore + orderStore.
+export const DEFAULT_DRIVER_NAMES = [
   "Wei Ming",
   "Siti",
   "Raj",
@@ -24,9 +27,13 @@ const DRIVER_NAMES = [
 ];
 const DRIVER_EMOJI = ["🧑‍🦱", "👩", "🧔", "👨", "👩‍🦰", "🧑"];
 
-export function generateDriver(seed: number): Driver {
+export function generateDriver(
+  seed: number,
+  names: string[] = DEFAULT_DRIVER_NAMES,
+): Driver {
+  const pool = names.length > 0 ? names : DEFAULT_DRIVER_NAMES;
   const n = Math.abs(Math.floor(seed));
-  const name = DRIVER_NAMES[n % DRIVER_NAMES.length];
+  const name = pool[n % pool.length];
   const emoji = DRIVER_EMOJI[Math.floor(n / 3) % DRIVER_EMOJI.length];
   return { name, emoji };
 }

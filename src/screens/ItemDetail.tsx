@@ -103,24 +103,24 @@ export default function ItemDetail() {
 
   return (
     <Screen className="pb-28">
-      <div className="relative flex h-60 items-center justify-center overflow-hidden bg-neutral-100 px-6 pb-4 pt-16 text-8xl dark:bg-neutral-800">
-        <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="" fit="contain" />
-        <div className="absolute inset-x-0 top-0">
-          <TopBar transparent />
-        </div>
-      </div>
+      <TopBar />
 
       <div className="space-y-5 p-4">
-        <div>
-          <h1 className="text-2xl font-extrabold text-neutral-900 dark:text-white">
-            {item.name}
-          </h1>
-          <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
-            {item.description}
-          </p>
-          <p className="mt-2 text-xl font-bold text-neutral-900 dark:text-white">
-            {money(item.basePrice)}
-          </p>
+        <div className="flex items-start gap-4">
+          <span className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-neutral-100 text-5xl shadow-card ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
+            <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="rounded-2xl" fit="contain" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-2xl font-extrabold text-neutral-900 dark:text-white">
+              {item.name}
+            </h1>
+            <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
+              {item.description}
+            </p>
+            <p className="mt-2 text-xl font-bold text-neutral-900 dark:text-white">
+              {money(item.basePrice)}
+            </p>
+          </div>
         </div>
 
         {(item.options ?? []).map((opt) => {

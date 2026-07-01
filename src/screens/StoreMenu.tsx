@@ -286,9 +286,7 @@ export default function StoreMenu() {
                     {initials(r.author)}
                   </span>
                   <div className="min-w-0 flex-1 leading-tight">
-                    <p className="font-semibold text-neutral-900">
-                      {r.author}
-                    </p>
+                    <p className="font-semibold text-neutral-900">{r.author}</p>
                   </div>
                   <Stars value={r.rating} size={14} />
                 </div>

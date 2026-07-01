@@ -123,9 +123,7 @@ export default function ItemDetail() {
             <h1 className="text-2xl font-extrabold text-neutral-900">
               {item.name}
             </h1>
-            <p className="mt-2 text-sm text-neutral-500">
-              {item.description}
-            </p>
+            <p className="mt-2 text-sm text-neutral-500">{item.description}</p>
             <p className="mt-2 text-xl font-bold text-neutral-900">
               {money(item.basePrice)}
             </p>
@@ -138,9 +136,7 @@ export default function ItemDetail() {
           return (
             <section key={opt.id}>
               <div className="mb-2 flex items-center justify-between">
-                <h3 className="font-bold text-neutral-900">
-                  {opt.label}
-                </h3>
+                <h3 className="font-bold text-neutral-900">{opt.label}</h3>
                 <span className="text-xs font-medium text-neutral-400">
                   {optionHint(opt)}
                 </span>
@@ -155,9 +151,7 @@ export default function ItemDetail() {
                       onClick={() => selectChoice(opt, choice.id)}
                       disabled={locked}
                       className={`flex w-full items-center justify-between px-4 py-3 text-left transition disabled:opacity-40 ${
-                        idx > 0
-                          ? "border-t border-neutral-100"
-                          : ""
+                        idx > 0 ? "border-t border-neutral-100" : ""
                       }`}
                     >
                       <span className="flex items-center gap-3">
@@ -170,9 +164,7 @@ export default function ItemDetail() {
                               : "border-neutral-300"
                           }`}
                         />
-                        <span className="text-neutral-800">
-                          {choice.label}
-                        </span>
+                        <span className="text-neutral-800">{choice.label}</span>
                       </span>
                       {choice.priceDelta > 0 && (
                         <span className="text-sm text-neutral-500">
@@ -201,9 +193,7 @@ export default function ItemDetail() {
         </section>
 
         <section className="flex items-center justify-between">
-          <h3 className="font-bold text-neutral-900">
-            Quantity
-          </h3>
+          <h3 className="font-bold text-neutral-900">Quantity</h3>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setQty((q) => Math.max(1, q - 1))}

@@ -110,7 +110,9 @@ export default function Home() {
       />
 
       <div className="relative px-4 pt-9">
-        <p className="text-lg font-bold text-white drop-shadow-sm">{greeting}</p>
+        <p className="text-lg font-bold text-white drop-shadow-sm">
+          {greeting}
+        </p>
         <p className="text-sm text-white/85">What are you craving?</p>
         <Link
           to="/search"

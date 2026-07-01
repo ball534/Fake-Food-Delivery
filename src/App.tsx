@@ -49,9 +49,7 @@ function TabBar() {
           end={end}
           className={({ isActive }) =>
             `relative flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] font-medium transition ${
-              isActive
-                ? "text-brand-600"
-                : "text-neutral-400"
+              isActive ? "text-brand-600" : "text-neutral-400"
             }`
           }
         >
@@ -76,9 +74,7 @@ function Splash({ error = false }: { error?: boolean }) {
       {error ? (
         <div className="space-y-2">
           <p className="text-3xl">🍽️</p>
-          <p className="font-bold text-neutral-900">
-            Couldn't load the shops
-          </p>
+          <p className="font-bold text-neutral-900">Couldn't load the shops</p>
           <p className="text-sm text-neutral-500">
             Check that <code>public/content.json</code> and the shop folders
             exist, then reload.

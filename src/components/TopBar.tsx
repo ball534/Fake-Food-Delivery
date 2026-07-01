@@ -15,9 +15,7 @@ export default function TopBar({
   return (
     <header
       className={`sticky top-0 z-20 flex h-14 items-center gap-2 px-3 ${
-        transparent
-          ? ""
-          : "glass-nav border-b border-black/5"
+        transparent ? "" : "glass-nav border-b border-black/5"
       }`}
     >
       <button

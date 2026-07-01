@@ -79,9 +79,7 @@ export default function Search() {
       <div className="space-y-5 p-4">
         {!q && recent.length > 0 && (
           <section>
-            <h2 className="mb-2 text-sm font-bold text-neutral-900">
-              Recent
-            </h2>
+            <h2 className="mb-2 text-sm font-bold text-neutral-900">Recent</h2>
             <div className="flex flex-wrap gap-2">
               {recent.map((r) => (
                 <button key={r} onClick={() => setQuery(r)} className="chip">

@@ -1019,9 +1019,7 @@ function Field({
 }) {
   return (
     <label className="block space-y-1">
-      <span className="text-sm font-semibold text-neutral-700">
-        {label}
-      </span>
+      <span className="text-sm font-semibold text-neutral-700">{label}</span>
       {children}
       {hint && <span className="block text-xs text-neutral-400">{hint}</span>}
     </label>

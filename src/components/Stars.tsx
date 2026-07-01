@@ -18,9 +18,7 @@ export default function Stars({
           <Star
             size={size}
             className={
-              filled
-                ? "fill-amber-400 text-amber-400"
-                : "text-neutral-300"
+              filled ? "fill-amber-400 text-amber-400" : "text-neutral-300"
             }
           />
         );

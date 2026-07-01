@@ -310,9 +310,7 @@ export default function Profile() {
         </Link>
 
         <section>
-          <h2 className="mb-2 text-base font-bold text-neutral-900">
-            Others
-          </h2>
+          <h2 className="mb-2 text-base font-bold text-neutral-900">Others</h2>
           <div className="overflow-hidden rounded-2xl bg-white shadow-card">
             <Link
               to="/legal/privacy"
@@ -450,9 +448,7 @@ function AddressRow({
             </span>
           )}
         </p>
-        <p className="truncate text-xs text-neutral-500">
-          {addr.line}
-        </p>
+        <p className="truncate text-xs text-neutral-500">{addr.line}</p>
       </button>
       <button
         onClick={() => {

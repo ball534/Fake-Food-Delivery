@@ -35,13 +35,9 @@ export default function ConfirmDialog({
             exit={{ y: 30, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-bold text-neutral-900">
-              {title}
-            </h3>
+            <h3 className="text-lg font-bold text-neutral-900">{title}</h3>
             {body && (
-              <div className="mt-2 text-sm text-neutral-500">
-                {body}
-              </div>
+              <div className="mt-2 text-sm text-neutral-500">{body}</div>
             )}
             <div className="mt-5 flex gap-3">
               <button onClick={onCancel} className="btn-secondary flex-1">

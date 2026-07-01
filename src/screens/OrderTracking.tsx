@@ -111,9 +111,7 @@ export default function OrderTracking() {
             />
           </span>
           <div className="flex-1">
-            <p className="font-bold text-neutral-900">
-              {order.driver.name}
-            </p>
+            <p className="font-bold text-neutral-900">{order.driver.name}</p>
           </div>
           <button
             onClick={() => showToast("Message sent into the void ✉️", "💬")}
@@ -242,7 +240,5 @@ function Segment({ fill, active }: { fill: number; active: boolean }) {
 }
 
 function Dashed() {
-  return (
-    <div className="my-2 border-t border-dashed border-neutral-300" />
-  );
+  return <div className="my-2 border-t border-dashed border-neutral-300" />;
 }

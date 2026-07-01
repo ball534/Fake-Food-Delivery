@@ -58,14 +58,6 @@ export const EFFECTS: Record<PromoEffect, EffectConfig> = {
   bonus500: { label: "+500 bonus points, on us", bonusPoints: 500 },
 };
 
-// Back-compat alias: a plain effect → label lookup.
-export const EFFECT_LABEL: Record<PromoEffect, string> = Object.fromEntries(
-  (Object.entries(EFFECTS) as [PromoEffect, EffectConfig][]).map(([k, v]) => [
-    k,
-    v.label,
-  ]),
-) as Record<PromoEffect, string>;
-
 export const ROTATION_MS = 5 * 60 * 1000;
 
 // Single source of truth for every promo code. PROMO_CODES (checkout

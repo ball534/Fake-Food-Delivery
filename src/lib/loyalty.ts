@@ -26,11 +26,6 @@ export const XP_PER_VISIT = 5;
 export const XP_SWITCH_PENALTY = 5;
 export const XP_STEP = 20;
 
-export function xpForLevel(level: number): number {
-  const L = Math.max(0, level);
-  return (XP_STEP * L * (L + 1)) / 2;
-}
-
 export function levelForXp(xp: number): number {
   if (xp <= 0) return 0;
   const L = Math.floor((Math.sqrt(1 + (8 * xp) / XP_STEP) - 1) / 2);

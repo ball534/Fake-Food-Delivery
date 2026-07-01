@@ -163,12 +163,8 @@ export default function Checkout() {
             <Thumb src={store.logo} alt={store.name} fallback="logo" />
           </span>
           <div>
-            <p className="font-bold text-neutral-900">
-              {store.name}
-            </p>
-            <p className="text-xs text-neutral-500">
-              {store.cuisine}
-            </p>
+            <p className="font-bold text-neutral-900">{store.name}</p>
+            <p className="text-xs text-neutral-500">{store.cuisine}</p>
           </div>
         </div>
 
@@ -197,9 +193,7 @@ export default function Checkout() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
-                      <p className="font-semibold text-neutral-900">
-                        {name}
-                      </p>
+                      <p className="font-semibold text-neutral-900">{name}</p>
                       {line.pointsCost != null && line.pointsCost > 0 && (
                         <span className="mt-0.5 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700">
                           🔓 Redeemed · {line.pointsCost} pts
@@ -302,9 +296,7 @@ export default function Checkout() {
         </section>
 
         <section>
-          <h2 className="mb-2 text-sm font-bold text-neutral-900">
-            Delivery
-          </h2>
+          <h2 className="mb-2 text-sm font-bold text-neutral-900">Delivery</h2>
           <div className="space-y-2">
             {DELIVERY_OPTIONS.map((o) => {
               const active = speed === o.id;
@@ -364,9 +356,7 @@ export default function Checkout() {
             <div className="flex items-center gap-3 rounded-2xl bg-brand-50 p-3">
               <Tag size={18} className="text-brand-600" />
               <div className="flex-1">
-                <p className="font-bold text-brand-700">
-                  {appliedCode}
-                </p>
+                <p className="font-bold text-brand-700">{appliedCode}</p>
                 <p className="text-xs text-brand-600/80">
                   {EFFECTS[PROMO_CODES[appliedCode].effect].label}
                 </p>
@@ -399,10 +389,7 @@ export default function Checkout() {
         </section>
 
         <section className="flex items-center gap-2 rounded-2xl bg-brand-50 px-4 py-3 text-sm">
-          <Sparkles
-            size={16}
-            className="shrink-0 text-brand-600"
-          />
+          <Sparkles size={16} className="shrink-0 text-brand-600" />
           <span className="text-brand-800">
             You'll earn <strong>{estPoints} points</strong>
             {pointsCost > 0 && (

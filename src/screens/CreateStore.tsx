@@ -75,7 +75,11 @@ function uniqueSlug(base: string, used: Set<string>): string {
 
 // Resize + re-encode an uploaded image to WebP so exported stores stay light
 // and match the .webp paths the shop loader builds.
-async function encodeWebp(file: File, max: number, quality = 0.82): Promise<Blob> {
+async function encodeWebp(
+  file: File,
+  max: number,
+  quality = 0.82,
+): Promise<Blob> {
   const bitmap = await createImageBitmap(file);
   const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
   const w = Math.max(1, Math.round(bitmap.width * scale));
@@ -98,7 +102,11 @@ async function encodeWebp(file: File, max: number, quality = 0.82): Promise<Blob
 
 // Optimise on upload: resize + re-encode to a .webp File so the preview shows
 // the real exported asset and the ZIP step can use the bytes as-is.
-async function toWebpFile(file: File, max: number, quality?: number): Promise<File> {
+async function toWebpFile(
+  file: File,
+  max: number,
+  quality?: number,
+): Promise<File> {
   const blob = await encodeWebp(file, max, quality);
   const base = file.name.replace(/\.[^./\\]+$/, "") || "image";
   return new File([blob], `${base}.webp`, { type: "image/webp" });
@@ -107,9 +115,16 @@ async function toWebpFile(file: File, max: number, quality?: number): Promise<Fi
 // Bytes for the ZIP. Files picked through ImagePicker are already optimised
 // WebP; anything else (e.g. a picker that fell back to the raw file) is
 // converted here so the exported paths always hold valid WebP.
-async function imageBytes(file: File, max: number, quality?: number): Promise<Uint8Array> {
-  if (file.type === "image/webp") return new Uint8Array(await file.arrayBuffer());
-  return new Uint8Array(await (await encodeWebp(file, max, quality)).arrayBuffer());
+async function imageBytes(
+  file: File,
+  max: number,
+  quality?: number,
+): Promise<Uint8Array> {
+  if (file.type === "image/webp")
+    return new Uint8Array(await file.arrayBuffer());
+  return new Uint8Array(
+    await (await encodeWebp(file, max, quality)).arrayBuffer(),
+  );
 }
 
 const newOption = (): OptionDraft => ({ id: uid(), name: "", price: "0" });
@@ -162,16 +177,24 @@ export default function CreateStore() {
   const [banner, setBanner] = useState<File | undefined>();
   const [logo, setLogo] = useState<File | undefined>();
 
-  const [categories, setCategories] = useState<CategoryDraft[]>([newCategory()]);
+  const [categories, setCategories] = useState<CategoryDraft[]>([
+    newCategory(),
+  ]);
   const [deals, setDeals] = useState<DealDraft[]>([]);
   const [reviews, setReviews] = useState<ReviewDraft[]>([]);
 
   const [busy, setBusy] = useState(false);
 
-  const patchCategory = (cid: string, fn: (c: CategoryDraft) => CategoryDraft) =>
-    setCategories((cs) => cs.map((c) => (c.id === cid ? fn(c) : c)));
+  const patchCategory = (
+    cid: string,
+    fn: (c: CategoryDraft) => CategoryDraft,
+  ) => setCategories((cs) => cs.map((c) => (c.id === cid ? fn(c) : c)));
 
-  const patchFood = (cid: string, fid: string, fn: (f: FoodDraft) => FoodDraft) =>
+  const patchFood = (
+    cid: string,
+    fid: string,
+    fn: (f: FoodDraft) => FoodDraft,
+  ) =>
     patchCategory(cid, (c) => ({
       ...c,
       food: c.food.map((f) => (f.id === fid ? fn(f) : f)),
@@ -197,17 +220,21 @@ export default function CreateStore() {
     if (!categories.length) return "Add at least one menu category";
     for (const c of categories) {
       if (!c.name.trim()) return "Every menu category needs a name";
-      if (!c.food.length) return `Add at least one item to “${c.name.trim() || "your category"}”`;
+      if (!c.food.length)
+        return `Add at least one item to “${c.name.trim() || "your category"}”`;
       for (const f of c.food) {
         if (!f.name.trim()) return "Every item needs a name";
-        if (!f.description.trim()) return `Add a description for “${f.name.trim()}”`;
+        if (!f.description.trim())
+          return `Add a description for “${f.name.trim()}”`;
         if (!f.price.trim() || Number.isNaN(Number(f.price)))
           return `Add a valid price for “${f.name.trim()}”`;
         for (const s of f.sections) {
-          if (!s.name.trim()) return `Name the option group on “${f.name.trim()}”`;
+          if (!s.name.trim())
+            return `Name the option group on “${f.name.trim()}”`;
           if (!s.options.length) return `Add choices to “${s.name.trim()}”`;
           for (const o of s.options) {
-            if (!o.name.trim()) return `Every choice in “${s.name.trim()}” needs a name`;
+            if (!o.name.trim())
+              return `Every choice in “${s.name.trim()}” needs a name`;
             if (!o.price.trim() || Number.isNaN(Number(o.price)))
               return `Every choice in “${s.name.trim()}” needs a valid price`;
           }
@@ -216,7 +243,8 @@ export default function CreateStore() {
     }
     for (const d of deals) {
       if (!d.title.trim()) return "Every deal needs a title";
-      if (!d.sub.trim()) return `Add a short description for “${d.title.trim()}”`;
+      if (!d.sub.trim())
+        return `Add a short description for “${d.title.trim()}”`;
       if (!d.price.trim() || Number.isNaN(Number(d.price)))
         return `Add a valid price for “${d.title.trim()}”`;
       if (d.originalPrice.trim()) {
@@ -250,7 +278,8 @@ export default function CreateStore() {
       category: c.name.trim(),
       food: c.food.map((f) => {
         const itemId = uniqueSlug(slug(f.name.trim()), usedItem);
-        if (f.icon) iconFiles.push({ path: `icons/${itemId}.webp`, file: f.icon });
+        if (f.icon)
+          iconFiles.push({ path: `icons/${itemId}.webp`, file: f.icon });
 
         const section = f.sections.map((s) => {
           const out: Record<string, unknown> = {
@@ -308,13 +337,22 @@ export default function CreateStore() {
       setBusy(true);
       const enc = new TextEncoder();
       const entries: ZipEntry[] = [
-        { name: `${id}/shop.json`, data: enc.encode(JSON.stringify(shop, null, 2)) },
+        {
+          name: `${id}/shop.json`,
+          data: enc.encode(JSON.stringify(shop, null, 2)),
+        },
         { name: `${id}/HOW-TO-INSTALL.txt`, data: enc.encode(installNote(id)) },
       ];
       if (banner)
-        entries.push({ name: `${id}/banner.webp`, data: await imageBytes(banner, 1200, 0.8) });
+        entries.push({
+          name: `${id}/banner.webp`,
+          data: await imageBytes(banner, 1200, 0.8),
+        });
       if (logo)
-        entries.push({ name: `${id}/logo.webp`, data: await imageBytes(logo, 400, 0.85) });
+        entries.push({
+          name: `${id}/logo.webp`,
+          data: await imageBytes(logo, 400, 0.85),
+        });
       for (const ic of iconFiles)
         entries.push({
           name: `${id}/${ic.path}`,
@@ -380,8 +418,20 @@ export default function CreateStore() {
 
         <FormCard icon={<ImagePlus size={18} />} title="Images">
           <div className="grid grid-cols-2 gap-3">
-            <ImagePicker label="Logo" file={logo} onPick={setLogo} max={400} quality={0.85} />
-            <ImagePicker label="Banner" file={banner} onPick={setBanner} max={1200} quality={0.8} />
+            <ImagePicker
+              label="Logo"
+              file={logo}
+              onPick={setLogo}
+              max={400}
+              quality={0.85}
+            />
+            <ImagePicker
+              label="Banner"
+              file={banner}
+              onPick={setBanner}
+              max={1200}
+              quality={0.8}
+            />
           </div>
         </FormCard>
 
@@ -397,7 +447,10 @@ export default function CreateStore() {
                   className={`${inputCls} font-semibold`}
                   value={cat.name}
                   onChange={(e) =>
-                    patchCategory(cat.id, (c) => ({ ...c, name: e.target.value }))
+                    patchCategory(cat.id, (c) => ({
+                      ...c,
+                      name: e.target.value,
+                    }))
                   }
                   placeholder="Category"
                 />
@@ -424,7 +477,10 @@ export default function CreateStore() {
                         className={inputCls}
                         value={food.name}
                         onChange={(e) =>
-                          patchFood(cat.id, food.id, (f) => ({ ...f, name: e.target.value }))
+                          patchFood(cat.id, food.id, (f) => ({
+                            ...f,
+                            name: e.target.value,
+                          }))
                         }
                         placeholder="Name"
                       />
@@ -462,7 +518,10 @@ export default function CreateStore() {
                         step={0.1}
                         value={food.price}
                         onChange={(e) =>
-                          patchFood(cat.id, food.id, (f) => ({ ...f, price: e.target.value }))
+                          patchFood(cat.id, food.id, (f) => ({
+                            ...f,
+                            price: e.target.value,
+                          }))
                         }
                         placeholder="Price"
                       />
@@ -472,7 +531,10 @@ export default function CreateStore() {
                         max={600}
                         file={food.icon}
                         onPick={(file) =>
-                          patchFood(cat.id, food.id, (f) => ({ ...f, icon: file }))
+                          patchFood(cat.id, food.id, (f) => ({
+                            ...f,
+                            icon: file,
+                          }))
                         }
                       />
                     </div>
@@ -483,7 +545,10 @@ export default function CreateStore() {
                         className="space-y-2 rounded-lg bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
                       >
                         <div className="flex items-center gap-2">
-                          <Settings2 size={14} className="shrink-0 text-neutral-400" />
+                          <Settings2
+                            size={14}
+                            className="shrink-0 text-neutral-400"
+                          />
                           <input
                             className={`${inputCls} py-1.5`}
                             value={sec.name}
@@ -500,7 +565,9 @@ export default function CreateStore() {
                             onClick={() =>
                               patchFood(cat.id, food.id, (f) => ({
                                 ...f,
-                                sections: f.sections.filter((s) => s.id !== sec.id),
+                                sections: f.sections.filter(
+                                  (s) => s.id !== sec.id,
+                                ),
                               }))
                             }
                           >
@@ -545,10 +612,15 @@ export default function CreateStore() {
                                 min={1}
                                 value={sec.max}
                                 onChange={(e) =>
-                                  patchSection(cat.id, food.id, sec.id, (s) => ({
-                                    ...s,
-                                    max: e.target.value,
-                                  }))
+                                  patchSection(
+                                    cat.id,
+                                    food.id,
+                                    sec.id,
+                                    (s) => ({
+                                      ...s,
+                                      max: e.target.value,
+                                    }),
+                                  )
                                 }
                                 className="w-14 rounded-md border border-neutral-200 bg-transparent px-1.5 py-0.5 outline-none focus:border-brand-500 dark:border-neutral-700"
                               />
@@ -558,22 +630,34 @@ export default function CreateStore() {
 
                         <div className="space-y-1.5 pl-6">
                           {sec.options.map((opt) => (
-                            <div key={opt.id} className="flex items-center gap-2">
+                            <div
+                              key={opt.id}
+                              className="flex items-center gap-2"
+                            >
                               <input
                                 className={`${inputCls} py-1.5`}
                                 value={opt.name}
                                 onChange={(e) =>
-                                  patchSection(cat.id, food.id, sec.id, (s) => ({
-                                    ...s,
-                                    options: s.options.map((o) =>
-                                      o.id === opt.id ? { ...o, name: e.target.value } : o,
-                                    ),
-                                  }))
+                                  patchSection(
+                                    cat.id,
+                                    food.id,
+                                    sec.id,
+                                    (s) => ({
+                                      ...s,
+                                      options: s.options.map((o) =>
+                                        o.id === opt.id
+                                          ? { ...o, name: e.target.value }
+                                          : o,
+                                      ),
+                                    }),
+                                  )
                                 }
                                 placeholder="Choice"
                               />
                               <div className="flex items-center gap-1">
-                                <span className="text-xs text-neutral-400">+$</span>
+                                <span className="text-xs text-neutral-400">
+                                  +$
+                                </span>
                                 <input
                                   className="w-16 rounded-lg border border-neutral-200 bg-transparent px-2 py-1.5 text-sm outline-none focus:border-brand-500 dark:border-neutral-700 dark:text-white"
                                   type="number"
@@ -581,12 +665,19 @@ export default function CreateStore() {
                                   step={0.1}
                                   value={opt.price}
                                   onChange={(e) =>
-                                    patchSection(cat.id, food.id, sec.id, (s) => ({
-                                      ...s,
-                                      options: s.options.map((o) =>
-                                        o.id === opt.id ? { ...o, price: e.target.value } : o,
-                                      ),
-                                    }))
+                                    patchSection(
+                                      cat.id,
+                                      food.id,
+                                      sec.id,
+                                      (s) => ({
+                                        ...s,
+                                        options: s.options.map((o) =>
+                                          o.id === opt.id
+                                            ? { ...o, price: e.target.value }
+                                            : o,
+                                        ),
+                                      }),
+                                    )
                                   }
                                 />
                               </div>
@@ -594,10 +685,17 @@ export default function CreateStore() {
                                 <IconBtn
                                   label="Remove choice"
                                   onClick={() =>
-                                    patchSection(cat.id, food.id, sec.id, (s) => ({
-                                      ...s,
-                                      options: s.options.filter((o) => o.id !== opt.id),
-                                    }))
+                                    patchSection(
+                                      cat.id,
+                                      food.id,
+                                      sec.id,
+                                      (s) => ({
+                                        ...s,
+                                        options: s.options.filter(
+                                          (o) => o.id !== opt.id,
+                                        ),
+                                      }),
+                                    )
                                   }
                                 >
                                   <X size={14} />
@@ -639,7 +737,10 @@ export default function CreateStore() {
                 <button
                   type="button"
                   onClick={() =>
-                    patchCategory(cat.id, (c) => ({ ...c, food: [...c.food, newFood()] }))
+                    patchCategory(cat.id, (c) => ({
+                      ...c,
+                      food: [...c.food, newFood()],
+                    }))
                   }
                   className="btn-secondary w-full py-2 text-sm"
                 >
@@ -661,7 +762,9 @@ export default function CreateStore() {
         <section className="space-y-3">
           <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900 dark:text-white">
             <Tag size={18} /> Deals
-            <span className="text-xs font-medium text-neutral-400">Optional · limited-time specials</span>
+            <span className="text-xs font-medium text-neutral-400">
+              Optional · limited-time specials
+            </span>
           </h2>
 
           {deals.map((d) => (
@@ -672,7 +775,9 @@ export default function CreateStore() {
                   value={d.emoji}
                   onChange={(e) =>
                     setDeals((ds) =>
-                      ds.map((x) => (x.id === d.id ? { ...x, emoji: e.target.value } : x)),
+                      ds.map((x) =>
+                        x.id === d.id ? { ...x, emoji: e.target.value } : x,
+                      ),
                     )
                   }
                   placeholder="Icon"
@@ -682,14 +787,18 @@ export default function CreateStore() {
                   value={d.title}
                   onChange={(e) =>
                     setDeals((ds) =>
-                      ds.map((x) => (x.id === d.id ? { ...x, title: e.target.value } : x)),
+                      ds.map((x) =>
+                        x.id === d.id ? { ...x, title: e.target.value } : x,
+                      ),
                     )
                   }
                   placeholder="Deal title"
                 />
                 <IconBtn
                   label="Remove deal"
-                  onClick={() => setDeals((ds) => ds.filter((x) => x.id !== d.id))}
+                  onClick={() =>
+                    setDeals((ds) => ds.filter((x) => x.id !== d.id))
+                  }
                 >
                   <Trash2 size={16} />
                 </IconBtn>
@@ -701,7 +810,9 @@ export default function CreateStore() {
                     key={k}
                     type="button"
                     onClick={() =>
-                      setDeals((ds) => ds.map((x) => (x.id === d.id ? { ...x, kind: k } : x)))
+                      setDeals((ds) =>
+                        ds.map((x) => (x.id === d.id ? { ...x, kind: k } : x)),
+                      )
                     }
                     className={`flex-1 rounded-xl py-2 text-sm font-bold capitalize transition ${
                       d.kind === k
@@ -719,7 +830,9 @@ export default function CreateStore() {
                 value={d.sub}
                 onChange={(e) =>
                   setDeals((ds) =>
-                    ds.map((x) => (x.id === d.id ? { ...x, sub: e.target.value } : x)),
+                    ds.map((x) =>
+                      x.id === d.id ? { ...x, sub: e.target.value } : x,
+                    ),
                   )
                 }
                 placeholder="Short description"
@@ -735,12 +848,17 @@ export default function CreateStore() {
                     value={d.price}
                     onChange={(e) =>
                       setDeals((ds) =>
-                        ds.map((x) => (x.id === d.id ? { ...x, price: e.target.value } : x)),
+                        ds.map((x) =>
+                          x.id === d.id ? { ...x, price: e.target.value } : x,
+                        ),
                       )
                     }
                   />
                 </Field>
-                <Field label="Original price" hint="Optional — shown struck through">
+                <Field
+                  label="Original price"
+                  hint="Optional — shown struck through"
+                >
                   <input
                     className={inputCls}
                     type="number"
@@ -750,7 +868,9 @@ export default function CreateStore() {
                     onChange={(e) =>
                       setDeals((ds) =>
                         ds.map((x) =>
-                          x.id === d.id ? { ...x, originalPrice: e.target.value } : x,
+                          x.id === d.id
+                            ? { ...x, originalPrice: e.target.value }
+                            : x,
                         ),
                       )
                     }
@@ -772,7 +892,9 @@ export default function CreateStore() {
         <section className="space-y-3">
           <h2 className="flex items-center gap-2 px-1 text-base font-bold text-neutral-900 dark:text-white">
             <MessageSquare size={18} /> Reviews
-            <span className="text-xs font-medium text-neutral-400">Optional</span>
+            <span className="text-xs font-medium text-neutral-400">
+              Optional
+            </span>
           </h2>
 
           {reviews.map((r) => (
@@ -783,14 +905,18 @@ export default function CreateStore() {
                   value={r.author}
                   onChange={(e) =>
                     setReviews((rs) =>
-                      rs.map((x) => (x.id === r.id ? { ...x, author: e.target.value } : x)),
+                      rs.map((x) =>
+                        x.id === r.id ? { ...x, author: e.target.value } : x,
+                      ),
                     )
                   }
                   placeholder="Reviewer name"
                 />
                 <IconBtn
                   label="Remove review"
-                  onClick={() => setReviews((rs) => rs.filter((x) => x.id !== r.id))}
+                  onClick={() =>
+                    setReviews((rs) => rs.filter((x) => x.id !== r.id))
+                  }
                 >
                   <Trash2 size={16} />
                 </IconBtn>
@@ -801,7 +927,9 @@ export default function CreateStore() {
                 value={r.text}
                 onChange={(e) =>
                   setReviews((rs) =>
-                    rs.map((x) => (x.id === r.id ? { ...x, text: e.target.value } : x)),
+                    rs.map((x) =>
+                      x.id === r.id ? { ...x, text: e.target.value } : x,
+                    ),
                   )
                 }
                 placeholder="What did they say?"
@@ -813,7 +941,9 @@ export default function CreateStore() {
                   onChange={(e) =>
                     setReviews((rs) =>
                       rs.map((x) =>
-                        x.id === r.id ? { ...x, rating: Number(e.target.value) } : x,
+                        x.id === r.id
+                          ? { ...x, rating: Number(e.target.value) }
+                          : x,
                       ),
                     )
                   }
@@ -868,7 +998,9 @@ function FormCard({
       <h2 className="flex items-center gap-2 text-base font-bold text-neutral-900 dark:text-white">
         {icon} {title}
         {subtitle && (
-          <span className="text-xs font-medium text-neutral-400">{subtitle}</span>
+          <span className="text-xs font-medium text-neutral-400">
+            {subtitle}
+          </span>
         )}
       </h2>
       {children}
@@ -962,7 +1094,9 @@ function ImagePicker({
 
   if (url) {
     return (
-      <div className={`group relative overflow-hidden rounded-xl border border-brand-500 ${heightCls}`}>
+      <div
+        className={`group relative overflow-hidden rounded-xl border border-brand-500 ${heightCls}`}
+      >
         <img src={url} alt={label} className="h-full w-full object-cover" />
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-1 bg-black/50 px-2 py-1 text-xs font-medium text-white">
           <span className="truncate">{label}</span>
@@ -1053,7 +1187,10 @@ function CuisinePicker({
       {selected.length > 0 && (
         <div className="mb-1.5 flex flex-wrap gap-1.5">
           {selected.map((c) => (
-            <span key={c} className="chip chip-active inline-flex items-center gap-1">
+            <span
+              key={c}
+              className="chip chip-active inline-flex items-center gap-1"
+            >
               {c}
               <button
                 type="button"
@@ -1081,7 +1218,11 @@ function CuisinePicker({
             if (matches.length) add(matches[0]);
           }
         }}
-        placeholder={selected.length ? "Add another category…" : "Type to search categories"}
+        placeholder={
+          selected.length
+            ? "Add another category…"
+            : "Type to search categories"
+        }
       />
       {open && matches.length > 0 && (
         <ul className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-neutral-200 bg-white py-1 shadow-card dark:border-neutral-700 dark:bg-neutral-900">
@@ -1099,7 +1240,9 @@ function CuisinePicker({
         </ul>
       )}
       {open && q && matches.length === 0 && (
-        <p className="mt-1 px-1 text-xs text-neutral-400">No matching categories</p>
+        <p className="mt-1 px-1 text-xs text-neutral-400">
+          No matching categories
+        </p>
       )}
     </div>
   );

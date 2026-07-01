@@ -18,7 +18,12 @@ export default function StoreCard({ store }: { store: Store }) {
       className="block overflow-hidden rounded-2xl bg-white shadow-card transition active:scale-[0.99] dark:bg-neutral-900"
     >
       <div className="relative grid h-28 place-items-center overflow-hidden bg-neutral-200 dark:bg-neutral-800">
-        <Thumb src={store.banner} alt={store.name} fallback="banner" rounded="" />
+        <Thumb
+          src={store.banner}
+          alt={store.name}
+          fallback="banner"
+          rounded=""
+        />
       </div>
       <div className="p-3">
         <div className="flex gap-3">

@@ -42,7 +42,10 @@ export default function AddressAutocomplete({
           `https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=0&limit=6&q=${encodeURIComponent(
             term,
           )}`,
-          { headers: { Accept: "application/json" }, signal: controller.signal },
+          {
+            headers: { Accept: "application/json" },
+            signal: controller.signal,
+          },
         );
         const data: unknown = await res.json();
         const list: Suggestion[] = (Array.isArray(data) ? data : [])
@@ -56,8 +59,14 @@ export default function AddressAutocomplete({
             const lat = Number(row.lat);
             const lng = Number(row.lon);
             const loc =
-              Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng } : undefined;
-            return { id: String(row.place_id ?? ""), line: row.display_name ?? "", loc };
+              Number.isFinite(lat) && Number.isFinite(lng)
+                ? { lat, lng }
+                : undefined;
+            return {
+              id: String(row.place_id ?? ""),
+              line: row.display_name ?? "",
+              loc,
+            };
           })
           .filter((s) => s.line);
         setSuggestions(list);

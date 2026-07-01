@@ -14,6 +14,7 @@ type AddArgs = {
   qty: number;
   selectedChoices: SelectedChoice[];
   note?: string;
+  pointsCost?: number;
 };
 
 type CartState = {
@@ -37,10 +38,12 @@ export const useCart = create<CartState>((set, get) => ({
 
   wouldReplace: (storeId) => {
     const { cart } = get();
-    return cart.lines.length > 0 && cart.storeId !== null && cart.storeId !== storeId;
+    return (
+      cart.lines.length > 0 && cart.storeId !== null && cart.storeId !== storeId
+    );
   },
 
-  addLine: ({ item, storeId, qty, selectedChoices, note }) =>
+  addLine: ({ item, storeId, qty, selectedChoices, note, pointsCost }) =>
     set((s) => {
       const unitPrice = computeUnitPrice(item, selectedChoices);
       const line: CartLine = {
@@ -55,6 +58,7 @@ export const useCart = create<CartState>((set, get) => ({
         name: item.name,
         icon: item.icon || undefined,
         emoji: item.emoji,
+        pointsCost: pointsCost && pointsCost > 0 ? pointsCost : undefined,
       };
       const switching = s.cart.storeId !== null && s.cart.storeId !== storeId;
       const cart: Cart = switching
@@ -69,7 +73,11 @@ export const useCart = create<CartState>((set, get) => ({
       const lines = s.cart.lines
         .map((l) =>
           l.lineId === lineId
-            ? { ...l, qty, lineTotal: Math.round(l.unitPrice * qty * 100) / 100 }
+            ? {
+                ...l,
+                qty,
+                lineTotal: Math.round(l.unitPrice * qty * 100) / 100,
+              }
             : l,
         )
         .filter((l) => l.qty > 0);
@@ -84,7 +92,10 @@ export const useCart = create<CartState>((set, get) => ({
   removeLine: (lineId) =>
     set((s) => {
       const lines = s.cart.lines.filter((l) => l.lineId !== lineId);
-      const cart: Cart = { storeId: lines.length ? s.cart.storeId : null, lines };
+      const cart: Cart = {
+        storeId: lines.length ? s.cart.storeId : null,
+        lines,
+      };
       persist(cart);
       return { cart };
     }),
@@ -107,6 +118,7 @@ export const useCart = create<CartState>((set, get) => ({
   itemCount: () => get().cart.lines.reduce((n, l) => n + l.qty, 0),
 
   subtotal: () =>
-    Math.round(get().cart.lines.reduce((sum, l) => sum + l.lineTotal, 0) * 100) /
-    100,
+    Math.round(
+      get().cart.lines.reduce((sum, l) => sum + l.lineTotal, 0) * 100,
+    ) / 100,
 }));

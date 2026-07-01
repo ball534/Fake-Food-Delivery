@@ -45,14 +45,23 @@ type ProfileState = {
   setName: (name: string) => void;
   setEmoji: (emoji: string) => void;
   addAddress: (label: string, line: string, loc?: GeoPoint) => boolean;
-  editAddress: (id: string, label: string, line: string, loc?: GeoPoint) => void;
+  editAddress: (
+    id: string,
+    label: string,
+    line: string,
+    loc?: GeoPoint,
+  ) => void;
   removeAddress: (id: string) => void;
   selectAddress: (id: string) => void;
   selectedAddress: () => Address | undefined;
   loyaltyXp: (storeId: string) => number;
   loyaltyTier: (storeId: string) => number;
   multiplierFor: (storeId: string) => number;
-  recordPurchase: (storeId: string, orderTotal: number, opts?: PurchaseOpts) => PurchaseResult;
+  recordPurchase: (
+    storeId: string,
+    orderTotal: number,
+    opts?: PurchaseOpts,
+  ) => PurchaseResult;
   reset: () => void;
 };
 
@@ -139,7 +148,12 @@ export const useProfile = create<ProfileState>((set, get) => ({
     multiplierForTier(levelForXp(get().profile.loyalty[storeId] ?? 0)),
 
   recordPurchase: (storeId, orderTotal, opts = {}) => {
-    const { pointsMultiplier = 1, loyaltyTiers = 1, pointsSpent = 0, bonusPoints = 0 } = opts;
+    const {
+      pointsMultiplier = 1,
+      loyaltyTiers = 1,
+      pointsSpent = 0,
+      bonusPoints = 0,
+    } = opts;
     const { profile } = get();
     const currentXp = profile.loyalty[storeId] ?? 0;
     const currentTier = levelForXp(currentXp);

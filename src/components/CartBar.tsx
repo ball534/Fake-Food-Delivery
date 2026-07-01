@@ -51,9 +51,18 @@ export default function CartBar() {
                       ? describeChoices(item, line.selectedChoices)
                       : "";
                     return (
-                      <div key={line.lineId} className="flex items-center gap-3 p-3">
+                      <div
+                        key={line.lineId}
+                        className="flex items-center gap-3 p-3"
+                      >
                         <span className="grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
-                          <Thumb src={icon} emoji={emoji} fallback="food" alt={name} fit="contain" />
+                          <Thumb
+                            src={icon}
+                            emoji={emoji}
+                            fallback="food"
+                            alt={name}
+                            fit="contain"
+                          />
                         </span>
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-semibold text-neutral-900 dark:text-white">
@@ -78,7 +87,11 @@ export default function CartBar() {
                             aria-label={line.qty <= 1 ? "Remove" : "Decrease"}
                             className="grid h-7 w-7 place-items-center rounded-full bg-neutral-100 text-neutral-600 active:scale-90 dark:bg-neutral-800 dark:text-neutral-300"
                           >
-                            {line.qty <= 1 ? <Trash2 size={13} /> : <Minus size={14} />}
+                            {line.qty <= 1 ? (
+                              <Trash2 size={13} />
+                            ) : (
+                              <Minus size={14} />
+                            )}
                           </button>
                           <span className="w-4 text-center text-sm font-bold text-neutral-900 dark:text-white">
                             {line.qty}

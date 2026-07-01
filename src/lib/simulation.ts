@@ -31,8 +31,11 @@ export function generateDriver(seed: number): Driver {
   return { name, emoji };
 }
 
-export function storeLocationFor(seed: number, drop: GeoPoint = DEFAULT_DROP): GeoPoint {
-  const angle = (Math.abs(Math.sin(seed)) * Math.PI * 2);
+export function storeLocationFor(
+  seed: number,
+  drop: GeoPoint = DEFAULT_DROP,
+): GeoPoint {
+  const angle = Math.abs(Math.sin(seed)) * Math.PI * 2;
   const radius = 0.008 + (Math.abs(Math.sin(seed * 1.7)) % 1) * 0.008;
   return {
     lat: drop.lat + radius * Math.cos(angle),

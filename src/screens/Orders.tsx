@@ -88,15 +88,23 @@ function OrderRow({ order }: { order: Order }) {
     >
       <div className="flex items-center gap-3">
         <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-800">
-          <Thumb src={order.storeLogo} emoji={order.storeEmoji} fallback="logo" alt={order.storeName} />
+          <Thumb
+            src={order.storeLogo}
+            emoji={order.storeEmoji}
+            fallback="logo"
+            alt={order.storeName}
+          />
         </span>
         <div className="min-w-0 flex-1">
           <p className="truncate font-bold text-neutral-900 dark:text-white">
             {order.storeName}
           </p>
           <p className="truncate text-xs text-neutral-500 dark:text-neutral-400">
-            {pluralize(order.lines.reduce((n, l) => n + l.qty, 0), "item")} ·{" "}
-            {money(order.total)} · {formatDate(order.placedAt)}
+            {pluralize(
+              order.lines.reduce((n, l) => n + l.qty, 0),
+              "item",
+            )}{" "}
+            · {money(order.total)} · {formatDate(order.placedAt)}
           </p>
           <p className="mt-0.5 text-xs font-medium text-brand-600 dark:text-brand-400">
             +{order.pointsEarned} points ✨

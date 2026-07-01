@@ -1,6 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MessageSquare, Home as HomeIcon, UserRound, Check } from "lucide-react";
+import {
+  MessageSquare,
+  Home as HomeIcon,
+  UserRound,
+  Check,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
@@ -143,8 +148,12 @@ export default function OrderTracking() {
             <p className="text-base font-bold uppercase tracking-[0.2em]">
               {order.storeName}
             </p>
-            <p className="text-[11px] text-neutral-400">FAKEEATS · SIMULATION</p>
-            <p className="text-[11px] text-neutral-400">{formatDate(order.placedAt)}</p>
+            <p className="text-[11px] text-neutral-400">
+              FAKEEATS · SIMULATION
+            </p>
+            <p className="text-[11px] text-neutral-400">
+              {formatDate(order.placedAt)}
+            </p>
           </div>
 
           <Dashed />
@@ -153,7 +162,9 @@ export default function OrderTracking() {
             const item = store?.menu
               .flatMap((c) => c.items)
               .find((i) => i.id === line.itemId);
-            const summary = item ? describeChoices(item, line.selectedChoices) : "";
+            const summary = item
+              ? describeChoices(item, line.selectedChoices)
+              : "";
             return (
               <div key={line.lineId} className="mb-1">
                 <div className="flex justify-between gap-2">
@@ -192,7 +203,9 @@ export default function OrderTracking() {
 
           <Dashed />
 
-          <p className="text-center text-[11px] tracking-widest">*** THANK YOU ***</p>
+          <p className="text-center text-[11px] tracking-widest">
+            *** THANK YOU ***
+          </p>
           <p className="mt-1 text-center text-[11px] text-neutral-400">
             Delivered to {order.addressLabel ?? order.address}
           </p>

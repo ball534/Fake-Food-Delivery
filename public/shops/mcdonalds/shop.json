@@ -1,9 +1,6 @@
 {
   "name": "McDonald's",
-  "categories": [
-    "Western",
-    "Fast Food"
-  ],
+  "categories": ["Western", "Fast Food"],
   "fastfood": true,
   "pricelevel": 1,
   "rating": 4.4,
@@ -15,9 +12,7 @@
           "name": "Big Mac Meal",
           "description": "Big Mac with World Famous Fries and a drink.",
           "price": 8.5,
-          "tags": [
-            "popular"
-          ],
+          "tags": ["popular"],
           "section": [
             {
               "name": "Meal size",
@@ -40,7 +35,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -121,10 +116,7 @@
           "name": "McSpicy Meal",
           "description": "McSpicy chicken-thigh burger with fries and a drink.",
           "price": 8.9,
-          "tags": [
-            "popular",
-            "spicy"
-          ],
+          "tags": ["popular", "spicy"],
           "section": [
             {
               "name": "Meal size",
@@ -147,7 +139,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -224,9 +216,7 @@
           "name": "Double McSpicy Meal",
           "description": "Double McSpicy burger with fries and a drink.",
           "price": 12.9,
-          "tags": [
-            "spicy"
-          ],
+          "tags": ["spicy"],
           "section": [
             {
               "name": "Meal size",
@@ -249,7 +239,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -326,9 +316,7 @@
           "name": "McSpicy with Cheese Meal",
           "description": "McSpicy with cheese, fries and a drink.",
           "price": 9.4,
-          "tags": [
-            "spicy"
-          ],
+          "tags": ["spicy"],
           "section": [
             {
               "name": "Meal size",
@@ -351,7 +339,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -428,9 +416,7 @@
           "name": "Double McSpicy with Cheese Meal",
           "description": "Double McSpicy with cheese, fries and a drink.",
           "price": 13.9,
-          "tags": [
-            "spicy"
-          ],
+          "tags": ["spicy"],
           "section": [
             {
               "name": "Meal size",
@@ -453,7 +439,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -530,9 +516,7 @@
           "name": "McCrispy Meal",
           "description": "Crispy chicken fillet burger with fries and a drink.",
           "price": 8.5,
-          "tags": [
-            "new"
-          ],
+          "tags": ["new"],
           "section": [
             {
               "name": "Meal size",
@@ -555,7 +539,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -654,7 +638,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -753,7 +737,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -844,7 +828,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -947,7 +931,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -1050,7 +1034,7 @@
               "required": true,
               "options": [
                 {
-                  "name": "World Famous Fries (M)",
+                  "name": "World Famous Fries",
                   "price": 0
                 },
                 {
@@ -1136,9 +1120,7 @@
           "name": "Big Mac",
           "description": "Two all-beef patties, special sauce, lettuce, cheese, pickles and onions on a sesame bun.",
           "price": 7.2,
-          "tags": [
-            "popular"
-          ],
+          "tags": ["popular"],
           "section": [
             {
               "name": "Add-ons",
@@ -1166,10 +1148,7 @@
           "name": "McSpicy",
           "description": "Fiery whole chicken-thigh fillet with lettuce and creamy sauce on a sesame bun.",
           "price": 7.2,
-          "tags": [
-            "popular",
-            "spicy"
-          ],
+          "tags": ["popular", "spicy"],
           "section": [
             {
               "name": "Add-ons",
@@ -1197,9 +1176,7 @@
           "name": "Double McSpicy",
           "description": "Two fiery chicken-thigh fillets stacked for double the heat.",
           "price": 11.5,
-          "tags": [
-            "spicy"
-          ],
+          "tags": ["spicy"],
           "section": [
             {
               "name": "Add-ons",
@@ -1223,25 +1200,19 @@
           "name": "McSpicy with Cheese",
           "description": "The classic McSpicy fillet topped with a slice of melty cheese.",
           "price": 7.7,
-          "tags": [
-            "spicy"
-          ]
+          "tags": ["spicy"]
         },
         {
           "name": "Double McSpicy with Cheese",
           "description": "Two spicy chicken fillets with cheese — for serious heat seekers.",
           "price": 12.5,
-          "tags": [
-            "spicy"
-          ]
+          "tags": ["spicy"]
         },
         {
           "name": "McCrispy",
           "description": "Extra-crispy chicken fillet with fresh lettuce and savoury sauce on a soft bun.",
           "price": 7.2,
-          "tags": [
-            "new"
-          ],
+          "tags": ["new"],
           "section": [
             {
               "name": "Add-ons",
@@ -1383,9 +1354,7 @@
           "name": "Chicken McNuggets (6pc)",
           "description": "Six crispy bite-size chicken nuggets with your choice of dip.",
           "price": 5.5,
-          "tags": [
-            "popular"
-          ],
+          "tags": ["popular"],
           "section": [
             {
               "name": "Dip",
@@ -1448,17 +1417,13 @@
           "name": "McWings (2pc)",
           "description": "Two crunchy, juicy spiced chicken wings.",
           "price": 3.6,
-          "tags": [
-            "spicy"
-          ]
+          "tags": ["spicy"]
         },
         {
           "name": "World Famous Fries",
           "description": "Golden, crispy and perfectly salted.",
           "price": 2.85,
-          "tags": [
-            "popular"
-          ],
+          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -1713,9 +1678,7 @@
           "name": "Apple Pie",
           "description": "Crispy pastry with a warm apple-cinnamon filling.",
           "price": 1.9,
-          "tags": [
-            "popular"
-          ]
+          "tags": ["popular"]
         }
       ]
     }

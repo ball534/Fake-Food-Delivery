@@ -13,8 +13,7 @@ export function loadJSON<T>(key: string, fallback: T): T {
 export function saveJSON<T>(key: string, value: T): void {
   try {
     localStorage.setItem(PREFIX + key, JSON.stringify(value));
-  } catch {
-  }
+  } catch {}
 }
 
 export function clearAll(): void {
@@ -25,8 +24,7 @@ export function clearAll(): void {
       if (k && k.startsWith(PREFIX)) toRemove.push(k);
     }
     toRemove.forEach((k) => localStorage.removeItem(k));
-  } catch {
-  }
+  } catch {}
 }
 
 export const STORAGE_KEYS = {

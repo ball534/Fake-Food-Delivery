@@ -47,7 +47,7 @@ npm run typecheck  # tsc --noEmit
   tier with that shop (1.0×–2.0×, with playful tier names). Ordering from a shop
   builds its loyalty; ordering elsewhere drops your previous shop a tier.
 - **Live order simulation** — `Kitchen is preparing your meal → Driver is out for
-  delivery → Delivered` over a randomised, speed-dependent time, with a pulsing
+delivery → Delivered` over a randomised, speed-dependent time, with a pulsing
   segmented progress bar, ETA, a **real Leaflet / OpenStreetMap map** (store + drop
   pins, then an animated driver along the route), and a receipt-style summary.
 - **Reorder, ratings, editable saved addresses** (max 3, with one-tap "use my
@@ -129,50 +129,57 @@ public/shops/<shop-id>/
 ```jsonc
 {
   "name": "McDonald's",
-  "categories": ["Western"],   // first entry is the primary cuisine chip
-  "fastfood": true,            // also show under the cross-cutting "Fast Food" chip
-  "pricelevel": 1,             // 1–3  → $ / $$ / $$$
-  "rating": 4.4,               // 0–5, shown on the card
+  "categories": ["Western"], // first entry is the primary cuisine chip
+  "fastfood": true, // also show under the cross-cutting "Fast Food" chip
+  "pricelevel": 1, // 1–3  → $ / $$ / $$$
+  "rating": 4.4, // 0–5, shown on the card
   "menu": [
     {
-      "category": "Set Meals",        // section heading on the store page
+      "category": "Set Meals", // section heading on the store page
       "food": [
         {
           "name": "Big Mac Meal",
           "description": "Big Mac + fries + Coke.",
           "price": 8.9,
-          "tags": ["popular"],        // optional: popular | new | spicy
-          "section": [                 // optional customisation groups
+          "tags": ["popular"], // optional: popular | new | spicy
+          "section": [
+            // optional customisation groups
             {
               "name": "Size",
-              "multiselect": false,    // false = pick one (radio), true = pick many (checkbox)
+              "multiselect": false, // false = pick one (radio), true = pick many (checkbox)
               "required": true,
               "options": [
                 { "name": "Regular", "price": 0 },
-                { "name": "Upsize", "price": 1.2 }   // price = added to base
-              ]
+                { "name": "Upsize", "price": 1.2 }, // price = added to base
+              ],
             },
             {
               "name": "Toppings",
               "multiselect": true,
               "required": false,
-              "max": 3,                // multi-select only: pick up to 3
-              "min": 0,                // multi-select only: must pick at least N (optional)
+              "max": 3, // multi-select only: pick up to 3
+              "min": 0, // multi-select only: must pick at least N (optional)
               "options": [
                 { "name": "Pearls", "price": 0.7 },
                 { "name": "Pudding", "price": 0.8 },
                 { "name": "Grass jelly", "price": 0.7 },
-                { "name": "Cheese foam", "price": 1.2 }
-              ]
-            }
-          ]
-        }
-      ]
-    }
+                { "name": "Cheese foam", "price": 1.2 },
+              ],
+            },
+          ],
+        },
+      ],
+    },
   ],
   "reviews": [
-    { "author": "Bryan T.", "emoji": "🧑", "rating": 5, "text": "Crispy!", "daysAgo": 2 }
-  ]
+    {
+      "author": "Bryan T.",
+      "emoji": "🧑",
+      "rating": 5,
+      "text": "Crispy!",
+      "daysAgo": 2,
+    },
+  ],
 }
 ```
 

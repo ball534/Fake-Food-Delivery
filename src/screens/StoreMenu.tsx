@@ -25,6 +25,7 @@ export default function StoreMenu() {
   const { storeId = "" } = useParams();
   const store = useStores((s) => s.byId[storeId]);
   const selectedAddress = useProfile((s) => s.selectedAddress)();
+  const points = useProfile((s) => s.profile.points);
   const addLine = useCart((s) => s.addLine);
   const showToast = useToasts((s) => s.show);
   const deals = useDealPool();
@@ -49,7 +50,9 @@ export default function StoreMenu() {
           else visible.delete(label);
         }
         if (programmatic.current || visible.size === 0) return;
-        const topMost = [...visible.entries()].sort((a, b) => a[1] - b[1])[0][0];
+        const topMost = [...visible.entries()].sort(
+          (a, b) => a[1] - b[1],
+        )[0][0];
         setActiveCat(topMost);
       },
       { root, rootMargin: "-96px 0px -55% 0px", threshold: 0 },
@@ -69,7 +72,9 @@ export default function StoreMenu() {
     const navRect = nav.getBoundingClientRect();
     const chipRect = chip.getBoundingClientRect();
     const target =
-      nav.scrollLeft + (chipRect.left - navRect.left) - (nav.clientWidth - chip.clientWidth) / 2;
+      nav.scrollLeft +
+      (chipRect.left - navRect.left) -
+      (nav.clientWidth - chip.clientWidth) / 2;
     nav.scrollTo({ left: target, behavior: "smooth" });
   }, [activeCat]);
 
@@ -111,8 +116,11 @@ export default function StoreMenu() {
     settleTimer.current = window.setTimeout(release, 1000);
   };
 
+  const dealCost = storeDeal?.pointsCost ?? 0;
+  const canRedeem = points >= dealCost;
+
   const addStoreDeal = () => {
-    if (!storeDeal) return;
+    if (!storeDeal || !canRedeem) return;
     const dealItemId = `deal-${storeId}-${storeDeal.title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
@@ -129,14 +137,25 @@ export default function StoreMenu() {
       storeId,
       qty: 1,
       selectedChoices: [],
+      pointsCost: dealCost,
     });
-    showToast(`Added ${storeDeal.title}`, "🛒");
+    showToast(
+      dealCost > 0
+        ? `${storeDeal.title} added · ${dealCost} pts at checkout`
+        : `Added ${storeDeal.title}`,
+      "🛒",
+    );
   };
 
   return (
     <Screen className="pb-28">
       <div className="relative grid h-44 place-items-center overflow-hidden bg-neutral-200 dark:bg-neutral-800">
-        <Thumb src={store.banner} alt={store.name} fallback="banner" rounded="" />
+        <Thumb
+          src={store.banner}
+          alt={store.name}
+          fallback="banner"
+          rounded=""
+        />
         <div className="absolute inset-0 bg-black/5" />
         <div className="absolute inset-x-0 top-0">
           <TopBar transparent />
@@ -145,7 +164,12 @@ export default function StoreMenu() {
 
       <div className="relative -mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8 dark:bg-neutral-950">
         <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
-          <Thumb src={store.logo} alt={store.name} fallback="logo" rounded="rounded-2xl" />
+          <Thumb
+            src={store.logo}
+            alt={store.name}
+            fallback="logo"
+            rounded="rounded-2xl"
+          />
         </span>
         <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-neutral-900 dark:text-white">
           {store.name}
@@ -169,23 +193,45 @@ export default function StoreMenu() {
         {storeDeal && (
           <div className="mt-3 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500 to-brand-600 p-3 text-white shadow-card">
             <span className="text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
-              {storeDeal.kind === "combo" ? "Special combo" : "Limited-time item"}
+              {storeDeal.kind === "combo"
+                ? "Special combo"
+                : "Limited-time item"}
             </span>
             <div className="mt-0.5 flex items-center gap-3">
-              {storeDeal.emoji && <span className="text-3xl">{storeDeal.emoji}</span>}
+              {storeDeal.emoji && (
+                <span className="text-3xl">{storeDeal.emoji}</span>
+              )}
               <div className="min-w-0 flex-1">
-                <p className="font-extrabold leading-tight">{storeDeal.title}</p>
+                <p className="font-extrabold leading-tight">
+                  {storeDeal.title}
+                </p>
                 <p className="text-xs text-brand-50/90">{storeDeal.sub}</p>
                 <DealPrice deal={storeDeal} className="mt-1" />
               </div>
-              <motion.button
-                whileTap={{ scale: 0.85 }}
-                onClick={addStoreDeal}
-                aria-label={`Add ${storeDeal.title} to cart`}
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-brand-600 shadow-card-hover"
-              >
-                <Plus size={18} strokeWidth={3} />
-              </motion.button>
+              {dealCost > 0 ? (
+                <motion.button
+                  whileTap={canRedeem ? { scale: 0.9 } : undefined}
+                  onClick={addStoreDeal}
+                  disabled={!canRedeem}
+                  aria-label={
+                    canRedeem
+                      ? `Redeem ${storeDeal.title} for ${dealCost} points`
+                      : `Not enough points to redeem ${storeDeal.title}`
+                  }
+                  className="shrink-0 rounded-full bg-white px-3.5 py-2 text-xs font-extrabold text-brand-600 shadow-card-hover disabled:bg-white/40 disabled:text-white disabled:shadow-none"
+                >
+                  {canRedeem ? "Redeem" : `Need ${dealCost - points} pts`}
+                </motion.button>
+              ) : (
+                <motion.button
+                  whileTap={{ scale: 0.85 }}
+                  onClick={addStoreDeal}
+                  aria-label={`Add ${storeDeal.title} to cart`}
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-white text-brand-600 shadow-card-hover"
+                >
+                  <Plus size={18} strokeWidth={3} />
+                </motion.button>
+              )}
             </div>
           </div>
         )}

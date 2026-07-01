@@ -16,8 +16,17 @@ export default function Confetti() {
             className="absolute top-0 text-xl"
             style={{ left: `${left}%` }}
             initial={{ y: -40, opacity: 0, rotate: 0 }}
-            animate={{ y: "110vh", x: drift, opacity: [0, 1, 1, 0.8], rotate: 360 }}
-            transition={{ duration: 2.4 + (i % 4) * 0.3, delay, ease: "easeIn" }}
+            animate={{
+              y: "110vh",
+              x: drift,
+              opacity: [0, 1, 1, 0.8],
+              rotate: 360,
+            }}
+            transition={{
+              duration: 2.4 + (i % 4) * 0.3,
+              delay,
+              ease: "easeIn",
+            }}
           >
             {piece}
           </motion.span>

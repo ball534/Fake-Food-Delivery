@@ -51,7 +51,7 @@ export default function ItemDetail() {
     choices.filter((c) => c.optionId === optionId).length;
 
   const minFor = (o: ItemOption) =>
-    o.required ? Math.max(1, o.min ?? 1) : o.min ?? 0;
+    o.required ? Math.max(1, o.min ?? 1) : (o.min ?? 0);
 
   const selectChoice = (opt: ItemOption, choiceId: string) => {
     if (opt.multiSelect) {
@@ -62,7 +62,9 @@ export default function ItemDetail() {
       }
       setChoices((prev) =>
         exists
-          ? prev.filter((c) => !(c.optionId === opt.id && c.choiceId === choiceId))
+          ? prev.filter(
+              (c) => !(c.optionId === opt.id && c.choiceId === choiceId),
+            )
           : [...prev, { optionId: opt.id, choiceId }],
       );
       return;
@@ -108,7 +110,14 @@ export default function ItemDetail() {
       <div className="space-y-5 p-4">
         <div className="flex items-start gap-4">
           <span className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-neutral-100 text-5xl shadow-card ring-1 ring-black/5 dark:bg-neutral-800 dark:ring-white/10">
-            <Thumb src={item.icon} emoji={item.emoji} alt={item.name} fallback="food" rounded="rounded-2xl" fit="contain" />
+            <Thumb
+              src={item.icon}
+              emoji={item.emoji}
+              alt={item.name}
+              fallback="food"
+              rounded="rounded-2xl"
+              fit="contain"
+            />
           </span>
           <div className="min-w-0 flex-1">
             <h1 className="text-2xl font-extrabold text-neutral-900 dark:text-white">
@@ -129,7 +138,9 @@ export default function ItemDetail() {
           return (
             <section key={opt.id}>
               <div className="mb-2 flex items-center justify-between">
-                <h3 className="font-bold text-neutral-900 dark:text-white">{opt.label}</h3>
+                <h3 className="font-bold text-neutral-900 dark:text-white">
+                  {opt.label}
+                </h3>
                 <span className="text-xs font-medium text-neutral-400">
                   {optionHint(opt)}
                 </span>
@@ -144,7 +155,9 @@ export default function ItemDetail() {
                       onClick={() => selectChoice(opt, choice.id)}
                       disabled={locked}
                       className={`flex w-full items-center justify-between px-4 py-3 text-left transition disabled:opacity-40 ${
-                        idx > 0 ? "border-t border-neutral-100 dark:border-neutral-800" : ""
+                        idx > 0
+                          ? "border-t border-neutral-100 dark:border-neutral-800"
+                          : ""
                       }`}
                     >
                       <span className="flex items-center gap-3">
@@ -188,7 +201,9 @@ export default function ItemDetail() {
         </section>
 
         <section className="flex items-center justify-between">
-          <h3 className="font-bold text-neutral-900 dark:text-white">Quantity</h3>
+          <h3 className="font-bold text-neutral-900 dark:text-white">
+            Quantity
+          </h3>
           <div className="flex items-center gap-4">
             <button
               onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -213,7 +228,11 @@ export default function ItemDetail() {
       </div>
 
       <div className="fixed inset-x-0 bottom-0 z-30 mx-auto max-w-[440px] border-t border-neutral-200 bg-white/95 p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/95">
-        <button onClick={handleAdd} disabled={missingRequired.length > 0} className="btn-primary w-full">
+        <button
+          onClick={handleAdd}
+          disabled={missingRequired.length > 0}
+          className="btn-primary w-full"
+        >
           {missingRequired.length > 0
             ? `Select ${missingRequired[0].label}`
             : `Add ${qty} to cart · ${money(unitPrice * qty)}`}

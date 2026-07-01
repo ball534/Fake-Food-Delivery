@@ -1,4 +1,10 @@
-import { readdirSync, statSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import {
+  readdirSync,
+  statSync,
+  existsSync,
+  readFileSync,
+  writeFileSync,
+} from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -35,4 +41,6 @@ const { shops: _prev, ...rest } = content;
 const out = { shops, ...rest };
 
 writeFileSync(CONTENT, JSON.stringify(out, null, 2) + "\n");
-console.log(`build-shops-index: wrote ${shops.length} shops → public/content.json`);
+console.log(
+  `build-shops-index: wrote ${shops.length} shops → public/content.json`,
+);

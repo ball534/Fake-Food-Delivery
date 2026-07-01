@@ -1,5 +1,12 @@
 import { useMemo, useState } from "react";
-import { Search as SearchIcon, RefreshCw, Copy, Gift, Flame, ShoppingBag } from "lucide-react";
+import {
+  Search as SearchIcon,
+  RefreshCw,
+  Copy,
+  Gift,
+  Flame,
+  ShoppingBag,
+} from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
@@ -10,7 +17,12 @@ import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
 import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
-import { useContent, useDealPool, DEFAULT_GREETINGS, GREETING_SEED } from "../store/contentStore";
+import {
+  useContent,
+  useDealPool,
+  DEFAULT_GREETINGS,
+  GREETING_SEED,
+} from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { formatCountdown } from "../lib/format";
 

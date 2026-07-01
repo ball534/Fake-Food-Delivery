@@ -137,7 +137,9 @@ export default function Profile() {
                 }}
                 className="flex items-center gap-2"
               >
-                <span className="truncate text-xl font-extrabold">{profile.name}</span>
+                <span className="truncate text-xl font-extrabold">
+                  {profile.name}
+                </span>
                 <Pencil size={15} className="opacity-80" />
               </button>
             )}
@@ -152,7 +154,6 @@ export default function Profile() {
               <Sparkles size={18} className="text-brand-500" />
               <span className="text-sm font-medium">Reward points</span>
             </div>
-            <span className="text-xs text-neutral-400">earn 1 pt / $1</span>
           </div>
           <p className="mt-1 text-3xl font-extrabold text-neutral-900 dark:text-white">
             {profile.points.toLocaleString()}{" "}
@@ -165,8 +166,8 @@ export default function Profile() {
             </p>
             {loyalties.length === 0 ? (
               <p className="text-xs text-neutral-500 dark:text-neutral-400">
-                Order from a shop to build loyalty. Higher tiers multiply the points
-                you earn there — but ordering elsewhere lowers it.
+                Order from a shop to build loyalty. Higher tiers multiply the
+                points you earn there — but ordering elsewhere lowers it.
               </p>
             ) : (
               <div className="space-y-2">
@@ -177,7 +178,12 @@ export default function Profile() {
                     className="flex items-center gap-3 rounded-xl bg-neutral-50 p-2.5 dark:bg-neutral-800/50"
                   >
                     <span className="grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-white shadow-card dark:bg-neutral-800">
-                      <Thumb src={store.logo} alt={store.name} fallback="logo" rounded="rounded-full" />
+                      <Thumb
+                        src={store.logo}
+                        alt={store.name}
+                        fallback="logo"
+                        rounded="rounded-full"
+                      />
                     </span>
                     <div className="min-w-0 flex-1">
                       <p className="truncate font-semibold text-neutral-900 dark:text-white">
@@ -190,9 +196,6 @@ export default function Profile() {
                     <div className="shrink-0 text-right">
                       <p className="text-sm font-extrabold leading-tight text-brand-600 dark:text-brand-400">
                         {tierName(level)}
-                      </p>
-                      <p className="text-[10px] font-medium uppercase tracking-wide text-neutral-400">
-                        Loyalty tier
                       </p>
                     </div>
                   </Link>
@@ -241,10 +244,16 @@ export default function Profile() {
                 disabled={locating}
                 className="flex w-full items-center justify-center gap-2 rounded-xl border border-brand-500 py-2 text-sm font-semibold text-brand-600 transition active:scale-[0.99] disabled:opacity-60 dark:text-brand-400"
               >
-                <LocateFixed size={16} className={locating ? "animate-spin" : ""} />
+                <LocateFixed
+                  size={16}
+                  className={locating ? "animate-spin" : ""}
+                />
                 {locating ? "Locating…" : "Use my current location"}
               </button>
-              <button onClick={saveAddress} className="btn-primary w-full py-2 text-sm">
+              <button
+                onClick={saveAddress}
+                className="btn-primary w-full py-2 text-sm"
+              >
                 Save address
               </button>
             </div>

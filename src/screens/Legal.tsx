@@ -5,7 +5,12 @@ import EmptyState from "../components/EmptyState";
 
 type Section = { heading: string; body: string };
 
-type Doc = { title: string; updated: string; intro: string; sections: Section[] };
+type Doc = {
+  title: string;
+  updated: string;
+  intro: string;
+  sections: Section[];
+};
 
 const DOCS: Record<string, Doc> = {
   privacy: {
@@ -83,8 +88,12 @@ export default function Legal() {
     <Screen className="pb-10">
       <TopBar title={content.title} />
       <div className="space-y-5 p-4">
-        <p className="text-xs text-neutral-400">Last updated {content.updated}</p>
-        <p className="text-sm text-neutral-600 dark:text-neutral-300">{content.intro}</p>
+        <p className="text-xs text-neutral-400">
+          Last updated {content.updated}
+        </p>
+        <p className="text-sm text-neutral-600 dark:text-neutral-300">
+          {content.intro}
+        </p>
         {content.sections.map((s) => (
           <section key={s.heading}>
             <h2 className="mb-1 text-base font-bold text-neutral-900 dark:text-white">

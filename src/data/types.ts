@@ -68,6 +68,9 @@ export type CartLine = {
   name?: string;
   icon?: string;
   emoji?: string;
+  // Points spent at checkout to redeem this line (combo/item deals only). The
+  // cost is per redeemed line, independent of qty. Absent for normal items.
+  pointsCost?: number;
 };
 
 export type Cart = {

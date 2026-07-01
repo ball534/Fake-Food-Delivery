@@ -50,5 +50,7 @@ export function pointsForOrder(
   tier: number,
   bonusMultiplier = 1,
 ): number {
-  return Math.round(basePointsFor(orderTotal) * multiplierForTier(tier) * bonusMultiplier);
+  return Math.round(
+    basePointsFor(orderTotal) * multiplierForTier(tier) * bonusMultiplier,
+  );
 }

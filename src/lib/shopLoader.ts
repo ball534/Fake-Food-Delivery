@@ -6,7 +6,7 @@ import type {
   Review,
   Store,
 } from "../data/types";
-import type { Deal, DealKind } from "../data/promos";
+import { defaultDealPoints, type Deal, type DealKind } from "../data/promos";
 
 export type RawOption = { name: string; price?: number };
 
@@ -43,6 +43,7 @@ export type RawDeal = {
   sub?: string;
   price?: number;
   originalPrice?: number;
+  pointsCost?: number;
 };
 
 export type RawShop = {
@@ -72,7 +73,11 @@ function uniqueSlug(base: string, used: Set<string>): string {
   return id;
 }
 
-function parseSection(raw: RawSection, idx: number, usedOpt: Set<string>): ItemOption {
+function parseSection(
+  raw: RawSection,
+  idx: number,
+  usedOpt: Set<string>,
+): ItemOption {
   const usedChoice = new Set<string>();
   const choices: ItemOptionChoice[] = (raw.options ?? []).map((o, j) => ({
     id: uniqueSlug(slug(o.name) || `c-${j}`, usedChoice),
@@ -80,13 +85,18 @@ function parseSection(raw: RawSection, idx: number, usedOpt: Set<string>): ItemO
     priceDelta: Number(o.price) || 0,
   }));
   const multiSelect =
-    raw.multiselect === true || raw.type === "multi-select" || raw.type === "multi";
+    raw.multiselect === true ||
+    raw.type === "multi-select" ||
+    raw.type === "multi";
   return {
     id: uniqueSlug(slug(raw.name) || `opt-${idx}`, usedOpt),
     label: raw.name,
     required: !!raw.required,
     multiSelect,
-    min: multiSelect && typeof raw.min === "number" ? Math.max(0, raw.min) : undefined,
+    min:
+      multiSelect && typeof raw.min === "number"
+        ? Math.max(0, raw.min)
+        : undefined,
     max:
       multiSelect && typeof raw.max === "number"
         ? Math.min(choices.length, Math.max(1, raw.max))
@@ -138,6 +148,12 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
         typeof d.originalPrice === "number" && d.originalPrice > (price ?? 0)
           ? d.originalPrice
           : undefined;
+      // Combo/item deals are point-redeemable. Honour an explicit pointsCost
+      // (including 0 to make a deal free); otherwise derive one from its value.
+      const pointsCost =
+        typeof d.pointsCost === "number"
+          ? Math.max(0, Math.round(d.pointsCost))
+          : defaultDealPoints(price ?? 0);
       return {
         kind,
         emoji: d.emoji || "",
@@ -146,10 +162,14 @@ export function parseShop(raw: RawShop, folderId: string, base: string): Store {
         storeId: id,
         price,
         originalPrice,
+        pointsCost,
       };
     });
 
-  const priceLevel = Math.min(3, Math.max(1, Math.round(raw.pricelevel ?? 1))) as 1 | 2 | 3;
+  const priceLevel = Math.min(
+    3,
+    Math.max(1, Math.round(raw.pricelevel ?? 1)),
+  ) as 1 | 2 | 3;
 
   return {
     id,

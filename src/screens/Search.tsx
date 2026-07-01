@@ -35,7 +35,10 @@ export default function Search() {
   const commitSearch = (term: string) => {
     const t = term.trim();
     if (!t) return;
-    const next = [t, ...recent.filter((r) => r.toLowerCase() !== t.toLowerCase())].slice(0, 6);
+    const next = [
+      t,
+      ...recent.filter((r) => r.toLowerCase() !== t.toLowerCase()),
+    ].slice(0, 6);
     setRecent(next);
     saveJSON(STORAGE_KEYS.recentSearches, next);
   };
@@ -46,7 +49,9 @@ export default function Search() {
       (s) =>
         s.name.toLowerCase().includes(q) ||
         s.categories.some((c) => c.toLowerCase().includes(q)) ||
-        s.menu.some((cat) => cat.items.some((i) => i.name.toLowerCase().includes(q))),
+        s.menu.some((cat) =>
+          cat.items.some((i) => i.name.toLowerCase().includes(q)),
+        ),
     );
   }, [q, stores]);
 

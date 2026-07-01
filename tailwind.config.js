@@ -48,7 +48,7 @@ export default {
           "0%": { transform: "translateY(8px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
-        "pop": {
+        pop: {
           "0%": { transform: "scale(0.8)", opacity: "0" },
           "60%": { transform: "scale(1.05)" },
           "100%": { transform: "scale(1)", opacity: "1" },

@@ -6,7 +6,9 @@ import { CUISINE_CATEGORIES } from "../data/categories";
 function computeCategories(stores: Store[]): string[] {
   const present = new Set(stores.flatMap((s) => s.categories));
   const ordered = CUISINE_CATEGORIES.filter((c) => present.has(c));
-  const extra = [...present].filter((c) => !CUISINE_CATEGORIES.includes(c)).sort();
+  const extra = [...present]
+    .filter((c) => !CUISINE_CATEGORIES.includes(c))
+    .sort();
   return [...ordered, ...extra];
 }
 

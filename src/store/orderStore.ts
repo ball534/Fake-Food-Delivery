@@ -45,7 +45,19 @@ function persist(orders: Order[]) {
 export const useOrders = create<OrderState>((set, get) => ({
   orders: loadJSON<Order[]>(STORAGE_KEYS.orders, []),
 
-  placeOrder: ({ storeId, lines, subtotal, total, address, addressLabel, pointsEarned, deliverySpeed, etaMinutes, promoCode, dropLoc }) => {
+  placeOrder: ({
+    storeId,
+    lines,
+    subtotal,
+    total,
+    address,
+    addressLabel,
+    pointsEarned,
+    deliverySpeed,
+    etaMinutes,
+    promoCode,
+    dropLoc,
+  }) => {
     const placedAt = Date.now();
     const { stageTimes, etaAt } = computeStageTimes(placedAt, etaMinutes);
     const store = getStoreById(storeId);

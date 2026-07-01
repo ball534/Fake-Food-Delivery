@@ -18,7 +18,9 @@ export function normalizeGreetings(value: unknown): GreetingPool {
   const pool: GreetingPool = {};
   for (const [bucket, v] of Object.entries(value as Record<string, unknown>)) {
     if (!Array.isArray(v)) continue;
-    const lines = v.filter((x): x is string => typeof x === "string" && x.trim() !== "");
+    const lines = v.filter(
+      (x): x is string => typeof x === "string" && x.trim() !== "",
+    );
     if (lines.length > 0) pool[bucket.toLowerCase()] = lines;
   }
   return pool;
@@ -49,11 +51,14 @@ export const useContent = create<ContentState>((set) => ({
       const res = await fetch(`${base}content.json`);
       const data: unknown = res.ok ? await res.json() : {};
       const obj =
-        data && typeof data === "object" ? (data as Record<string, unknown>) : {};
+        data && typeof data === "object"
+          ? (data as Record<string, unknown>)
+          : {};
       const greetings = normalizeGreetings(obj.greetings);
       const deals = parseDealsJson(obj.deals);
       set({
-        greetings: Object.keys(greetings).length > 0 ? greetings : DEFAULT_GREETINGS,
+        greetings:
+          Object.keys(greetings).length > 0 ? greetings : DEFAULT_GREETINGS,
         deals: deals.length > 0 ? deals : DEFAULT_DEALS,
         loaded: true,
       });

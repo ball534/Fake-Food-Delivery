@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Polyline, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Polyline,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import type { GeoPoint, Order } from "../data/types";
@@ -29,7 +35,10 @@ function segLen(a: LatLng, b: LatLng) {
   return Math.hypot(a[0] - b[0], a[1] - b[1]);
 }
 
-function pathAt(path: LatLng[], t: number): { driver: LatLng; travelled: LatLng[] } {
+function pathAt(
+  path: LatLng[],
+  t: number,
+): { driver: LatLng; travelled: LatLng[] } {
   if (path.length === 1) return { driver: path[0], travelled: [path[0]] };
   const lengths: number[] = [];
   let total = 0;
@@ -81,14 +90,12 @@ function useRoute(storeLoc: GeoPoint, dropLoc: GeoPoint): LatLng[] {
       .then((r) => r.json())
       .then((data) => {
         const coords = data?.routes?.[0]?.geometry?.coordinates as
-          | [number, number][]
-          | undefined;
+          [number, number][] | undefined;
         if (!cancelled && coords && coords.length > 1) {
           setRoute(coords.map(([lng, lat]) => [lat, lng] as LatLng));
         }
       })
-      .catch(() => {
-      });
+      .catch(() => {});
     return () => {
       cancelled = true;
     };
@@ -97,7 +104,13 @@ function useRoute(storeLoc: GeoPoint, dropLoc: GeoPoint): LatLng[] {
   return route;
 }
 
-export default function DeliveryMap({ order, now }: { order: Order; now: number }) {
+export default function DeliveryMap({
+  order,
+  now,
+}: {
+  order: Order;
+  now: number;
+}) {
   const { storeLoc, dropLoc } = order;
   const delivered = order.status === "delivered";
   const showDriver = order.status !== "preparing";

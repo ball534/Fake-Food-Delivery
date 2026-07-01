@@ -1,6 +1,17 @@
 import { useEffect, useRef } from "react";
-import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { Home as HomeIcon, Search as SearchIcon, ReceiptText, User } from "lucide-react";
+import {
+  NavLink,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import {
+  Home as HomeIcon,
+  Search as SearchIcon,
+  ReceiptText,
+  User,
+} from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useApplyTheme, useOrderTicker } from "./lib/hooks";
 import { useOrders } from "./store/orderStore";
@@ -69,8 +80,8 @@ function Splash({ error = false }: { error?: boolean }) {
             Couldn't load the shops
           </p>
           <p className="text-sm text-neutral-500 dark:text-neutral-400">
-            Check that <code>public/content.json</code> and the shop folders exist,
-            then reload.
+            Check that <code>public/content.json</code> and the shop folders
+            exist, then reload.
           </p>
         </div>
       ) : (
@@ -102,9 +113,10 @@ export default function App() {
     mainRef.current?.scrollTo({ top: 0 });
   }, [location.pathname]);
 
-  const hideTabBar = /^\/(store|item|cart|checkout|track|legal|create-store)\b/.test(
-    location.pathname,
-  );
+  const hideTabBar =
+    /^\/(store|item|cart|checkout|track|legal|create-store)\b/.test(
+      location.pathname,
+    );
 
   return (
     <div className="min-h-[100dvh] bg-neutral-100 dark:bg-black">
@@ -128,7 +140,10 @@ export default function App() {
                 <Route path="/create-store" element={<CreateStore />} />
                 <Route path="/store/:storeId" element={<StoreMenu />} />
                 <Route path="/item/:storeId/:itemId" element={<ItemDetail />} />
-                <Route path="/cart" element={<Navigate to="/checkout" replace />} />
+                <Route
+                  path="/cart"
+                  element={<Navigate to="/checkout" replace />}
+                />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/track/:orderId" element={<OrderTracking />} />
                 <Route path="/legal/:doc" element={<Legal />} />

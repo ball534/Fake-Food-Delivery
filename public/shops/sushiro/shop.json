@@ -246,95 +246,10 @@
       "category": "Aburi & Signature Sushi",
       "food": [
         {
-          "name": "Aburi Salmon Cheese",
-          "description": "Torched salmon with melted cheese mayo - a Sushiro signature.",
-          "price": 2.9,
-          "tags": [
-            "popular"
-          ],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Aburi Salmon Mentai Cheese",
-          "description": "Torched salmon with spicy mentaiko and cheese.",
-          "price": 2.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "Aburi Shrimp Cheese",
           "description": "Torched shrimp draped in creamy cheese mayo.",
           "price": 2.9,
           "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Big Cut Fresh Salmon",
-          "description": "An extra-thick slab of fresh, fatty salmon.",
-          "price": 2.9,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Wasabi",
@@ -416,87 +331,6 @@
         {
           "name": "Steamed Scallop",
           "description": "A plump, sweet steamed scallop.",
-          "price": 2.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Beef Galbi",
-          "description": "Grilled marinated beef short-rib nigiri.",
-          "price": 2.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Shrimp Tempura Nigiri",
-          "description": "Crispy shrimp tempura over vinegared rice.",
-          "price": 2.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Albacore Tuna (Bintoro)",
-          "description": "Pale, buttery albacore tuna.",
           "price": 2.9,
           "tags": [],
           "section": [
@@ -776,33 +610,6 @@
           ]
         },
         {
-          "name": "Engawa (Halibut Fin)",
-          "description": "Buttery, chewy halibut fin.",
-          "price": 2.3,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "Japanese Omelette (Tamago)",
           "description": "Sweet, layered egg omelette - great for kids.",
           "price": 2.3,
@@ -855,12 +662,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "Crab Stick Tempura",
-          "description": "Crispy tempura crab-stick nigiri.",
-          "price": 2.3,
-          "tags": []
         }
       ]
     },
@@ -874,33 +675,6 @@
           "tags": [
             "popular"
           ],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Aburi Soy Sauce Bluefin Fatty Tuna",
-          "description": "Torched bluefin otoro glazed with soy.",
-          "price": 4.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -1007,119 +781,9 @@
           ]
         },
         {
-          "name": "Jumbo Scallop",
-          "description": "A large, sweet scallop nigiri.",
-          "price": 4.9,
-          "tags": [
-            "popular"
-          ],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Big Cut Salmon Belly with Ikura",
-          "description": "Thick salmon belly crowned with salmon roe.",
-          "price": 3.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "Big Cut Grilled Eel",
           "description": "An extra-large piece of sweet glazed unagi.",
           "price": 3.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Premium Roast Beef",
-          "description": "Seared premium roast-beef nigiri.",
-          "price": 3.9,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Braised Kurobuta Pork",
-          "description": "Slow-braised black-pork belly nigiri.",
-          "price": 4.9,
           "tags": [],
           "section": [
             {
@@ -1178,91 +842,8 @@
           ]
         },
         {
-          "name": "Minced Tuna Gunkan (Negi-toro)",
-          "description": "Minced fatty tuna with spring onion.",
-          "price": 2.3,
-          "tags": [
-            "popular"
-          ],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "Flying Fish Roe (Tobiko)",
           "description": "Crunchy orange flying-fish roe gunkan.",
-          "price": 2.3,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Corn Mayo",
-          "description": "Sweet corn bound in creamy mayo - a kids' favourite.",
-          "price": 2.3,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Crab Stick Salad",
-          "description": "Crab-stick mayo salad gunkan.",
           "price": 2.3,
           "tags": [],
           "section": [
@@ -1346,35 +927,6 @@
       "category": "Sashimi & Small Plates",
       "food": [
         {
-          "name": "Assorted Sashimi",
-          "description": "The chef's selection of fresh assorted sashimi.",
-          "price": 9.9,
-          "tags": [
-            "popular"
-          ],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "Fresh Salmon Sashimi",
           "description": "Thick slices of fresh, fatty salmon.",
           "price": 5,
@@ -1431,33 +983,6 @@
           ]
         },
         {
-          "name": "Big Red Shrimp Sashimi",
-          "description": "Raw jumbo red shrimp, sweet and springy.",
-          "price": 6.8,
-          "tags": [],
-          "section": [
-            {
-              "name": "Wasabi",
-              "multiselect": false,
-              "required": false,
-              "options": [
-                {
-                  "name": "Normal wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "Extra wasabi",
-                  "price": 0
-                },
-                {
-                  "name": "No wasabi",
-                  "price": 0
-                }
-              ]
-            }
-          ]
-        },
-        {
           "name": "Chawanmushi",
           "description": "Silky steamed egg custard with hidden savoury morsels.",
           "price": 3.5,
@@ -1469,12 +994,6 @@
           "name": "Edamame",
           "description": "Salted young soybeans, boiled and seasoned.",
           "price": 3.95,
-          "tags": []
-        },
-        {
-          "name": "In-house Kaisen Potato Salad",
-          "description": "House-made seafood potato salad.",
-          "price": 3.5,
           "tags": []
         }
       ]
@@ -1626,29 +1145,9 @@
       "category": "Desserts",
       "food": [
         {
-          "name": "Matcha Warabimochi",
-          "description": "Bouncy warabi mochi dusted in matcha.",
-          "price": 4.3,
-          "tags": [
-            "popular"
-          ]
-        },
-        {
-          "name": "Matcha Warabimochi Parfait",
-          "description": "Layered matcha and warabimochi parfait.",
-          "price": 6.5,
-          "tags": []
-        },
-        {
           "name": "Mitarashi Mochi",
           "description": "Grilled mochi skewer in a sweet soy glaze.",
           "price": 2.5,
-          "tags": []
-        },
-        {
-          "name": "Mango Shaved Ice",
-          "description": "Fluffy shaved ice piled with mango.",
-          "price": 6.5,
           "tags": []
         },
         {
@@ -1687,27 +1186,9 @@
           "tags": []
         },
         {
-          "name": "Apple Juice",
-          "description": "100% apple juice.",
-          "price": 2.5,
-          "tags": []
-        },
-        {
-          "name": "Yuzu Juice",
-          "description": "Citrusy Japanese yuzu juice.",
-          "price": 2.5,
-          "tags": []
-        },
-        {
           "name": "Premium Malts Draft Beer",
           "description": "Suntory The Premium Malt's draft beer.",
           "price": 10.5,
-          "tags": []
-        },
-        {
-          "name": "Kaku Highball",
-          "description": "Suntory Kaku whisky highball.",
-          "price": 9,
           "tags": []
         },
         {

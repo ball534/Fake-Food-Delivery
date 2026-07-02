@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export type Toast = { id: number; message: string; emoji?: string };
+type Toast = { id: number; message: string; emoji?: string };
 
 type ToastState = {
   toasts: Toast[];

@@ -19,7 +19,7 @@ export const DEFAULT_GREETINGS: GreetingPool = {
   night: ["Late-night cravings", "Still up", "Hungry already"],
 };
 
-export function normalizeGreetings(value: unknown): GreetingPool {
+function normalizeGreetings(value: unknown): GreetingPool {
   if (!value || typeof value !== "object" || Array.isArray(value)) return {};
   const pool: GreetingPool = {};
   for (const [bucket, v] of Object.entries(value as Record<string, unknown>)) {
@@ -32,7 +32,7 @@ export function normalizeGreetings(value: unknown): GreetingPool {
   return pool;
 }
 
-export function normalizeDrivers(value: unknown): string[] {
+function normalizeDrivers(value: unknown): string[] {
   if (!Array.isArray(value)) return [];
   return value.filter(
     (x): x is string => typeof x === "string" && x.trim() !== "",

@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { loadJSON, saveJSON, STORAGE_KEYS } from "../lib/storage";
 import { makeId } from "../lib/id";
 
-export type ChatMessage = {
+type ChatMessage = {
   id: string;
   from: "user" | "driver";
   text: string;

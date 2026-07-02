@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   MessageSquare,
@@ -10,17 +10,20 @@ import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import EmptyState from "../components/EmptyState";
-import DeliveryMap from "../components/DeliveryMap";
 import Confetti from "../components/Confetti";
 import Stars from "../components/Stars";
 import { useOrders } from "../store/orderStore";
 import { useToasts } from "../store/toastStore";
 import { useNow } from "../lib/hooks";
 import { STATUS_LABEL } from "../lib/simulation";
-import { describeChoices } from "../lib/pricing";
+import { describeChoices, menuItemIndex } from "../lib/pricing";
 import { DELIVERY_BY_ID } from "../lib/delivery";
 import { useStores } from "../store/storesStore";
 import { formatClock, formatDate, money } from "../lib/format";
+
+// Leaflet + react-leaflet are only needed on this screen, so load them on
+// demand instead of shipping them in the main bundle.
+const DeliveryMap = lazy(() => import("../components/DeliveryMap"));
 
 function clamp01(n: number) {
   return Math.min(1, Math.max(0, n));
@@ -34,6 +37,8 @@ export default function OrderTracking() {
   const rateOrder = useOrders((s) => s.rateOrder);
   const showToast = useToasts((s) => s.show);
   const byId = useStores((s) => s.byId);
+  const store = order ? byId[order.storeId] : undefined;
+  const itemById = useMemo(() => menuItemIndex(store?.menu), [store]);
 
   const [confetti, setConfetti] = useState(false);
   const celebrated = useRef(false);
@@ -55,7 +60,6 @@ export default function OrderTracking() {
     );
   }
 
-  const store = byId[order.storeId];
   const delivered = order.status === "delivered";
 
   const prepFill = clamp01(
@@ -101,7 +105,13 @@ export default function OrderTracking() {
           </div>
         </div>
 
-        <DeliveryMap order={order} now={now} />
+        <Suspense
+          fallback={
+            <div className="h-56 w-full animate-pulse rounded-2xl bg-neutral-200" />
+          }
+        >
+          <DeliveryMap order={order} now={now} />
+        </Suspense>
 
         <div className="card flex items-center gap-3 p-4">
           <span className="grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-neutral-200">
@@ -157,9 +167,7 @@ export default function OrderTracking() {
           <Dashed />
 
           {order.lines.map((line) => {
-            const item = store?.menu
-              .flatMap((c) => c.items)
-              .find((i) => i.id === line.itemId);
+            const item = itemById.get(line.itemId);
             const summary = item
               ? describeChoices(item, line.selectedChoices)
               : "";

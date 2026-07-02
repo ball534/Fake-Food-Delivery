@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   MapPin,
@@ -21,7 +21,7 @@ import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
 import { useToasts } from "../store/toastStore";
 import { useStores } from "../store/storesStore";
 import Thumb from "../components/Thumb";
-import { describeChoices } from "../lib/pricing";
+import { describeChoices, menuItemIndex } from "../lib/pricing";
 import { money } from "../lib/format";
 import { basePointsFor } from "../lib/loyalty";
 import {
@@ -57,6 +57,7 @@ export default function Checkout() {
 
   const byId = useStores((s) => s.byId);
   const store = cart.storeId ? byId[cart.storeId] : null;
+  const itemById = useMemo(() => menuItemIndex(store?.menu), [store]);
 
   if (!store || cart.lines.length === 0) {
     return (
@@ -76,7 +77,6 @@ export default function Checkout() {
     );
   }
 
-  const total = subtotal;
   const effect = appliedCode ? PROMO_CODES[appliedCode]?.effect : null;
   const effectCfg = effect ? EFFECTS[effect] : null;
   const freeExpress = !!effectCfg?.freeExpress;
@@ -101,7 +101,7 @@ export default function Checkout() {
     profile.lastOrderDay === null ? 1 : Math.max(1, profile.streak);
   const estPoints =
     Math.round(
-      basePointsFor(total) *
+      basePointsFor(subtotal) *
         multiplierFor(store.id) *
         pointsMultiplier *
         streakMultiplier(previewStreak),
@@ -140,7 +140,7 @@ export default function Checkout() {
       undefined;
     const { pointsEarned, streak, streakExtended } = recordPurchase(
       store.id,
-      total,
+      subtotal,
       {
         pointsMultiplier,
         loyaltyTiers,
@@ -152,7 +152,7 @@ export default function Checkout() {
       storeId: store.id,
       lines: cart.lines,
       subtotal,
-      total,
+      total: subtotal,
       address: selectedAddress?.line ?? "Somewhere nice",
       addressLabel: selectedAddress?.label,
       pointsEarned,
@@ -191,9 +191,7 @@ export default function Checkout() {
 
         <div className="divide-y divide-neutral-100 overflow-hidden rounded-2xl bg-white shadow-card">
           {cart.lines.map((line) => {
-            const item = store.menu
-              .flatMap((c) => c.items)
-              .find((i) => i.id === line.itemId);
+            const item = itemById.get(line.itemId);
             const name = item?.name ?? line.name ?? "Item";
             const icon = item?.icon ?? line.icon;
             const emoji = item?.emoji ?? line.emoji;
@@ -441,7 +439,7 @@ export default function Checkout() {
 
         <section className="card flex items-center justify-between p-4 text-base font-bold text-neutral-900">
           <span>Total</span>
-          <span>{money(total)}</span>
+          <span>{money(subtotal)}</span>
         </section>
       </div>
 
@@ -459,7 +457,7 @@ export default function Checkout() {
                 ? `Max ${MAX_ACTIVE_ORDERS} active orders — wait for one to arrive`
                 : cannotAfford
                   ? `Not enough points — need ${pointsCost - profile.points} more`
-                  : `Place order · ${money(total)}`}
+                  : `Place order · ${money(subtotal)}`}
         </button>
       </div>
     </Screen>

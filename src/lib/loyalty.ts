@@ -1,4 +1,4 @@
-export const TIER_NAMES = [
+const TIER_NAMES = [
   "Typical Customer",
   "Regular",
   "Member",
@@ -8,8 +8,7 @@ export const TIER_NAMES = [
   "Living Legend",
 ];
 
-export const MAX_TIER = TIER_NAMES.length;
-export const MAX_LEVEL = MAX_TIER;
+const MAX_TIER = TIER_NAMES.length;
 
 export function tierName(tier: number): string {
   if (tier <= 0) return "Newcomer";
@@ -21,15 +20,15 @@ export function multiplierForTier(tier: number): number {
   return Math.round((1 + t / MAX_TIER) * 100) / 100;
 }
 
-export const XP_PER_DOLLAR = 1;
-export const XP_PER_VISIT = 5;
+const XP_PER_DOLLAR = 1;
+const XP_PER_VISIT = 5;
 export const XP_SWITCH_PENALTY = 5;
-export const XP_STEP = 20;
+const XP_STEP = 20;
 
 export function levelForXp(xp: number): number {
   if (xp <= 0) return 0;
   const L = Math.floor((Math.sqrt(1 + (8 * xp) / XP_STEP) - 1) / 2);
-  return Math.min(MAX_LEVEL, L);
+  return Math.min(MAX_TIER, L);
 }
 
 export function xpForOrder(orderTotal: number): number {

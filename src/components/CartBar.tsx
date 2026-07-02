@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShoppingBag, ChevronDown, Minus, Plus, Trash2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCart } from "../store/cartStore";
 import { money, pluralize } from "../lib/format";
 import { useStores } from "../store/storesStore";
-import { describeChoices } from "../lib/pricing";
+import { describeChoices, menuItemIndex } from "../lib/pricing";
 import Thumb from "./Thumb";
 
 export default function CartBar() {
@@ -19,6 +19,7 @@ export default function CartBar() {
 
   const byId = useStores((s) => s.byId);
   const store = cart.storeId ? byId[cart.storeId] : null;
+  const itemById = useMemo(() => menuItemIndex(store?.menu), [store]);
   const open = count > 0;
   const showList = expanded && open;
 
@@ -41,9 +42,7 @@ export default function CartBar() {
               >
                 <div className="max-h-[44vh] divide-y divide-neutral-100 overflow-y-auto">
                   {cart.lines.map((line) => {
-                    const item = store?.menu
-                      .flatMap((c) => c.items)
-                      .find((i) => i.id === line.itemId);
+                    const item = itemById.get(line.itemId);
                     const name = item?.name ?? line.name ?? "Item";
                     const icon = item?.icon ?? line.icon;
                     const emoji = item?.emoji ?? line.emoji;

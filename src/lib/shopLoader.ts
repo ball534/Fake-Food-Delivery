@@ -7,10 +7,11 @@ import type {
   Store,
 } from "../data/types";
 import { defaultDealPoints, type Deal, type DealKind } from "../data/promos";
+import { slug, uniqueSlug } from "./slug";
 
-export type RawOption = { name: string; price?: number };
+type RawOption = { name: string; price?: number };
 
-export type RawSection = {
+type RawSection = {
   name: string;
   multiselect?: boolean;
   min?: number;
@@ -20,7 +21,7 @@ export type RawSection = {
   options?: RawOption[];
 };
 
-export type RawFood = {
+type RawFood = {
   name: string;
   description?: string;
   price?: number;
@@ -28,16 +29,16 @@ export type RawFood = {
   section?: RawSection[];
 };
 
-export type RawMenuGroup = { category: string; food?: RawFood[] };
+type RawMenuGroup = { category: string; food?: RawFood[] };
 
-export type RawReview = {
+type RawReview = {
   author: string;
   emoji?: string;
   rating: number;
   text: string;
 };
 
-export type RawDeal = {
+type RawDeal = {
   kind?: string;
   emoji?: string;
   title: string;
@@ -47,7 +48,7 @@ export type RawDeal = {
   pointsCost?: number;
 };
 
-export type RawShop = {
+type RawShop = {
   name: string;
   categories?: string[];
   pricelevel?: number;
@@ -56,23 +57,6 @@ export type RawShop = {
   deals?: RawDeal[];
   reviews?: RawReview[];
 };
-
-function slug(s: string): string {
-  return (
-    s
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "") || "x"
-  );
-}
-
-function uniqueSlug(base: string, used: Set<string>): string {
-  let id = base;
-  let n = 2;
-  while (used.has(id)) id = `${base}-${n++}`;
-  used.add(id);
-  return id;
-}
 
 function parseSection(
   raw: RawSection,
@@ -124,7 +108,7 @@ function parseFood(
   };
 }
 
-export function parseShop(raw: RawShop, folderId: string, base: string): Store {
+function parseShop(raw: RawShop, folderId: string, base: string): Store {
   const id = folderId;
   const shopBase = `${base}shops/${id}`;
   const categories = (raw.categories ?? []).filter(Boolean);

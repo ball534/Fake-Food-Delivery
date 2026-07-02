@@ -15,7 +15,7 @@ import StoreCard from "../components/StoreCard";
 import DealPrice from "../components/DealPrice";
 import Thumb from "../components/Thumb";
 import { Link } from "react-router-dom";
-import { useStores, storesInCategory } from "../store/storesStore";
+import { useStores } from "../store/storesStore";
 import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
 import { useProfile } from "../store/profileStore";
 import { useCart } from "../store/cartStore";
@@ -60,18 +60,20 @@ export default function Home() {
   const rotatesIn = msUntilRotation(now);
   const endingSoon = rotatesIn < 60_000;
 
+  const hour = new Date(now).getHours();
   const greeting = useMemo(() => {
-    const bucket = partOfDay(new Date(now).getHours());
+    const bucket = partOfDay(hour);
     const pool = greetings[bucket] ?? DEFAULT_GREETINGS[bucket];
     const raw = pool[GREETING_SEED % pool.length];
     const firstName = profile.name.split(" ")[0];
     return raw.includes("{name}")
       ? raw.replace(/\{name\}/g, firstName)
       : `${raw}, ${firstName}`;
-  }, [now, greetings, profile.name]);
+  }, [hour, greetings, profile.name]);
 
   const filtered = useMemo(
-    () => (category ? storesInCategory(category) : []),
+    () =>
+      category ? stores.filter((s) => s.categories.includes(category)) : [],
     [category, stores],
   );
 

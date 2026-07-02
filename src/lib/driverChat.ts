@@ -5,7 +5,7 @@
 // the sensible fallbacks used before content loads, the JSON parser, and the
 // keyword-matching engine that best-guesses what the user meant.
 
-export type ChatIntent = {
+type ChatIntent = {
   id: string;
   keywords: string[];
   replies: string[];

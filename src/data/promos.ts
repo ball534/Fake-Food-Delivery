@@ -58,14 +58,14 @@ export const EFFECTS: Record<PromoEffect, EffectConfig> = {
   bonus500: { label: "+500 bonus points, on us", bonusPoints: 500 },
 };
 
-export const ROTATION_MS = 5 * 60 * 1000;
+const ROTATION_MS = 5 * 60 * 1000;
 
 // Single source of truth for every promo code. PROMO_CODES (checkout
 // validation) and DEFAULT_DEALS (the rotation banners) are both derived from
 // this list so they can never drift. Keep public/content.json in sync — its
 // `deals` array is the same catalog authored as JSON (without `kind`, since
 // content.json deals are always promo codes).
-export type PromoCatalogEntry = {
+type PromoCatalogEntry = {
   code: string;
   effect: PromoEffect;
   emoji: string;
@@ -73,7 +73,7 @@ export type PromoCatalogEntry = {
   sub: string;
 };
 
-export const PROMO_CATALOG: PromoCatalogEntry[] = [
+const PROMO_CATALOG: PromoCatalogEntry[] = [
   // 2× points
   {
     code: "DOUBLEUP",

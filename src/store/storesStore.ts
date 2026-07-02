@@ -49,8 +49,3 @@ export const useStores = create<StoresState>((set, get) => ({
 export function getStoreById(id: string): Store | undefined {
   return useStores.getState().byId[id];
 }
-
-export function storesInCategory(category: string): Store[] {
-  const { stores } = useStores.getState();
-  return stores.filter((s) => s.categories.includes(category));
-}

@@ -1,4 +1,16 @@
-import type { MenuItem, SelectedChoice } from "../data/types";
+import type { MenuCategory, MenuItem, SelectedChoice } from "../data/types";
+
+// Flat id → item index of a store's menu, for cheap per-line lookups when
+// rendering carts/receipts (instead of flatMap().find() per line).
+export function menuItemIndex(
+  menu: MenuCategory[] | undefined,
+): Map<string, MenuItem> {
+  const index = new Map<string, MenuItem>();
+  for (const cat of menu ?? []) {
+    for (const item of cat.items) index.set(item.id, item);
+  }
+  return index;
+}
 
 export function buildDefaultChoices(item: MenuItem): SelectedChoice[] {
   const out: SelectedChoice[] = [];

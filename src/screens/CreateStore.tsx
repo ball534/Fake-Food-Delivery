@@ -15,6 +15,7 @@ import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import { useToasts } from "../store/toastStore";
 import { makeZip, downloadBlob, type ZipEntry } from "../lib/zip";
+import { slug, uniqueSlug } from "../lib/slug";
 import { CUISINE_CATEGORIES } from "../data/categories";
 
 type OptionDraft = { id: string; name: string; price: string };
@@ -55,23 +56,6 @@ const uid = () =>
   typeof crypto !== "undefined" && "randomUUID" in crypto
     ? crypto.randomUUID()
     : `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-
-function slug(s: string): string {
-  return (
-    s
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "") || "x"
-  );
-}
-
-function uniqueSlug(base: string, used: Set<string>): string {
-  let id = base;
-  let n = 2;
-  while (used.has(id)) id = `${base}-${n++}`;
-  used.add(id);
-  return id;
-}
 
 // Resize + re-encode an uploaded image to WebP so exported stores stay light
 // and match the .webp paths the shop loader builds.

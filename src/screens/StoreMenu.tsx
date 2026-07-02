@@ -11,8 +11,8 @@ import Stars from "../components/Stars";
 import Thumb from "../components/Thumb";
 import DealPrice from "../components/DealPrice";
 import { useStores } from "../store/storesStore";
-import { etaRange } from "../lib/format";
-import { pluralize, initials } from "../lib/format";
+import { etaRange, initials, pluralize } from "../lib/format";
+import { slug } from "../lib/slug";
 import { etaRangeFor, distanceFor } from "../lib/delivery";
 import { useCart } from "../store/cartStore";
 import { useProfile } from "../store/profileStore";
@@ -121,10 +121,7 @@ export default function StoreMenu() {
 
   const addStoreDeal = () => {
     if (!storeDeal || !canRedeem) return;
-    const dealItemId = `deal-${storeId}-${storeDeal.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")}`;
+    const dealItemId = `deal-${storeId}-${slug(storeDeal.title)}`;
     addLine({
       item: {
         id: dealItemId,

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 // One-shot celebration events (point bursts). Fire-and-forget: the PointsBurst
 // overlay renders whatever is here and clears it when the animation ends.
-export type Celebration = {
+type Celebration = {
   id: number;
   points: number;
   label?: string;

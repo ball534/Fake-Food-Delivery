@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -119,7 +119,12 @@ export default function DeliveryMap({
   const t = deliveringProgress(order, now);
   const { driver: driverPos, travelled } = pathAt(route, t);
 
-  const driverIcon = emojiPin(delivered ? "✅" : "🛵", ROUTE_COLOR);
+  // The tracking screen re-renders every second; only rebuild the Leaflet
+  // icon when the delivered state actually flips.
+  const driverIcon = useMemo(
+    () => emojiPin(delivered ? "✅" : "🛵", ROUTE_COLOR),
+    [delivered],
+  );
 
   return (
     <div className="grayscale-map h-56 w-full overflow-hidden rounded-2xl">

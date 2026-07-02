@@ -13,8 +13,8 @@ import {
 export const MAX_ADDRESSES = 3;
 
 // Each consecutive order day adds +5% bonus points, capped at +35% (7 days).
-export const STREAK_BONUS_PER_DAY = 0.05;
-export const STREAK_BONUS_CAP_DAYS = 7;
+const STREAK_BONUS_PER_DAY = 0.05;
+const STREAK_BONUS_CAP_DAYS = 7;
 
 function defaultProfile(): UserProfile {
   return {
@@ -32,7 +32,7 @@ function defaultProfile(): UserProfile {
 }
 
 // Local calendar day, YYYY-MM-DD (not UTC — streaks follow the user's clock).
-export function dayStamp(d = new Date()): string {
+function dayStamp(d = new Date()): string {
   const m = `${d.getMonth() + 1}`.padStart(2, "0");
   const day = `${d.getDate()}`.padStart(2, "0");
   return `${d.getFullYear()}-${m}-${day}`;
@@ -48,14 +48,14 @@ export function streakMultiplier(streak: number): number {
   return 1 + Math.min(streak, STREAK_BONUS_CAP_DAYS) * STREAK_BONUS_PER_DAY;
 }
 
-export type PurchaseOpts = {
+type PurchaseOpts = {
   pointsMultiplier?: number;
   loyaltyTiers?: number;
   pointsSpent?: number;
   bonusPoints?: number;
 };
 
-export type PurchaseResult = {
+type PurchaseResult = {
   pointsEarned: number;
   pointsSpent: number;
   multiplier: number;

@@ -94,7 +94,6 @@ export type Order = {
   storeId: string;
   storeName: string;
   storeLogo?: string;
-  storeEmoji?: string;
   lines: CartLine[];
   subtotal: number;
   total: number;

@@ -265,7 +265,7 @@ export default function Home() {
                         {store.rating.toFixed(1)}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2.5 p-2.5 pl-8.5">
+                    <div className="flex items-center gap-2.5 p-2.5 pl-32.5">
                       <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-neutral-100">
                         <Thumb src={store.logo} alt="" fallback="logo" />
                       </span>

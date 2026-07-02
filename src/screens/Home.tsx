@@ -77,8 +77,14 @@ export default function Home() {
     [category, stores],
   );
 
+  // Fresh random picks each page load; stable within the session.
   const featured = useMemo(
-    () => [...stores].sort((a, b) => b.rating - a.rating).slice(0, 4),
+    () =>
+      [...stores]
+        .map((store) => ({ store, key: Math.random() }))
+        .sort((a, b) => a.key - b.key)
+        .slice(0, 3)
+        .map(({ store }) => store),
     [stores],
   );
 
@@ -259,7 +265,7 @@ export default function Home() {
                         {store.rating.toFixed(1)}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2.5 p-2.5">
+                    <div className="flex items-center gap-2.5 p-2.5 pl-3.5">
                       <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-neutral-100">
                         <Thumb src={store.logo} alt="" fallback="logo" />
                       </span>

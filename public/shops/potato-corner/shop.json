@@ -1,0 +1,757 @@
+{
+  "name": "Potato Corner",
+  "categories": ["Snacks", "Western"],
+  "fastfood": true,
+  "pricelevel": 1,
+  "rating": 4.6,
+  "menu": [
+    {
+      "category": "Limited Time Specials",
+      "food": [
+        {
+          "name": "Mix & Munch Party Box",
+          "description": "Can't decide? Don't have to! Just pick 3 favourites, 3 flavours, so everyone gets what they love. Perfect box for sharing.",
+          "price": 17.9,
+          "tags": ["new"],
+          "section": [
+            {
+              "name": "1st Item: Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Fries", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - 1st Item",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Item",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Chicken Pops", "price": 0 },
+                { "name": "Chicken Nuggets", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - 2nd Item",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "No Flavour", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 3rd Item",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Waffle Fries", "price": 0 },
+                { "name": "Tater Tots", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - 3rd Item",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Flavoured Fries",
+      "food": [
+        {
+          "name": "Fries",
+          "description": "Golden fries seasoned to perfection with your choice of flavouring! Customize to satisfy your cravings. Mega and Giga sizes come with 2 flavourings.",
+          "price": 5.4,
+          "tags": ["popular"],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Jumbo", "price": 0 },
+                { "name": "Mega", "price": 1.4 },
+                { "name": "Giga", "price": 5.9 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Mega & Giga only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Special Cuts",
+      "food": [
+        {
+          "name": "Waffle Fries",
+          "description": "Unique waffle-shaped fries seasoned to your liking! Perfect for sharing. Tera size comes with 2 flavourings and twice the amount.",
+          "price": 6.9,
+          "tags": ["popular"],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.5 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Tera only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tater Tots",
+          "description": "Golden tater tots, packed with flavour and ready for your choice of flavouring! A delightful snack. Tera size comes with 2 flavourings and twice the amount.",
+          "price": 6.9,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.5 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Tera only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Loopys",
+          "description": "Fun, curly fries seasoned with the flavouring of your choice. A delightful snack for any time! Tera size comes with 2 flavourings and twice the amount.",
+          "price": 6.9,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.5 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Tera only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Snack Bites",
+      "food": [
+        {
+          "name": "Mozza Cheese Sticks",
+          "description": "Gooey mozzarella sticks with a rich, cheesy flavour, perfect for savouring with your choice of flavouring! Mega (12 pcs) comes with 2 flavourings.",
+          "price": 6,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Jumbo (6 Pcs)", "price": 0 },
+                { "name": "Mega (12 Pcs)", "price": 5.3 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Mega only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chicken Nuggets",
+          "description": "Tender chicken nuggets, lightly breaded and packed with flavour, ready to enjoy with your choice of flavouring! Mega (12 pcs) comes with 2 flavourings.",
+          "price": 6,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Jumbo (6 Pcs)", "price": 0 },
+                { "name": "Mega (12 Pcs)", "price": 5.3 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Mega only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Wow Winglets",
+          "description": "Enjoy our crispy, golden-fried Wow Winglets tossed in your choice of flavour. Golden crisp on the outside, tender and juicy inside. Mega (12 pcs) comes with 2 flavourings.",
+          "price": 10.1,
+          "tags": ["new"],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Jumbo (6 Pcs)", "price": 0 },
+                { "name": "Mega (12 Pcs)", "price": 9.1 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of 2nd Flavour (Mega only)",
+              "multiselect": false,
+              "required": false,
+              "options": [
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "Plain", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Combos",
+      "food": [
+        {
+          "name": "Chicken Pops Combo",
+          "description": "Enjoy a delightful combo of fries and chicken pops, each seasoned with 1 flavouring of your choice. A perfect pairing for any craving!",
+          "price": 8.1,
+          "tags": ["popular"],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.9 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Chicken Pops",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Prawn Pops Combo",
+          "description": "Indulge in a tasty combo of fries and prawn pops, each seasoned with 1 flavouring of your choice. A delicious treat for seafood lovers!",
+          "price": 9.4,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 7.3 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Prawn Pops",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Double Joy A (Fries + Waffle Fries)",
+          "description": "Two iconic fry styles. Two epic flavours. Enjoy the best of both worlds, shaken to perfection in your favourite flavours.",
+          "price": 7.5,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.8 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "Plain", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Waffle Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chilli BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Double Joy B (Fries + Tater Tots)",
+          "description": "Indulge in a mix of our signature fries and golden tater tots, coated with your favourite flavours.",
+          "price": 7.5,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.8 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "Plain", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Tater Tots",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chilli BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Double Joy C (Fries + Loopys)",
+          "description": "Two iconic fry styles. Two epic flavours. Why choose? Shaken to perfection in our signature flavours for the ultimate snack.",
+          "price": 7.5,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Mega", "price": 0 },
+                { "name": "Tera", "price": 6.8 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Fries",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "Plain", "price": 0 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour - Loopys",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chilli BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Chicken Pops",
+      "food": [
+        {
+          "name": "Chicken Pops",
+          "description": "Enjoy tender chicken pops seasoned with 1 flavouring of your choice. A delicious snack that's perfect for any time!",
+          "price": 6.8,
+          "tags": ["popular"],
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Jumbo", "price": 0 },
+                { "name": "Mega", "price": 2 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Prawn Pops",
+      "food": [
+        {
+          "name": "Prawn Pops",
+          "description": "Delicious prawn pops seasoned with 1 flavouring of your choice. A delightful snack that's packed with flavour!",
+          "price": 7.9,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Jumbo", "price": 0 },
+                { "name": "Mega", "price": 2.2 }
+              ]
+            },
+            {
+              "name": "Choice of Flavour",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                { "name": "Cheese", "price": 0 },
+                { "name": "BBQ", "price": 0 },
+                { "name": "Sour Cream & Onion", "price": 0 },
+                { "name": "Chili BBQ", "price": 0 },
+                { "name": "Creamy Truffle", "price": 0 },
+                { "name": "Classic Seaweed", "price": 0 },
+                { "name": "No Flavour", "price": 0 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Beverages",
+      "food": [
+        {
+          "name": "Bottled Water",
+          "description": "Stay refreshed with our bottled water, perfect for hydration on the go!",
+          "price": 3.4
+        },
+        {
+          "name": "Ayataka Green Tea",
+          "description": "Savour the subtle flavors of our green tea, a soothing and healthy choice for any time of day.",
+          "price": 3.4
+        }
+      ]
+    }
+  ],
+  "deals": [],
+  "reviews": [
+    {
+      "author": "Marcus T.",
+      "rating": 5,
+      "text": "The BBQ flavour shaken fries are dangerously addictive. Ordered a Giga to share with the family and somehow finished most of it myself."
+    },
+    {
+      "author": "Cheryl Lim",
+      "rating": 5,
+      "text": "Sour Cream & Onion on the loopys is THE combo. Fries still arrived warm and crispy, well shaken and evenly coated."
+    },
+    {
+      "author": "Danish R.",
+      "rating": 4,
+      "text": "Chicken pops combo is great value. Chili BBQ has a nice kick without being too spicy. Would love bigger flavour portions though."
+    },
+    {
+      "author": "Wei Jie",
+      "rating": 4,
+      "text": "Waffle fries in creamy truffle smells amazing the moment you open the box. Only gripe is the Tera portion disappears too fast."
+    },
+    {
+      "author": "Priya N.",
+      "rating": 5,
+      "text": "Got the Mix & Munch Party Box for movie night — three snacks, three flavours, zero arguments. Perfect."
+    }
+  ]
+}

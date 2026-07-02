@@ -120,18 +120,23 @@ export default function CartBar() {
 
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="pointer-events-auto flex w-full items-center justify-between rounded-2xl bg-brand-500 px-4 py-3.5 text-white shadow-card-hover active:scale-[0.99]"
+            className="bg-sunset gloss pointer-events-auto flex w-full items-center justify-between rounded-2xl px-4 py-3.5 text-white shadow-glow active:scale-[0.99]"
           >
-            <span className="flex items-center gap-2 font-semibold">
+            <span className="relative z-[1] flex items-center gap-2 font-bold">
               <span className="relative">
                 <ShoppingBag size={20} />
-                <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-white px-1 text-[10px] font-bold text-brand-600">
+                <motion.span
+                  key={count}
+                  initial={{ scale: 1.6 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-white px-1 text-[10px] font-bold text-brand-600"
+                >
                   {count}
-                </span>
+                </motion.span>
               </span>
               {showList ? "Hide order" : "Your order"}
             </span>
-            <span className="flex items-center gap-2 text-sm font-medium text-brand-50">
+            <span className="relative z-[1] flex items-center gap-2 text-sm font-semibold text-white/90">
               {pluralize(count, "item")} · {money(subtotal)}
               <motion.span animate={{ rotate: showList ? 0 : 180 }}>
                 <ChevronDown size={18} />

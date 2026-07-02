@@ -13,6 +13,7 @@ import {
   ChevronRight,
   UserRound,
   Store as StoreIcon,
+  Flame,
 } from "lucide-react";
 import Screen from "../components/Screen";
 import ConfirmDialog from "../components/ConfirmDialog";
@@ -106,14 +107,14 @@ export default function Profile() {
   };
 
   return (
-    <Screen className="relative pb-6">
+    <Screen className="relative pb-28">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-brand-300/40 blur-3xl"
+        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-gold-300/50 blur-3xl"
       />
       <div className="relative px-4 pb-6 pt-9 text-white">
         <div className="flex items-center gap-4">
@@ -145,7 +146,7 @@ export default function Profile() {
                 }}
                 className="flex items-center gap-2"
               >
-                <span className="truncate text-xl font-extrabold">
+                <span className="truncate font-display text-xl font-extrabold">
                   {profile.name}
                 </span>
                 <Pencil size={15} className="opacity-80" />
@@ -156,19 +157,34 @@ export default function Profile() {
       </div>
 
       <div className="space-y-5 p-4">
-        <section className="card p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2 text-neutral-500">
-              <Sparkles size={18} className="text-brand-500" />
-              <span className="text-sm font-medium">Reward points</span>
+        <section className="card overflow-hidden p-4">
+          <div className="-m-4 mb-4 grid grid-cols-2 divide-x divide-white/25">
+            <div className="bg-goldshine gloss p-3.5 text-white">
+              <div className="relative z-[1] flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-white/90">
+                <Sparkles size={14} /> Points
+              </div>
+              <p className="relative z-[1] mt-0.5 font-display text-2xl font-extrabold">
+                {profile.points.toLocaleString()}
+              </p>
+            </div>
+            <div className="bg-sunset gloss p-3.5 text-white">
+              <div className="relative z-[1] flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-white/90">
+                <Flame size={14} /> Streak
+              </div>
+              <p className="relative z-[1] mt-0.5 font-display text-2xl font-extrabold">
+                {profile.streak > 0
+                  ? `${profile.streak} day${profile.streak === 1 ? "" : "s"}`
+                  : "—"}
+              </p>
+              <p className="relative z-[1] text-[10px] font-semibold text-white/85">
+                {profile.streak > 0
+                  ? "Order today to keep it 🔥"
+                  : "Order today to start one"}
+              </p>
             </div>
           </div>
-          <p className="mt-1 text-3xl font-extrabold text-neutral-900">
-            {profile.points.toLocaleString()}{" "}
-            <span className="text-base font-bold text-neutral-400">pts</span>
-          </p>
 
-          <div className="mt-4">
+          <div>
             <p className="mb-2 text-sm font-bold text-neutral-900">
               Shop loyalty
             </p>

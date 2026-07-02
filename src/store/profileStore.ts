@@ -12,6 +12,10 @@ import {
 
 export const MAX_ADDRESSES = 3;
 
+// Each consecutive order day adds +5% bonus points, capped at +35% (7 days).
+export const STREAK_BONUS_PER_DAY = 0.05;
+export const STREAK_BONUS_CAP_DAYS = 7;
+
 function defaultProfile(): UserProfile {
   return {
     name: "User",
@@ -22,7 +26,26 @@ function defaultProfile(): UserProfile {
     lastLoyaltyShopId: null,
     addresses: [],
     selectedAddressId: "",
+    streak: 0,
+    lastOrderDay: null,
   };
+}
+
+// Local calendar day, YYYY-MM-DD (not UTC — streaks follow the user's clock).
+export function dayStamp(d = new Date()): string {
+  const m = `${d.getMonth() + 1}`.padStart(2, "0");
+  const day = `${d.getDate()}`.padStart(2, "0");
+  return `${d.getFullYear()}-${m}-${day}`;
+}
+
+function isYesterday(stamp: string, now = new Date()): boolean {
+  const y = new Date(now);
+  y.setDate(y.getDate() - 1);
+  return stamp === dayStamp(y);
+}
+
+export function streakMultiplier(streak: number): number {
+  return 1 + Math.min(streak, STREAK_BONUS_CAP_DAYS) * STREAK_BONUS_PER_DAY;
 }
 
 export type PurchaseOpts = {
@@ -38,6 +61,8 @@ export type PurchaseResult = {
   multiplier: number;
   newTier: number;
   droppedShopId: string | null;
+  streak: number;
+  streakExtended: boolean;
 };
 
 type ProfileState = {
@@ -55,6 +80,7 @@ type ProfileState = {
   selectAddress: (id: string) => void;
   selectedAddress: () => Address | undefined;
   loyaltyXp: (storeId: string) => number;
+  grantPoints: (points: number) => void;
   loyaltyTier: (storeId: string) => number;
   multiplierFor: (storeId: string) => number;
   recordPurchase: (
@@ -142,6 +168,16 @@ export const useProfile = create<ProfileState>((set, get) => ({
 
   loyaltyXp: (storeId) => get().profile.loyalty[storeId] ?? 0,
 
+  grantPoints: (points) =>
+    set((s) => {
+      const profile = {
+        ...s.profile,
+        points: Math.max(0, s.profile.points + Math.round(points)),
+      };
+      persist(profile);
+      return { profile };
+    }),
+
   loyaltyTier: (storeId) => levelForXp(get().profile.loyalty[storeId] ?? 0),
 
   multiplierFor: (storeId) =>
@@ -158,8 +194,24 @@ export const useProfile = create<ProfileState>((set, get) => ({
     const currentXp = profile.loyalty[storeId] ?? 0;
     const currentTier = levelForXp(currentXp);
     const multiplier = multiplierForTier(currentTier);
+
+    // Order streak: same day keeps it, next day extends it, a gap resets it.
+    const today = dayStamp();
+    let streak = profile.streak ?? 0;
+    let streakExtended = false;
+    if (profile.lastOrderDay !== today) {
+      streak =
+        profile.lastOrderDay && isYesterday(profile.lastOrderDay)
+          ? streak + 1
+          : 1;
+      streakExtended = true;
+    }
+
     const pointsEarned =
-      pointsForOrder(orderTotal, currentTier, pointsMultiplier) + bonusPoints;
+      Math.round(
+        pointsForOrder(orderTotal, currentTier, pointsMultiplier) *
+          streakMultiplier(streak),
+      ) + bonusPoints;
 
     const loyalty: Record<string, number> = { ...profile.loyalty };
 
@@ -179,11 +231,21 @@ export const useProfile = create<ProfileState>((set, get) => ({
       points: Math.max(0, profile.points + pointsEarned - pointsSpent),
       loyalty,
       lastLoyaltyShopId: storeId,
+      streak,
+      lastOrderDay: today,
     };
     persist(next);
     set({ profile: next });
 
-    return { pointsEarned, pointsSpent, multiplier, newTier, droppedShopId };
+    return {
+      pointsEarned,
+      pointsSpent,
+      multiplier,
+      newTier,
+      droppedShopId,
+      streak,
+      streakExtended,
+    };
   },
 
   reset: () => {

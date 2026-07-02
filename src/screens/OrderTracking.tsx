@@ -73,11 +73,11 @@ export default function OrderTracking() {
       <TopBar title="Track order" />
 
       <div className="space-y-4 p-4">
-        <div className="gloss rounded-2xl bg-gradient-to-br from-brand-400 via-brand-500 to-brand-600 p-4 text-white shadow-card-hover">
-          <p className="text-xs font-medium text-brand-50/90">
+        <div className="bg-sunset shine gloss rounded-2xl p-4 text-white shadow-glow">
+          <p className="relative z-[1] text-xs font-medium text-white/85">
             {delivered ? "Your order is" : "Status"}
           </p>
-          <p className="text-2xl font-extrabold leading-tight">
+          <p className="relative z-[1] font-display text-2xl font-extrabold leading-tight">
             {STATUS_LABEL[order.status]}
           </p>
 

@@ -29,7 +29,7 @@ export default function DealPrice({
         </span>
       )}
       {deal.pointsCost != null && deal.pointsCost > 0 && (
-        <span className="rounded-full bg-amber-300/25 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-50">
+        <span className="rounded-full bg-gold-300/30 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gold-50">
           🔓 {deal.pointsCost} pts
         </span>
       )}

@@ -16,6 +16,8 @@ export type ItemOption = {
   max?: number;
 };
 
+export type ItemTag = "popular" | "new" | "spicy";
+
 export type MenuItem = {
   id: string;
   name: string;
@@ -23,6 +25,7 @@ export type MenuItem = {
   icon: string;
   emoji?: string;
   basePrice: number;
+  tags?: ItemTag[];
   options?: ItemOption[];
 };
 
@@ -129,4 +132,8 @@ export type UserProfile = {
   lastLoyaltyShopId: string | null;
   addresses: Address[];
   selectedAddressId: string;
+  // Consecutive calendar days with at least one order. `lastOrderDay` is a
+  // local YYYY-MM-DD stamp used to detect same-day / next-day / broken chains.
+  streak: number;
+  lastOrderDay: string | null;
 };

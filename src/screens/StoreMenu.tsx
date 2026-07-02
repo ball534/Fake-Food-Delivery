@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Star, Clock, Bike, Plus } from "lucide-react";
+import { Star, Clock, Bike, Plus, Flame } from "lucide-react";
 import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
@@ -20,6 +20,7 @@ import { useToasts } from "../store/toastStore";
 import { useDealPool } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { selectDeal } from "../data/promos";
+import { storeOrdersToday } from "../lib/urgency";
 
 export default function StoreMenu() {
   const { storeId = "" } = useParams();
@@ -162,7 +163,7 @@ export default function StoreMenu() {
         </div>
       </div>
 
-      <div className="relative -mt-6 rounded-t-3xl bg-neutral-50 px-4 pt-8">
+      <div className="relative -mt-6 rounded-t-3xl bg-[#FDF9F6] px-4 pt-8">
         <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5">
           <Thumb
             src={store.logo}
@@ -171,7 +172,7 @@ export default function StoreMenu() {
             rounded="rounded-2xl"
           />
         </span>
-        <h1 className="text-2xl font-extrabold leading-tight tracking-tight text-neutral-900">
+        <h1 className="font-display text-2xl font-extrabold leading-tight tracking-tight text-neutral-900">
           {store.name}
         </h1>
         <p className="mt-1.5 text-sm text-neutral-500">
@@ -179,7 +180,7 @@ export default function StoreMenu() {
         </p>
         <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-600">
           <span className="flex items-center gap-1 font-semibold">
-            <Star size={15} className="fill-amber-400 text-amber-400" />
+            <Star size={15} className="fill-gold-400 text-gold-400" />
             {store.rating.toFixed(1)}
           </span>
           <span className="flex items-center gap-1">
@@ -188,10 +189,13 @@ export default function StoreMenu() {
           <span className="flex items-center gap-1">
             <Bike size={15} /> {distanceKm.toFixed(1)} km
           </span>
+          <span className="flex items-center gap-1 font-semibold text-brand-500">
+            <Flame size={15} /> {storeOrdersToday(store.id)}+ orders today
+          </span>
         </div>
 
         {storeDeal && (
-          <div className="mt-3 rounded-2xl bg-brand-500 p-3 text-white shadow-card-hover">
+          <div className="bg-sunset shine gloss mt-3 rounded-2xl p-3 text-white shadow-glow">
             <span className="relative z-[1] text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
               {storeDeal.kind === "combo"
                 ? "Special combo"
@@ -260,7 +264,7 @@ export default function StoreMenu() {
             data-cat={cat.label}
             className="scroll-mt-16"
           >
-            <h2 className="mb-3 text-lg font-bold tracking-tight text-neutral-900">
+            <h2 className="mb-3 font-display text-lg font-bold tracking-tight text-neutral-900">
               {cat.label}
             </h2>
             <div className="space-y-2.5">
@@ -272,7 +276,7 @@ export default function StoreMenu() {
         ))}
 
         <section>
-          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900">
+          <h2 className="mb-3 flex items-center gap-2 font-display text-lg font-bold tracking-tight text-neutral-900">
             Reviews
             <span className="text-sm font-medium text-neutral-400">
               {pluralize(reviews.length, "review")}

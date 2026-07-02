@@ -15,7 +15,8 @@ import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import EmptyState from "../components/EmptyState";
 import { useCart } from "../store/cartStore";
-import { useProfile } from "../store/profileStore";
+import { useProfile, streakMultiplier } from "../store/profileStore";
+import { useCelebration } from "../store/celebrationStore";
 import { useOrders, MAX_ACTIVE_ORDERS } from "../store/orderStore";
 import { useToasts } from "../store/toastStore";
 import { useStores } from "../store/storesStore";
@@ -47,6 +48,7 @@ export default function Checkout() {
   const placeOrder = useOrders((s) => s.placeOrder);
   const activeCount = useOrders((s) => s.activeOrders().length);
   const showToast = useToasts((s) => s.show);
+  const fireCelebration = useCelebration((s) => s.fire);
 
   const [speed, setSpeed] = useState<DeliverySpeed>("regular");
   const [codeInput, setCodeInput] = useState("");
@@ -93,9 +95,16 @@ export default function Checkout() {
   const loyaltyTiers = effectCfg?.loyaltyMultiplier ?? 1;
   const bonusPoints = effectCfg?.bonusPoints ?? 0;
 
+  // Preview tomorrow's wallet: loyalty × promo × streak (today's order keeps
+  // or extends the chain, so use today's streak as the floor).
+  const previewStreak =
+    profile.lastOrderDay === null ? 1 : Math.max(1, profile.streak);
   const estPoints =
     Math.round(
-      basePointsFor(total) * multiplierFor(store.id) * pointsMultiplier,
+      basePointsFor(total) *
+        multiplierFor(store.id) *
+        pointsMultiplier *
+        streakMultiplier(previewStreak),
     ) + bonusPoints;
 
   // Express can only use whatever points remain after redemptions are paid for.
@@ -129,12 +138,16 @@ export default function Checkout() {
         ? await geocodeAddress(selectedAddress.line)
         : null) ??
       undefined;
-    const { pointsEarned } = recordPurchase(store.id, total, {
-      pointsMultiplier,
-      loyaltyTiers,
-      pointsSpent: pointsCost,
-      bonusPoints,
-    });
+    const { pointsEarned, streak, streakExtended } = recordPurchase(
+      store.id,
+      total,
+      {
+        pointsMultiplier,
+        loyaltyTiers,
+        pointsSpent: pointsCost,
+        bonusPoints,
+      },
+    );
     const order = placeOrder({
       storeId: store.id,
       lines: cart.lines,
@@ -149,7 +162,15 @@ export default function Checkout() {
       dropLoc,
     });
     clearCart();
-    showToast(`+${pointsEarned} points earned!`, "✨");
+    fireCelebration(
+      pointsEarned,
+      streakExtended && streak >= 2
+        ? `🔥 ${streak}-day streak bonus included!`
+        : undefined,
+    );
+    if (streakExtended && streak >= 2) {
+      showToast(`Streak extended — day ${streak}!`, "🔥");
+    }
     navigate(`/track/${order.id}`, { replace: true });
   };
 
@@ -195,7 +216,7 @@ export default function Checkout() {
                     <div className="min-w-0">
                       <p className="font-semibold text-neutral-900">{name}</p>
                       {line.pointsCost != null && line.pointsCost > 0 && (
-                        <span className="mt-0.5 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-amber-700">
+                        <span className="mt-0.5 inline-block rounded-full bg-gold-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gold-600">
                           🔓 Redeemed · {line.pointsCost} pts
                         </span>
                       )}
@@ -388,22 +409,34 @@ export default function Checkout() {
           )}
         </section>
 
-        <section className="flex items-center gap-2 rounded-2xl bg-brand-50 px-4 py-3 text-sm">
-          <Sparkles size={16} className="shrink-0 text-brand-600" />
-          <span className="text-brand-800">
-            You'll earn <strong>{estPoints} points</strong>
-            {pointsCost > 0 && (
-              <>
-                {" "}
-                and spend <strong>{pointsCost}</strong>
-                {redeemCost > 0 && expressCost > 0
-                  ? " on deals + Express"
-                  : redeemCost > 0
-                    ? " to redeem deals"
-                    : " on Express"}
-              </>
-            )}
-          </span>
+        <section className="gloss rounded-2xl bg-gold-50 px-4 py-3 text-sm ring-1 ring-gold-200">
+          <div className="relative z-[1] flex items-center gap-2">
+            <Sparkles size={16} className="shrink-0 text-gold-600" />
+            <span className="text-gold-600">
+              You'll earn <strong>{estPoints} points</strong>
+              {profile.streak >= 2 && (
+                <>
+                  {" "}
+                  <span className="font-bold">
+                    (🔥 streak +
+                    {Math.round((streakMultiplier(profile.streak) - 1) * 100)}
+                    %)
+                  </span>
+                </>
+              )}
+              {pointsCost > 0 && (
+                <>
+                  {" "}
+                  and spend <strong>{pointsCost}</strong>
+                  {redeemCost > 0 && expressCost > 0
+                    ? " on deals + Express"
+                    : redeemCost > 0
+                      ? " to redeem deals"
+                      : " on Express"}
+                </>
+              )}
+            </span>
+          </div>
         </section>
 
         <section className="card flex items-center justify-between p-4 text-base font-bold text-neutral-900">

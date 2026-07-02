@@ -26,8 +26,14 @@ npm run typecheck  # tsc --noEmit
 
 ## What's inside
 
-- **4 tabs** — Home, Search, Orders, Profile (bottom navigation bar).
-- **12 data-driven stores** grouped by broad cuisine (Western, Japanese, Korean,
+- **4 tabs** — Home, Search, Orders, Profile (floating glass dock navigation).
+- **Order streaks** — consecutive order days build a streak (🔥) worth up to
+  +35% bonus points, shown on Home and in the Profile.
+- **Daily Scratch & Win** — one scratch card per day on the Home screen;
+  rub off the gold foil to claim 20–100 bonus points.
+- **Social proof cues** — deterministic, seeded "X ordered today",
+  "selling fast" and "people eyeing this" figures that rotate daily.
+- **5 data-driven stores** grouped by broad cuisine (Western, Japanese, Korean,
   Filipino, Local, Drinks) with full menus, item customisation (size / spice /
   add-ons / toppings), tags, ratings, and **fake customer reviews**. Each store
   is a folder of static files under `public/shops/` — see

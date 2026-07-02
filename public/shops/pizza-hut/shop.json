@@ -1,0 +1,1375 @@
+{
+  "name": "Pizza Hut",
+  "categories": [
+    "Pizza",
+    "Western"
+  ],
+  "fastfood": true,
+  "pricelevel": 2,
+  "rating": 4.2,
+  "menu": [
+    {
+      "category": "Favorite Pizza",
+      "food": [
+        {
+          "name": "Cheesy Spinach",
+          "description": "Creamy, cheesy and oh-so-satisfying, combining tender baby spinach and indulgent cream cheese cubes on rich alfredo sauce. Baked with melty mozzarella and a sprinkle of parmesan.",
+          "price": 11.95,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 16.6
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "BBQ Chunky Chic",
+          "description": "Spicy chicken chunks together with pineapple chunks and onions, baked on a sweet and smoky BBQ sauce.",
+          "price": 11.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 16.6
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chic Ham 'n' Shroom",
+          "description": "Tender chicken ham with mushrooms.",
+          "price": 11.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 16.6
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Simply Cheese",
+          "description": "Freshly grated cheddar and mozzarella cheese, baked with diced tomatoes in Alfredo sauce.",
+          "price": 11.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 16.6
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 29.95
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Cheese 'N' Chic",
+          "description": "Roasted chicken chunks, pineapple chunks and mushrooms, with mozzarella cheese and parsley.",
+          "price": 11.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 16.6
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 30.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Very Beefy",
+          "description": "A marriage of beef cabanossi sausages and ground beef with a hint of onion.",
+          "price": 11.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 11.9
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 16.6
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 23.1
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 30.0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Classic Pizza",
+      "food": [
+        {
+          "name": "Truffle Shroom 'N' Chicken Bacon",
+          "description": "Indulge in a rich, savoury bite with our Truffle Shroom 'N' Chicken Bacon Sourdough Pizza. Layered with creamy truffle sauce, smoky chicken bacon, juicy mushrooms, and a decadent mix of mozzarella and shredded parmesan cheese. Perfectly balanced on a crisp airy sourdough crust.",
+          "price": 14.75,
+          "tags": [
+            "new"
+          ],
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Shrimp Aglio Pizza",
+          "description": "Savour the bold flavours of the new Shrimp Aglio Pizza: rich cream sauce layered with succulent prawns, onions, tomatoes and fragrant fried garlic, topped with shredded mozzarella.",
+          "price": 14.75,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Super Supreme",
+          "description": "Always a house favourite, combining juicy ground beef, smoky beef cabanossi sausages, beef pepperoni, chicken ham, and a luscious mix of capsicums, onions, olives, mushrooms and pineapple chunks.",
+          "price": 14.75,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chicken Supreme",
+          "description": "Sink your teeth into a generous spread of savoury chicken ham, spicy chicken chunks, roasted chicken, topped with onions, capsicums and mushrooms.",
+          "price": 14.75,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hawaiian",
+          "description": "An all-time favourite. Tender chicken ham combined with sweet and succulent pineapple chunks for a taste of the good ol' days.",
+          "price": 14.75,
+          "tags": [
+            "popular"
+          ],
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Curry Chicken",
+          "description": "Italian classic meets local favourite. Spicy chicken chunks, potatoes, onions and diced tomatoes come together for an authentic flavour of rich spices.",
+          "price": 14.75,
+          "tags": [
+            "spicy"
+          ],
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Veggie Lover's",
+          "description": "Delightful combination of garden fresh mushrooms, onions, olives and capsicums, sweetened with pineapple chunks and diced tomatoes.",
+          "price": 14.75,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Meat Galore",
+          "description": "The perfect meat-lover's choice. Chicken ham, pepperoni, minced beef and beef cabanossi sausages, with tomato mozzarella melt.",
+          "price": 14.75,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Beef Pepperoni",
+          "description": "Combining the aromatic flavour of beef pepperoni and 100% mozzarella cheese. Classic treat that's always a great choice.",
+          "price": 14.75,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 15.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 19.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 27.8
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 34.7
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Specialty Pizza",
+      "food": [
+        {
+          "name": "BBQ Chicken",
+          "description": "Spicy chicken chunks, chicken ham, luscious pineapple chunks with fresh capsicums, baked on a sweet and smoky BBQ sauce.",
+          "price": 16.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 21.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 37.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "The Four Cheese",
+          "description": "Send your taste buds into a cheesy frenzy with a divine combination of 4 cheeses - mozzarella, parmesan, cheddar and cream cheese.",
+          "price": 16.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 21.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 37.6
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Hawaiian Supreme",
+          "description": "Chunky chicken ham, chicken ham slices and pineapples finished with a creamy cheese drizzle.",
+          "price": 16.95,
+          "section": [
+            {
+              "name": "Size & Crust",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Personal Pan Crust",
+                  "price": 0.0
+                },
+                {
+                  "name": "Personal Cheesy Stuffed Crust",
+                  "price": 2.5
+                },
+                {
+                  "name": "Regular Pan Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Crackin' Thin Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Sourdough Crust",
+                  "price": 17.1
+                },
+                {
+                  "name": "Regular Cheesy Stuffed Crust",
+                  "price": 21.8
+                },
+                {
+                  "name": "Large Pan Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Crackin' Thin Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Sourdough Crust",
+                  "price": 30.7
+                },
+                {
+                  "name": "Large Cheesy Stuffed Crust",
+                  "price": 37.6
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": "Pizza Hut Melts",
+      "food": [
+        {
+          "name": "Hut Melts - Hawaiian",
+          "description": "Good ol' classic. Crispy thin crust loaded with chicken ham and juicy pineapples & cheeses, baked to melty perfection, served with tomato dip.",
+          "price": 8.95,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Hut Melts - Spicy Chicken Pops",
+          "description": "Crispy thin crust loaded with spicy chicken pop and mozzarella, baked to melty perfection, served with tomato dip.",
+          "price": 8.95,
+          "tags": [
+            "spicy"
+          ]
+        },
+        {
+          "name": "Hut Melts - Beef Pepperoni",
+          "description": "Crispy thin crust loaded with beef pepperoni & mozzarella, baked to melty perfection, served with tomato dip.",
+          "price": 8.95
+        },
+        {
+          "name": "Hut Melts - Cheesy Corn 'N' Shroom",
+          "description": "Crispy thin crust loaded with cheeses, cream cheese, corn and sliced mushrooms, baked to melty perfection, served with tomato dip.",
+          "price": 8.95
+        },
+        {
+          "name": "Hut Melts Happy Box",
+          "description": "1 Pizza Hut Melts + choice of 1 sauce + choice of 1 canned drink",
+          "price": 10
+        }
+      ]
+    },
+    {
+      "category": "Pasta & Baked Rice",
+      "food": [
+        {
+          "name": "Truffle Chicken Mac & Cheese",
+          "description": "A twist on the classic. Macaroni in creamy truffle-infused white sauce with mozzarella and parmesan, topped with roasted chicken chunks and mushrooms.",
+          "price": 16.9,
+          "tags": [
+            "popular"
+          ]
+        },
+        {
+          "name": "Mac N Cheese with Chicken Bacon",
+          "description": "Tender macaroni loaded with savoury chicken bacon, earth mushroom, tossed in a blend of cheddar, mozzarella and parmesan cheeses and baked to golden perfection",
+          "price": 16.5
+        },
+        {
+          "name": "Curry Zazzle",
+          "description": "Spicy chicken chunks, potato cubes, onions and curry sauce over buttered pilaf rice.",
+          "price": 16.5,
+          "tags": [
+            "spicy"
+          ]
+        },
+        {
+          "name": "Beef Lasagne",
+          "description": "A classic favourite. Generous minced beef in creamy tomato sauce layered between sheets of fresh pasta, topped with a mozzarella melt.",
+          "price": 16.9
+        },
+        {
+          "name": "Chicken Royale Baked Pasta",
+          "description": "Roast chicken and chunky honey chicken ham, combined with mushrooms and roasted onions in a cheesy penne bake.",
+          "price": 16.9
+        }
+      ]
+    },
+    {
+      "category": "Appetizers",
+      "food": [
+        {
+          "name": "6pcs Cheesy Nuggets",
+          "description": "Crispy and juicy baked cheesy nuggets.",
+          "price": 7.5
+        },
+        {
+          "name": "Ghost Pepper Cheese Dip",
+          "description": "",
+          "price": 1
+        },
+        {
+          "name": "8pcs Garlic Mozzarella Poppers",
+          "description": "100% mozzarella cheese, fried to a goden crisp outer shell.",
+          "price": 7.8
+        },
+        {
+          "name": "Spicy Chicken Pop with Cheese Sauce",
+          "description": "Indulge in this golden succulent chicken bite that comes with a spicy kick. Addictively delicious, you just can't stop!",
+          "price": 8,
+          "tags": [
+            "spicy"
+          ]
+        },
+        {
+          "name": "10pcs Crispy Chicken Fries w Dip",
+          "description": "Crispy, tasty and absolutely satisfying. Chicken fries fried to golden perfection and served with a tangy tomato dip.",
+          "price": 8.65
+        },
+        {
+          "name": "10pcs BBQ Wings",
+          "description": "Juicy mid-joint wings coated with tangy BBQ sauce.",
+          "price": 15.9
+        },
+        {
+          "name": "10pcs Honey Roasted Wings",
+          "description": "Juicy mid-joint wings coated with sweet honey and roasted to golden brown perfection.",
+          "price": 15.9
+        },
+        {
+          "name": "10pcs Sweet 'N' Spicy Drumlets",
+          "description": "Our house specials that's a sure winner! Juicy, tender drumlets marinated in New Orleans spices.",
+          "price": 15.9,
+          "tags": [
+            "popular",
+            "spicy"
+          ]
+        },
+        {
+          "name": "6pcs BBQ Wings",
+          "description": "Juicy mid-joint wings coated with tangy BBQ sauce.",
+          "price": 11.15
+        },
+        {
+          "name": "6pcs Honey Roasted Wings",
+          "description": "Juicy mid-joint wings coated with sweet honey and roasted to golden brown perfection.",
+          "price": 11.15
+        },
+        {
+          "name": "6pcs Sweet 'N' Spicy Drumlets",
+          "description": "Our house special that's a sure winner! Juicy, tender drumlets marinated in New Orleans spices.",
+          "price": 11.15
+        },
+        {
+          "name": "Garlic Bread",
+          "description": "Oven-baked sesame seed bun with hot buttery garlic spread.",
+          "price": 7
+        },
+        {
+          "name": "6pcs Milo Breadsticks",
+          "description": "Oven-baked breadsticks sprinkled with milo powder and drizzled with condensed milk.",
+          "price": 5.9
+        },
+        {
+          "name": "6pcs Cinnamon Breadsticks",
+          "description": "Oven-baked breadsticks sprinkled with cinnamon and drizzled with condensed milk.",
+          "price": 5.9
+        },
+        {
+          "name": "Cheese Dip",
+          "description": "",
+          "price": 1
+        },
+        {
+          "name": "BBQ Dip",
+          "description": "",
+          "price": 1
+        }
+      ]
+    },
+    {
+      "category": "Desserts",
+      "food": [
+        {
+          "name": "Hershey's Chocolate Chip Cookie (1/4)",
+          "description": "Warm, chewy quarter-sized cookie loaded with chocolate chips.",
+          "price": 2.95,
+          "emoji": "🍪"
+        },
+        {
+          "name": "Hershey's Chocolate Chip Cookie (Whole)",
+          "description": "A soft and chewy cookie laden with crunchy chocolate chips, served warm.",
+          "price": 10.9,
+          "tags": [
+            "popular"
+          ],
+          "emoji": "🍪"
+        },
+        {
+          "name": "2pcs Chocolate Hazelnut Tarts",
+          "description": "A rich, creamy chocolate hazelnut tart with cream cheese.",
+          "price": 3.95,
+          "emoji": "🥧"
+        },
+        {
+          "name": "4pcs Chocolate Hazelnut Tarts",
+          "description": "A rich, creamy chocolate hazelnut tart with cream cheese.",
+          "price": 7,
+          "emoji": "🥧"
+        },
+        {
+          "name": "Waffle & Honey",
+          "description": "Light and fluffy waffle served with honey drizzle.",
+          "price": 4.95,
+          "emoji": "🧇"
+        },
+        {
+          "name": "Waffle & Chocolate Hazelnut Sauce",
+          "description": "Light and fluffy waffle served with chocolate hazelnut sauce.",
+          "price": 4.95,
+          "emoji": "🧇"
+        }
+      ]
+    },
+    {
+      "category": "Beverages",
+      "food": [
+        {
+          "name": "Coca-Cola Zero Sugar",
+          "description": "",
+          "price": 3.55,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Canned",
+                  "price": 0.0
+                },
+                {
+                  "name": "Bottle",
+                  "price": 1.05
+                }
+              ]
+            }
+          ],
+          "emoji": "🥤"
+        },
+        {
+          "name": "Coca-Cola",
+          "description": "",
+          "price": 3.55,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Canned",
+                  "price": 0.0
+                },
+                {
+                  "name": "Bottle",
+                  "price": 1.05
+                }
+              ]
+            }
+          ],
+          "emoji": "🥤"
+        },
+        {
+          "name": "Sprite",
+          "description": "",
+          "price": 3.55,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Canned",
+                  "price": 0.0
+                },
+                {
+                  "name": "Bottle",
+                  "price": 1.05
+                }
+              ]
+            }
+          ],
+          "emoji": "🥤"
+        },
+        {
+          "name": "Fuze Tea Jasmine Green Tea",
+          "description": "",
+          "price": 4.2,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Canned",
+                  "price": 0.0
+                },
+                {
+                  "name": "Bottle",
+                  "price": 1.0
+                }
+              ]
+            }
+          ],
+          "emoji": "🧋"
+        },
+        {
+          "name": "Fuze Tea Iced Lemon Tea",
+          "description": "",
+          "price": 4.2,
+          "section": [
+            {
+              "name": "Size",
+              "multiselect": false,
+              "required": true,
+              "options": [
+                {
+                  "name": "Canned",
+                  "price": 0.0
+                },
+                {
+                  "name": "Bottle",
+                  "price": 1.0
+                }
+              ]
+            }
+          ],
+          "emoji": "🧋"
+        }
+      ]
+    }
+  ],
+  "deals": [],
+  "reviews": [
+    {
+      "author": "Marcus T.",
+      "rating": 5,
+      "text": "Cheesy Stuffed Crust never misses. Ordered the Hawaiian Supreme for family night and the crust was gone before the pizza was."
+    },
+    {
+      "author": "Siti R.",
+      "rating": 4,
+      "text": "Curry Chicken pizza is such an underrated local twist. Delivery was fast, box was still hot. Wings were a bit small though."
+    },
+    {
+      "author": "Daryl L.",
+      "rating": 5,
+      "text": "The Hut Melts are perfect for one person lunch. Crispy, cheesy, and under $10. My go-to order every week now."
+    },
+    {
+      "author": "Amanda C.",
+      "rating": 4,
+      "text": "Truffle Chicken Mac & Cheese smells amazing the moment you open the box. Pizza arrived slightly squashed but tasted great."
+    },
+    {
+      "author": "Kelvin O.",
+      "rating": 5,
+      "text": "Sweet 'N' Spicy Drumlets are dangerously addictive. 10pcs is not enough when sharing, learn from my mistake."
+    },
+    {
+      "author": "Priya N.",
+      "rating": 4,
+      "text": "Solid classic pizza. Crackin' Thin Crust is nice if you don't want the jelak feeling. Milo breadsticks a fun dessert!"
+    }
+  ]
+}

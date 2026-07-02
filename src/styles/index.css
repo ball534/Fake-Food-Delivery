@@ -32,22 +32,65 @@ body {
 
 @layer components {
   .phone-frame {
-    @apply mx-auto flex h-[100dvh] w-full max-w-[440px] flex-col overflow-hidden bg-white shadow-2xl sm:my-0 sm:h-[100dvh];
+    @apply mx-auto flex h-[100dvh] w-full max-w-[440px] flex-col overflow-hidden shadow-2xl sm:my-0 sm:h-[100dvh];
+    background-color: #fdf9f6; /* warm off-white, matches screen bg */
+  }
+
+  /* The FakeEats sunset — the brand gradient. Use for hero surfaces, primary
+     CTAs and deal cards. */
+  .bg-sunset {
+    background-image: linear-gradient(
+      135deg,
+      #ff8a4d 0%,
+      #ff4e1f 52%,
+      #ed3a0c 100%
+    );
+  }
+  .bg-sunset-deep {
+    background-image: linear-gradient(
+      160deg,
+      #ff6a35 0%,
+      #ed3a0c 60%,
+      #c52f0a 100%
+    );
+  }
+  /* Gold treatment for points / rewards / streaks. */
+  .bg-goldshine {
+    background-image: linear-gradient(
+      135deg,
+      #ffcc4a 0%,
+      #ffb520 55%,
+      #f99307 100%
+    );
   }
 
   /* Frosted translucent surface — Apple "liquid glass". Meant for floating
      chrome/controls that overlap content (search bars, chips, sheets), not
      for opaque content cards. */
   .glass {
-    @apply border border-white/40 bg-white/25 backdrop-blur-3xl backdrop-saturate-150;
+    @apply border border-white/50 bg-white/30 backdrop-blur-3xl backdrop-saturate-150;
     box-shadow:
-      0 8px 32px -12px rgba(16, 24, 40, 0.18),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
+      0 8px 32px -12px rgba(60, 20, 8, 0.18),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  }
+
+  /* Glass on top of the sunset gradient — brighter border, warm shadow. */
+  .glass-warm {
+    @apply border border-white/30 bg-white/15 backdrop-blur-2xl backdrop-saturate-150;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
   }
 
   /* Translucent bar treatment for sticky top/bottom navigation. */
   .glass-nav {
-    @apply bg-white/40 backdrop-blur-2xl backdrop-saturate-150;
+    @apply bg-white/50 backdrop-blur-2xl backdrop-saturate-150;
+  }
+
+  /* Floating pill dock (bottom tab bar). */
+  .glass-dock {
+    @apply border border-white/60 bg-white/60 backdrop-blur-3xl backdrop-saturate-150;
+    box-shadow:
+      0 12px 36px -10px rgba(60, 20, 8, 0.28),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
   }
 
   /* Specular top highlight — layer over any element to give it the glossy,
@@ -65,15 +108,37 @@ body {
     border-radius: inherit;
     background-image: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.22),
       rgba(255, 255, 255, 0)
     );
     pointer-events: none;
   }
 
+  /* Diagonal light-sweep that loops across a card — for deal/flash surfaces.
+     Element must clip (overflow-hidden). */
+  .shine {
+    @apply relative overflow-hidden;
+  }
+  .shine::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    bottom: -20%;
+    left: 0;
+    width: 40%;
+    background-image: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.28) 50%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    animation: shimmer 2.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-5 py-3 font-semibold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
-    box-shadow: 0 8px 20px -6px rgba(34, 139, 34, 0.45);
+    @apply bg-sunset inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-bold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+    box-shadow: 0 8px 20px -6px rgba(255, 78, 31, 0.5);
   }
 
   .btn-secondary {
@@ -81,14 +146,19 @@ body {
   }
 
   .chip {
-    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-black/10 bg-white/35 px-3.5 py-1.5 text-sm font-medium text-neutral-700 backdrop-blur-2xl transition;
+    @apply inline-flex shrink-0 items-center gap-1 rounded-full border border-black/10 bg-white/40 px-3.5 py-1.5 text-sm font-semibold text-neutral-700 backdrop-blur-2xl transition active:scale-95;
   }
 
   .chip-active {
-    @apply border-transparent bg-brand-500 text-white shadow-[0_4px_12px_-3px_rgba(34,139,34,0.55)];
+    @apply bg-sunset border-transparent text-white shadow-[0_4px_14px_-3px_rgba(255,78,31,0.6)];
   }
 
   .card {
     @apply rounded-2xl bg-white shadow-card ring-1 ring-black/[0.04];
+  }
+
+  /* Tiny urgency badge — "selling fast", "ending soon". */
+  .badge-hot {
+    @apply inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-600;
   }
 }

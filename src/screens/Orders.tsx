@@ -26,7 +26,7 @@ export default function Orders() {
   }
 
   return (
-    <Screen className="pb-6">
+    <Screen className="pb-28">
       <Header />
       <div className="space-y-6 p-4">
         {active.length > 0 && (
@@ -76,10 +76,12 @@ function Header() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-brand-300/40 blur-3xl"
+        className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-gold-300/50 blur-3xl"
       />
       <div className="relative px-4 pb-4 pt-7 text-white">
-        <h1 className="text-2xl font-extrabold drop-shadow-sm">Orders</h1>
+        <h1 className="font-display text-2xl font-extrabold drop-shadow-sm">
+          Orders
+        </h1>
         <p className="text-sm text-white/85">Track your deliveries</p>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { Star, Clock, Bike } from "lucide-react";
+import { Star, Clock, Bike, Flame } from "lucide-react";
 import type { Store } from "../data/types";
 import { etaRange } from "../lib/format";
 import { etaRangeFor, distanceFor } from "../lib/delivery";
 import { useProfile } from "../store/profileStore";
+import { storeOrdersToday } from "../lib/urgency";
 import Thumb from "./Thumb";
 
 export default function StoreCard({ store }: { store: Store }) {
@@ -11,11 +12,12 @@ export default function StoreCard({ store }: { store: Store }) {
   const seed = selectedAddress?.id ?? "no-address";
   const eta = etaRangeFor(store.id, seed);
   const distanceKm = distanceFor(store.id, seed);
+  const orders = storeOrdersToday(store.id);
 
   return (
     <Link
       to={`/store/${store.id}`}
-      className="block overflow-hidden rounded-2xl bg-white shadow-card transition active:scale-[0.99]"
+      className="block overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-black/[0.04] transition active:scale-[0.99]"
     >
       <div className="relative grid h-28 place-items-center overflow-hidden bg-neutral-200">
         <Thumb
@@ -24,6 +26,15 @@ export default function StoreCard({ store }: { store: Store }) {
           fallback="banner"
           rounded=""
         />
+        <span className="glass absolute right-2 top-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold text-neutral-800">
+          <Star size={12} className="fill-gold-400 text-gold-400" />
+          {store.rating.toFixed(1)}
+        </span>
+        {orders > 400 && (
+          <span className="badge-hot absolute left-2 top-2 shadow-sm">
+            <Flame size={11} /> In demand
+          </span>
+        )}
       </div>
       <div className="p-3">
         <div className="flex gap-3">
@@ -31,26 +42,23 @@ export default function StoreCard({ store }: { store: Store }) {
             <Thumb src={store.logo} alt={store.name} fallback="logo" />
           </span>
           <div className="min-w-0 flex-1">
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="truncate font-bold text-neutral-900">
-                {store.name}
-              </h3>
-              <span className="flex shrink-0 items-center gap-0.5 text-sm font-semibold text-neutral-700">
-                <Star size={14} className="fill-amber-400 text-amber-400" />
-                {store.rating.toFixed(1)}
-              </span>
-            </div>
+            <h3 className="truncate font-bold text-neutral-900">
+              {store.name}
+            </h3>
             <p className="mt-0.5 truncate text-xs text-neutral-500">
-              {store.cuisine}
+              {store.cuisine} · {"$".repeat(store.priceLevel)}
             </p>
           </div>
         </div>
         <div className="mt-2 flex items-center gap-3 text-xs text-neutral-500">
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1 font-semibold text-neutral-600">
             <Clock size={13} /> {etaRange(eta)}
           </span>
           <span className="flex items-center gap-1">
             <Bike size={13} /> {distanceKm.toFixed(1)} km
+          </span>
+          <span className="ml-auto text-[11px] font-semibold text-brand-500">
+            {orders}+ ordered today
           </span>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, Eye, Flame } from "lucide-react";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
 import EmptyState from "../components/EmptyState";
@@ -12,6 +12,7 @@ import { money } from "../lib/format";
 import { buildDefaultChoices, computeUnitPrice } from "../lib/pricing";
 import { useCart } from "../store/cartStore";
 import { useToasts } from "../store/toastStore";
+import { ordersToday, viewersNow } from "../lib/urgency";
 
 export default function ItemDetail() {
   const { storeId = "", itemId = "" } = useParams();
@@ -120,7 +121,7 @@ export default function ItemDetail() {
             />
           </span>
           <div className="min-w-0 flex-1">
-            <h1 className="text-2xl font-extrabold text-neutral-900">
+            <h1 className="font-display text-2xl font-extrabold text-neutral-900">
               {item.name}
             </h1>
             <p className="mt-2 text-sm text-neutral-500">{item.description}</p>
@@ -128,6 +129,22 @@ export default function ItemDetail() {
               {money(item.basePrice)}
             </p>
           </div>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs font-semibold">
+          <span className="flex items-center gap-1 text-brand-500">
+            <Flame size={13} />
+            {ordersToday(
+              storeId,
+              item.id,
+              item.tags?.includes("popular"),
+            )}{" "}
+            ordered today
+          </span>
+          <span className="flex items-center gap-1 text-neutral-500">
+            <Eye size={13} />
+            {viewersNow(storeId, item.id)} people eyeing this right now
+          </span>
         </div>
 
         {(item.options ?? []).map((opt) => {

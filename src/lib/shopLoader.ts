@@ -1,6 +1,7 @@
 import type {
   ItemOption,
   ItemOptionChoice,
+  ItemTag,
   MenuCategory,
   MenuItem,
   Review,
@@ -24,8 +25,12 @@ export type RawFood = {
   name: string;
   description?: string;
   price?: number;
+  emoji?: string;
+  tags?: string[];
   section?: RawSection[];
 };
+
+const VALID_TAGS: ItemTag[] = ["popular", "new", "spicy"];
 
 export type RawMenuGroup = { category: string; food?: RawFood[] };
 
@@ -116,7 +121,11 @@ function parseFood(
     id,
     name: raw.name,
     description: raw.description ?? "",
+    emoji: raw.emoji,
     icon: `${shopBase}/icons/${id}.webp`,
+    tags: (raw.tags ?? []).filter((t): t is ItemTag =>
+      VALID_TAGS.includes(t as ItemTag),
+    ),
     basePrice: Number(raw.price) || 0,
     options: (raw.section ?? []).map((s, i) => parseSection(s, i, usedOpt)),
   };

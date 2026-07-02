@@ -1,16 +1,20 @@
 import { useMemo, useState } from "react";
 import {
   Search as SearchIcon,
-  RefreshCw,
   Copy,
-  Gift,
   Flame,
   ShoppingBag,
+  Sparkles,
+  Star,
+  Clock,
+  Zap,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import DealPrice from "../components/DealPrice";
+import ScratchCard from "../components/ScratchCard";
+import Thumb from "../components/Thumb";
 import { Link } from "react-router-dom";
 import { useStores, storesInCategory } from "../store/storesStore";
 import { selectDeal, msUntilRotation, type Deal } from "../data/promos";
@@ -24,7 +28,8 @@ import {
   GREETING_SEED,
 } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
-import { formatCountdown } from "../lib/format";
+import { etaRange, formatCountdown } from "../lib/format";
+import { etaRangeFor } from "../lib/delivery";
 
 const KIND_LABEL: Record<Deal["kind"], string> = {
   code: "Promo code",
@@ -48,11 +53,13 @@ export default function Home() {
   const deals = useDealPool();
   const stores = useStores((s) => s.stores);
   const categories = useStores((s) => s.categories);
+  const selectedAddress = useProfile((s) => s.selectedAddress)();
   const [category, setCategory] = useState<string | null>(null);
   const now = useNow();
 
   const deal = useMemo(() => selectDeal(deals, now), [deals, now]);
   const rotatesIn = msUntilRotation(now);
+  const endingSoon = rotatesIn < 60_000;
 
   const greeting = useMemo(() => {
     const bucket = partOfDay(new Date(now).getHours());
@@ -70,7 +77,7 @@ export default function Home() {
   );
 
   const featured = useMemo(
-    () => [...stores].sort((a, b) => b.rating - a.rating).slice(0, 3),
+    () => [...stores].sort((a, b) => b.rating - a.rating).slice(0, 4),
     [stores],
   );
 
@@ -81,16 +88,38 @@ export default function Home() {
     }
   };
 
+  const seed = selectedAddress?.id ?? "no-address";
+
   const dealHeader = (
     <>
-      <span className="relative z-[1] text-xs font-semibold uppercase tracking-wide text-brand-50/80">
-        {KIND_LABEL[deal.kind]}
-      </span>
-      <div className="relative z-[1] mt-1 flex items-center gap-3">
-        {deal.emoji && <span className="text-4xl">{deal.emoji}</span>}
+      <div className="relative z-[1] flex items-center justify-between">
+        <span className="text-xs font-bold uppercase tracking-wide text-white/80">
+          <Zap size={12} className="mr-1 inline -translate-y-px" />
+          {KIND_LABEL[deal.kind]}
+        </span>
+        <span
+          className={`flex items-center gap-1 rounded-full px-2 py-0.5 font-mono text-[11px] font-bold tabular-nums ${
+            endingSoon
+              ? "animate-glow-pulse bg-white text-brand-600"
+              : "bg-white/20 text-white"
+          }`}
+        >
+          <Clock size={11} />
+          {endingSoon ? "ENDS " : ""}
+          {formatCountdown(rotatesIn)}
+        </span>
+      </div>
+      <div className="relative z-[1] mt-1.5 flex items-center gap-3">
+        {deal.emoji && (
+          <span className="animate-float text-4xl drop-shadow">
+            {deal.emoji}
+          </span>
+        )}
         <div className="min-w-0 flex-1">
-          <p className="text-lg font-extrabold leading-tight">{deal.title}</p>
-          <p className="text-sm text-brand-50/90">{deal.sub}</p>
+          <p className="font-display text-lg font-extrabold leading-tight">
+            {deal.title}
+          </p>
+          <p className="text-sm text-white/85">{deal.sub}</p>
           <DealPrice deal={deal} className="mt-1.5" />
         </div>
       </div>
@@ -98,25 +127,48 @@ export default function Home() {
   );
 
   return (
-    <Screen className="relative pb-6">
-      {/* Soft green wash that dissolves into the page — no hard seam. */}
+    <Screen className="relative pb-28">
+      {/* Sunset wash that dissolves into the page — no hard seam. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-52 bg-gradient-to-b from-brand-500 via-brand-500/85 to-transparent"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-brand-300/40 blur-3xl"
+        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-gold-300/50 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-20 top-16 h-48 w-48 rounded-full bg-brand-300/40 blur-3xl"
       />
 
-      <div className="relative px-4 pt-9">
-        <p className="text-lg font-bold text-white drop-shadow-sm">
-          {greeting}
-        </p>
-        <p className="text-sm text-white/85">What are you craving?</p>
+      <div className="relative px-4 pt-8">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <p className="font-display text-xl font-bold leading-snug text-white drop-shadow-sm">
+              {greeting}
+            </p>
+            <p className="text-sm text-white/85">What are you craving?</p>
+          </div>
+          <div className="flex shrink-0 flex-col items-end gap-1.5">
+            <Link
+              to="/profile"
+              className="glass-warm flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold text-white"
+            >
+              <Sparkles size={13} className="text-gold-200" />
+              {profile.points.toLocaleString()} pts
+            </Link>
+            {profile.streak > 0 && (
+              <span className="glass-warm flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold text-white">
+                <Flame size={13} className="text-gold-200" />
+                {profile.streak}-day streak
+              </span>
+            )}
+          </div>
+        </div>
         <Link
           to="/search"
-          className="glass mt-4 flex items-center gap-2.5 rounded-2xl px-4 py-3.5 text-sm font-medium text-neutral-500"
+          className="glass mt-4 flex items-center gap-2.5 rounded-2xl px-4 py-3.5 text-sm font-semibold text-neutral-600"
         >
           <SearchIcon size={18} />
           Search stores or dishes
@@ -125,33 +177,25 @@ export default function Home() {
 
       <div className="relative space-y-5 p-4 pt-6">
         <section>
-          <div className="mb-2 flex items-center justify-between">
-            <h2 className="flex items-center gap-1.5 text-base font-bold text-neutral-900">
-              <Gift size={18} className="text-brand-500" /> Special Deal
-            </h2>
-            <span className="flex items-center gap-1 text-xs font-medium text-neutral-400">
-              <RefreshCw size={12} /> New in {formatCountdown(rotatesIn)}
-            </span>
-          </div>
           {deal.storeId ? (
             <Link
               to={`/store/${deal.storeId}`}
-              className="block rounded-2xl bg-brand-500 px-4 pb-4 pt-3 text-white shadow-card-hover transition active:scale-[0.99]"
+              className="bg-sunset shine gloss block rounded-2xl px-4 pb-4 pt-3 text-white shadow-glow transition active:scale-[0.99]"
             >
               {dealHeader}
             </Link>
           ) : (
-            <div className="rounded-2xl bg-brand-500 px-4 pb-4 pt-3 text-white shadow-card-hover">
+            <div className="bg-sunset shine gloss rounded-2xl px-4 pb-4 pt-3 text-white shadow-glow">
               {dealHeader}
               {deal.kind === "code" && deal.code && (
                 <button
                   onClick={copyCode}
-                  className="relative z-[1] mt-3 flex w-full items-center justify-between rounded-xl border border-white/20 bg-white/15 px-3 py-2 text-left backdrop-blur active:scale-[0.99]"
+                  className="relative z-[1] mt-3 flex w-full items-center justify-between rounded-xl border border-white/25 bg-white/15 px-3 py-2 text-left backdrop-blur active:scale-[0.99]"
                 >
                   <span className="font-mono text-base font-bold tracking-widest">
                     {deal.code}
                   </span>
-                  <span className="flex items-center gap-1 text-xs font-semibold">
+                  <span className="flex items-center gap-1 text-xs font-bold">
                     <Copy size={14} /> Tap to copy
                   </span>
                 </button>
@@ -159,6 +203,8 @@ export default function Home() {
             </div>
           )}
         </section>
+
+        <ScratchCard />
 
         <div className="-mx-4 flex gap-2 overflow-x-auto px-4 no-scrollbar">
           <button
@@ -180,7 +226,7 @@ export default function Home() {
 
         {category ? (
           <section>
-            <h2 className="mb-2 text-base font-bold text-neutral-900">
+            <h2 className="mb-2 font-display text-lg font-bold text-neutral-900">
               {category} · {filtered.length}
             </h2>
             <div className="space-y-3">
@@ -190,16 +236,60 @@ export default function Home() {
             </div>
           </section>
         ) : (
-          <section>
-            <h2 className="mb-2 flex items-center gap-1.5 text-base font-bold text-neutral-900">
-              <Flame size={18} className="text-brand-500" /> Featured
-            </h2>
-            <div className="space-y-3">
-              {featured.map((store) => (
-                <StoreCard key={store.id} store={store} />
-              ))}
-            </div>
-          </section>
+          <>
+            <section>
+              <h2 className="mb-2 flex items-center gap-1.5 font-display text-lg font-bold text-neutral-900">
+                <Flame size={19} className="text-brand-500" /> Hot right now
+              </h2>
+              <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 no-scrollbar">
+                {featured.map((store) => (
+                  <Link
+                    key={store.id}
+                    to={`/store/${store.id}`}
+                    className="w-[240px] shrink-0 snap-start overflow-hidden rounded-2xl bg-white shadow-card transition active:scale-[0.98]"
+                  >
+                    <div className="relative grid h-28 place-items-center overflow-hidden bg-neutral-200">
+                      <Thumb
+                        src={store.banner}
+                        alt={store.name}
+                        fallback="banner"
+                        rounded=""
+                      />
+                      <span className="glass absolute left-2 top-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-bold text-neutral-800">
+                        <Star size={12} className="fill-gold-400 text-gold-400" />
+                        {store.rating.toFixed(1)}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2.5 p-2.5">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-neutral-100">
+                        <Thumb src={store.logo} alt="" fallback="logo" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-bold text-neutral-900">
+                          {store.name}
+                        </p>
+                        <p className="flex items-center gap-1 text-xs text-neutral-500">
+                          <Clock size={11} />
+                          {etaRange(etaRangeFor(store.id, seed))}
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h2 className="mb-2 font-display text-lg font-bold text-neutral-900">
+                All stores
+              </h2>
+              <div className="space-y-3">
+                {stores.map((store) => (
+                  <StoreCard key={store.id} store={store} />
+                ))}
+              </div>
+            </section>
+          </>
         )}
       </div>
 
@@ -214,12 +304,17 @@ export default function Home() {
               <Link
                 to="/checkout"
                 aria-label={`Cart, ${cartCount} items`}
-                className="pointer-events-auto absolute bottom-20 right-4 grid h-14 w-14 place-items-center rounded-full bg-brand-500 text-white shadow-card-hover active:scale-95"
+                className="bg-sunset pointer-events-auto absolute bottom-24 right-4 grid h-14 w-14 place-items-center rounded-full text-white shadow-glow active:scale-95"
               >
                 <ShoppingBag size={22} />
-                <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px] font-bold text-brand-600 shadow">
+                <motion.span
+                  key={cartCount}
+                  initial={{ scale: 1.5 }}
+                  animate={{ scale: 1 }}
+                  className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-white px-1 text-[11px] font-bold text-brand-600 shadow"
+                >
                   {cartCount}
-                </span>
+                </motion.span>
               </Link>
             </motion.div>
           )}

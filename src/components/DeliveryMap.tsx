@@ -11,7 +11,7 @@ import "leaflet/dist/leaflet.css";
 import type { GeoPoint, Order } from "../data/types";
 import { deliveringProgress } from "../lib/simulation";
 
-const ROUTE_GREEN = "#228B22";
+const ROUTE_COLOR = "#FF4E1F";
 
 function emojiPin(emoji: string, ring: string) {
   return L.divIcon({
@@ -119,7 +119,7 @@ export default function DeliveryMap({
   const t = deliveringProgress(order, now);
   const { driver: driverPos, travelled } = pathAt(route, t);
 
-  const driverIcon = emojiPin(delivered ? "✅" : "🛵", ROUTE_GREEN);
+  const driverIcon = emojiPin(delivered ? "✅" : "🛵", ROUTE_COLOR);
 
   return (
     <div className="grayscale-map h-56 w-full overflow-hidden rounded-2xl">
@@ -139,12 +139,12 @@ export default function DeliveryMap({
 
         <Polyline
           positions={route}
-          pathOptions={{ color: ROUTE_GREEN, weight: 5, opacity: 0.4 }}
+          pathOptions={{ color: ROUTE_COLOR, weight: 5, opacity: 0.4 }}
         />
         {showDriver && (
           <Polyline
             positions={travelled}
-            pathOptions={{ color: ROUTE_GREEN, weight: 5, opacity: 1 }}
+            pathOptions={{ color: ROUTE_COLOR, weight: 5, opacity: 1 }}
           />
         )}
 

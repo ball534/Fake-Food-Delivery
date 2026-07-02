@@ -34,4 +34,5 @@ export const STORAGE_KEYS = {
   recentSearches: "recentSearches",
   greetingRotation: "greetingRotation",
   driverChats: "driverChats",
+  dailyReward: "dailyReward",
 } as const;

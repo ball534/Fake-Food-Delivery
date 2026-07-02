@@ -12,12 +12,13 @@ import {
   ReceiptText,
   User,
 } from "lucide-react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useOrderTicker } from "./lib/hooks";
 import { useOrders } from "./store/orderStore";
 import { useContent } from "./store/contentStore";
 import { useStores } from "./store/storesStore";
 import Toaster from "./components/Toaster";
+import PointsBurst from "./components/PointsBurst";
 
 import Home from "./screens/Home";
 import Search from "./screens/Search";
@@ -42,29 +43,42 @@ function TabBar() {
   const activeCount = useOrders((s) => s.activeOrders().length);
 
   return (
-    <nav className="glass-nav flex shrink-0 items-stretch border-t border-black/5 pb-[env(safe-area-inset-bottom)]">
-      {TABS.map(({ to, label, icon: Icon, end }) => (
-        <NavLink
-          key={to}
-          to={to}
-          end={end}
-          className={({ isActive }) =>
-            `relative flex flex-1 flex-col items-center gap-0.5 py-2 text-[11px] font-medium transition ${
-              isActive ? "text-brand-600" : "text-neutral-400"
-            }`
-          }
-        >
-          <span className="relative">
-            <Icon size={22} strokeWidth={2.2} />
-            {to === "/orders" && activeCount > 0 && (
-              <span className="absolute -right-2 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-500 px-1 text-[9px] font-bold text-white">
-                {activeCount}
-              </span>
+    <nav className="pointer-events-none absolute inset-x-0 bottom-0 z-20 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+      <div className="glass-dock pointer-events-auto flex items-stretch rounded-3xl px-1.5 py-1.5">
+        {TABS.map(({ to, label, icon: Icon, end }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={end}
+            className={({ isActive }) =>
+              `relative flex flex-1 flex-col items-center gap-0.5 rounded-2xl py-1.5 text-[10px] font-bold transition ${
+                isActive ? "text-brand-600" : "text-neutral-400"
+              }`
+            }
+          >
+            {({ isActive }) => (
+              <>
+                {isActive && (
+                  <motion.span
+                    layoutId="tab-pill"
+                    className="absolute inset-0 rounded-2xl bg-brand-50 ring-1 ring-brand-100"
+                    transition={{ type: "spring", stiffness: 500, damping: 38 }}
+                  />
+                )}
+                <span className="relative">
+                  <Icon size={21} strokeWidth={2.2} />
+                  {to === "/orders" && activeCount > 0 && (
+                    <span className="bg-sunset absolute -right-2 -top-1 flex h-4 min-w-4 animate-glow-pulse items-center justify-center rounded-full px-1 text-[9px] font-bold text-white">
+                      {activeCount}
+                    </span>
+                  )}
+                </span>
+                <span className="relative">{label}</span>
+              </>
             )}
-          </span>
-          {label}
-        </NavLink>
-      ))}
+          </NavLink>
+        ))}
+      </div>
     </nav>
   );
 }
@@ -116,11 +130,12 @@ export default function App() {
 
   return (
     <div className="min-h-[100dvh] bg-neutral-100">
-      <div className="phone-frame">
+      <div className="phone-frame relative">
         <Toaster />
+        <PointsBurst />
         <main
           ref={mainRef}
-          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-neutral-50"
+          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-[#FDF9F6]"
         >
           {!storesLoaded ? (
             <Splash />

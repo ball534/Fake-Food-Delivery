@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { Star, Clock, Bike, Flame } from "lucide-react";
+import { Star, Clock, Bike } from "lucide-react";
 import type { Store } from "../data/types";
 import { etaRange } from "../lib/format";
 import { etaRangeFor, distanceFor } from "../lib/delivery";
 import { useProfile } from "../store/profileStore";
-import { storeOrdersToday } from "../lib/urgency";
 import Thumb from "./Thumb";
 
 export default function StoreCard({ store }: { store: Store }) {
@@ -12,7 +11,6 @@ export default function StoreCard({ store }: { store: Store }) {
   const seed = selectedAddress?.id ?? "no-address";
   const eta = etaRangeFor(store.id, seed);
   const distanceKm = distanceFor(store.id, seed);
-  const orders = storeOrdersToday(store.id);
 
   return (
     <Link
@@ -30,11 +28,6 @@ export default function StoreCard({ store }: { store: Store }) {
           <Star size={12} className="fill-gold-400 text-gold-400" />
           {store.rating.toFixed(1)}
         </span>
-        {orders > 400 && (
-          <span className="badge-hot absolute left-2 top-2 shadow-sm">
-            <Flame size={11} /> In demand
-          </span>
-        )}
       </div>
       <div className="p-3">
         <div className="flex gap-3">
@@ -56,9 +49,6 @@ export default function StoreCard({ store }: { store: Store }) {
           </span>
           <span className="flex items-center gap-1">
             <Bike size={13} /> {distanceKm.toFixed(1)} km
-          </span>
-          <span className="ml-auto text-[11px] font-semibold text-brand-500">
-            {orders}+ ordered today
           </span>
         </div>
       </div>

@@ -68,7 +68,7 @@ function TabBar() {
                 <span className="relative">
                   <Icon size={21} strokeWidth={2.2} />
                   {to === "/orders" && activeCount > 0 && (
-                    <span className="bg-sunset absolute -right-2 -top-1 flex h-4 min-w-4 animate-glow-pulse items-center justify-center rounded-full px-1 text-[9px] font-bold text-white">
+                    <span className="absolute -right-2 -top-1 flex h-4 min-w-4 animate-glow-pulse items-center justify-center rounded-full bg-brand-500 px-1 text-[9px] font-bold text-white">
                       {activeCount}
                     </span>
                   )}
@@ -135,7 +135,7 @@ export default function App() {
         <PointsBurst />
         <main
           ref={mainRef}
-          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-[#FDF9F6]"
+          className="relative flex-1 overflow-y-auto overflow-x-hidden bg-[#F8FAF8]"
         >
           {!storesLoaded ? (
             <Splash />

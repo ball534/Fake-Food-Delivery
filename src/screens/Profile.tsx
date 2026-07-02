@@ -114,7 +114,7 @@ export default function Profile() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-gold-300/50 blur-3xl"
+        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-brand-300/40 blur-3xl"
       />
       <div className="relative px-4 pb-6 pt-9 text-white">
         <div className="flex items-center gap-4">
@@ -159,7 +159,7 @@ export default function Profile() {
       <div className="space-y-5 p-4">
         <section className="card overflow-hidden p-4">
           <div className="-m-4 mb-4 grid grid-cols-2 divide-x divide-white/25">
-            <div className="bg-goldshine gloss p-3.5 text-white">
+            <div className="gloss bg-gold-400 p-3.5 text-white">
               <div className="relative z-[1] flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-white/90">
                 <Sparkles size={14} /> Points
               </div>
@@ -167,7 +167,7 @@ export default function Profile() {
                 {profile.points.toLocaleString()}
               </p>
             </div>
-            <div className="bg-sunset gloss p-3.5 text-white">
+            <div className="gloss bg-brand-500 p-3.5 text-white">
               <div className="relative z-[1] flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-white/90">
                 <Flame size={14} /> Streak
               </div>
@@ -311,7 +311,7 @@ export default function Profile() {
 
         <Link
           to="/create-store"
-          className="gloss flex items-center gap-3 rounded-2xl bg-gradient-to-r from-brand-400 via-brand-500 to-brand-600 p-4 text-white shadow-card-hover transition active:scale-[0.99]"
+          className="gloss flex items-center gap-3 rounded-2xl bg-brand-500 p-4 text-white shadow-card-hover transition active:scale-[0.99]"
         >
           <span className="relative z-[1] grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/20 backdrop-blur">
             <StoreIcon size={22} />

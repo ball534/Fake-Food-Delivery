@@ -11,7 +11,7 @@ import "leaflet/dist/leaflet.css";
 import type { GeoPoint, Order } from "../data/types";
 import { deliveringProgress } from "../lib/simulation";
 
-const ROUTE_COLOR = "#FF4E1F";
+const ROUTE_COLOR = "#228B22";
 
 function emojiPin(emoji: string, ring: string) {
   return L.divIcon({

@@ -13,7 +13,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import DealPrice from "../components/DealPrice";
-import ScratchCard from "../components/ScratchCard";
 import Thumb from "../components/Thumb";
 import { Link } from "react-router-dom";
 import { useStores, storesInCategory } from "../store/storesStore";
@@ -135,7 +134,7 @@ export default function Home() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-gold-300/50 blur-3xl"
+        className="pointer-events-none absolute -right-16 -top-24 h-64 w-64 rounded-full bg-brand-300/40 blur-3xl"
       />
       <div
         aria-hidden
@@ -180,12 +179,12 @@ export default function Home() {
           {deal.storeId ? (
             <Link
               to={`/store/${deal.storeId}`}
-              className="bg-sunset shine gloss block rounded-2xl px-4 pb-4 pt-3 text-white shadow-glow transition active:scale-[0.99]"
+              className="gloss block rounded-2xl bg-brand-500 px-4 pb-4 pt-3 text-white shadow-glow transition active:scale-[0.99]"
             >
               {dealHeader}
             </Link>
           ) : (
-            <div className="bg-sunset shine gloss rounded-2xl px-4 pb-4 pt-3 text-white shadow-glow">
+            <div className="gloss rounded-2xl bg-brand-500 px-4 pb-4 pt-3 text-white shadow-glow">
               {dealHeader}
               {deal.kind === "code" && deal.code && (
                 <button
@@ -203,8 +202,6 @@ export default function Home() {
             </div>
           )}
         </section>
-
-        <ScratchCard />
 
         <div className="-mx-4 flex gap-2 overflow-x-auto px-4 no-scrollbar">
           <button
@@ -304,7 +301,7 @@ export default function Home() {
               <Link
                 to="/checkout"
                 aria-label={`Cart, ${cartCount} items`}
-                className="bg-sunset pointer-events-auto absolute bottom-24 right-4 grid h-14 w-14 place-items-center rounded-full text-white shadow-glow active:scale-95"
+                className="pointer-events-auto absolute bottom-24 right-4 grid h-14 w-14 place-items-center rounded-full bg-brand-500 text-white shadow-glow active:scale-95"
               >
                 <ShoppingBag size={22} />
                 <motion.span

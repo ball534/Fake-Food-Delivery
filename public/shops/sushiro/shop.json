@@ -1,6 +1,9 @@
 {
   "name": "Sushiro",
-  "categories": ["Japanese", "Sushi"],
+  "categories": [
+    "Japanese",
+    "Sushi"
+  ],
   "fastfood": false,
   "pricelevel": 2,
   "rating": 4.5,
@@ -12,7 +15,6 @@
           "name": "Sushiro Salmon Platter",
           "description": "A salmon lover's dream - broiled salmon belly, salmon, salmon belly, salmon with cheese and salmon with onion.",
           "price": 16.25,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Portion",
@@ -62,7 +64,6 @@
           "name": "Sushiro Platter 10",
           "description": "Ten crowd-favourite pieces - tuna, salmon belly, broiled salmon belly, shrimp, squid, grilled eel, scallop, tamago and more.",
           "price": 15.95,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Portion",
@@ -108,7 +109,6 @@
           "name": "Recommended Mix Platter",
           "description": "The chef's recommended mix - broiled salmon belly, salmon belly, swordfish, shrimp, grilled eel and more.",
           "price": 11.1,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Portion",
@@ -158,7 +158,6 @@
           "name": "Kids Platter",
           "description": "Made for little ones - salmon, shrimp, Japanese egg omelette, crab stick salad and cucumber roll.",
           "price": 7.45,
-          "tags": [],
           "section": [
             {
               "name": "Portion",
@@ -208,7 +207,6 @@
           "name": "Fatty Mackerel Oshisushi",
           "description": "Delicate slices of rich, buttery mackerel pressed with sushi rice - bursting with flavour.",
           "price": 13.1,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -241,7 +239,6 @@
           "name": "Aburi Shrimp Cheese",
           "description": "Torched shrimp draped in creamy cheese mayo.",
           "price": 2.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -269,7 +266,6 @@
           "name": "Salmon with Avocado",
           "description": "Fresh salmon topped with creamy avocado.",
           "price": 2.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -297,7 +293,6 @@
           "name": "Grilled Eel (Unagi)",
           "description": "Sweet, glazed grilled eel over warm rice.",
           "price": 2.9,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -325,7 +320,6 @@
           "name": "Steamed Scallop",
           "description": "A plump, sweet steamed scallop.",
           "price": 2.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -358,7 +352,6 @@
           "name": "Salmon",
           "description": "Fresh, fatty salmon nigiri - the all-time favourite.",
           "price": 2.3,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -386,7 +379,6 @@
           "name": "Salmon Belly",
           "description": "Rich, marbled salmon belly.",
           "price": 2.3,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -414,7 +406,6 @@
           "name": "Broiled Salmon Belly",
           "description": "Seared salmon belly with a smoky edge.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -442,7 +433,6 @@
           "name": "Tuna (Maguro)",
           "description": "Lean red tuna over vinegared rice.",
           "price": 2.3,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -470,7 +460,6 @@
           "name": "Tuna Marinated in Soy Sauce",
           "description": "Soy-marinated maguro (zuke) with deeper umami.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -498,7 +487,6 @@
           "name": "Shrimp (Ebi)",
           "description": "Classic sweet boiled prawn.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -526,7 +514,6 @@
           "name": "Sweet Shrimp (Ama-ebi)",
           "description": "Silky, sweet raw shrimp.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -554,7 +541,6 @@
           "name": "Squid (Ika)",
           "description": "Clean, springy squid.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -582,7 +568,6 @@
           "name": "Grilled Mackerel",
           "description": "Lightly charred mackerel nigiri.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -610,7 +595,6 @@
           "name": "Japanese Omelette (Tamago)",
           "description": "Sweet, layered egg omelette - great for kids.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -638,7 +622,6 @@
           "name": "Inari",
           "description": "Sweet marinated tofu pouch over rice.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -671,7 +654,6 @@
           "name": "Bluefin Fatty Tuna (Otoro)",
           "description": "Melt-in-your-mouth bluefin toro - the ultimate cut.",
           "price": 4.9,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -699,7 +681,6 @@
           "name": "Medium Fatty Tuna (Chutoro)",
           "description": "Beautifully marbled medium-fatty tuna.",
           "price": 3.9,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -727,7 +708,6 @@
           "name": "Fresh Young Yellowtail",
           "description": "Fresh, clean hamachi nigiri.",
           "price": 3.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -755,7 +735,6 @@
           "name": "Fresh Red Snapper",
           "description": "Delicate red snapper, flown in from Japan.",
           "price": 4.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -783,7 +762,6 @@
           "name": "Big Cut Grilled Eel",
           "description": "An extra-large piece of sweet glazed unagi.",
           "price": 3.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -816,7 +794,6 @@
           "name": "Salmon Roe Gunkan (Ikura)",
           "description": "A generous gunkan piled with glistening salmon roe.",
           "price": 4.9,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -844,7 +821,6 @@
           "name": "Flying Fish Roe (Tobiko)",
           "description": "Crunchy orange flying-fish roe gunkan.",
           "price": 2.3,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -872,7 +848,6 @@
           "name": "Crab Meat Mayo",
           "description": "Real crab meat folded through mayo.",
           "price": 3.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -899,26 +874,22 @@
         {
           "name": "Salmon Avocado Roll",
           "description": "Fresh salmon and creamy avocado roll.",
-          "price": 4.9,
-          "tags": ["popular"]
+          "price": 4.9
         },
         {
           "name": "Eel Avocado Roll",
           "description": "Grilled eel and avocado roll.",
-          "price": 4.9,
-          "tags": []
+          "price": 4.9
         },
         {
           "name": "Tuna Roll (Tekka Maki)",
           "description": "The classic lean-tuna maki.",
-          "price": 2.3,
-          "tags": []
+          "price": 2.3
         },
         {
           "name": "Cucumber Roll (Kappa Maki)",
           "description": "Crisp, refreshing cucumber maki.",
-          "price": 2.3,
-          "tags": []
+          "price": 2.3
         }
       ]
     },
@@ -929,7 +900,6 @@
           "name": "Fresh Salmon Sashimi",
           "description": "Thick slices of fresh, fatty salmon.",
           "price": 5,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Wasabi",
@@ -957,7 +927,6 @@
           "name": "Premium Triple Tuna Plate",
           "description": "Three premium tuna cuts on one plate.",
           "price": 9.9,
-          "tags": [],
           "section": [
             {
               "name": "Wasabi",
@@ -984,14 +953,12 @@
         {
           "name": "Chawanmushi",
           "description": "Silky steamed egg custard with hidden savoury morsels.",
-          "price": 3.5,
-          "tags": ["popular"]
+          "price": 3.5
         },
         {
           "name": "Edamame",
           "description": "Salted young soybeans, boiled and seasoned.",
-          "price": 3.95,
-          "tags": []
+          "price": 3.95
         }
       ]
     },
@@ -1001,32 +968,27 @@
         {
           "name": "Chicken Karaage",
           "description": "Tender, juicy bite-size chicken thigh in a crisp batter.",
-          "price": 5.15,
-          "tags": ["popular"]
+          "price": 5.15
         },
         {
           "name": "Octopus Karaage",
           "description": "Deep-fried fresh octopus in a flavourful sauce.",
-          "price": 8.15,
-          "tags": []
+          "price": 8.15
         },
         {
           "name": "Takoyaki",
           "description": "Octopus balls with bonito flakes and savoury sauce.",
-          "price": 3.5,
-          "tags": []
+          "price": 3.5
         },
         {
           "name": "Sweet Potato Tempura",
           "description": "Sweet potato in a light, crisp tempura batter.",
-          "price": 2.8,
-          "tags": []
+          "price": 2.8
         },
         {
           "name": "French Fries",
           "description": "Golden, crispy fries.",
-          "price": 2.8,
-          "tags": []
+          "price": 2.8
         }
       ]
     },
@@ -1037,7 +999,6 @@
           "name": "Tonkotsu Ramen",
           "description": "Rich, milky pork-bone broth ramen.",
           "price": 6.3,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Egg",
@@ -1060,7 +1021,6 @@
           "name": "Rich Tonkotsu Ramen",
           "description": "Tonkotsu with added back fat for extra richness.",
           "price": 6.8,
-          "tags": [],
           "section": [
             {
               "name": "Egg",
@@ -1083,7 +1043,6 @@
           "name": "Maguro Dashi Shoyu Ramen",
           "description": "Fragrant tuna-dashi soy-broth ramen.",
           "price": 6.3,
-          "tags": [],
           "section": [
             {
               "name": "Egg",
@@ -1105,32 +1064,27 @@
         {
           "name": "Beef Udon",
           "description": "Thick udon noodles with sliced beef.",
-          "price": 6.3,
-          "tags": []
+          "price": 6.3
         },
         {
           "name": "Shrimp Tempura Udon",
           "description": "Udon topped with crispy shrimp tempura.",
-          "price": 6.3,
-          "tags": []
+          "price": 6.3
         },
         {
           "name": "Kitsune Udon",
           "description": "Udon with sweet fried tofu.",
-          "price": 6.3,
-          "tags": []
+          "price": 6.3
         },
         {
           "name": "Clam Miso Soup",
           "description": "Comforting miso soup with clams.",
-          "price": 2.8,
-          "tags": []
+          "price": 2.8
         },
         {
           "name": "Seaweed Miso Soup",
           "description": "Classic miso soup with seaweed.",
-          "price": 2.8,
-          "tags": []
+          "price": 2.8
         }
       ]
     },
@@ -1140,26 +1094,22 @@
         {
           "name": "Mitarashi Mochi",
           "description": "Grilled mochi skewer in a sweet soy glaze.",
-          "price": 2.5,
-          "tags": []
+          "price": 2.5
         },
         {
           "name": "Soft Serve with Mango Sauce",
           "description": "Creamy vanilla soft serve with mango sauce.",
-          "price": 4,
-          "tags": []
+          "price": 4
         },
         {
           "name": "Hokkaido Mille Crepe",
           "description": "Layered Hokkaido cream mille crepe cake.",
-          "price": 4.3,
-          "tags": []
+          "price": 4.3
         },
         {
           "name": "Rich Chocolate Cake",
           "description": "A dense, indulgent chocolate cake.",
-          "price": 3.5,
-          "tags": []
+          "price": 3.5
         }
       ]
     },
@@ -1169,26 +1119,22 @@
         {
           "name": "Free Flow Drinks Bar",
           "description": "Free-flow soft drinks - priced per person.",
-          "price": 3,
-          "tags": []
+          "price": 3
         },
         {
           "name": "Orange Juice",
           "description": "100% orange juice.",
-          "price": 2.5,
-          "tags": []
+          "price": 2.5
         },
         {
           "name": "Premium Malts Draft Beer",
           "description": "Suntory The Premium Malt's draft beer.",
-          "price": 10.5,
-          "tags": []
+          "price": 10.5
         },
         {
           "name": "Hakutsuru Junmai Sake",
           "description": "Smooth Hakutsuru junmai sake (180ml).",
-          "price": 19,
-          "tags": []
+          "price": 19
         }
       ]
     }

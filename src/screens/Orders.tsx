@@ -76,7 +76,7 @@ function Header() {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-gold-300/50 blur-3xl"
+        className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-brand-300/40 blur-3xl"
       />
       <div className="relative px-4 pb-4 pt-7 text-white">
         <h1 className="font-display text-2xl font-extrabold drop-shadow-sm">

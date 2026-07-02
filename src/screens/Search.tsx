@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Search as SearchIcon, X, TrendingUp } from "lucide-react";
+import { Search as SearchIcon, X } from "lucide-react";
 import Screen from "../components/Screen";
 import StoreCard from "../components/StoreCard";
 import EmptyState from "../components/EmptyState";
@@ -43,20 +43,6 @@ export default function Search() {
     saveJSON(STORAGE_KEYS.recentSearches, next);
   };
 
-  // "Trending" = popular-tagged dishes, rotated by the day so the list feels
-  // alive without being random on every visit.
-  const trending = useMemo(() => {
-    const names = stores.flatMap((s) =>
-      s.menu.flatMap((c) =>
-        c.items.filter((i) => i.tags?.includes("popular")).map((i) => i.name),
-      ),
-    );
-    const day = new Date().getDate();
-    return [...new Set(names)]
-      .filter((_, i) => (i + day) % 2 === 0)
-      .slice(0, 8);
-  }, [stores]);
-
   const results = useMemo(() => {
     if (!q) return [] as Store[];
     return stores.filter(
@@ -98,25 +84,6 @@ export default function Search() {
               {recent.map((r) => (
                 <button key={r} onClick={() => setQuery(r)} className="chip">
                   {r}
-                </button>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {!q && trending.length > 0 && (
-          <section>
-            <h2 className="mb-2 flex items-center gap-1.5 text-sm font-bold text-neutral-900">
-              <TrendingUp size={15} className="text-brand-500" /> Trending now
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {trending.map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setQuery(t)}
-                  className="chip"
-                >
-                  🔥 {t}
                 </button>
               ))}
             </div>

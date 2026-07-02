@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Star, Clock, Bike, Plus, Flame } from "lucide-react";
+import { Star, Clock, Bike, Plus } from "lucide-react";
 import { motion } from "framer-motion";
 import Screen from "../components/Screen";
 import TopBar from "../components/TopBar";
@@ -20,7 +20,6 @@ import { useToasts } from "../store/toastStore";
 import { useDealPool } from "../store/contentStore";
 import { useNow } from "../lib/hooks";
 import { selectDeal } from "../data/promos";
-import { storeOrdersToday } from "../lib/urgency";
 
 export default function StoreMenu() {
   const { storeId = "" } = useParams();
@@ -163,7 +162,7 @@ export default function StoreMenu() {
         </div>
       </div>
 
-      <div className="relative -mt-6 rounded-t-3xl bg-[#FDF9F6] px-4 pt-8">
+      <div className="relative -mt-6 rounded-t-3xl bg-[#F8FAF8] px-4 pt-8">
         <span className="absolute -top-8 left-4 grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-white shadow-card-hover ring-1 ring-black/5">
           <Thumb
             src={store.logo}
@@ -189,13 +188,10 @@ export default function StoreMenu() {
           <span className="flex items-center gap-1">
             <Bike size={15} /> {distanceKm.toFixed(1)} km
           </span>
-          <span className="flex items-center gap-1 font-semibold text-brand-500">
-            <Flame size={15} /> {storeOrdersToday(store.id)}+ orders today
-          </span>
         </div>
 
         {storeDeal && (
-          <div className="bg-sunset shine gloss mt-3 rounded-2xl p-3 text-white shadow-glow">
+          <div className="gloss mt-3 rounded-2xl bg-brand-500 p-3 text-white shadow-glow">
             <span className="relative z-[1] text-[10px] font-semibold uppercase tracking-wide text-brand-50/80">
               {storeDeal.kind === "combo"
                 ? "Special combo"

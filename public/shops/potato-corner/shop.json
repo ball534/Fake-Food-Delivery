@@ -1,6 +1,9 @@
 {
   "name": "Potato Corner",
-  "categories": ["Snacks", "Western"],
+  "categories": [
+    "Snacks",
+    "Western"
+  ],
   "fastfood": true,
   "pricelevel": 1,
   "rating": 4.6,
@@ -12,14 +15,16 @@
           "name": "Mix & Munch Party Box",
           "description": "Can't decide? Don't have to! Just pick 3 favourites, 3 flavours, so everyone gets what they love. Perfect box for sharing.",
           "price": 17.9,
-          "tags": ["new"],
           "section": [
             {
               "name": "1st Item: Fries",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Fries", "price": 0 }
+                {
+                  "name": "Fries",
+                  "price": 0
+                }
               ]
             },
             {
@@ -27,13 +32,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 }
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                }
               ]
             },
             {
@@ -41,8 +67,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Chicken Pops", "price": 0 },
-                { "name": "Chicken Nuggets", "price": 0 }
+                {
+                  "name": "Chicken Pops",
+                  "price": 0
+                },
+                {
+                  "name": "Chicken Nuggets",
+                  "price": 0
+                }
               ]
             },
             {
@@ -50,13 +82,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "No Flavour", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 }
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                }
               ]
             },
             {
@@ -64,8 +117,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Waffle Fries", "price": 0 },
-                { "name": "Tater Tots", "price": 0 }
+                {
+                  "name": "Waffle Fries",
+                  "price": 0
+                },
+                {
+                  "name": "Tater Tots",
+                  "price": 0
+                }
               ]
             },
             {
@@ -73,13 +132,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 }
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -93,16 +173,24 @@
           "name": "Fries",
           "description": "Golden fries seasoned to perfection with your choice of flavouring! Customize to satisfy your cravings. Mega and Giga sizes come with 2 flavourings.",
           "price": 5.4,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Jumbo", "price": 0 },
-                { "name": "Mega", "price": 1.4 },
-                { "name": "Giga", "price": 5.9 }
+                {
+                  "name": "Jumbo",
+                  "price": 0
+                },
+                {
+                  "name": "Mega",
+                  "price": 1.4
+                },
+                {
+                  "name": "Giga",
+                  "price": 5.9
+                }
               ]
             },
             {
@@ -110,13 +198,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -124,13 +233,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -144,15 +274,20 @@
           "name": "Waffle Fries",
           "description": "Unique waffle-shaped fries seasoned to your liking! Perfect for sharing. Tera size comes with 2 flavourings and twice the amount.",
           "price": 6.9,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.5 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.5
+                }
               ]
             },
             {
@@ -160,13 +295,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -174,13 +330,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -195,8 +372,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.5 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.5
+                }
               ]
             },
             {
@@ -204,13 +387,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -218,13 +422,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -239,8 +464,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.5 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.5
+                }
               ]
             },
             {
@@ -248,13 +479,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -262,13 +514,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -288,8 +561,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Jumbo (6 Pcs)", "price": 0 },
-                { "name": "Mega (12 Pcs)", "price": 5.3 }
+                {
+                  "name": "Jumbo (6 Pcs)",
+                  "price": 0
+                },
+                {
+                  "name": "Mega (12 Pcs)",
+                  "price": 5.3
+                }
               ]
             },
             {
@@ -297,13 +576,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -311,13 +611,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -332,8 +653,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Jumbo (6 Pcs)", "price": 0 },
-                { "name": "Mega (12 Pcs)", "price": 5.3 }
+                {
+                  "name": "Jumbo (6 Pcs)",
+                  "price": 0
+                },
+                {
+                  "name": "Mega (12 Pcs)",
+                  "price": 5.3
+                }
               ]
             },
             {
@@ -341,13 +668,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -355,13 +703,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -370,15 +739,20 @@
           "name": "Wow Winglets",
           "description": "Enjoy our crispy, golden-fried Wow Winglets tossed in your choice of flavour. Golden crisp on the outside, tender and juicy inside. Mega (12 pcs) comes with 2 flavourings.",
           "price": 10.1,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Jumbo (6 Pcs)", "price": 0 },
-                { "name": "Mega (12 Pcs)", "price": 9.1 }
+                {
+                  "name": "Jumbo (6 Pcs)",
+                  "price": 0
+                },
+                {
+                  "name": "Mega (12 Pcs)",
+                  "price": 9.1
+                }
               ]
             },
             {
@@ -386,13 +760,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -400,13 +795,34 @@
               "multiselect": false,
               "required": false,
               "options": [
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "Plain", "price": 0 }
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "Plain",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -420,15 +836,20 @@
           "name": "Chicken Pops Combo",
           "description": "Enjoy a delightful combo of fries and chicken pops, each seasoned with 1 flavouring of your choice. A perfect pairing for any craving!",
           "price": 8.1,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.9 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.9
+                }
               ]
             },
             {
@@ -436,13 +857,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -450,13 +892,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -471,8 +934,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 7.3 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 7.3
+                }
               ]
             },
             {
@@ -480,13 +949,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             },
             {
@@ -494,13 +984,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -515,8 +1026,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.8 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.8
+                }
               ]
             },
             {
@@ -524,13 +1041,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "Plain", "price": 0 }
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "Plain",
+                  "price": 0
+                }
               ]
             },
             {
@@ -538,13 +1076,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chilli BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chilli BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -559,8 +1118,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.8 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.8
+                }
               ]
             },
             {
@@ -568,13 +1133,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "Plain", "price": 0 }
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "Plain",
+                  "price": 0
+                }
               ]
             },
             {
@@ -582,13 +1168,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chilli BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chilli BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -603,8 +1210,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Mega", "price": 0 },
-                { "name": "Tera", "price": 6.8 }
+                {
+                  "name": "Mega",
+                  "price": 0
+                },
+                {
+                  "name": "Tera",
+                  "price": 6.8
+                }
               ]
             },
             {
@@ -612,13 +1225,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "Plain", "price": 0 }
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "Plain",
+                  "price": 0
+                }
               ]
             },
             {
@@ -626,13 +1260,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chilli BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chilli BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -646,15 +1301,20 @@
           "name": "Chicken Pops",
           "description": "Enjoy tender chicken pops seasoned with 1 flavouring of your choice. A delicious snack that's perfect for any time!",
           "price": 6.8,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Jumbo", "price": 0 },
-                { "name": "Mega", "price": 2 }
+                {
+                  "name": "Jumbo",
+                  "price": 0
+                },
+                {
+                  "name": "Mega",
+                  "price": 2
+                }
               ]
             },
             {
@@ -662,13 +1322,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]
@@ -688,8 +1369,14 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Jumbo", "price": 0 },
-                { "name": "Mega", "price": 2.2 }
+                {
+                  "name": "Jumbo",
+                  "price": 0
+                },
+                {
+                  "name": "Mega",
+                  "price": 2.2
+                }
               ]
             },
             {
@@ -697,13 +1384,34 @@
               "multiselect": false,
               "required": true,
               "options": [
-                { "name": "Cheese", "price": 0 },
-                { "name": "BBQ", "price": 0 },
-                { "name": "Sour Cream & Onion", "price": 0 },
-                { "name": "Chili BBQ", "price": 0 },
-                { "name": "Creamy Truffle", "price": 0 },
-                { "name": "Classic Seaweed", "price": 0 },
-                { "name": "No Flavour", "price": 0 }
+                {
+                  "name": "Cheese",
+                  "price": 0
+                },
+                {
+                  "name": "BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Sour Cream & Onion",
+                  "price": 0
+                },
+                {
+                  "name": "Chili BBQ",
+                  "price": 0
+                },
+                {
+                  "name": "Creamy Truffle",
+                  "price": 0
+                },
+                {
+                  "name": "Classic Seaweed",
+                  "price": 0
+                },
+                {
+                  "name": "No Flavour",
+                  "price": 0
+                }
               ]
             }
           ]

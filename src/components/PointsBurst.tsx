@@ -51,7 +51,7 @@ export default function PointsBurst() {
             animate={{ scale: [0.4, 1.12, 1], y: [26, -6, 0], opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
-            className="bg-goldshine gloss flex flex-col items-center gap-0.5 rounded-3xl px-7 py-4 text-white shadow-glow-gold"
+            className="gloss flex flex-col items-center gap-0.5 rounded-3xl bg-gold-400 px-7 py-4 text-white shadow-glow-gold"
           >
             <span className="flex items-center gap-2 font-display text-3xl font-extrabold drop-shadow-sm">
               <Sparkles size={26} /> +{current.points} pts

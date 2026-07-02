@@ -1,6 +1,9 @@
 {
   "name": "KOI Thé",
-  "categories": ["Drinks", "Bubble Tea"],
+  "categories": [
+    "Drinks",
+    "Bubble Tea"
+  ],
   "fastfood": false,
   "pricelevel": 1,
   "rating": 4.5,
@@ -12,7 +15,6 @@
           "name": "Milk Tea",
           "description": "KOI's signature milk tea - smooth, fragrant black tea blended with creamy milk. Add Golden Bubble to make it the classic.",
           "price": 5.1,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -117,7 +119,6 @@
           "name": "Brown Sugar Milk Tea",
           "description": "Rich milk tea kissed with caramelised brown sugar for a deep, toffee-like sweetness.",
           "price": 5.8,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -326,7 +327,6 @@
           "name": "Hazelnut Milk Tea",
           "description": "Nutty roasted hazelnut folded into KOI's creamy milk tea.",
           "price": 5.8,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -743,7 +743,6 @@
           "name": "Wildflower Honey Milk Tea",
           "description": "Creamy milk tea sweetened with pure Thai wildflower honey.",
           "price": 6.2,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -1591,7 +1590,6 @@
           "name": "Brown Sugar Fresh Milk",
           "description": "Fresh milk layered with warm caramelised brown sugar - pairs perfectly with Golden Bubble.",
           "price": 6.2,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -1701,7 +1699,6 @@
           "name": "Blushing Guava Green Tea",
           "description": "Sweet pink guava shaken into crisp green tea for a rosy, tropical cooler.",
           "price": 5.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -1806,7 +1803,6 @@
           "name": "Peachy Guava Green Tea",
           "description": "Pink guava and juicy peach over refreshing green tea.",
           "price": 6.2,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -1911,7 +1907,6 @@
           "name": "Milky Guava Green Milk Tea",
           "description": "Creamy green milk tea blended with sweet pink guava.",
           "price": 6.2,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2016,7 +2011,6 @@
           "name": "Cloud Guava Green Milk Tea",
           "description": "Pink guava green milk tea crowned with a fluffy salted cream cloud.",
           "price": 6.7,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2126,7 +2120,6 @@
           "name": "Premium Hojicha Latte",
           "description": "Premium roasted hojicha with fresh milk - smoky, toasty and smooth.",
           "price": 6.2,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2231,7 +2224,6 @@
           "name": "Premium Hojicha Oat Milk",
           "description": "Roasted hojicha with creamy oat milk, dairy-free and nutty.",
           "price": 6.2,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2336,7 +2328,6 @@
           "name": "Brown Sugar Hojicha Latte",
           "description": "Roasted hojicha latte deepened with caramelised brown sugar.",
           "price": 6.7,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2441,7 +2432,6 @@
           "name": "Hazelnut Hojicha Oat Milk",
           "description": "Toasty hojicha and hazelnut over oat milk.",
           "price": 6.7,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2546,7 +2536,6 @@
           "name": "Almond Tofu w Red Bean Hazelnut Hojicha Oat Milk",
           "description": "Silky almond tofu and red bean atop hazelnut hojicha oat milk - a dessert in a cup.",
           "price": 7.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2651,7 +2640,6 @@
           "name": "Almond Tofu w Red Bean Hojicha Latte",
           "description": "Almond tofu and red bean over roasted hojicha latte.",
           "price": 7.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2756,7 +2744,6 @@
           "name": "Almond Tofu w Red Bean Hojicha Oat Milk",
           "description": "Almond tofu and red bean over hojicha oat milk.",
           "price": 7.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2861,7 +2848,6 @@
           "name": "Almond Tofu w Red Bean Brown Sugar Hojicha Latte",
           "description": "Almond tofu and red bean over brown sugar hojicha latte.",
           "price": 7.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -2966,7 +2952,6 @@
           "name": "Premium Hojicha w Red Bean",
           "description": "Premium roasted hojicha topped with sweet red bean.",
           "price": 7.4,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -3388,7 +3373,6 @@
           "name": "Peach Green Tea",
           "description": "Ripe peach aroma over crisp green tea - an all-time crowd-pleaser.",
           "price": 5.1,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -4117,7 +4101,6 @@
           "name": "Yakult Green Tea",
           "description": "Green tea shaken with Yakult for a tangy-sweet probiotic kick.",
           "price": 6.2,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -4643,7 +4626,6 @@
           "name": "Wildflower Honey Oolong Tea",
           "description": "Golden oolong sweetened with pure Thai wildflower honey.",
           "price": 5.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -4857,7 +4839,6 @@
           "name": "Lychee Black Tea",
           "description": "Juicy lychee sweetness layered over bright Assam black tea.",
           "price": 5.1,
-          "tags": ["popular"],
           "section": [
             {
               "name": "Size",
@@ -5279,7 +5260,6 @@
           "name": "Wildflower Honey Chrysanthemum Tea",
           "description": "Floral chrysanthemum tea sweetened with Thai wildflower honey.",
           "price": 5.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -5914,7 +5894,6 @@
           "name": "Wildflower Ice Honey",
           "description": "Chilled pure Thai wildflower honey drink, lightly floral.",
           "price": 5.8,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -6019,7 +5998,6 @@
           "name": "Wildflower Honey Lemon Lime Juice",
           "description": "Wildflower honey with fresh lemon and lime - sweet, sour, refreshing.",
           "price": 6.7,
-          "tags": ["new"],
           "section": [
             {
               "name": "Size",
@@ -6128,8 +6106,7 @@
         {
           "name": "Seasonal Twin Box",
           "description": "A seasonal pair of KOI's delicate French macarons.",
-          "price": 8.6,
-          "tags": ["new"]
+          "price": 8.6
         },
         {
           "name": "1pc Macaron",

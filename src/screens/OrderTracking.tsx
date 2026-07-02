@@ -73,7 +73,7 @@ export default function OrderTracking() {
       <TopBar title="Track order" />
 
       <div className="space-y-4 p-4">
-        <div className="bg-sunset shine gloss rounded-2xl p-4 text-white shadow-glow">
+        <div className="gloss rounded-2xl bg-brand-500 p-4 text-white shadow-glow">
           <p className="relative z-[1] text-xs font-medium text-white/85">
             {delivered ? "Your order is" : "Status"}
           </p>

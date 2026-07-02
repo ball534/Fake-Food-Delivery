@@ -33,35 +33,7 @@ body {
 @layer components {
   .phone-frame {
     @apply mx-auto flex h-[100dvh] w-full max-w-[440px] flex-col overflow-hidden shadow-2xl sm:my-0 sm:h-[100dvh];
-    background-color: #fdf9f6; /* warm off-white, matches screen bg */
-  }
-
-  /* The FakeEats sunset — the brand gradient. Use for hero surfaces, primary
-     CTAs and deal cards. */
-  .bg-sunset {
-    background-image: linear-gradient(
-      135deg,
-      #ff8a4d 0%,
-      #ff4e1f 52%,
-      #ed3a0c 100%
-    );
-  }
-  .bg-sunset-deep {
-    background-image: linear-gradient(
-      160deg,
-      #ff6a35 0%,
-      #ed3a0c 60%,
-      #c52f0a 100%
-    );
-  }
-  /* Gold treatment for points / rewards / streaks. */
-  .bg-goldshine {
-    background-image: linear-gradient(
-      135deg,
-      #ffcc4a 0%,
-      #ffb520 55%,
-      #f99307 100%
-    );
+    background-color: #f8faf8; /* soft off-white, matches screen bg */
   }
 
   /* Frosted translucent surface — Apple "liquid glass". Meant for floating
@@ -70,11 +42,11 @@ body {
   .glass {
     @apply border border-white/50 bg-white/30 backdrop-blur-3xl backdrop-saturate-150;
     box-shadow:
-      0 8px 32px -12px rgba(60, 20, 8, 0.18),
+      0 8px 32px -12px rgba(16, 24, 40, 0.18),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
   }
 
-  /* Glass on top of the sunset gradient — brighter border, warm shadow. */
+  /* Glass on top of a saturated brand surface — brighter border. */
   .glass-warm {
     @apply border border-white/30 bg-white/15 backdrop-blur-2xl backdrop-saturate-150;
     box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.35);
@@ -89,7 +61,7 @@ body {
   .glass-dock {
     @apply border border-white/60 bg-white/60 backdrop-blur-3xl backdrop-saturate-150;
     box-shadow:
-      0 12px 36px -10px rgba(60, 20, 8, 0.28),
+      0 12px 36px -10px rgba(16, 24, 40, 0.28),
       inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
   }
 
@@ -114,31 +86,9 @@ body {
     pointer-events: none;
   }
 
-  /* Diagonal light-sweep that loops across a card — for deal/flash surfaces.
-     Element must clip (overflow-hidden). */
-  .shine {
-    @apply relative overflow-hidden;
-  }
-  .shine::after {
-    content: "";
-    position: absolute;
-    top: -20%;
-    bottom: -20%;
-    left: 0;
-    width: 40%;
-    background-image: linear-gradient(
-      100deg,
-      rgba(255, 255, 255, 0) 20%,
-      rgba(255, 255, 255, 0.28) 50%,
-      rgba(255, 255, 255, 0) 80%
-    );
-    animation: shimmer 2.8s ease-in-out infinite;
-    pointer-events: none;
-  }
-
   .btn-primary {
-    @apply bg-sunset inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-bold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
-    box-shadow: 0 8px 20px -6px rgba(255, 78, 31, 0.5);
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-5 py-3 font-bold text-white transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+    box-shadow: 0 8px 20px -6px rgba(34, 139, 34, 0.45);
   }
 
   .btn-secondary {
@@ -150,15 +100,10 @@ body {
   }
 
   .chip-active {
-    @apply bg-sunset border-transparent text-white shadow-[0_4px_14px_-3px_rgba(255,78,31,0.6)];
+    @apply border-transparent bg-brand-500 text-white shadow-[0_4px_14px_-3px_rgba(34,139,34,0.55)];
   }
 
   .card {
     @apply rounded-2xl bg-white shadow-card ring-1 ring-black/[0.04];
-  }
-
-  /* Tiny urgency badge — "selling fast", "ending soon". */
-  .badge-hot {
-    @apply inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-600;
   }
 }

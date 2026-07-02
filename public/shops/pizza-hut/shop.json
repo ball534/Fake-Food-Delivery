@@ -15,9 +15,6 @@
           "name": "Cheesy Spinach",
           "description": "Creamy, cheesy and oh-so-satisfying, combining tender baby spinach and indulgent cream cheese cubes on rich alfredo sauce. Baked with melty mozzarella and a sprinkle of parmesan.",
           "price": 11.95,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size & Crust",
@@ -347,9 +344,6 @@
           "name": "Truffle Shroom 'N' Chicken Bacon",
           "description": "Indulge in a rich, savoury bite with our Truffle Shroom 'N' Chicken Bacon Sourdough Pizza. Layered with creamy truffle sauce, smoky chicken bacon, juicy mushrooms, and a decadent mix of mozzarella and shredded parmesan cheese. Perfectly balanced on a crisp airy sourdough crust.",
           "price": 14.75,
-          "tags": [
-            "new"
-          ],
           "section": [
             {
               "name": "Size & Crust",
@@ -458,9 +452,6 @@
           "name": "Super Supreme",
           "description": "Always a house favourite, combining juicy ground beef, smoky beef cabanossi sausages, beef pepperoni, chicken ham, and a luscious mix of capsicums, onions, olives, mushrooms and pineapple chunks.",
           "price": 14.75,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size & Crust",
@@ -569,9 +560,6 @@
           "name": "Hawaiian",
           "description": "An all-time favourite. Tender chicken ham combined with sweet and succulent pineapple chunks for a taste of the good ol' days.",
           "price": 14.75,
-          "tags": [
-            "popular"
-          ],
           "section": [
             {
               "name": "Size & Crust",
@@ -626,9 +614,6 @@
           "name": "Curry Chicken",
           "description": "Italian classic meets local favourite. Spicy chicken chunks, potatoes, onions and diced tomatoes come together for an authentic flavour of rich spices.",
           "price": 14.75,
-          "tags": [
-            "spicy"
-          ],
           "section": [
             {
               "name": "Size & Crust",
@@ -1016,18 +1001,12 @@
         {
           "name": "Hut Melts - Hawaiian",
           "description": "Good ol' classic. Crispy thin crust loaded with chicken ham and juicy pineapples & cheeses, baked to melty perfection, served with tomato dip.",
-          "price": 8.95,
-          "tags": [
-            "popular"
-          ]
+          "price": 8.95
         },
         {
           "name": "Hut Melts - Spicy Chicken Pops",
           "description": "Crispy thin crust loaded with spicy chicken pop and mozzarella, baked to melty perfection, served with tomato dip.",
-          "price": 8.95,
-          "tags": [
-            "spicy"
-          ]
+          "price": 8.95
         },
         {
           "name": "Hut Melts - Beef Pepperoni",
@@ -1052,10 +1031,7 @@
         {
           "name": "Truffle Chicken Mac & Cheese",
           "description": "A twist on the classic. Macaroni in creamy truffle-infused white sauce with mozzarella and parmesan, topped with roasted chicken chunks and mushrooms.",
-          "price": 16.9,
-          "tags": [
-            "popular"
-          ]
+          "price": 16.9
         },
         {
           "name": "Mac N Cheese with Chicken Bacon",
@@ -1065,10 +1041,7 @@
         {
           "name": "Curry Zazzle",
           "description": "Spicy chicken chunks, potato cubes, onions and curry sauce over buttered pilaf rice.",
-          "price": 16.5,
-          "tags": [
-            "spicy"
-          ]
+          "price": 16.5
         },
         {
           "name": "Beef Lasagne",
@@ -1103,10 +1076,7 @@
         {
           "name": "Spicy Chicken Pop with Cheese Sauce",
           "description": "Indulge in this golden succulent chicken bite that comes with a spicy kick. Addictively delicious, you just can't stop!",
-          "price": 8,
-          "tags": [
-            "spicy"
-          ]
+          "price": 8
         },
         {
           "name": "10pcs Crispy Chicken Fries w Dip",
@@ -1126,11 +1096,7 @@
         {
           "name": "10pcs Sweet 'N' Spicy Drumlets",
           "description": "Our house specials that's a sure winner! Juicy, tender drumlets marinated in New Orleans spices.",
-          "price": 15.9,
-          "tags": [
-            "popular",
-            "spicy"
-          ]
+          "price": 15.9
         },
         {
           "name": "6pcs BBQ Wings",
@@ -1187,9 +1153,6 @@
           "name": "Hershey's Chocolate Chip Cookie (Whole)",
           "description": "A soft and chewy cookie laden with crunchy chocolate chips, served warm.",
           "price": 10.9,
-          "tags": [
-            "popular"
-          ],
           "emoji": "🍪"
         },
         {
